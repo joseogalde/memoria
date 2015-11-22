@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" id="svg2" viewBox="0 0 1087.1 664.27" version="1.1">
+  <defs id="defs4">
+    <radialGradient id="radialGradient4459" gradientUnits="userSpaceOnUse" cy="492.48" cx="451.43" gradientTransform="matrix(.010348 -.99995 1.3981 .014468 -241.76 762.36)" r="498.64">
+      <stop id="stop4455" stop-color="#8a8a8a" offset="0"/>
+      <stop id="stop4457" offset="1"/>
+    </radialGradient>
+  </defs>
+  <g id="layer3" transform="translate(540.71 245.49)">
+    <rect id="rect3167-9" stroke-linejoin="round" height="634.27" width="1057.1" stroke="#000" stroke-linecap="round" y="-230.49" x="-525.71" stroke-width="30" fill="#fff"/>
+    <rect id="rect3167" height="634.27" width="1057.1" y="-230.49" x="-525.71" stroke-width="0" fill="#fff"/>
+    <path id="rect3169" stroke-linejoin="round" d="m-494.29-196.21h994.25v565.71h-994.25z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="url(#radialGradient4459)"/>
+    <path id="rect3169-9" stroke-linejoin="round" d="m-494.29-196.21h932.11v565.71h-932.11z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1" stroke-linejoin="round" d="m-494.29-196.21h869.97v565.71h-869.97z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1-8" stroke-linejoin="round" d="m-494.29-196.21h807.83v565.71h-807.83z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1-8-0" stroke-linejoin="round" d="m-494.29-196.21h745.69v565.71h-745.69z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1-8-0-4" stroke-linejoin="round" d="m-494.29-196.21h683.55v565.71h-683.55z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1-8-0-4-7" stroke-linejoin="round" d="m-494.29-196.21h621.41v565.71h-621.41z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1-8-0-4-7-8" stroke-linejoin="round" d="m-494.29-196.21h559.27v565.71h-559.27z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1-8-0-4-7-8-7" stroke-linejoin="round" d="m-494.29-196.21h497.13v565.71h-497.13z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1-8-0-4-7-8-7-7" stroke-linejoin="round" d="m-494.29-196.21h434.99v565.71h-434.99z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1-8-0-4-7-8-7-7-0" stroke-linejoin="round" d="m-494.29-196.21h372.85v565.71h-372.85z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1-8-0-4-7-8-7-7-0-7" stroke-linejoin="round" d="m-494.29-196.21h310.71v565.71h-310.71z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1-8-0-4-7-8-7-7-0-7-9" stroke-linejoin="round" d="m-494.29-196.21h248.57v565.71h-248.57z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1-8-0-4-7-8-7-7-0-7-9-2" stroke-linejoin="round" d="m-494.29-196.21h186.43v565.71h-186.43z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1-8-0-4-7-8-7-7-0-7-9-2-9" stroke-linejoin="round" d="m-494.29-196.21h124.29v565.71h-124.29z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <path id="rect3169-1-8-0-4-7-8-7-7-0-7-9-2-9-3" stroke-linejoin="round" d="m-494.29-196.21h62.143v565.71h-62.143z" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none"/>
+    <g id="g4468-0-9-9" stroke="#666" transform="matrix(-.12450 .99222 -.99222 -.12450 -63.829 -672.75)">
+      <path id="path4464-2-0-1" stroke-linejoin="round" d="m517.14 384.15c0 2.9587-2.3985 5.3571-5.3571 5.3571-2.9587 0-5.3572-2.3985-5.3572-5.3571 0-2.9587 2.3985-5.3571 5.3572-5.3571s5.3571 2.3985 5.3571 5.3571z" stroke-linecap="round" stroke-width="3" fill="#999"/>
+      <path id="path4466-2-7-81" d="m508.54 379.97 6.6986 8.1832" stroke-width="2" fill="none"/>
+    </g>
+  </g>
+  <g id="layer4" stroke-linejoin="round" transform="translate(540.71 245.49)" stroke="#fff" stroke-linecap="round" stroke-width="3" fill="none">
+    <path id="rect3169-6" d="m-494.29-196.21h994.25v565.69h-994.25v-494.98z"/>
+    <path id="rect3169-6-2" d="m500-125.49v424.27h-994.29v-424.27z"/>
+    <path id="rect3169-6-2-3" d="m500 15.934v141.43h-994.29v-141.43z"/>
+    <path id="rect3169-6-2-3-9" d="m500 86.648h-994.29z"/>
+  </g>
+  <g id="layer5" stroke-linejoin="round" transform="translate(540.71 245.49)" stroke="#fff" stroke-linecap="round" stroke-width="1.8783" fill="#fff">
+    <path id="rect4342" d="m495.15-36.633h62.246l-62.246 62.246z" transform="rotate(45)"/>
+    <rect id="rect4342-1" transform="rotate(45)" height="62.246" width="62.246" y="28.126" x="32.167"/>
+    <path id="rect4342-5" d="m-370.09 324.22 44.014 44.014-88.029 0.00001z"/>
+    <path id="rect4342-5-6" d="m2.8571 324.22 44.014 44.014-88.029 0.00001z"/>
+    <path id="rect4342-4" d="m376.03-150.75 44.014-44.014-88.029-0.00001z"/>
+    <path id="rect4342-5-2" d="m-370.09-150.75 44.014-44.014-88.029-0.00001z"/>
+    <path id="rect4342-5-6-5" d="m2.8571-150.75 44.014-44.014-88.029-0.00001z"/>
+    <rect id="rect4342-1-1" transform="rotate(45)" height="62.246" width="62.246" y="291.84" x="-231.55"/>
+    <path id="rect4342-5-6-5-1" d="m-367.14-157.77 44.014-44.014-88.029-0.00001z"/>
+    <rect id="rect4342-1-0" transform="rotate(45)" height="62.246" width="62.246" y="-235.75" x="296.04"/>
+  </g>
+  <g id="layer6" stroke="#666" transform="translate(540.71 245.49)">
+    <g id="g4468" transform="translate(1.6415 1.389)">
+      <path id="path4464" stroke-linejoin="round" d="m517.14 384.15c0 2.9587-2.3985 5.3571-5.3571 5.3571-2.9587 0-5.3572-2.3985-5.3572-5.3571 0-2.9587 2.3985-5.3571 5.3572-5.3571s5.3571 2.3985 5.3571 5.3571z" stroke-linecap="round" stroke-width="3" fill="#999"/>
+      <path id="path4466" d="m508.54 379.97 6.6986 8.1832" stroke-width="2" fill="none"/>
+    </g>
+    <g id="g4468-0" transform="matrix(.33358 .94272 -.94272 .33358 704.85 -823.39)">
+      <path id="path4464-2" stroke-linejoin="round" d="m517.14 384.15c0 2.9587-2.3985 5.3571-5.3571 5.3571-2.9587 0-5.3572-2.3985-5.3572-5.3571 0-2.9587 2.3985-5.3571 5.3572-5.3571s5.3571 2.3985 5.3571 5.3571z" stroke-linecap="round" stroke-width="3" fill="#999"/>
+      <path id="path4466-2" d="m508.54 379.97 6.6986 8.1832" stroke-width="2" fill="none"/>
+    </g>
+    <g id="g4468-0-9" transform="matrix(-.12450 .99222 -.99222 -.12450 -63.829 -672.75)">
+      <path id="path4464-2-0" stroke-linejoin="round" d="m517.14 384.15c0 2.9587-2.3985 5.3571-5.3571 5.3571-2.9587 0-5.3572-2.3985-5.3572-5.3571 0-2.9587 2.3985-5.3571 5.3572-5.3571s5.3571 2.3985 5.3571 5.3571z" stroke-linecap="round" stroke-width="3" fill="#999"/>
+      <path id="path4466-2-7" d="m508.54 379.97 6.6986 8.1832" stroke-width="2" fill="none"/>
+    </g>
+    <g id="g4468-0-9-1" transform="matrix(-.12450 .99222 -.99222 -.12450 -63.829 -74.442)">
+      <path id="path4464-2-0-6" stroke-linejoin="round" d="m517.14 384.15c0 2.9587-2.3985 5.3571-5.3571 5.3571-2.9587 0-5.3572-2.3985-5.3572-5.3571 0-2.9587 2.3985-5.3571 5.3572-5.3571s5.3571 2.3985 5.3571 5.3571z" stroke-linecap="round" stroke-width="3" fill="#999"/>
+      <path id="path4466-2-7-8" d="m508.54 379.97 6.6986 8.1832" stroke-width="2" fill="none"/>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

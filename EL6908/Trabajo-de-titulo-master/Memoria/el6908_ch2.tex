@@ -1,0 +1,497 @@
+% 												CH2 - MARCO TEORICO
+% En este capítulo se hace una revisión bibliográfica del los conceptos fundamentales para el desarrollo del trabajo de título. 
+% Se puede considerar como una contextualización en cuanto sirve como base para comprender el trabajo realizado.
+
+\chapter{Marco teórico}\label{ch2}
+
+% ============= SISTEMAS EMBEBIDOS ==============
+\section{Sistemas embebidos}
+
+Los sistemas embebidos, a diferencia de un computador personal que es usado con fines generales para una amplia variedad de tareas, son sistemas computacionales normalmente utilizados para atender una cantidad limitada de procesos; realizar tareas específicas o dotar de determinada inteligencia a un sistema más complejo. Está compuesto por uno o más microcontroladores pequeños , los que cuentan con periféricos para manejar diferentes protocolos de comunicación, conversores análogo-digital, \textit{timers}, puertos de entrada y salida digitales, todos integrados en un mismo chip para ahorrar espacio y energía. Parte fundamental de un sistema embebido es el \textit{software} que provee la funcionalidad final. Usualmente se usa el término \textit{firmware} para referirse a este código con que se programa el microcontrolador, el que por lo general es específico para la plataforma de \textit{hardware} y se relacionan a muy bajo nivel. A diferencia de un computador de propósito general, donde el usuario puede 
+cargar una serie de programas para un amplio rango de usos, acá no se tiene la capacidad de re-programarlo fuera de las posibilidades que el desarrollador ha brindado al sistema \cite{EMBEDDED_DESIGN}.\\
+
+Para el diseño de sistemas embebidos se deben considerar ciertos aspectos que los diferencian de otros tipos de sistemas de computacionales, tales como \cite{SOFTWARE_ING}:
+
+\begin{itemize}
+	\item Se mantiene siempre funcionando y debe proveer respuesta a entradas y órdenes externas en tiempo real. Se debe diseñar considerando una operación continua y una posible reconfiguración del sistema estando ya en marcha.
+	
+	\item Las interacciones con el sistema pueden ser impredecibles y no se tiene control sobre ellas. Existen sistemas que son controlados por el usuario mediante una interfaz preparada para ello, mientras que otros deben atender eventos imprevistos sin dejar de realizar tareas rutinarias.
+	
+	\item Existen limitaciones físicas. Normalmente estos sistemas poseen limitadas características de poder de cómputo, memoria de datos y de programa, espacio físico y disponibilidad de energía.
+	
+	\item El diseño de \textit{software} para sistemas embebidos requiere una interacción de bajo nivel. Existe una amplia gama de plataformas de \textit{hardware} para desarrollar sistemas embebidos y se requiere interactuar también con una variedad de dispositivos externos. Por esto, se requiere desarrollar capas de controladores de periféricos que oculten las diferencias de \textit{hardware} a la aplicación final del sistema.
+	
+	\item Es importante considerar aspectos de seguridad y confiabilidad del sistema durante todo su desarrollo debido a que la mayoría de los sistemas embebidos son usados para controlar otros sistemas críticos en diversos procesos.
+\end{itemize}
+
+\subsection{Microcontroladores PIC}
+
+Todo sistema embebido está formado fundamentalmente por un microcontrolador, que brinda la capacidad de cómputo y el control de diferentes periféricos que normalmente están integrados en el mismo chip. Entre los principales fabricantes de microcontroladores se encuentran: Microchip, Texas Instrument, ARM, Motorola, NVidia. Este trabajo se concentra en los microcontroladores PIC desarrollados por la compañía Microchip. La familia de microcontroladores  PIC es bastante amplia, adaptándose a un gran rango de necesidades. La tabla \ref{pic_list} resume las principales características de los diferentes modelos y puede ser utilizada como una guía para determinar el dispositivo adecuado según la aplicación:
+
+% ················ TALBA ·················
+\begin{table}[ht!]
+\caption{Guía de microcontroladores PIC}\label{pic_list}
+\centering \includegraphics[width=\textwidth]{img/pic_list.pdf}
+\end{table}
+%··········································
+
+A continuación, se describen las características específicas de los microcontroladores PIC24 que corresponde al dispositivo utilizado en este trabajo.
+
+\newpage
+\subsubsection{Arquitectura.}
+Poseen un juego de instrucciones \gls{risc} (80 instrucciones) de ancho fijo en 24 bits que en su mayoría se ejecutan en un solo ciclo, excepto: divisiones, cambios de contexto y acceso por tabla a memoria de programa \cite{PIC24_PROG}. Se basa en una arquitectura Harvard modificada de 16 bits de datos \cite{PIC24F}, lo que significa que el dispositivo posee una memoria de datos tipo \gls{RAM}, separada de la memoria de datos, pudiendo acceder de manera independiente e incluso simultánea a las instrucciones del programa y a los datos de este alojados en \gls{RAM}. La arquitectura de la CPU la completa una \gls{ALU}, con \textit{hardware} dedicado para realizar multiplicaciones y divisiones. El detalle de la arquitectura del microcontrolador PIC24 se muestra en la figura \ref{pic_cpu}. También posee un vector de hasta 128 interrupciones, con capacidad para atender hasta 8 de ellas de manera simultánea, lo que permite liberar al procesador de la espera de sucesos asíncronos, ya que son notificados y atendidos de manera específica 
+en una rutina de atención de la interrupción.
+
+% ················ IMAGEN ·················
+\figurabox[Fuente: PIC24F Family Reference Manual \cite{PIC24F}.]{img/pic_cpu.png}{scale=0.5}{Arquitectura de la CPU del PIC24F}{pic_cpu}{ht!}
+%··········································
+
+\subsubsection{Periféricos.}\label{ch2:embedded:perif}
+La familia de microcontroladores PIC24F, integra en el mismo chip una serie de periféricos que permiten realizar funciones específicas a través de \textit{hardware}. Esto hace que el PIC24F se convierta en un sistema embebido capaz de ser utilizado en aplicaciones que requieran: conversores análogo-digital, temporizadores, comunicación síncrona y asíncrona como RS232, \gls{SPI} o \gls{I2C}, \gls{USB} o Ethernet, manteniendo acotados los costos del sistema. Una lista de los periféricos disponibles para estos microcontroladores se detalla en la figura \ref{pic_perif}. Los periféricos son controlados a través de registros mapeados en la memoria del microcontrolador, por lo que su acceso y configuración se realiza mediante instrucciones típicas de lecturas y escritura en memoria. Los compiladores para lenguaje C de Microchip proveen librerías de más alto nivel así como una completa documentación sobre el funcionamiento de cada periférico.
+
+% ················ IMAGEN ·················
+\figurabox[Además de la CPU, el PIC24F consta de una serie de periféricos. Fuente: Microchip, \url{http://www.microchip.com/pagehandler/en-us/family/16bit/architecture/pic24f.html}.]{img/pic_perif.jpg}{scale=0.5}{Perifericos del PIC24F}{pic_perif}{ht!}
+%··········································
+
+\subsubsection{Desarrollo.}
+Para el desarrollo de aplicaciones sobre este tipo de microcontroladores se requiere, al menos, de las siguientes herramientas:
+
+\begin{enumerate}
+    \item Compilador
+    \item Entorno de desarrollo
+    \item Programador
+\end{enumerate}
+
+Por lo general, es el fabricante del dispositivo el que provee la mayoría de ellas. En este caso el compilador y entorno de desarrollo se pueden obtener a través de su página web: \url{http://www.microchip.com/developmenttools/}. Se dispone de diferentes compiladores para dispositivos de 8, 16 y 32 bits, correspondiendo para la familia PIC24 el compilador \texttt{xc16} para lenguaje C que es gratuito en su versión \textit{lite}. El entorno de desarrollo integrado que se denomina MPLABX, un programa multiplataforma basado en NetBeans, que integra las funcionalidades del compilador y programador sumado a un editor de texto avanzado para proveer un entorno de desarrollo completo.
+
+Para grabar el \textit{software} desarrollado para estos dispositivos se debe utilizar una herramienta externa denominada programador. Existe un serie de programadores disponibles los cuales deben ser adquiridos por separado. Entre los más populares se encuentran:
+\begin{itemize}
+    \item PICKIT3: Programador y depurador de bajo costo adecuado para entornos de desarrollo.
+    \item ICD3: Programador y depurador adecuado para entornos de producción.
+    \item REAL ICE: Emulador y programador de gama alta adecuado para entornos de producción.
+\end{itemize}
+
+% ============= SISTEMAS OPERATIVOS ==============
+\section{Sistemas operativos}\label{ch2:sistema_operativo}
+Un sistema operativo es la aplicación base de un sistema computacional, pues brinda servicios básicos al resto de las aplicaciones de uso general ejecutadas en el computador. El sistema operativo es la capa entre el \textit{hardware} y las aplicaciones, el cual puede variar considerablemente entre un sistema y otro. Por lo tanto se necesita una capa de abstracción que haga a la aplicación independiente de la plataforma en que se ejecuta. Para esto, el sistema operativo provee servicios que usan interfaces de bajo nivel con el \textit{hardware}, las cuales no están disponibles para la aplicación como se ilustra en la figura \ref{ch2:os}. Ejemplos de sistemas operativos los son UNIX, GNU/Linux, FreeRTOS, entre otros.
+
+% ················ IMAGEN ·················
+\figurabox[Accede directamente al \textit{hardware} y provee servicios a la capa de aplicación.]{img/os.pdf}{scale=0.7}{Sistema operativo como capa de abstracción de \textit{hardware}}{ch2:os}{h!}
+%··········································
+
+Los servicios básicos que provee a través de su kernel son:
+
+\begin{itemize}
+    \item \textbf{Gestión de tareas:} También denominada gestión de procesos o \textit{scheduler}. El sistema operativo ve a la aplicación como una serie de tareas o procesos, a las cuales se deben entregar los servicios de creación, ejecución y asignación de prioridades. Cada tarea cumple objetivos específicos en la aplicación,posee sus propios recursos y limitaciones de tiempo. Pueden existir varios procesos funcionando a la vez, y el sistema operativo se encarga de proveer tiempo de procesamiento a cada una de ellos. Existen diferentes alternativas para gestionar la ejecución de las tareas entre las que sobresalen dos: \textit{preemptive} y cooperativo. La implementación de la aplicación depende mucho del tipo de \textit{scheduler} disponible por lo cual se describe cada uno a continuación:
+    \begin{itemize}
+        \item \textbf{Modo \textit{preemptive}:} el sistema operativo puede interrumpir la actual tarea en cualquier momento de su ejecución, para realizar el cambio de contexto y ceder el procesador a una diferente. Por lo general se realiza a intervalos fijos, denominados \textit{ticks}. Esto puede ir acompañado de un sistema de prioridades, así el \textit{scheduler} se asegura que siempre se esté ejecutando la tarea de mayor prioridad disponible.
+        
+        \item \textbf{Modo cooperativo:} en el modo cooperativo, el sistema operativo nunca inicia un cambio de contexto, sino que cada tarea en ejecución cede voluntariamente el procesador a una nueva. El sistema operativo es quien decide la siguiente tarea a ejecutar ya, sea por el algoritmo de \textit{round robin}, un sistema de prioridades o ambos. Se denomina cooperativo porque todas las tareas deben estar correctamente programadas, y cooperar con la ejecución del resto iniciado el proceso de cambio de contexto.
+    \end{itemize}
+    
+    \item \textbf{Comunicación y sincronización entre tareas:} si bien cada tarea posee su propio contexto de ejecución y pueden existir varias funcionando de manera concurrente, la verdadera utilidad nace de la posibilidad de comunicación entre ellas, para compartir estados y mensajes, que permitan cambiar el flujo de ejecución de las operaciones en el sistema embebido. Así, las tareas compartirán los mismos recursos de \textit{hardware} o requerirán de memoria compartida, en esquemas tipo productor-consumidor, donde el sistema operativo es quien provee las estructuras de sincronización adecuadas.De este modo los mecanismos de comunicación aseguran que la información compartida no se corrompa, y no existan interferencias entre tareas al acceder simultáneamente a recursos compartidos.
+    
+    \item \textbf{Temporización:} dado los requerimientos estrictos de tiempo propios de un sistema de tiempo real, el sistema operativo debe proveer servicios de tiempo como \textit{delays} y \textit{time-outs}, para controlar la periodicidad o los límites de tiempo de ejecución de cada tarea.
+    
+    \item \textbf{Gestión de memoria:} las diferentes tareas y procesos que se ejecutan en el sistema requieren reservar, usar y liberar memoria de datos para su ejecución de manera segura, es decir, sin corromper la memoria utilizada por el resto de los procesos o el propio sistema operativo. Por esto, debe proveer servicios de gestión de memoria, como por ejemplo, la reserva dinámica de memoria de datos.
+    
+    \item \textbf{Gestión de dispositivos de entrada y salida:} los dispositivos de entrada y salida son compartidos por todas las tareas que se ejecutan, por lo tanto, el sistema operativo provee el servicio de gestionar el acceso a estos dispositivos de manera uniforme y organizada.
+\end{itemize}
+
+% En cuanto a la arquitectura de \textit{software} presente en un sistema operativo, se pueden encontrar al menos tres opciones bien conocidas que corresponden al kernel monolítico, arquitectura en capas y micro kernel \cite{EMBEDDED_ARCHITECTURE} como se detalla a continuación:
+% 
+% \begin{itemize}
+%     \item \textbf{Kernel monolítico:} En este tipo de kernel los servicios del sistema operativos se encuentran integrados a lo largo de la arquitectura que provee las cinco funcionalidades mencionadas anteriormente. Dada la dificultad de escalar y depurar este tipo de kernel, existe una variante en la cual los servicios del sistema operativo se integran como módulos. Una arquitectura básica de este tipo de sistemas se refleja en la figura \ref{img:ch3:kernel} (a). Algunos sistemas operativos que usan esta arquitectura son: Linux, Jbed RTOS y MicroC/OS-II.
+%     
+%     \item \textbf{Micro kernel:} Un sistema operativo con arquitectura de micro kernel provee las funcionalidades mínimas necesarias para su funcionamiento como el gestor de memorias y el gestor de procesos. El resto de las funcionalidades se proveen de manera separada usualmente en una arquitectura tipo cliente-servidor. Este tipo de sistemas es muy común en sistemas embebidos debido a que mantiene controlado el tamaño en memoria del sistema operativo y la velocidad de respuesta del sistema al no incluir componentes que son poco o para nada utilizados. Ejemplos de sistemas operativos con micro kernel son: FreeRTOS, Salvo RTOS y VxWorks. El esquema de estos sistema se aprecia en la figura \ref{ch2:img:kernel} (b).
+% 
+%     \item \textbf{Arquitectura de capas:} Los servicios del sistema operativos se presentan en una arquitectura jerárquica de capas, donde cada capa depende de los funcionalidades que proveen las capas inferiores. Ejemplos son: DOS/eRTOS y VRTX. Esta arquitectura se presenta en la figura \ref{img:ch3:kernel} (c).
+% \end{itemize}
+% 
+% %TODO: REHACER LOS DIAGRAMAS
+% %···················· FIGURE ····················
+% \begin{figure}[ht!] \centering
+% \subfloat[Kernel monolítico]{\includegraphics[width=0.45\textwidth]{img/kernel_monolitico.jpg}
+% \hspace{0.01cm}
+% \subfloat[Micro kernel]{\includegraphics[width=0.45\textwidth]{img/kernel_micro.jpg}\\
+% \subfloat[Kernel en capas]{\includegraphics[width=0.45\textwidth]{img/kernel_capas.jpg}
+% \caption{Arquitecturas de sistemas operativos}\label{ch2:img:kernel}
+% \end{figure}
+% %················································
+
+\subsection{Sistemas operativos de tiempo real}
+Un sistema operativo de tiempo real, posee un \textit{scheduler} diseñado para proveer un flujo de ejecución determinista, pues solo sabiendo con exactitud la tarea que el sistema ejecutará, en un determinado momento, se pueden cumplir los requerimientos estrictos de \textit{timing} \cite{FREERTOS_PIC24}. Esto es un aspecto de especial interés en sistemas embebidos que, normalmente, requieren respuesta en tiempo real ante eventos no predecibles como las interrupciones.\\
+
+La figura \ref{rtos} muestra la forma de conseguir un sistema de tiempo real, mediante el uso de prioridades para las diferentes tareas. En este ejemplo, la mayor parte del tiempo el sistema está en estado \textit{idle}, sin código que ejecutar. Sin embargo, ante la presencia de ciertos eventos, el sistema debe responder de manera instantánea cambiando de contexto a la tarea correspondiente. Ciertas tareas pueden requerir un estricto \textit{timing} ejecutándose de manera periódica. En tal caso se le asigna una alta prioridad para asegurar que el sistema operativo siempre ejecute esta tarea cuando corresponda.
+
+% ················ IMAGEN ·················
+\figurabox[En un sistema operativo de tiempo real las interrupciones deben ser atendidas sin retrasos y las operaciones de cambio de contexto se realizan en un tiempo constante e independiente de la cantidad de tareas presentes.]{img/rtos.pdf}{scale=0.8}{\textit{Real time scheduling}}{rtos}{ht!}
+%··········································
+
+\subsubsection{FreeRTOS}
+FreeRTOS es un tipo de \gls{RTOS}, que está diseñado para ser lo suficientemente pequeño, en términos de consumo de memoria como, para ser utilizado en un microcontrolador \cite{FREERTOS_PIC24}. Como estos sistemas son realmente limitados, normalmente no existe la posibilidad de ejecutar un sistema operativo completo como GNU-Linux, sin embargo FreeRTOS provee un kernel capaz de manejar múltiples tareas con prioridades, comunicación entre tareas, \textit{timing} y primitivas de sincronización. Por su reducido tamaño no entrega funcionalidades de alto nivel como una consola de comandos, así como tampoco funcionalidades de bajo nivel, como controladores para el \textit{hardware} o periféricos. 
+
+Entre sus principales características se encuentran \cite{FREERTOS_PIC24}:
+
+\begin{itemize}
+	\item \textit{Scheduler pre-emptive} o cooperativo.
+	\item Sincronización y comunicación entre tareas a través de colas, semáforos, semáforos binarios y mutexes.
+	\item Mutexes con herencia de prioridades.
+	\item \textit{Software timers}.
+	\item Bajo consumo de memoria (Entre 6K y 10K en ROM).
+	\item Altamente configurable.
+	\item Detección de \textit{stack overflow}
+	\item Soporte oficial a 33 arquitecturas de sistemas embebidos.
+	\item Estructura de código portable, escrito en C.
+	\item Licenciado bajo \gls{GPL} modificada que permite su uso comercial sin publicar código fuente.
+	\item Gratuito
+	\item Amplia documentación, foros y asistencia técnica.
+\end{itemize}
+
+\paragraph{Funcionamiento}
+Los conceptos fundamentales detrás del funcionamiento de FreeRTOS son las tareas y el \textit{scheduler}. Una tarea es un hilo de procesamiento, normalmente una función que se ejecuta de manera continua. Se puede encontrar en dos estados fundamentales: ``ejecutándose'' y ``no ejecutándose''. Cuando se está ejecutando, tiene el control del procesador y el código dentro de la función que la representa es procesado. El estado ``no ejecutándose'' en realidad consta de tres sub-estados ,como se observa en la figura \ref{task_state}: se inicia en un estado ``listo'', lo que indica que la tarea está en condiciones de ser seleccionada por el \textit{scheduler} y pasar a estar ``ejecutándose''. Estar ``bloqueado'' significa que la tarea no está disponible para ser procesada pues está en espera de algún evento, por ejemplo, la liberación de un \textit{mutex}. Por último el estado ``suspendido'' donde tampoco se puede ejecutar y el proceso debe explícitamente reanudarse para quedar en condiciones de ser ejecutada. La creación de tareas y el control de sus estados se realiza a través de la \gls{API} de FreeRTOS que documenta claramente todas las posibles operaciones que se pueden realizar ellas.
+
+% ················ IMAGEN ·················
+\begin{figure}[hb!]
+\centering
+\fbox{\includegraphics[scale=1]{img/task_state.pdf}}
+\caption{Tareas de FreeRTOS, diagrama de estados.}\label{task_state}
+\end{figure}
+
+%··········································
+
+El \textit{scheduler} es la parte fundamental del kernel, que controla la ejecución de las diferentes tareas disponibles. Su objetivo es generar la sensación de estar en un ambiente multi-proceso, cuando en realidad solo una función puede ejecutarse a la vez, ya que se cuenta solo con un procesador. Como se detalla en la figura \ref{scheduler}, la función del \textit{scheduler} es entregar una porción de tiempo de ejecución fijo a una tarea, y una vez que se agota se debe guardar su estado y se procede a ejecutar otra. Así cada una de las tareas se procesa durante un breve momento, de manera cíclica, hasta que completa su trabajo; si el tiempo de proceso asignado a cada una es lo suficientemente pequeño, pareciera que muchas cosas ocurrieron simultáneamente. Una sola operación tomaría, en términos absolutos, un lapso menor en completarse si no fuera interrumpida, pero se gana un sistema más fluido cuando se deben ejecutar, en conjunto, tareas que toman mucho tiempo de proceso y otras relativamente cortas.
+
+% ················ IMAGEN ·················
+\begin{figure}[hb!]
+\centering
+\fbox{\includegraphics[scale=0.85]{img/scheduler.pdf}}
+\caption{\textit{Scheduling} de tareas.}\label{scheduler}
+\end{figure}
+%··········································
+
+El algoritmo de \textit{scheduling} se basa en un sistema de prioridades donde la tarea, en condiciones de ejecutarse, que tenga la mayor prioridad siempre debe ser procesada. Si varias tareas en estado ``listo'' comparten la misma prioridad, se aplica un algoritmo de \textit{round-robin}. Las que están en estado ``suspendido'' y ``bloqueado'' nunca son seleccionadas por el \textit{scheduler} y por lo tanto no consumen recursos. Haciendo un correcto uso de las prioridades y los diferentes estados se consigue un sistema que se ejecuta de manera fluida, haciendo un uso óptimo del procesador.
+
+% ============= INGENIERIA DE SOFTWARE ==============
+\section{Ingeniería de \textit{software}}
+
+% % ============= LICENCIAS DE SOFTWARE ==============
+% \subsubsection{Licencias de Software}
+% Se entiende por licencia de \textit{software} a un contrato entre el desarrollador del \textit{software} y el usuario final para su utilización según una serie de términos o condiciones. La licencia puede ceder ciertos derechos al usuario final; controlar la cantidad de copias que puede utilizar; el ámbito geográfico y temporal para la utilización; o bien proteger al desarrollador frente a la utilización del programa informático que se licencia. Existen al menos tres tipos de licencias de \textit{software}:
+% 
+% \begin{itemize}
+% 	\item \textbf{Privativas:}  El \textit{software} es distribuido al usuario bajo un \gls{EULA} en que el propietario fija las condiciones de uso y se reserva la propiedad del programa informático. Generalmente impide el acceso al código fuente; la realización de ingeniería inversa; el uso del \textit{software} por más de un usuario; se entrega el derecho de uso por un tiempo definido y por lo general provee cierta asesoría técnica. Es común que se debe pagar por el uso de un programa bajo este tipo de licencia.
+% 	
+% 	\item \textbf{Libres:} Este tipo de licencias otorgan al receptor la libertad de usar, estudiar, compartir y modificar el \textit{software}. Existen varias licencias que cumplen con esta definición, por ejeplo: MIT, BSD, \gls{LGPL} y \gls{GPL}. Se dividen en dos tipos básicos licencias con \textit{copyleft} y sin \textit{copyleft}. Se habla de una licencia con \textit{copyleft} cuando esta indica que el \textit{software} derivado debe mantener la misma licencia original impidiendo la generación de \textit{software} privativo a partir de desarrollos libres, por ejemplo. Por lo general cumplir esta licencia requiere que se garantice el acceso al código fuente, de aquí el termino conocido como \textit{software} de código abierto. La mayoría del \textit{software} bajo estas licencias se distribuye de forma gratuita aunque su uso comercial no está necesariamente prohibido. No todo \textit{software} gratuito es necesariamente \textit{software} libre.
+% 	
+% 	\item \textbf{Dominio Público:} Si un programa informático se distribuye sin ningún tipo de licencia, se dice que es de dominio público. No posee ningún tipo de restricción sobre su uso, así como ninguna responsabilidad sobre sus creadores.
+% \end{itemize}
+% 
+% La aplicación de licencias se rige según las normativas legales locales. En el caso de las licencias libres por lo general basta con distribuir el texto de la licencia junto con la aplicación y agregar un encabezado indicando el tipo de licencia que se utiliza. Para atribuir autoría se suele utilizar las definiciones de la Convención de Berna, que indica que todo lo que se escribe queda automáticamente sujeto a copyright desde el momento en que la obra es fijada en un soporte material \cite{GNU}. En Chile la legislación vigente al respecto es la Ley 17.336 de propiedad Intelectual.
+% 
+% \subsubsection{\gls{GPL}}
+% La \gls{GPL} es una licencia de \textit{software} creada en 1989 por la \textit{Free Software Foundation} que busca declarar que el \textit{software} así licenciado es \textit{software} libre y por lo tanto el usuario posee los siguientes derechos \cite{GPL}:
+% \begin{itemize}
+% 	\item Libertad de usar el \textit{software} para cualquier propósito.
+% 	\item Libertad de modificar el \textit{software} para adaptarlo a las propias necesidades.
+% 	\item Libertad para compartir el \textit{software}.
+% 	\item Libertad para publicar los cambios que se han realizado.
+% \end{itemize}
+% 
+% Actualmente se encuentra en su versión 3.0 que a diferencia de versiones previas es una licencia con \textit{copyleft} y agrega cláusulas para proteger la libertad del usuario frente a nuevas prácticas en contra del \textit{software} libre, tales como \cite{GPL}:
+% \begin{itemize}
+% 	\item Tivoización: El término se refiere a la práctica de limitar los derechos de los usuarios que compran sistemas que funcionan con \textit{software} libre mediante mecanismos de \textit{hardware}, por ejemplo evitando la ejecución de versiones modificadas del \textit{software} embebido.
+% 	\item Leyes que prohíben \textit{software} libre: Se asegura de que ciertas leyes puedan limitar los derechos del usuario de un \textit{software} con licencia \gls{GPL}.
+% 	\item Uso malicioso de patentes: Evita el uso indiscriminado de patentes, como por ejemplo, intentar obtener beneficios patentado desarrollos de \textit{software} libre lo cual es una amenaza a la liberta de los usuarios.
+% \end{itemize}
+% 
+% \paragraph{Aplicación de la licencia} Para licenciar un proyecto de \textit{software} libre bajo la \gls{GPL} V3.0 se deben seguir los siguientes pasos \cite{GNU}:
+% \begin{enumerate}
+% 	\item Agregar un aviso informativo del \textit{copyright} al inicio de cada archivo con código fuente de la aplicación. Un ejemplo es la siguiente línea: \texttt{«Copyright 2012 Universidad de Chile»}
+% 	
+% 	\item Bajo el aviso de \textit{copyright} se agrega una autorización de copia indicando que el \textit{software} se distribuye bajo los términos de la licencia \gls{GPL}. Un ejemplo de este aviso se cita en un ejemplo posterior.
+% 	
+% 	\item Se debe incluir junto al código fuente el texto completo de la licencia en un archivo llamado \texttt{LICENSE}. El texto de la licencia se puede obtener desde el siguiente enlace: \url{http://www.gnu.org/licenses/gpl.txt}.
+% \end{enumerate}
+% 
+% A continuación se detalla el encabezado que debería incluir cada fichero del proyecto de \textit{software} hipotético llamado \texttt{Foobar}  que es licenciado bajo \gls{GPL}.
+% 
+% \begin{verbatim}
+%     Foobar - Description - «Copyright 2012 Universidad de Chile»
+% 	
+%     This file is part of Foobar.
+% 
+%     Foobar is free \textit{software}: you can redistribute it and/or modify
+%     it under the terms of the GNU General Public License as published by
+%     the Free Software Foundation, either version 3 of the License, or
+%     (at your option) any later version.
+% 
+%     Foobar is distributed in the hope that it will be useful,
+%     but WITHOUT ANY WARRANTY; without even the implied warranty of
+%     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%     GNU General Public License for more details.
+% 
+%     You should have received a copy of the GNU General Public License
+%     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+% \end{verbatim}
+% 
+
+% ============= CALIDAD DE SOFTWARE =============
+\subsection{Calidad de \textit{software}}
+Los requerimientos no funcionales de un proyecto de \textit{software} se pueden definir como los parámetros de calidad buscados en el producto, entre los que se encuentran una serie de calificativos muy subjetivos, y tal vez difícilmente medibles como rapidez, seguridad, escalabilidad y modularidad. Algunos conceptos pueden ser utilizados de manera poco clara o equivalentes como lo extensible o escalable que puede ser un \textit{software}, sin dejar claro las diferencias o acotaciones entre ellos. Es por esto, que se han creado normas en torno a las metodologías para desarrollar y utilizar modelos de calidad de \textit{software}, que permitan establecer de manera clara los parámetros a medir. 
+
+En especial se tratará la norma ISO/IEC 25010, una actualización a la antigua ISO/IEC 9126, que plantea un modelo de calidad \textit{software} que consta de ocho características con sus respectivos sub-atributos, y puede ser utilizado para evaluación o especificación de una aplicación durante las etapas de: identificación de requerimientos; validación de la integralidad de la lista de requerimientos; definición de los objetivos del diseño del \textit{software}; determinar de los objetivos de las pruebas; identificación de los criterios de calidad; o la definición de criterios para determinar si un producto está completo \cite{ISO25010}.
+
+A continuación, se definen los parámetros de calidad fijados en la norma ISO/IEC 25010 para productos de \textit{software}, así como un resumen a través de la figura \ref{img:ch2:iso25010}.
+
+\begin{itemize}
+\item \textbf{Idoneidad Funcional:} Grado en que un producto provee la funciones requeridas.
+	\begin{itemize}
+	\item \textbf{Completitud funcional:} Grado en que las funciones cubren todas las tareas especificadas u objetivos.
+	\item \textbf{Correctitud funcional:} Grado en que el producto provee resultados correctos según el grado de precisión.
+	\item \textbf{Adecuación Funcional:} Grado en que las funciones facilitan el cumplimiento de las tareas requeridas.
+	\end{itemize}
+
+\item \textbf{Eficiencia del desempeño:} Desempeño relativo a la cantidad de recursos usados bajo ciertas condiciones.
+	\begin{itemize}
+	\item \textbf{Tiempo:} El grado en que el sistema cumple con los requerimientos de tiempo de respuesta y tasa de rendimiento.
+	\item \textbf{Utilización de recursos:} Grado en que la cantidad y tipos de recursos usados por el sistema cumple los requerimientos.
+	\item \textbf{Capacidad:} Grado en que los límites máximos de un sistema cumple los requerimientos
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Compatibilidad:} Grado en que el producto puede compartir información con otros productos o sistemas, y realizar sus funciones mientras se comparte el mismo entorno de \textit{hardware} o \textit{software}.
+	\begin{itemize}
+	\item \textbf{Coexistencia:} Cómo un producto puede llevar a cabo sus funciones mientras comparte un entorno y recursos comunes con otros, sin afectarlos.
+	\item \textbf{Interoperación:} Cómo un producto puede compartir y usar información con otro.
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Usabilidad:} Cómo el producto puede ser usado para sus fines determinados de manera efectiva, eficiente y satisfactoria.
+	\begin{itemize}
+	\item \textbf{Reconocible como apropiado:} Grado en que los usuarios pueden reconocer que el producto es apropiado para sus necesidades.
+	\item \textbf{Aprendizaje}. Grado en que el producto se puede aprender a usar de manera efectiva, sin riesgos y satisfactoria.
+	\item \textbf{Operatividad}. Grado en que el producto tiene atributos que lo hacen fácil de operar
+	\item \textbf{Protección de cometer errores:} Grado en que el sistema previene al usuario de cometer errores.
+	\item \textbf{Estética de la interfaz de usuario:} Grado en que la interfaz de usuario permite una interacción placentera y satisfactoria.
+	\item \textbf{Accesibilidad:} Cómo el producto puede ser usado por personas con variedad de características y capacidades.
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Fiabilidad:} Grado en que el producto o sus componentes cumplen las funciones especificadas por un determinado periodo de tiempo.
+	\begin{itemize}
+	\item \textbf{Madurez:} Grado en que el sistema cumple las necesidades de fiabilidad bajo una operación normal.
+	\item \textbf{Disponibilidad:} Grado en que el sistema es operacional y accesible cuando se requiere su uso.
+	\item \textbf{Tolerancia a fallas:} Grado en que el sistema o sus componentes operan como es debido a pesar de la ocurrencia de fallos de \textit{software} o \textit{hardware}.
+	\item \textbf{Capacidad de recuperación:} La capacidad del sistema de recuperar los datos afectados y restablecer el estado deseado ante una interrupción o falla.
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Seguridad}. Cómo un sistema protege la información y los datos, de modo que las personas o productos tengan el grado de acceso adecuado a sus tipos y niveles de autorización.
+	\begin{itemize}
+	\item \textbf{Confidencialidad:} Grado en que el sistema asegura que los datos sólo son accesibles por las personas autorizadas.
+	\item \textbf{Integridad:} Grado en que el sistema previene el acceso y modificación de los datos o programas.
+	\item \textbf{No rechazo:} Grado en que es posible demostrar que las acciones han tenido lugar, para no poder ser negadas más tarde.
+	\item \textbf{Responsabilidad:} Grado en que las acciones de una entidad pueden ser asociadas de manera inequívoca a ella.
+	\item \textbf{Autenticidad:} Grado en que la identidad de un sujeto o recurso puede ser comprobada.
+	\end{itemize}
+
+\item \textbf{Mantenimiento:} Grado de la eficiencia y eficacia con la que un
+producto o sistema puede ser modificado por los mantenedores.
+	\begin{itemize}
+	\item \textbf{Modularidad:} Grado en que un sistema o \textit{software} está compuesto por elementos discretos, de modo que el cambio en un componente tiene el mínimo impacto en el resto del sistema.
+	\item \textbf{Reusabilidad:} Grado en que un activo puede ser usado en más de un sistema o en la construcción de otro.
+	\item \textbf{Analizable:} Grado de eficiencia y eficacia con que es posible identificar el impacto de un cambio en una parte del sistema, o diagnosticar deficiencias o fallas en alguna de sus partes, o identificar aquellas que deben ser modificadas.
+	\item \textbf{Modificable:} Grado en el sistema que puede ser modificado de manera efectiva y eficiente, sin introducir defectos o degradar la calidad existente.
+	\item \textbf{Testeable:} Grado en que es posible establecer un criterio para probar el sistema y las pruebas que pueden ser desarrolladas, para determinar que el criterio se ha cumplido.
+	\end{itemize}
+
+\item \textbf{Portabilidad}. Grado de la eficiencia y eficacia con la que un producto o sistema puede ser transferido de un \textit{hardware}, \textit{software} o ambiente de uso a otro diferente.
+	\begin{itemize}
+	\item \textbf{Adaptabilidad:} Grado en que el producto puede ser adaptado a un \textit{hardware} o \textit{software} diferente de manera eficiente y efectiva.
+	\item \textbf{Instalación:} Grado de efectividad y eficiencia con que el sistema puede ser instalado o desinstalado.
+	\item \textbf{Reemplazo:} Grado en que el producto puede reemplazar a otro para el mismo propósito en el mismo ambiente.
+	\end{itemize}
+\end{itemize}
+
+Estos parámetros de calidad se definen también como requerimientos del proyecto, definiendo la importancia de cada apartado en el contexto de la aplicación final.
+
+%Figura - Esquema ISO25010
+\figura{img/ISO25010.pdf}{width=\textwidth}{ISO/IEC 25010, categorías y subcategorías}{img:ch2:iso25010}{!h}
+
+%Explicar como se aplica este modelo a un proyecto de \textit{software}
+
+% \subsection{Arquitectura de Software}
+%LEER Y CITAR EMBEDDED_ARCHITECTURE
+
+% ============= PATRONES DE DISEÑO ==============
+\subsection{Patrones de diseño}\label{ch2:sec:214}
+En computación, especialmente en la programación orientada a objetos, se utilizan patrones para sortear la dificultad de generar buenos diseños, seleccionando los objetos pertinentes y sus correspondientes relaciones dentro de la aplicación. La reutilización de soluciones previas es una técnica muy utilizada en desarrollo de nuevo \textit{software}, las que al irse adaptando a nuevos problemas, generan una metodología  para resolver cierta clase de ellos. Estas metodologías son llamadas patrones de diseño, y se encuentran bien documentadas para su aplicación sucesiva en cada nueva aplicación \cite{DESIGN_PATTERNS}.
+
+Un patrón de diseño, por lo tanto, describe un problema particular y recurrente dentro de cierto contexto, presentando un esquema genérico y bien probado que resuelve este problema. Describe los componentes que constituyen la solución, sus responsabilidades, relaciones y la forma en que colaboran entre sí \cite{SYSTEM_PATTERNS}.
+
+Los patrones de diseño se encuentran documentados de manera bien homogénea a través de una plantilla, que permite comprender rápidamente los siguientes aspectos fundamentales del diseño: cuál es el problema que se resuelve, cuál es la solución propuesta, y las consecuencias de su aplicación tales como ventajas y desventajas.A continuación se detallará uno de los ejemplos clásicos de patrones de diseño, denominado Modelo-Vista-Controlador \cite{SYSTEM_PATTERNS}, con el objetivo de ejemplificar el concepto.
+
+\subsubsection{Modelo-Vista-Controlador.} 
+Este patrón de diseño divide una aplicación interactiva en tres componentes: el modelo, que contiene la funcionalidad base y los datos; la vista, que despliega la información al usuario; y el controlador, que maneja la entrada del usuario para cambiar el estado de la aplicación. Así, la interfaz gráfica se refleja en el controlador y la vista,  de modo que cada acción se propaga a través del controlador hacia el modelo, actualizando a la vez la vista \cite{DESIGN_PATTERNS}\cite{SYSTEM_PATTERNS}.
+
+\begin{itemize}
+    \item \textbf{Contexto:} aplicaciones interactivas con una interfaz de usuario flexible.
+    
+    \item \textbf{Problema:} el diseño de una interfaz gráfica de usuario que esté desacoplada del programa principal. La interfaz gráfica por lo general debe ser flexible, permitiendo cambios en su distribución, o la forma de llamar a las funcionalidades, o varios métodos de entrada que llaman a la misma funcionalidad como botones, linea de comandos o menús. También se puede requerir portar la interfaz gráfica a diferentes ambientes o estándares, manteniendo la funcionalidad de la aplicación. Otro caso típico corresponde a la visualización de la misma información de diferentes maneras o en diferentes ventanas, como pueden ser vistas de gráficos o tablas para los mismos datos. Por lo tanto, se requiere desacoplar los datos de la vista para evitar la duplicación o corrupción de la información.
+    
+    \item \textbf{Solución:} dividir la aplicación en tres áreas: el modelo, la vista y el controlador. Donde el modelo controla la lógica y funcionalidades internas de la aplicación, la vista gestiona la representación de la aplicación hacia el usuario y el controlador maneja las entradas del usuario.
+    
+    El usuario sólo interactúa con el controlador, y los cambios realizados en el modelo deben ser propagados hacia la vista. Como cada vista comparte el modelo, los cambios se verán actualizados en cada una de ellas.
+    
+    \item \textbf{Estructura:} los componentes que completan la estructura del patrón \gls{MVC} se detallan a continuación:
+    \begin{itemize}
+        \item \textbf{Modelo:} encapsula la información y todas las funcionalidades de la aplicación, de manera independiente de su representación gráfica. Provee los métodos para realizar los procesos específicos de la aplicación así como para acceder a los datos de esta. A la vez implementa el mecanismo de propagación de los cambios hacia las diferentes vistas suscritas a este modelo.
+        
+        \item \textbf{Vista:} despliega la información al usuario a partir de los datos del modelo y puede permitir múltiples formas de visualizarlo. Provee un método de actualización que es activado por el mecanismo de propagación de cambios del modelo suscrito.
+        
+        \item \textbf{Controlador:} cada vista tiene asociada un controlador, que recibe la entrada del usuario, como presionar un botón o seleccionar una entrada de menú. El controlador solicita el servicio correspondiente al modelo, causando a la vez una actualización de la vista si es necesario.
+    \end{itemize}
+    
+    Para clarificar las relaciones entre los componentes del patrón se cuenta con el diagrama de la figura \ref{ch2:patterns:mvc:classes}. La esencia dinámica del esquema en ejecución se observa a través del diagrama de colaboración detallado en la figura \ref{ch2:patterns:mvc:collaboration}.
+    
+    \item \textbf{Consecuencias:} alguno de los beneficios que provee son: múltiples vistas para el mismo modelo, las cuales pueden estar sincronizadas dado que los cambios en el modelo se propagan a aquellas que lo comparten; vista y controlador intercambiable de manera independiente, permitiendo portar la aplicación a diferentes plataformas sin cambiar la funcionalidad. Por otro lado, los inconvenientes que genera son: aumento de complejidad, al necesitar adaptar cada módulo al controlador y sus funcionalidades; excesivo número de actualizaciones al propagar cambios del modelo a todas las vistas; alto acoplamiento entre la vista y el controlador -aún como elementos separados su diseño está muy relacionado-; acoplamiento entre el modelo y el conjunto vista-controlador, ya que cualquier cambio en la interfaz que se provee, tiene un efecto directo en el funcionamiento de este conjunto, que accede directamente a sus servicios.
+    
+\end{itemize}
+
+\figura[Fuente: \textit{A System of Patterns. Pattern-Oriented Software Architecture} \cite{SYSTEM_PATTERNS}.]{img/mvc_class.png}{width=0.8\textwidth}{Diagrama de clases del patrón de diseño MVC}{ch2:patterns:mvc:classes}{!b}
+
+\figura[Fuente: \textit{A System of Patterns. Pattern-Oriented Software Architecture} \cite{SYSTEM_PATTERNS}.]{img/mvc_colab.png}{width=0.8\textwidth}{Esquema de colaboración del patrón de diseño MVC}{ch2:patterns:mvc:collaboration}{!t}
+
+A partir del ejemplo, se observa que el proceso de creación de una aplicación parte por la búsqueda de patrones de diseño bien documentados y que solucionen un tipo de problema similar al que se tiene por objetivo. Comparar patrones de diseño cuando se tienen varios candidatos a solucionar el problema, también se hace sencillo dado que la forma de presentar cada patrón permite obtener sus principales características y posible implementación. Además una aplicación puede hacer uso de varios patrones de diseño, en diferentes niveles de su arquitectura para cumplir la totalidad de las especificaciones.
+
+No obstante, se debe considerar que el patrón de diseño en sí, no entregará la solución completa a un problema concreto, en cuanto solo presenta una visión general, sin ahondar en los detalles de implementación o funcionalidades específicas de la aplicación en cuestión. Los patrones de diseño resuelven una clase de problema relacionado, si el que se busca solucionar corresponde con los alcances de algún patrón de diseño, se tiene el punto de partida, pero se debe adaptar y completar el esquema original con los requerimientos y funcionalidades específicas del nuevo desarrollo.
+
+\subsection{Arquitecturas de \textit{software} basadas en patrones}
+Si bien el diseño de aplicaciones, basadas en patrones, está muy enfocada en la programación orientada a objetos y se beneficia de sus posibilidades, esta técnica se puede extender más allá y ser aplicada en cualquier paradigma o lenguaje de programación. En efecto, a nivel de diseño de arquitectura de \textit{software}, la mayoría de los patrones sólo requieren cierta capacidad de abstracción del lenguaje como módulos o estructuras de datos \cite{SYSTEM_PATTERNS}, lo cual abre las posibilidades de utilizar esta técnica sobre lenguajes procedurales, como los utilizados en el desarrollo de sistemas embebidos.
+
+\subsubsection{\textit{Command pattern}}\label{ch2:command_pattern}
+Dentro de los patrones clasificados como de comportamiento, se encuentra el denominado procesador de comandos, o mejor conocido por su nombre en inglés \textit{command pattern} \cite{DESIGN_PATTERNS} o \textit{command processor pattern} \cite{SYSTEM_PATTERNS}, el cual es de especial interés en este trabajo. Lo esencial de este patrón es separar el requerimiento de un servicio de su ejecución, encapsulándolo en la forma de un comando.
+
+\begin{itemize}
+    \item \textbf{Contexto:} aplicaciones que requieren flexibilidad al añadir funcionalidades. Aquellas orientadas a la ejecución de funciones por parte del usuario, soportando características como llevar un registro de ejecución o deshacer acciones. Aplicaciones donde el instante de generación de un requerimiento es independiente del momento en que se ejecuta.
+    
+    \item \textbf{Problema:} una aplicación que requiere dar soporte a una gran cantidad de funcionalidades, se puede ver beneficiada de aislar la forma genérica en que se realiza el llamado a cada función de la implementación misma. También cuando se requiere agregar capacidades como registro de eventos, deshacer, programación de macros o suspender cierta ejecución de un proceso, se ve la necesidad de separar las funciones específicas del núcleo que las gestiona. Un desarrollo que requiere ser altamente escalable, sin afectar el código existente, debe encontrar una manera homogénea de agregar estas nuevas características.
+    
+    \item \textbf{Solución:} encapsular los requerimientos en objetos denominados comandos, así cada llamada a una función específica crea uno nuevo, también específico a esa llamada, que implementa la funcionalidad. El patrón describe la estructura de gestión para la generación y ejecución de los comandos la cual es homogénea para cada uno. La adaptabilidad y extensión de la aplicación se realiza mediante la implementación de nuevos comandos sobre el sistema de gestión base.
+    
+    \item \textbf{Estructura:} la arquitectura está compuesta por los siguientes módulos.
+    \begin{itemize}
+        \item \textbf{Comando:} todos los comandos poseen una estructura básica, implementando un método para ejecutarlo. Para cada función requerida en la aplicación, se crea una derivación de la estructura base del comando que implementa la lógica necesaria.
+        \item \textbf{Controlador o cliente:} representa la interfaz de la aplicación y para cada requerimiento crea el comando adecuado, el que es transferido al \textit{invoker}.
+        \item \textbf{Procesador de comandos o \textit{invoker}:} recibe los comandos, agenda e inicia su ejecución. Este módulo es independiente de cada orden, en cuanto sólo utiliza la interfaz genérica que cada comando debe respetar.
+        \item \textbf{Proveedor o receptor:} provee la funcionalidad del comando en sí, ya que su lógica de ejecución incluye el llamado de uno o varios del los servicios entregados por este módulo, que puede ser representado, por ejemplo, como una librería.
+    \end{itemize}
+    
+    El diagrama de la figura \ref{ch2:patterns:command:classes} detalla las relaciones entre los diferentes módulos o clases del patrón. La dinámica de la arquitectura se rescata en en la figura \ref{ch2::patterns:command:collaboration} que corresponde a un esquema de colaboración entre los elementos de la estructura descrita.
+    
+    \item \textbf{Consecuencias:} La aplicación de este patrón de diseño implica los siguientes beneficios:
+    \begin{itemize}
+        \item Los comandos pueden ser requeridos de manera flexible, es decir, desde diferentes fuentes según se implemente el controlador correspondiente. De hecho, podría, existir más de un controlador o cliente generando el mismo comando desde diferentes lugares.
+        \item La aplicación es fácil de modificar y extender a través de la implementación de nuevos comandos, dado que el procesador de comandos sólo trabaja con la interfaz genérica de ellos. Es posible agregar algunos más complejos combinando los ya existentes en una macro.
+        \item El procesador de comandos, al centralizar la gestión de éstos, es el lugar adecuado para implementar servicios como: registro de comandos ejecutados, filtrar, posponer, repetir o deshacer la ejecución, o incluso gestionar un sistema de prioridades entre comandos.
+    \end{itemize}
+    
+    Entre las desventajas y limitaciones de este diseño se debe mencionar:
+    \begin{itemize}
+        \item La cantidad de comandos puede crecer considerablemente en cuanto aumenta la complejidad de la aplicación.
+        \item El cliente que genera un comando tiene poca o nula información sobre el momento en que, efectivamente, este se ejecuta o sobre el resultado de su ejecución.
+        \item Se dificulta la creación de aplicaciones fuertemente basadas en eventos, ya que cuando el comando obtiene los parámetros para su ejecución, puede ser diferente del momento en que se crea.
+    \end{itemize}
+\end{itemize}
+
+\figura[Fuente: \textit{A System of Patterns. Pattern-Oriented Software Architecture} \cite{SYSTEM_PATTERNS}.]{img/command_processor_class.png}{width=0.8\textwidth}{Diagrama de clases del patrón de diseño procesador de comandos}{ch2:patterns:command:classes}{!b}
+
+\figura[Fuente: \textit{A System of Patterns. Pattern-Oriented Software Architecture} \cite{SYSTEM_PATTERNS}.]{img/command_processor_colab.png}{width=0.8\textwidth}{Esquema de colaboración del patrón de diseño procesador de comandos}{ch2::patterns:command:collaboration}{!ht}
+
+% ============= SATELITES ==============
+
+\section{Pequeños satélites}
+%TODO: Agregar una descripcion breve
+
+\subsection{Satélites tipo Cubesat}
+A partir del año 1999, se comienza a desarrollar el proyecto Cubesat como una iniciativa entre \textit{California Polytechnic State University, San Luis Obispo} y \textit{Stanford University}. Con el objetivo de facilitar el acceso al espacio a pequeños \textit{payloads}, en un corto periodo de desarrollo y a bajo costo. Para esto se crea un nuevo estándar de vehículo espacial, que considera satélites de pequeñas dimensiones, acotados a un cubo de 10 [cm] de arista y un peso máximo de 1.3 kg. como el mostrado en la figura \ref{img:ch2:cubesat} (a). Cuando se combinan se pueden conseguir Cubesat de 2 unidades (2U) o tres unidades (3U); un satélite compuesto por un solo cubo se denomina una unidad (1U). El proyecto contempla tanto las especificaciones generales del satélite, así como una plataforma estándar para ser desplegados desde el vehículo de lanzamiento. Este dispositivo se denominada P-POD y consiste en un compartimiento capaz de albergar hasta tres Cubesat de 1U y desplegarlos mediante un sistema de resortes cuando se requiera. La figura \ref{img:ch2:cubesat} (b) ilustra la estructura de un P-POD.
+
+%···················· FIGURE ····················
+\begin{figure}[t!] \centering
+\subfloat[Cubesat]{\includegraphics[scale=0.6]{img/cubesat.jpg}} \hspace{0.5cm}
+\subfloat[P-POD]{\includegraphics[scale=0.6]{img/ppod.jpg}}
+\caption[Satélite tipo Cubesat]{Satélite tipo Cubesat. A la izquierda el satélite japonés OSCAR-66, lanzado el año 2008. A la derecha un P-POD, dispositivo desde el cual se despliega un Cubesat. Fuente: \url{http://cubesat.aero.cst.nihon-u.ac.jp/english/index.html}}\label{img:ch2:cubesat}
+\end{figure}
+%···············································
+
+\paragraph{Estándar.} Las restricciones que fija el estándar Cubesat se detallan formalmente en las especificaciones de diseño, desarrolladas por \textit{California Polytechnic State University} \cite{CUBESAT_CDS}. A continuación se resumen las principales consideraciones:
+\begin{itemize}
+	\item \textbf{Requerimientos generales}
+	\begin{itemize}
+		\item Todos los componentes deben estar fijos al satélite durante el lanzamiento, despliegue y operación. No se permite liberar elementos extras al espacio.
+		\item No se permite ningún tipo de elemento explosivo o pirotécnico.
+		\item La energía química almacenada no debe superar los 100 Wh.
+	\end{itemize}
+
+	\item \textbf{Requerimientos Mecánicos}
+	\begin{itemize}
+		\item La configuración y dimensiones del satélite deben estar de acuerdo a la figura \ref{img:ch2:cds}
+		\item El cubo debe tener dimensiones de 100x100x113 mm. en los ejes x, y, z respectivamente según la figura \ref{img:ch2:cds}.
+		\item Los componentes no deben sobresalir más de 6.5 mm. en dirección normal a cada cara.
+		\item Sólo los rieles exteriores de la estructura pueden tener contacto con el P-POD.
+		\item El satélite no debe superar los 1.33 Kg. de masa.
+		\item La estructura externa debe estar construida en aluminio 7075 o 6061, anodizado en los rieles.
+	\end{itemize}
+
+	 \item \textbf{Requerimientos Eléctricos}
+	 \begin{itemize}
+	 	\item Ningún componente electrónico debe estar activo durante el lanzamiento, esto incluye desactivar completamente o descargar las baterías.
+	 	\item El Cubesat debe poseer un interruptor en la base de uno de sus rieles que permita apagar completamente el satélite cuando está presionado.
+	 	\item Adicionalmente debe contar con un conector tipo \textit{Remove Before Flight} que debe cortar toda la energía del satélite y será removido una vez se integre en el P-POD.
+	 \end{itemize}
+	 
+	 \item \textbf{Requerimientos de operación}
+	 \begin{itemize}
+	 	\item Cubesat con baterías deben ser capaces de recibir un comando para apagar transmisiones según las regulaciones de la FCC.
+	 	\item Todos los mecanismos de despliegue del satélite no se deben activar antes de 30 minutos luego del lanzamiento desde el P-POD.
+	 	\item Transmisores de radio de potencia mayor a 1 mW. no deben funcionar antes de cumplirse 30 minutos luego del despliegue desde el P-POD.
+	 	\item Se debe contar con la licencia de uso de frecuencia de radio. Para frecuencias \textit{amateur} la coordinación se realiza a través de la \gls{IARU}
+	 \end{itemize}
+
+\end{itemize}
+
+El estándar mencionado corresponde a un Cubesat de una unidad (1U). Opcionalmente, se pueden combinar hasta tres unidades para obtener satélites de 2U o 3U. Esto permite contar con mayor volumen, para posicionar los componentes físicos del satélite y una mayor superficie para situar paneles solares y así brindar mayor autonomía energética.
+
+\figura[Fuente: \url{http://www.cubesat.org/index.php/documents/developers}.]{img/cubesat_cds.png}{width=\textwidth}{Especificaciones de diseño del estándar Cubesat de una unidad}{img:ch2:cds}{!h}
+
+% \newpage
+\paragraph{Aplicaciones.}
+En la actualidad cerca de un centenar de satélites tipo Cubesat han sido lanzados de manera exitosa. Las aplicaciones con posibilidades de ser desarrolladas a través de este tipo de tecnologías incluyen proyectos con fines educacionales, pruebas de nuevas tecnologías espaciales, proyectos de investigación científica y desarrollos privados.
+
+Desde el punto de vista educacional, dadas las características de rápida construcción a un costo comparativamente bajo, este tipo de tecnologías abre las posibilidades de investigación y desarrollo de proyectos en materia aeroespacial a instituciones educacionales y gobiernos de todo el mundo. A esto se suma como antecedente que la mayoría de los proyectos de satélites Cubesat, han sido ejecutados por estudiantes universitarios, utilizando componentes comerciales o desarrollos propios. El valor educacional de un proyecto satelital de estas características incluye: el desarrollo de nueva tecnología aeroespacial, que puede ser probada a pequeña escala en ambientes realistas; la formación de profesionales entrenados en el área, mediante la experiencia práctica que brinda la ejecución de este tipo proyectos; la aplicación de metodologías en la formación académica que incluyan el trabajo en equipos multidisciplinarios, grupos de alto desempeño, gestión, entre otros.
+
+Contando con una plataforma estándar de vehículo espacial, se abre la posibilidad al desarrollo de diferentes \textit{payloads} de tipo científico, capaces de tomar diferentes datos en el espacio para su posterior análisis o uso en proyectos de investigación. Entre las aplicaciones más destacadas, se encuentra la observación remota de la tierra mediante el uso de sensores para tomar datos sobre la ionosfera y termosfera, o el uso de cámaras fotográficas que otorguen imágenes para estudios posteriores. Este tipo de misiones y sus datos, pueden llegar incluso a poner a prueba sistemas de predicción o alerta temprana de desastres \cite{BECERRA_DIAZ}.
+
+Iniciativas privadas o de propósito general, tales como redes de comunicaciones de apoyo en caso de catástrofe, redes de comunicaciones privadas, monitoreo remoto de plantaciones y proyectos de exploración minera, son algunas de las posibles aplicaciones capaces de ser desarrolladas como un proyecto aeroespacial tipo Cubesat.
+
+% ============= ANTECEDENTES GENERALES ==============
+% \section{Antecedentes generales}
+% \paragraph{Carrera satelital chilena}
+
+
+% ============= ANTECEDENTES ESPECIFICOS =============
+\section{Proyecto SUCHAI}
+El proyecto satelital impulsado por la Facultad de Ciencias Físicas y Matemáticas de la Universidad de Chile, con la participación de académicos, ingenieros y estudiantes, se denomina \textit{Satellite of University of Chile for Aerospace Investigation} (SUCHAI) y consiste en el desarrollo, puesta en órbita y operación del primer satélite creado netamente en el país.
+
+\figura{img/suchai_logo.png}{scale=0.25}{Logo del proyecto SUCHAI}{img:ch2:suchai_logo}{!h}
+
+Se trata de un satélite tipo Cubesat de una unidad, con fines educacionales y científicos. El objetivo del proyecto es poner en órbita un satélite, desarrollado por estudiantes de la carrera de ingeniería, que sea capaz de enviar un \textit{beacon} para ser escuchado y decodificado por la estación terrena, también ejecutar experimentos asociados a \textit{payloads} y enviar como telemetría la información de funcionamiento del satélite y los datos recolectados. Por otro lado, su ejecución permitirá adquirir el conocimiento necesario para desarrollar proyectos satelitales de manera local, que será la base para futuras misiones relacionadas. Además posibilitará la integración de alumnos de pregrado en equipos multidisciplinarios, que requieren proponer soluciones no triviales a un problema abierto.
+
+El satélite se compone de tres sistemas básicos: el computador a bordo, que consiste en un microcontrolador de gama media, para ejecutar el \textit{software} que controla su operación en órbita; el sistema de comunicaciones, compuesto por un transmisor y receptor de radio \gls{UHF}, así como antenas para desplegar durante la operación; y un sistema de control de energía o \gls{EPS} que incluye baterías y paneles solares, para proveer la energía eléctrica que permite operar al satélite así como también, cargar baterías. Como carga útil se considera la integración: una cámara digital que pueda realizar tomas de la tierra; sensores de temperatura; giróscopos; un sensor para medir la densidad y temperatura de partículas de la ionosfera con una \textit{langmuir probe}; y un dispositivo para realizar un estudio estadístico de la transferencia de potencia en ambientes de microgravedad y la disipación de calor de la electrónica en ambientes escaso de aire. En la figura \ref{ch2:img:suchai_satellite} se observa el satélite \gls{SUCHAI} en una etapa temprana de integración junto a uno de los \textit{payloads} de la misión.
+
+\figura[Imagen tomada durante etapas tempranas de integración.]{img/suchai_satellite.jpg}{width=0.9\textwidth}{Satélite SUCHAI junto a una \textit{langmuir probe}}{ch2:img:suchai_satellite}{b!}

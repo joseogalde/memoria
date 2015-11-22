@@ -1,0 +1,1223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="628.65887"
+   height="461.08578"
+   version="1.2"
+   id="svg2"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Global Arch.svg">
+  <metadata
+     id="metadata414">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Qt Svg Document</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1280"
+     inkscape:window-height="750"
+     id="namedview412"
+     showgrid="false"
+     fit-margin-top="0.5"
+     fit-margin-left="0.5"
+     fit-margin-right="0.5"
+     fit-margin-bottom="0.5"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="1.26"
+     inkscape:cx="269.75659"
+     inkscape:cy="183.93919"
+     inkscape:window-x="0"
+     inkscape:window-y="28"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g158"
+     inkscape:connector-spacing="7"
+     units="cm" />
+  <title
+     id="title4">Qt Svg Document</title>
+  <desc
+     id="desc6">Generated with Qt</desc>
+  <defs
+     id="defs8">
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend"
+       style="overflow:visible">
+      <path
+         id="path4831"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend"
+       style="overflow:visible">
+      <path
+         id="path4837"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Send"
+       style="overflow:visible">
+      <path
+         id="path4302"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Tail"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Tail"
+       style="overflow:visible">
+      <g
+         id="g4323"
+         transform="scale(-1.2,-1.2)">
+        <path
+           id="path4325"
+           d="M -3.8048674,-3.9585227 0.54352094,0"
+           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:round;marker-start:none;marker-end:none"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path4327"
+           d="M -1.2866832,-3.9585227 3.0617053,0"
+           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:round;marker-start:none;marker-end:none"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path4329"
+           d="M 1.3053582,-3.9585227 5.6537466,0"
+           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:round;marker-start:none;marker-end:none"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path4331"
+           d="M -3.8048674,4.1775838 0.54352094,0.21974226"
+           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:round;marker-start:none;marker-end:none"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path4333"
+           d="M -1.2866832,4.1775838 3.0617053,0.21974226"
+           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:round;marker-start:none;marker-end:none"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path4335"
+           d="M 1.3053582,4.1775838 5.6537466,0.21974226"
+           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:round;marker-start:none;marker-end:none"
+           inkscape:connector-curvature="0" />
+      </g>
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mstart"
+       style="overflow:visible">
+      <path
+         id="path4293"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend"
+       style="overflow:visible">
+      <path
+         id="path4296"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#9f9f9f;fill-opacity:0.03137464;stroke:#a0a0a0;stroke-width:1.03718257;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g192"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(0.89323613,0,0,1.0406946,-149.09485,-90.222814)">
+    <path
+       inkscape:connector-curvature="0"
+       id="path194"
+       d="m 250,390 350,0 0,110 -350,0 0,-110"
+       vector-effect="non-scaling-stroke"
+       style="fill:#9f9f9f;fill-opacity:0.03137464;stroke-width:1.03718257;stroke-miterlimit:4;stroke-dasharray:none" />
+  </g>
+  <g
+     id="g7532"
+     transform="translate(-26.240285,-52.538814)">
+    <polyline
+       transform="matrix(-1,0,0,1,701.9262,-17.138691)"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;font-family:DejaVu Sans"
+       id="polyline42-5"
+       points="410,450 440,450 "
+       vector-effect="non-scaling-stroke" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path5520-05-7"
+       d="m 273.48154,440.0522 -12.01171,-7.20967 11.77975,-7.50787"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;stroke-dasharray:4, 2;stroke-dashoffset:0;font-family:DejaVu Sans"
+     id="g12"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="translate(-195.78582,-76.165814)">
+    <g
+       id="g4606"
+       transform="matrix(0.65555914,0,0,1.1929811,91.675537,-63.683772)">
+      <a
+         id="a4603">
+        <polyline
+           style="fill:none"
+           id="polyline14"
+           points="260,410 220,410 "
+           vector-effect="non-scaling-stroke" />
+      </a>
+      <polyline
+         vector-effect="non-scaling-stroke"
+         points="220,410 220,330 "
+         id="polyline16"
+         style="fill:none" />
+      <polyline
+         vector-effect="non-scaling-stroke"
+         points="220,330 260,330 "
+         id="polyline18"
+         style="fill:none;stroke-width:1.17719948;stroke-miterlimit:4;stroke-dasharray:4.70879791, 2.35439895;stroke-dashoffset:0;marker-end:none"
+         transform="matrix(0.92268708,0,0,1,17.008841,0)" />
+    </g>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#9f9f9f;fill-opacity:0.03137255;stroke:#a0a0a0;stroke-width:1.22691524;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g54"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(0.6458741,0,0,1.0285444,46.601825,-166.43089)">
+    <path
+       inkscape:connector-curvature="0"
+       id="path56"
+       d="m 40.952381,209.52381 649.999999,0 0,100 -649.999999,0 0,-100"
+       vector-effect="non-scaling-stroke"
+       style="fill:#9f9f9f;fill-opacity:0.03137255;stroke:#a0a0a0;stroke-width:1.22691524;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#323232;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g80"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="translate(-60.576191,-45.353814)">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text82"
+       font-style="normal"
+       font-weight="400"
+       font-size="9"
+       y="223"
+       x="256.5"
+       xml:space="preserve">Nuevos comandos</text>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#323232;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g6880"
+     transform="translate(-447.26248,-28.595814)" />
+  <text
+     xml:space="preserve"
+     x="163.45267"
+     y="287.13"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text86"
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans">Siguiente comando</text>
+  <text
+     xml:space="preserve"
+     x="236.62581"
+     y="348.56619"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text86-2"
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans">Llama</text>
+  <text
+     xml:space="preserve"
+     x="236.62581"
+     y="399.88651"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text86-2-7"
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans">Retorna</text>
+  <text
+     xml:space="preserve"
+     style="font-size:8.01903343px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
+     x="-99.137375"
+     y="-8.1095629"
+     id="text6527-8-3"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan6529-3-2"
+       x="-99.137375"
+       y="-8.1095629" /></text>
+  <g
+     id="g6734"
+     transform="translate(16.878319,-52.761814)">
+    <g
+       style="stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+       transform="matrix(0.8207015,0,0,1,12.47101,0)"
+       id="g6619">
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g88"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <path
+           style="fill-rule:evenodd;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           inkscape:connector-curvature="0"
+           id="path90"
+           d="m 120,110 150,0 0,80 -150,0 0,-80"
+           vector-effect="non-scaling-stroke" />
+      </g>
+      <polyline
+         vector-effect="non-scaling-stroke"
+         points="120,120 269,120 "
+         id="polyline96"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:none;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         transform="translate(-50.445544,3.53673)" />
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g102"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <polyline
+           style="fill:none;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           id="polyline104"
+           points="120,130 269,130 "
+           vector-effect="non-scaling-stroke" />
+      </g>
+    </g>
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text94"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="121.53673"
+       x="107.55446"
+       xml:space="preserve">Listener 1</text>
+    <g
+       transform="translate(-50.445544,3.53673)"
+       font-size="9"
+       font-weight="400"
+       font-style="normal"
+       id="g98"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans">
+      <text
+         xml:space="preserve"
+         x="125"
+         y="128"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text100"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans">Escucha: Variable X</text>
+    </g>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.90839219;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g124"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(1,0,0,1.2118622,-175.78582,-160.91081)">
+    <path
+       style="fill-rule:evenodd;stroke-width:0.90839219;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:connector-curvature="0"
+       id="path126"
+       d="m 260,400 150,0 0,80 -150,0 0,-80"
+       vector-effect="non-scaling-stroke" />
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g128"
+     font-style="normal"
+     font-weight="700"
+     font-size="9"
+     transform="translate(-175.78582,-76.165814)">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text130"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="408"
+       x="313.5"
+       xml:space="preserve">Executer</text>
+    <polyline
+       style="fill:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+       id="polyline132"
+       points="260,410 409,410 "
+       vector-effect="non-scaling-stroke" />
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g134"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="translate(-175.78582,-76.165814)">
+    <polyline
+       style="fill:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+       id="polyline136"
+       points="260,415 409,415 "
+       vector-effect="non-scaling-stroke" />
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#323232;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g138"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="translate(-21.483444,-50.926751)">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text140"
+       font-style="normal"
+       font-weight="400"
+       font-size="9"
+       y="93"
+       x="94.5"
+       xml:space="preserve"><tspan
+         id="tspan3496"
+         style="font-style:oblique;-inkscape-font-specification:DejaVu Sans Oblique">Command pattern - </tspan><tspan
+         id="tspan3494"
+         style="font-style:oblique;font-weight:normal;-inkscape-font-specification:DejaVu Sans Oblique">Clients</tspan></text>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#323232;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g142"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="translate(-200.9232,-72.990814)">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text144"
+       font-style="normal"
+       font-weight="400"
+       font-size="9"
+       y="263"
+       x="234"
+       xml:space="preserve"><tspan
+         id="tspan3498"
+         style="font-style:oblique;-inkscape-font-specification:DejaVu Sans Oblique">Command pattern - Invoker</tspan></text>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#323232;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g146"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="translate(-199.91724,-83.502814)">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text148"
+       font-style="normal"
+       font-weight="400"
+       font-size="9"
+       y="525"
+       x="273.5"
+       xml:space="preserve"><tspan
+         id="tspan3500"
+         style="font-style:oblique;-inkscape-font-specification:DejaVu Sans Oblique">Command pattern - Reciver</tspan></text>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.15336907;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g150"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(0.75173267,0,0,1,-64.594803,-77.752814)">
+    <path
+       style="fill-rule:evenodd;stroke-width:1.15336907;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:connector-curvature="0"
+       id="path152"
+       d="m 440,430 150,0 0,40 -150,0 0,-40"
+       vector-effect="non-scaling-stroke" />
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g154"
+     font-style="normal"
+     font-weight="700"
+     font-size="9"
+     transform="translate(-89.088265,364.12519)" />
+  <g
+     style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g158"
+     font-style="normal"
+     font-weight="700"
+     font-size="9"
+     transform="translate(-192.45249,-73.752814)">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text160"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="449.5354"
+       x="461.01099"
+       xml:space="preserve">Función del comando</text>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#323232;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g174"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="translate(-128.16677,-13.466813)">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text176"
+       font-style="normal"
+       font-weight="400"
+       font-size="9"
+       y="162.94444"
+       x="-355.6301"
+       xml:space="preserve"
+       transform="matrix(0,-1,1,0,0,0)">Código de retorno</text>
+  </g>
+  <g
+     id="g8041"
+     transform="translate(-74.074875,-15.079365)">
+    <path
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+       inkscape:connector-curvature="0"
+       id="path180"
+       d="m 138.63277,209.70755 187.88401,0 0,80 -187.88401,0 0,-80"
+       vector-effect="non-scaling-stroke" />
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text184"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="217.70808"
+       x="206.57478"
+       xml:space="preserve">Dispatcher</text>
+    <polyline
+       transform="matrix(0.52190003,0,0,1,2.938761,-60.292449)"
+       style="font-size:9px;font-style:normal;font-weight:700;fill:none;stroke:#000000;stroke-width:1.38422394;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+       id="polyline186"
+       points="260,280 619,280 "
+       vector-effect="non-scaling-stroke" />
+    <polyline
+       transform="matrix(0.52190003,0,0,1,2.938761,-60.292449)"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#000000;stroke-width:1.38422394;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+       id="polyline190"
+       points="260,285 619,285 "
+       vector-effect="non-scaling-stroke" />
+  </g>
+  <g
+     id="g6756"
+     transform="translate(-43.730831,-52.240814)">
+    <g
+       style="stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+       transform="matrix(0.8207015,0,0,1,343.2687,-0.52086)"
+       id="g6619-3-1">
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g88-6-8"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <path
+           style="fill-rule:evenodd;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           inkscape:connector-curvature="0"
+           id="path90-0-9"
+           d="m 120,110 150,0 0,80 -150,0 0,-80"
+           vector-effect="non-scaling-stroke" />
+      </g>
+      <polyline
+         vector-effect="non-scaling-stroke"
+         points="120,120 269,120 "
+         id="polyline96-3-3"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:none;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         transform="translate(-50.445544,3.53673)" />
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g102-5-0"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <polyline
+           style="fill:none;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           id="polyline104-7-8"
+           points="120,130 269,130 "
+           vector-effect="non-scaling-stroke" />
+      </g>
+    </g>
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text236"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="121.53673"
+       x="439.05444"
+       xml:space="preserve">Listener N</text>
+    <g
+       transform="translate(-50.445544,3.53673)"
+       font-size="9"
+       font-weight="400"
+       font-style="normal"
+       id="g240"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans">
+      <text
+         xml:space="preserve"
+         x="455"
+         y="128"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text242"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans">Escucha: Evento E</text>
+    </g>
+  </g>
+  <g
+     id="g6745"
+     transform="translate(-17.915821,-52.240814)">
+    <g
+       style="stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+       transform="matrix(0.8207015,0,0,1,182.95124,-0.52086)"
+       id="g6619-3">
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g88-6"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <path
+           style="fill-rule:evenodd;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           inkscape:connector-curvature="0"
+           id="path90-0"
+           d="m 120,110 150,0 0,80 -150,0 0,-80"
+           vector-effect="non-scaling-stroke" />
+      </g>
+      <polyline
+         vector-effect="non-scaling-stroke"
+         points="120,120 269,120 "
+         id="polyline96-3"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:none;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         transform="translate(-50.445544,3.53673)" />
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g102-5"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <polyline
+           style="fill:none;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           id="polyline104-7"
+           points="120,130 269,130 "
+           vector-effect="non-scaling-stroke" />
+      </g>
+    </g>
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text254"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="121.53673"
+       x="277.05444"
+       xml:space="preserve">Listener 2</text>
+    <g
+       transform="translate(-50.445544,3.53673)"
+       font-size="9"
+       font-weight="400"
+       font-style="normal"
+       id="g258"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans">
+      <text
+         xml:space="preserve"
+         x="295"
+         y="128"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text260"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans">Escucha: Subsistema A</text>
+    </g>
+  </g>
+  <g
+     id="g4360"
+     transform="translate(-127.11607,-39.894814)">
+    <g
+       id="g4530">
+      <path
+         vector-effect="non-scaling-stroke"
+         d="m 540.43161,245.24294 50,0 0,10 -50,0 0,-10"
+         id="path280"
+         inkscape:connector-curvature="0"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans" />
+      <path
+         vector-effect="non-scaling-stroke"
+         d="m 540.43161,253.7054 173.91999,0 0,100 -173.91999,0 0,-100"
+         id="path282"
+         inkscape:connector-curvature="0"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.93038929;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans" />
+    </g>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g284"
+     font-style="normal"
+     font-weight="700"
+     font-size="9"
+     transform="translate(-461.88163,-37.433814)">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text286"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="263"
+       x="878"
+       xml:space="preserve">Repositorio</text>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g310"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="translate(-373.40388,49.057187)">
+    <g
+       id="g4503"
+       transform="translate(-85.862966,-67.904699)">
+      <g
+         id="g3466-8"
+         transform="translate(-67.7846,16.474194)"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <g
+           style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace"
+           id="g368-4"
+           font-style="normal"
+           font-weight="400"
+           font-size="8"
+           transform="matrix(0.87693456,0,0,0.64977379,182.63462,170.38456)">
+          <path
+             style="fill-rule:evenodd"
+             inkscape:connector-curvature="0"
+             id="path370-5"
+             d="m 890,160 0,49 199,0 0,-39 -10,-10 -189,0"
+             vector-effect="non-scaling-stroke" />
+          <polyline
+             style="fill:none"
+             id="polyline372-8"
+             points="1079,160 1079,170 "
+             vector-effect="non-scaling-stroke" />
+          <polyline
+             style="fill:none"
+             id="polyline374-7"
+             points="1079,170 1089,170 "
+             vector-effect="non-scaling-stroke" />
+        </g>
+        <g
+           style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+           id="g376-4"
+           font-style="normal"
+           font-weight="400"
+           font-size="9"
+           transform="translate(73.228954,114.47094)" />
+      </g>
+      <text
+         xml:space="preserve"
+         x="897"
+         y="305"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text312"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"><tspan
+           style="-inkscape-font-specification:Monospace;font-family:Monospace;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:8px"
+           id="tspan4109">Almacena, da acceso y organiza</tspan></text>
+      <text
+         xml:space="preserve"
+         x="896.62207"
+         y="315"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text314"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace;font-size:8px"
+           id="tspan4111">diferentes datos del sistema</tspan></text>
+    </g>
+  </g>
+  <g
+     id="g6482"
+     transform="translate(-195.73632,-23.288449)">
+    <g
+       transform="matrix(0.69836183,0,0,0.6695692,164.27729,8.026524)"
+       font-size="9"
+       font-weight="400"
+       font-style="normal"
+       id="g320"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#5b5b5b;stroke-width:1.46238601;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans">
+      <path
+         vector-effect="non-scaling-stroke"
+         d="m 480,50 0,39 269,0 0,-29 -10,-10 -259,0"
+         id="path322"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#5b5b5b;stroke-width:1.46238601;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <polyline
+         vector-effect="non-scaling-stroke"
+         points="739,50 739,60 "
+         id="polyline324"
+         style="fill:none;stroke:#5b5b5b;stroke-width:1.46238601;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <polyline
+         vector-effect="non-scaling-stroke"
+         points="739,60 749,60 "
+         id="polyline326"
+         style="fill:none;stroke:#5b5b5b;stroke-width:1.46238601;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <g
+       transform="translate(19.490966,-22.495016)"
+       font-size="8"
+       font-weight="400"
+       font-style="normal"
+       id="g328"
+       style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace">
+      <text
+         xml:space="preserve"
+         x="485"
+         y="75"
+         font-size="8"
+         font-weight="400"
+         font-style="normal"
+         id="text330"
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace">Esuchan eventos del sistema y generan</text>
+      <text
+         xml:space="preserve"
+         x="485.14453"
+         y="82.95945"
+         font-size="8"
+         font-weight="400"
+         font-style="normal"
+         id="text332"
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace">los comandos correspondientes</text>
+      <path
+         sodipodi:nodetypes="ccc"
+         style="fill:none;stroke:#7b6f6f;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
+         d="m 436.0718,45.713726 0,-18.216972 35.72857,0"
+         id="path3512"
+         inkscape:connector-curvature="0"
+         transform="translate(8.013186,50)" />
+    </g>
+  </g>
+  <g
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+     transform="translate(-64.402414,-10.414813)"
+     id="g3405">
+    <g
+       transform="translate(70.541027,-4.5805862)"
+       id="g3502">
+      <g
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace"
+         id="g334"
+         font-style="normal"
+         font-weight="400"
+         font-size="8"
+         transform="matrix(0.9070624,0,0,0.5623132,-24.135113,143.3554)">
+        <path
+           style="fill-rule:evenodd"
+           inkscape:connector-curvature="0"
+           id="path336"
+           d="m 40,440 0,59 199,0 0,-49 -10,-10 -189,0"
+           vector-effect="non-scaling-stroke" />
+        <polyline
+           style="fill:none"
+           id="polyline338"
+           points="229,440 229,450 "
+           vector-effect="non-scaling-stroke" />
+        <polyline
+           style="fill:none"
+           id="polyline340"
+           points="229,450 239,450 "
+           vector-effect="non-scaling-stroke" />
+      </g>
+      <g
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace"
+         id="g342"
+         font-style="normal"
+         font-weight="400"
+         font-size="8"
+         transform="translate(-30,-50)">
+        <text
+           style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace"
+           id="text344"
+           font-style="normal"
+           font-weight="400"
+           font-size="8"
+           y="451"
+           x="44.921875"
+           xml:space="preserve">Lee los comandos y ejecuta la</text>
+        <text
+           style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace"
+           id="text346"
+           font-style="normal"
+           font-weight="400"
+           font-size="8"
+           y="460"
+           x="45"
+           xml:space="preserve">función que corresponde. Reporta</text>
+        <text
+           style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace"
+           id="text348"
+           font-style="normal"
+           font-weight="400"
+           font-size="8"
+           y="469"
+           x="45.136719"
+           xml:space="preserve">los resultados al dispathcer.</text>
+      </g>
+    </g>
+  </g>
+  <g
+     style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace"
+     id="g362"
+     font-style="normal"
+     font-weight="400"
+     font-size="8"
+     transform="translate(-267.65338,-68.5244)">
+    <g
+       id="g5814">
+      <g
+         transform="matrix(0.92651748,0,0,0.63087991,39.753781,177.05991)"
+         font-size="8"
+         font-weight="400"
+         font-style="normal"
+         id="g350"
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace">
+        <path
+           vector-effect="non-scaling-stroke"
+           d="m 580,480 0,49 109,0 0,-39 -10,-10 -99,0"
+           id="path352"
+           inkscape:connector-curvature="0"
+           style="fill-rule:evenodd" />
+        <polyline
+           vector-effect="non-scaling-stroke"
+           points="679,480 679,490 "
+           id="polyline354"
+           style="fill:none" />
+        <polyline
+           vector-effect="non-scaling-stroke"
+           points="679,490 689,490 "
+           id="polyline356"
+           style="fill:none" />
+      </g>
+      <g
+         transform="translate(-0.50356858,10.27468)"
+         font-size="8"
+         font-weight="400"
+         font-style="normal"
+         id="g358"
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace">
+        <text
+           xml:space="preserve"
+           x="585"
+           y="491"
+           font-size="8"
+           font-weight="400"
+           font-style="normal"
+           id="text360"
+           style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace">patrón thread pool</text>
+      </g>
+      <text
+         xml:space="preserve"
+         x="584.69568"
+         y="494"
+         font-size="8"
+         font-weight="400"
+         font-style="normal"
+         id="text364"
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace">Se puede usar el</text>
+    </g>
+  </g>
+  <g
+     style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace"
+     id="g366"
+     font-style="normal"
+     font-weight="400"
+     font-size="8"
+     transform="translate(-89.088265,364.12519)" />
+  <text
+     xml:space="preserve"
+     x="509.9635"
+     y="209.01949"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8"
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans">Lectura</text>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 51.822795,261.11919 12.0117,-7.209 -11.77974,-7.508"
+     id="path5520-05-8"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc" />
+  <g
+     id="g7495"
+     style="stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+     transform="translate(-69.545841,-52.240814)">
+    <g
+       style="stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       id="g7490">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 353.57143,192.872 0,26.09625 -136.30952,0"
+         id="path7468"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 353.55339,218.91689 134.12581,0 0,-25.67471"
+         id="path7472"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccc" />
+    </g>
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path7480"
+       d="m 217.4634,219.46429 0,0.24693 0,-27.13185"
+       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  </g>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 284.01331,166.67608 0,51.63002 -28.35195,0"
+     id="path7502"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 266.22487,225.43242 -12.0117,-7.20967 11.77974,-7.50787"
+     id="path5520-05-8-0"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 165.67447,301.75382 -7.20967,12.0117 -7.50787,-11.77974"
+     id="path5520-05-8-0-6"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc" />
+  <g
+     transform="matrix(-1,0,0,1,526.92994,-69.537814)"
+     id="g7532-6">
+    <polyline
+       transform="matrix(-1,0,0,1,701.9262,-17.138691)"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;font-family:DejaVu Sans"
+       id="polyline42-5-3"
+       points="410,450 440,450 "
+       vector-effect="non-scaling-stroke" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path5520-05-7-4"
+       d="m 273.48154,440.0522 -12.01171,-7.20967 11.77975,-7.50787"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  </g>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 158.40653,274.66419 0,19.047 0.0583,19.05664"
+     id="path7584"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6, 1;stroke-dashoffset:0"
+     d="m 547.26594,213.53825 0,-120.223505 -50.08168,0"
+     id="path7647"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 508.335,86.105185 -12.0117,7.21 11.77974,7.507005"
+     id="path5520-05-8-5"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6, 1;stroke-dashoffset:0"
+     d="m 254.86361,234.67019 157.38366,0"
+     id="path7781-8"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 265.87261,227.41119 -12.0117,7.21 11.77974,7.508"
+     id="path5520-05-8-7-6-8"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc" />
+  <text
+     xml:space="preserve"
+     x="368.15091"
+     y="244.4959"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8-8-0-1-6-5"
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans">Lectura</text>
+  <g
+     id="g4592"
+     transform="translate(-120.75028,-48.873814)">
+    <g
+       transform="translate(-233.95426,-23.13101)"
+       font-size="9"
+       font-weight="400"
+       font-style="normal"
+       id="g382"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans">
+      <g
+         id="g3399"
+         transform="matrix(0.93903503,0,0,0.59532132,421.51196,151.03062)">
+        <path
+           style="fill-rule:evenodd"
+           inkscape:connector-curvature="0"
+           id="path384"
+           d="m 30.647793,269.47367 0,49 218.999997,0 0,-39 -10,-10 -208.999997,0"
+           vector-effect="non-scaling-stroke" />
+        <g
+           id="g3395">
+          <polyline
+             vector-effect="non-scaling-stroke"
+             points="239,270 239,280 "
+             id="polyline386"
+             style="fill:none" />
+          <polyline
+             vector-effect="non-scaling-stroke"
+             points="239,280 249,280 "
+             id="polyline388"
+             style="fill:none" />
+        </g>
+      </g>
+    </g>
+    <g
+       transform="translate(185.81541,18.97552)"
+       font-size="8"
+       font-weight="400"
+       font-style="normal"
+       id="g390"
+       style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace">
+      <text
+         xml:space="preserve"
+         x="33"
+         y="283"
+         font-size="8"
+         font-weight="400"
+         font-style="normal"
+         id="text392"
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace">Encola los comandos y decide el siguiente</text>
+      <text
+         xml:space="preserve"
+         x="33.25"
+         y="292"
+         font-size="8"
+         font-weight="400"
+         font-style="normal"
+         id="text394"
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace">a ejecutar. Supervisa su ejecución.</text>
+    </g>
+  </g>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6, 1;stroke-dashoffset:0"
+     d="m 324.00901,313.49219 0,-33.841 87.38999,0"
+     id="path7743-3"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 331.2534,301.95789 -7.20967,12.012 -7.50787,-11.78"
+     id="path5520-05-8-3-2"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 400.06436,286.90419 12.0117,-7.209 -11.77974,-7.508"
+     id="path5520-05-8-7-67"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc" />
+  <text
+     xml:space="preserve"
+     x="356.43011"
+     y="289.67557"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8-8-0-1-6-4"
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans">Lectura</text>
+  <text
+     xml:space="preserve"
+     x="353.32758"
+     y="274.73416"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8-8-0-1-4-4"
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans">Escritura</text>
+</svg>

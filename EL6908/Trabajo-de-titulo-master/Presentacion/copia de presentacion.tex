@@ -1,0 +1,832 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+\mode<presentation>
+{
+	%agregar franja a lo largo del borde inferior de un slide que muestra el nombre del autor, el titulo de la presentacion, el numero del slide y otra informacion util ya que no viene por defecto. Debe ir antes de la definición del tema
+	\useoutertheme{infolines}
+	\usetheme{Rochester} %opción especifica para el tema Rochester afecta a la franja superior
+	\setbeamercovered{transparent} %las partes ocultas son transparentes en vez de invisible
+	\usecolortheme[RGB={140,32,48}]{structure} %color global
+}
+
+\pgfdeclareimage[height=1.2cm]{latex-logo}{logo-utal}
+\logo{\pgfuseimage{latex-logo}}
+
+\usepackage{amssymb,amsmath}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage{rotating}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\setbeamertemplate{blocks}[rounded][shadow=true] %cajas redondeadas y con sombra
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}{\insertcaption} %solo el caption, sin anteceder la palabra Figura
+
+\title[Interacción a través de gestos]{Interacción a distancia con el computador a través de gestos manuales haciendo uso de una cámara Web}
+\author[Eduardo Bustos]{
+EDUARDO ERNESTO BUSTOS MERINO\\
+\vspace*{1cm}
+Profesor Guía: BENJAMIN INGRAM}
+\date{}
+\institute[Universidad de Talca]{}
+
+\begin{document}
+	
+	\begin{frame}[plain]
+		\begin{center}
+			\begin{figure}[h]
+				\includegraphics[width=1cm]{logo-utal}
+			\end{figure}
+			
+			{\tiny{FACULTAD DE INGENIERÍA\\ ESCUELA DE INGENIERÍA CIVIL EN COMPUTACIÓN}}
+		\end{center}
+		\titlepage
+	\end{frame}
+
+%% TABLA DE CONTENIDOS %%	
+	\begin{frame}
+		\transdissolve
+		\frametitle{Tabla de contenidos}
+		\tableofcontents[pausesections]
+	\end{frame}
+
+%% INTRODUCCIÓN %%	
+	\section{Introducción}
+	\begin{frame}
+		\transdissolve
+		\frametitle{Introducción}
+		\begin{block}{La tendencia actual del diseño y arquitectura de las interfaces}
+		Busca prescindir de los dispositivos mecánicos o controles remotos como el mouse y el teclado, pensando en una interacción más intuitiva y natural que permita utilizar nuestros sentidos como medio de interacción.
+		\end{block}
+	\end{frame}
+
+%% INTRODUCCIÓN %%	
+	\begin{frame}
+		\transdissolve
+		\frametitle{Introducción}
+		\begin{block}{Visión por computador}
+		Es la ciencia que se encarga del análisis de imágenes a través de computadores, para obtener una descripción de los objetos físicos que son capturados por la cámara.
+		\end{block}
+	\end{frame}
+
+%% INTRODUCCIÓN %%	
+	\begin{frame}
+		\transdissolve
+		\frametitle{Introducción}
+		\framesubtitle{Analogía entre la visión humana y por computador}
+		\begin{center}
+			\begin{tabular}{cc}
+			{\tiny{ELEMENTO SENSOR}} & {\tiny{PROCESADOR DE LA INFORMACIÓN}}\\
+			\includegraphics[width=3cm]{ojo}    & \includegraphics[width=3cm]{cerebro}\\
+			\includegraphics[width=3cm]{camara} & \includegraphics[width=4cm]{computadora}\\
+			\end{tabular}
+		\end{center}
+	\end{frame}
+
+%% INTRODUCCIÓN %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Introducción}
+		\framesubtitle{Desarrollo}
+		Implementación de un sistema de visión por computador que realiza \textbf{\textit{detección}}, \textbf{\textit{reconocimiento}} y \textbf{\textit{seguimiento}} de una mano humana.\\
+		\vspace{.5cm}
+		El sistema permite la interacción a distancia con un computador, utilizando una cámara Web de baja resolución para capturar una secuencia de imágenes en tiempo real, interpretar los desplazamientos y gestos realizados con la mano y traducirlos en instrucciones.
+	\end{frame}
+
+%% INTRODUCCIÓN %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Introducción}
+		\framesubtitle{Desarrollo}
+		\begin{center}
+			\includegraphics[width=.1\textwidth]{puntero}
+		\end{center}
+		Controlar el movimiento del puntero del mouse, simular la pulsación del botón izquierdo del mouse para hacer clic y controlar el avance de diapositivas.
+	\end{frame}
+
+%% INTRODUCCIÓN : OBJETIVO GENERAL %%
+		\subsection{Objetivos}
+		\begin{frame}
+			\transdissolve
+			\frametitle{Introducción}
+			\framesubtitle{Objetivos}
+			\begin{block}{Objetivo general}
+			Diseñar, desarrollar e implementar un algoritmo que permita al usuario interactuar con el computador a distancia a través de gestos manuales utilizando una cámara Web de baja resolución.			
+			\end{block}
+		\end{frame}
+
+%% INTRODUCCIÓN : OBJETIVOS ESPECÍFICOS %%
+		\begin{frame}
+			\transdissolve
+			\frametitle{Introducción}
+			\framesubtitle{Objetivos -- Objetivos específicos --}
+			\begin{itemize}
+			\item Determinar qué modelo de color es eficaz para detectar color de piel.
+			\item Determinar un umbral óptimo para detectar color de piel.
+			\item Clasificar automáticamente los píxeles que corresponden a piel y a fondo.
+			\item Determinar qué clasificador tiene mejor desempeño en la clasificación de píxeles para la determinación de color de piel.
+			\item Segmentar correctamente la mano para su posterior seguimiento.
+			\end{itemize}
+		\end{frame}
+
+%% INTRODUCCIÓN : OBJETIVOS ESPECÍFICOS %%
+		\begin{frame}
+			\transdissolve
+			\frametitle{Introducción}
+			\framesubtitle{Objetivos -- Objetivos específicos --}
+			\begin{itemize}
+			\item Reconocer y seguir el desplazamiento de una mano.
+			\item Reconocer e interpretar gestos manuales realizados por el usuario en una serie de imágenes bajo condiciones de luz y fondo no controladas.
+			\item El sistema debe trabajar en tiempo real.
+			\item Evaluar la eficiencia del sistema, con diferentes individuos y diferentes condiciones de iluminación y fondo.
+			\item Identificar cantidad de imágenes capturadas y procesadas por segundo.
+			\end{itemize}
+		\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DESARROLLO DEL SISTEMA %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Desarrollo del sistema}
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\begin{center}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+				\centering
+				\includegraphics[width=.9\textwidth]{interaccion}
+				\end{figure}
+			\end{minipage}
+			\begin{minipage}[c]{.45\textwidth}
+				\includegraphics[width=.9\textwidth]{sistema}
+			\end{minipage}
+		\end{center}
+		Se considera que existe un sólo usuario frente a la cámara Web y al mover una mano se puede manejar el puntero del mouse, hacer clic o arrastrar.
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA: ETAPAS %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapas del desarrollo}
+		\begin{itemize}
+		\item Captura de imagen. \pause
+		\item Detección de color de piel. \pause
+		\item Reconocimiento de rostro y mano. \pause
+		\item Seguimiento de mano reconocida. \pause
+		\item Información útil. \pause
+		\item Ejecución de orden.
+		\end{itemize}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : CAPTURA DE IMAGEN %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Captura de imagen}
+		\begin{columns}
+			\begin{column}{3cm}
+				\includegraphics[scale=.5]{webcam}
+			\end{column}
+			\begin{column}{7cm}
+				Resolución utilizada: 160$\times$120 píxeles.\\
+				Formato de captura: YUYV (conocido como YUV422)			
+			\end{column}
+		\end{columns}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : CAPTURA DE IMAGEN %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Captura de imagen -- Formato YUYV --}
+		\begin{center}
+			\includegraphics[width=.8\textwidth]{YUYV}
+			
+			\includegraphics[width=.8\textwidth]{convertYUYV}
+		\end{center}
+
+		Se preserva intacta la luminosidad pero se reduce a la mitad las componentes del color.
+	\end{frame}
+	
+%% DESARROLLO DEL SISTEMA %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		Ya que sólo existe un usuario frente a la cámara Web, la información sobre el color de la piel es suficiente para detectar el rostro y las manos, con las siguientes restricciones: la mano no debe sobrelaparse con otra región de piel, y se debe tener al descubierto sólo el rostro y las manos.
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Modelo de color --}
+		\begin{center}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=\textwidth]{imgimgGray}
+					\caption{Imagen en escala de grises.}
+				\end{figure}
+			\end{minipage}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=\textwidth]{imgHistograma}
+					\caption{Histograma de la imagen.}
+				\end{figure}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL - RGB %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Modelo de color --}
+		RGB
+		
+		\begin{center}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{RGB/planoR}
+			\end{minipage}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{RGB/planoG}
+			\end{minipage}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{RGB/planoB}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL - YUV %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Modelo de color --}
+		YUV
+		
+		\begin{center}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{YUV/planoY}
+			\end{minipage}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{YUV/planoU}
+			\end{minipage}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{YUV/planoV}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL - YCBCR %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Modelo de color --}
+		YCbCr
+		
+		\begin{center}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{YCBCR/planoY}
+			\end{minipage}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{YCBCR/planoCb}
+			\end{minipage}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{YCBCR/planoCr}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL - HSV %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Modelo de color --}
+		HSV
+		
+		\begin{center}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{HSV/planoH}
+			\end{minipage}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{HSV/planoS}
+			\end{minipage}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{HSV/planoV}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL - CIELAB %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Modelo de color --}
+		CIELAB
+		
+		\begin{center}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{LAB/planoL}
+			\end{minipage}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{LAB/planoA}
+			\end{minipage}
+			\begin{minipage}[c]{.3\textwidth}
+				\includegraphics[width=.9\textwidth]{LAB/planoB}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL %%	
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel}
+		\begin{center}
+			\begin{figure}[h]
+			\includegraphics[width=.8\textwidth]{data2}
+			\caption{Imágenes tomadas con cámara Web para etiquetado manual.}
+			\end{figure}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL %%	
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel}
+		\begin{center}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{selectSkin}
+					\caption{Etiquetado manual de piel.}
+				\end{figure}
+			\end{minipage}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{selectNoSkin}
+					\caption{Etiquetado manual de fondo.}
+				\end{figure}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL %%	
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel}
+		\begin{columns}
+			\begin{column}{6cm}
+				\includegraphics[height=.95\textheight]{graph}
+			\end{column}
+			\begin{column}{4cm}
+			{\small{En azul los píxeles de color de piel y en rojo los píxeles de fondo. H es el ángulo y S el radio. Es inevitable que se produzcan solapamientos entre los píxeles debido a las condiciones cambiantes de iluminación, que alteran la distribución del color de la piel.}}
+			\end{column}
+		\end{columns}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL %%	
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Umbralización basada en color -- }
+		\begin{center}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{PlanoH}
+					\caption{Representación del plano H.}
+				\end{figure}
+			\end{minipage}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{imhistH}
+					\caption{Histograma del plano H.}
+				\end{figure}
+			\end{minipage}
+		\end{center}
+		{\small{Del histograma se puede inferir que valores permiten realizar una umbralización basada en color para cada plano.}}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL %%	
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Umbralización basada en color -- }
+		\begin{center}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{PlanoS}
+					\caption{Representación del plano S.}
+				\end{figure}
+			\end{minipage}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{imhistS}
+					\caption{Histograma del plano S.}
+				\end{figure}
+			\end{minipage}
+		\end{center}
+		{\small{Del histograma se puede inferir que valores permiten realizar una umbralización basada en color para cada plano.}}
+	\end{frame}
+	
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL -- CLASIFICADORES %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Utilización de Clasificadores -- }
+		Validación Cruzada Simple
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=.4\textwidth]{CLASIFICADORES/validacion}
+			\caption{Conjunto de datos dividido en dos subconjuntos, uno de entrenamiento y otro de validación.}
+		\end{figure}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL -- CLASIFICADORES %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Utilización de Clasificadores -- }
+		Matriz de Confusión
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=.55\textwidth]{CLASIFICADORES/MatrizConfusionMLP}
+			\caption{Coeficiente estadístico que permite medir la calidad de los resultados al\\
+			compararlos con los valores reales.}
+		\end{figure}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL -- CLASIFICADORES %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Utilización de Clasificadores -- }
+		\begin{center}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{CLASIFICADORES/1}
+				\end{figure}
+			\end{minipage}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{CLASIFICADORES/2}
+				\end{figure}
+			\end{minipage}
+		\end{center}
+	\end{frame}	
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL -- CLASIFICADORES %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Utilización de Clasificadores -- }
+		Perceptrón Multicapa
+		\begin{center}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{CLASIFICADORES/MLP1}
+				\end{figure}
+			\end{minipage}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{CLASIFICADORES/MLP2}
+				\end{figure}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL -- CLASIFICADORES %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Utilización de Clasificadores -- }
+		Funciones de Base Radial
+		\begin{center}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{CLASIFICADORES/RBF1}
+				\end{figure}
+			\end{minipage}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{CLASIFICADORES/RBF2}
+				\end{figure}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL -- CLASIFICADORES %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Utilización de Clasificadores -- }
+		Na\"{\i}ve Bayes
+		\begin{center}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{CLASIFICADORES/NB1}
+				\end{figure}
+			\end{minipage}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{CLASIFICADORES/NB2}
+				\end{figure}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL -- CLASIFICADORES %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Utilización de Clasificadores -- }
+		Modelo Lineal Generalizado 
+		\begin{center}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{CLASIFICADORES/GLM1}
+				\end{figure}
+			\end{minipage}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{CLASIFICADORES/GLM2}
+				\end{figure}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL -- CLASIFICADORES %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Utilización de Clasificadores -- }
+		Nearest Neighbour
+		\begin{center}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{CLASIFICADORES/NN1}
+				\end{figure}
+			\end{minipage}
+			\begin{minipage}[c]{.45\textwidth}
+				\begin{figure}[h]
+					\includegraphics[width=.9\textwidth]{CLASIFICADORES/NN2}
+				\end{figure}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+	
+%% DESARROLLO DEL SISTEMA : DETECCIÓN DE COLOR DE PIEL -- CLASIFICADORES %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Detección de color de piel -- Utilización de Clasificadores -- }
+Resultado de los clasificadores en la clasificación automática de los píxeles para segmentar imágenes por color de piel.
+
+\vspace{.5cm}
+
+\resizebox{\textwidth}{!}{
+			\begin{tabular}[c]{l D{.}{,}{-1} D{.}{,}{-1} D{.}{,}{-1}}
+\toprule[0.8mm]
+\multicolumn{1}{c}{} & \multicolumn{2}{c}{Tiempo transcurrido en segmentar (seg)} & \multicolumn{1}{c}{\multirow{2}{*}{Exactitud de clasificación (\%)}}\\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{Imagen 1} & \multicolumn{1}{c}{Imagen 2} & \multicolumn{1}{c}{}\\
+					\midrule[0.4mm]
+					MLP &   2.3989 &   0.8389 & 91.8547\\
+					RBF &   2.0046 &   1.1294 & 88.7226\\
+					NB  &   0.6568 &   0.6554 & 67.0995\\
+					GLM &   2.4449 &   0.5623 & 78.9022\\
+					NN  & 268.9608 & 268.8019 & 90.4450\\
+					\bottomrule[0.8mm]
+			\end{tabular}
+			}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : RECONOCIMIENTO %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Reconocimiento de rostro y mano}
+		\begin{center}
+			\begin{minipage}[c]{.45\textwidth}
+				\includegraphics[width=.9\textwidth]{RECONOCIMIENTO/1}
+			\end{minipage}
+			\begin{minipage}[c]{.45\textwidth}
+				\includegraphics[width=.9\textwidth]{RECONOCIMIENTO/segmentacion}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : RECONOCIMIENTO - ASKAR ET AL 2004 %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Reconocimiento de rostro y mano -- {[}Askar et al., 2004{]} --}
+		{\small{Calculo del histograma que representa la distribución de los píxeles de color de la piel en dirección vertical y horizontal de la imagen binarizada.}}
+		\begin{center}
+			\includegraphics[height=.8\textheight]{RECONOCIMIENTO/division}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : RECONOCIMIENTO - ASKAR ET AL 2004 %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Reconocimiento de rostro y mano -- {[}Askar et al., 2004{]} --}
+		{\small{Para cada región, del histograma vertical y horizontal, se determina el máximo. Posibles posiciones de los centros de gravedad de manos y rostro.}}
+		\begin{center}
+			\includegraphics[height=.8\textheight]{RECONOCIMIENTO/malla}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : RECONOCIMIENTO - ASKAR ET AL 2004 %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Reconocimiento de rostro y mano -- {[}Askar et al., 2004{]} --}
+		{\small{Puntos de interés definidos haciendo uso de la técnica de histograma.}}
+		\begin{center}
+			\includegraphics[height=.8\textheight]{RECONOCIMIENTO/puntosRastrear}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : RECONOCIMIENTO - ETIQUETADO %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Reconocimiento de rostro y mano -- Etiquetado --}
+		{\small{La cabeza del usuario esta siempre al centro del cuerpo y a los lados se encuentran las manos.}}
+		\begin{center}
+			\begin{minipage}[c]{.47\textwidth}
+				\begin{center}
+				\includegraphics[width=.7\textwidth]{RECONOCIMIENTO/ETIQUETADO/1}
+				\end{center}
+			\end{minipage}
+			\begin{minipage}[c]{.47\textwidth}
+				\begin{center}
+				\includegraphics[width=.7\textwidth]{RECONOCIMIENTO/ETIQUETADO/2}
+				\end{center}
+			\end{minipage}
+			\includegraphics[width=.33\textwidth]{RECONOCIMIENTO/ETIQUETADO/3}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : RECONOCIMIENTO - ETIQUETADO %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Reconocimiento de rostro y mano -- Etiquetado --}
+		{\small{Puntos de interés definidos haciendo uso de etiquetado de la imagen binaria.}}
+		\begin{center}
+			\includegraphics[height=.8\textheight]{RECONOCIMIENTO/ETIQUETADO/4}
+		\end{center}
+	\end{frame}	
+
+
+%% DESARROLLO DEL SISTEMA : SEGUIMIENTO DE MANO RECONOCIDA %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Seguimiento de mano reconocida}
+		{\small{Seguimiento de la mano en base al centroide.}}
+		\begin{center}
+			\begin{minipage}[c]{.45\textwidth}
+				\includegraphics[width=.9\textwidth]{SEGUIMIENTO/derecha}
+			\end{minipage}
+			\begin{minipage}[c]{.45\textwidth}
+				\includegraphics[width=.9\textwidth]{SEGUIMIENTO/izquierda}
+			\end{minipage}
+		\end{center}
+	\end{frame}
+
+
+%% DESARROLLO DEL SISTEMA : INFORMACIÓN ÚTIL %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Información útil}
+		\begin{center}
+			\includegraphics[height=.8\textheight]{gesto1}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : INFORMACIÓN ÚTIL %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Información útil}
+		\begin{center}
+			\includegraphics[width=2cm, height=3cm]{INFO-UTIL/GESTO1/1} \hspace{.5cm}
+			\includegraphics[width=2cm, height=3cm]{INFO-UTIL/GESTO1/2}\\
+			\vspace{.5cm}
+			\includegraphics[width=2cm, height=3cm]{INFO-UTIL/GESTO1/3} \hspace{.5cm}
+			\includegraphics[width=2cm, height=3cm]{INFO-UTIL/GESTO1/4}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : INFORMACIÓN ÚTIL %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Información útil}
+		\begin{center}
+			\includegraphics[height=.8\textheight]{gesto2}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : INFORMACIÓN ÚTIL %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Información útil}
+		\begin{center}
+			\includegraphics[width=2cm, height=3cm]{INFO-UTIL/GESTO2/1} \hspace{.5cm}
+			\includegraphics[width=2cm, height=3cm]{INFO-UTIL/GESTO2/2}\\
+			\vspace{.5cm}
+			\includegraphics[width=2cm, height=3cm]{INFO-UTIL/GESTO2/3} \hspace{.5cm}
+			\includegraphics[width=2cm, height=3cm]{INFO-UTIL/GESTO2/4}
+		\end{center}
+	\end{frame}
+
+%% DESARROLLO DEL SISTEMA : EJECUCIÓN DE ORDEN %%
+	\begin{frame}
+		\transdissolve
+		\frametitle{Desarrollo del sistema}
+		\framesubtitle{Etapa: Ejecución de orden}
+		\begin{itemize}
+		\item Uso de clase Robot de Java, para desplazamiento del cursor y clic.
+		\item La clase Robot tiene tres funciones principales: control del mouse, teclado y captura de pantalla.
+		\item Si el desplazamiento del puntero se efectúa según la posición del centroide en cada frame, la precisión es muy baja.
+		\end{itemize}
+	\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ANÁLISIS Y RESULTADOS OBTENIDOS %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Análisis y resultados obtenidos}
+	\begin{frame}
+		\transdissolve
+		\frametitle{Análisis y resultados obtenidos}
+	    Se producen cambios abruptos en la posición del puntero. Para evitar esto, se analizan al menos cinco frames para determinar un movimiento, ademas de un ajuste polinomial, (usando la función polyfit), entre la posición del centroide en cada uno de los frames.
+	\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%
+%% CONCLUSIONES %%
+%%%%%%%%%%%%%%%%%%	
+	\section{Conclusiones}
+	\begin{frame}
+		\transdissolve
+		\frametitle{Conclusiones}
+		\begin{itemize}
+		\item El factor más influyente es la segmentación.
+		\item Se deben generar condiciones optimas de iluminación.
+		\item Si se piensa el reconocimiento de gestos como un reemplazante del mouse, el mouse ofrece una mayor precisión que los sistemas gestuales.
+		\item Una resolución de imagen más alta aporta al algoritmo una mayor definición de la realidad. A mayor tamaño de las imágenes el coste computacional aumenta debido a que la cantidad de información a tratar es mayor.
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\transdissolve
+		\frametitle{Conclusiones}
+		\begin{block}{Aporte realizado}
+		Se han mostrado dos técnicas de reconocimiento de las manos: una basada en la técnica de histograma {[}Askar et al., 2004{]} y otra que utiliza etiquetado. Además se muestra un esquema sencillo de detección, reconocimiento y seguimiento de una mano basado en la detección del color de piel, su aprendizaje por parte de una red neuronal y el uso de una cámara Web de baja resolución.
+		\end{block}
+	\end{frame}
+
+		\subsection{Trabajo futuro}
+		\begin{frame}
+			\transdissolve
+			\frametitle{Conclusiones}
+			\framesubtitle{Trabajo futuro}
+			\begin{itemize}
+			\item Reconocer una mayor cantidad de gestos e incorporar gestos llevados a cabo con ambas manos.
+			\item Realizar más estudios de usuarios (probar con personas de diferentes etnias).
+			\item Utilizar métodos basados en detección de características (feature-based) de las manos.
+			\item Crear extensiones para aplicaciones.
+			\end{itemize}
+		\end{frame}
+
+	\begin{frame}
+		\transdissolve
+		\frametitle{Agradecimientos}
+		\begin{center}
+			\includegraphics[height=.5\paperheight]{gracias}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\transdissolve
+		\frametitle{Preguntas}
+		\begin{center}
+			\hspace{2cm}
+			\includegraphics[height=.45\paperheight]{preguntas}
+		\end{center}
+	\end{frame}
+
+\end{document}

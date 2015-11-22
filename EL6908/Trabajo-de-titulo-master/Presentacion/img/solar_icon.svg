@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" id="svg2" viewBox="0 0 133.47 133.47" version="1.1">
+  <defs id="defs4">
+    <linearGradient id="linearGradient3242">
+      <stop id="stop3244" stop-color="#ffd000" offset="0"/>
+      <stop id="stop3250" stop-color="#ffb306" offset=".62628"/>
+      <stop id="stop3246" stop-color="#e68200" offset="1"/>
+    </linearGradient>
+    <radialGradient id="radialGradient105547" xlink:href="#linearGradient3242" gradientUnits="userSpaceOnUse" cy="119.53" cx="130.74" r="23.307"/>
+    <linearGradient id="linearGradient105549" y2="-72.33" xlink:href="#linearGradient3242" gradientUnits="userSpaceOnUse" x2="240.12" gradientTransform="matrix(.13120 .12458 -.13120 .12458 205.99 21.827)" y1="-7.9395" x1="175.73"/>
+    <linearGradient id="linearGradient105551" y2="-72.33" xlink:href="#linearGradient3242" gradientUnits="userSpaceOnUse" x2="240.12" gradientTransform="matrix(.12458 -.13120 .12458 .13120 179.66 37.305)" y1="-7.9395" x1="175.73"/>
+    <linearGradient id="linearGradient105553" y2="-72.33" xlink:href="#linearGradient3242" gradientUnits="userSpaceOnUse" x2="240.12" gradientTransform="matrix(-.13120 -.12458 .13120 -.12458 195.14 63.634)" y1="-7.9395" x1="175.73"/>
+    <linearGradient id="linearGradient105555" y2="-72.33" xlink:href="#linearGradient3242" gradientUnits="userSpaceOnUse" x2="240.12" gradientTransform="matrix(-.12458 .13120 -.12458 -.13120 221.46 48.156)" y1="-7.9395" x1="175.73"/>
+  </defs>
+  <g id="layer1" transform="translate(-427.69 -365.25)">
+    <rect id="rect105565" stroke-linejoin="round" height="131.48" width="131.48" stroke="#000" stroke-linecap="round" y="366.25" x="428.68" stroke-width="2" fill="#fff"/>
+    <g id="g105284-5" stroke="#000" transform="matrix(.099377 -.011416 .011416 .099377 448.01 380.65)">
+      <path id="path104984-7-2-5" d="m209.69 378.77-31.18 74.44 21.93 226.31 36.92 61.77 284.98-3.47 38.04-67.98-22.97-229.93-49.07-67.81z" stroke-width="1.1188px" fill="#272747"/>
+      <rect id="rect105001-77-5-7-6" stroke-linejoin="round" transform="matrix(.98352 -.18079 .092119 .99575 0 0)" ry="0" height="363.31" width="5.7626" stroke-linecap="round" y="454.15" x="431.19" stroke-width=".99975" fill="#fff"/>
+      <rect id="rect105001-77-5-7-7-4" stroke-linejoin="round" transform="matrix(.98352 -.18079 .092119 .99575 0 0)" ry="0" height="363.31" width="5.7626" stroke-linecap="round" y="442.5" x="365.57" stroke-width=".99975" fill="#fff"/>
+      <rect id="rect105001-77-5-7-4-56" stroke-linejoin="round" transform="matrix(.98368 -.17994 .092740 .99569 0 0)" ry="0" height="362.23" width="5.7611" stroke-linecap="round" y="416.08" x="196.33" stroke-width=".99813" fill="#fff"/>
+      <rect id="rect105001-4-4-0" stroke-linejoin="round" ry="0" transform="matrix(.052753 .99861 -.99977 .021560 0 0)" height="360.11" width="5.5923" stroke-linecap="round" y="-515.83" x="488.98" stroke-width=".98052" fill="#fff"/>
+      <rect id="rect105001-77-5-7-9-4" stroke-linejoin="round" transform="matrix(.98352 -.18079 .092119 .99575 0 0)" ry="0" height="364.58" width="5.7829" stroke-linecap="round" y="429.41" x="278.55" stroke-width="1.0033" fill="#fff"/>
+      <rect id="rect105001-4-4-2-2" stroke-linejoin="round" ry="0" transform="matrix(.050530 .99872 -.99973 .023406 0 0)" height="363.27" width="5.7153" stroke-linecap="round" y="-526.08" x="645.44" stroke-width=".99558" fill="#fff"/>
+    </g>
+    <g id="layer1-6" transform="translate(74.464 162.37)">
+      <g id="g4759" stroke-linejoin="round" transform="matrix(-1 0 0 -1 597.14 314.51)" stroke="#fffcf6" stroke-linecap="round" stroke-width="1.6757">
+        <path id="path4761" d="m154.05 119.53c0 12.872-10.435 23.307-23.307 23.307s-23.307-10.435-23.307-23.307 10.435-23.307 23.307-23.307 23.307 10.435 23.307 23.307z" fill="url(#radialGradient105547)" transform="matrix(.57644 -.15446 .15446 .57644 106.17 -3.7101)"/>
+        <g id="g4763" transform="matrix(.57644 -.15446 .15446 .57644 77.788 51.347)">
+          <g id="g4765">
+            <path id="path4767" d="m228.76 37.034 20.843 5.6968-20.843 5.6968 1.4224-5.6968-1.4224-5.6968z" fill="url(#linearGradient105549)"/>
+            <path id="path4769" d="m194.86 14.528 5.6968-20.843 5.6968 20.843-5.6968-1.4224-5.6968 1.4224z" fill="url(#linearGradient105551)"/>
+            <path id="path4771" d="m172.36 48.427-20.843-5.6968 20.843-5.6968-1.4224 5.6968 1.4224 5.6968z" fill="url(#linearGradient105553)"/>
+            <path id="path4773" d="m206.26 70.932-5.6968 20.843-5.6968-20.843 5.6968 1.4224 5.6968-1.4224z" fill="url(#linearGradient105555)"/>
+          </g>
+          <g id="g4775" transform="matrix(.70711 -.70711 .70711 .70711 28.528 154.33)">
+            <path id="path4777" d="m228.76 37.034 20.843 5.6968-20.843 5.6968 1.4224-5.6968-1.4224-5.6968z" fill="url(#linearGradient105549)"/>
+            <path id="path4779" d="m194.86 14.528 5.6968-20.843 5.6968 20.843-5.6968-1.4224-5.6968 1.4224z" fill="url(#linearGradient105551)"/>
+            <path id="path4781" d="m172.36 48.427-20.843-5.6968 20.843-5.6968-1.4224 5.6968 1.4224 5.6968z" fill="url(#linearGradient105553)"/>
+            <path id="path4783" d="m206.26 70.932-5.6968 20.843-5.6968-20.843 5.6968 1.4224 5.6968-1.4224z" fill="url(#linearGradient105555)"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -1,0 +1,325 @@
+\section{Título del tema}
+
+Diseño e implementación del software de control para el computador a bordo de un pico-satélite.
+
+\section{Fundamentación y objetivos generales}
+
+Esta memoria se enmarca en el desarrollo del proyecto SUCHAI que consiste en la implementación, lanzamiento y operación de un pico-satélite Cubesat, siendo esta la primera aproximación en esta materia para la universidad y el país. Uno de los componentes fundamentales de un satélite es su computador abordo, sistema encargado de dar inteligencia y operatividad al satélite durante todo su tiempo de vida útil en el espacio. En el caso de un pico-satélite se tiene el desafío de dotar de todas la funcionalidades estándar de un satélite en un sistema computacional de recursos extremadamente limitados, estamos hablando de sistemas embebidos que utilizan microcontroladores de baja potencia y capacidad de cómputo como microcontroladores PIC24 o PIC18.
+
+El objetivo de este trabajo es el diseño, desarrollo e implementación del \textit{software} que gobierna el computador a bordo del satélite. Se requiere diseñar una arquitectura de \textit{software} que abarque desde controladores de hardware hasta la aplicación final para el control de satélite. Esta arquitectura debe cumplir con requerimientos de calidad de \textit{software} como modularidad, expansibilidad y facilidad de mantenimiento estando adaptada en específico a sistemas embebidos que emplean microcontroladores de gama media.
+
+La implementación se llevará a cabo en específico para el satélite SUCHAI y busca proveer la funcionalidad básica de este sistema que incluye la interacción de un computador a bordo, un sistema de control de energía y un sistema de comunicaciones. De esta manera el \textit{software} de control se cuenta como un recurso más que será considerado y adaptado a la necesidades específicas del proyecto en la etapa de integración general de sistemas del satélite.
+
+\section{Bibliografía y Estado del Arte}
+
+Se debe detallar el estado de los siguiente tópicos: satélites; pico-satélites; satélites Cubesat, su estándar y aplicaciones; microcontroladores; sistemas operativos, en especial sistemas operativos para microcontroladores de gama media; arquitectura de software, en especial patrones de diseño.
+
+% \subsection{Satélites}
+% \subsubsection{Pico-satélites}
+% \subsection{Satélites tipo Cubesat}
+% \paragraph{Estándar}
+% \paragraph{Aplicaciones}
+% 
+% \subsection{Microcontroladores}
+% \subsubsection{Microcontroladores PIC}
+% \paragraph{Descripción}
+% \paragraph{Arquitectura}
+% \paragraph{Aplicaciones}
+% 
+% \subsection{Sistemas operativos}
+% \subsubsection{FreeRTOS}
+% 
+% \subsection{Arquitectura de Software}
+% \subsubsection{Patrones de diseño}
+% \paragraph{Command Pattern}
+
+\section{Objetivos específicos}
+Los objetivos específicos del proyecto se enumeran a continuación
+
+\begin{itemize}
+ \item Diseñar una arquitectura de \textit{software} para el sistema de control del satélite
+ \item Implementar controladores de hardware para el microcontrolador
+ \item Implementar controladores de periféricos principales (Transceiver, EPS y RTC)
+ \item Integrar un sistema operativo de tiempo real multitarea como sistema embebido 
+ \item Implementar el flujo principal de la arquitectura del \textit{software} de control del satélite
+ \item Integrar sistema de comunicaciones al \textit{software} de control
+ \item Integrar sistema de energía al \textit{software} de control
+ \item Pruebas del sistema integrado
+\end{itemize}
+
+El listado de objetivos presenta un orden temporal en la ejecución de estas tareas puesto que objetivo es dependiente del cumplimiento de los objetivos anteriores. El trabajo se puede considerar terminado cuando se ha probado la implementación e integración del \textit{software} con los módulos de comunicaciones y energía obteniendo un sistema satelital con las mínimas funcionalidades.
+
+\section{Antecedentes generales}
+
+El trabajo de memoria se enmarca en el proyecto SUCHAI (Satellite of University of Chile for Aerospace Investigation) cuyo objetivo es desarrollo, lanzamiento y operación de un pico-satélite tipo Cubesat con fines educacionales y de investigación. El proyecto es generado por el profesor guía quien convoca a alumnos de pregrado a desarrollar el proyecto bajo la guía del líder del proyecto el Ing. Alex Becerra.\\
+
+El éxito del proyecto depende del correcto desarrollo e integración de tres áreas fundamentales de cualquier vehículo satelital: la inteligencia programada en el computador a bordo; el suministro y gestión de la energía eléctrica mediantes paneles solares y baterías; y la capacidad de contar con un enlace de radio que permita obtener información de telemetría del satélite así como enviar telecomandos que definan su operación.\\
+
+Contar con un vehículo espacial de estas características permite a los académicos de diferentes áreas el desarrollo de experimentos y estudios que requieren condiciones especiales de gravedad; atmosféricas; o una determinada altitud. En este caso se pretende poner en órbita como payloads: una dispositivo \textit{lagmuir probe} que estudia variaciones del plasma en la ionosfera; un experimento del departamento de física sobre electrónica en gravedad cero; así como una cámara fotográfica para captar la tierra y el satélite mismo. 
+
+\section{Antecedentes específicos}
+
+El proyecto se encuentra en considerable estado de avance, pero este trabajo de memoria pretende formalizar; formar metodología; y documentar técnicas de desarrollo de software para sistemas electrónicos de muy bajo nivel para misiones críticas como lo significa una misión aeroespacial.\\
+
+No obstante el proyecto comienza desde cero, debido a que el conocimiento sobre desarrollo de proyectos aeroespaciales en la universidad y en el país se encontraba completamente detenido.
+
+\newpage
+\section{Infraestructura disponible}
+\subsection{Instalaciones}
+El proyecto se desarrolla en las dependencias de la facultad, específicamente el laboratorio SPEL (\textit{Spacial and Planetary Exploration Laboratory}), tercer piso del edificio de Electrotecnologías. Este laboratorio alberga proyectos relacionados el desarrollo de radiosondas para monitoreo de condiciones climáticas, radares y proyectos aeroespaciales como el SUCHAI.
+
+\subsection{Hardware}
+\paragraph{Cubesat Kit}
+Parte fundamental del hardware disponible corresponde a un Cubesat Kit adquirido a la compañía Pumpkins. El kit incluye la estructura de un Cubesat de una unidad con un microcontrolador PIC24F256GA110; una placa de desarrollo para el mismo sistema; y herramientas de programación y \textit{debug} para el microcontrolador.
+
+%···················· FIGURE ····················
+\begin{figure}[!h] 
+\centering \includegraphics[scale=1.3]{img/cubesatkit.jpg}
+\caption{Cubesat Kit} \label{cubesatkit}
+\end{figure}
+%················································
+
+\paragraph{Transceiver}
+Se cuenta con un sistema de comunicaciones que consta de un \textit{transceiver} satelital FSK para la banda de 430MHz de la empresa ALLSPACE adaptado al estándar Cubesat. Es el sistema encargado de recibir los telecomandos desde tierra y transmitir hacia la estación terrena la telemetría generada por el satélite.\\
+
+Se cuenta además con una estación terrena dotada con un sistema de radio en la banda de 430MHz, incluyendo antena y control de posición de la misma; un TNC para digitalizar la señal de radio; y un servidor para controlar los equipos de forma remota.
+
+\paragraph{EPS}
+Se adquiere un sistema de control de energía para el satélite que incluye baterías de litio, panales solares y un sistema de control para medir variables importantes de energía y ajustar su funcionamiento.
+
+\paragraph{Equipos de medición}
+El laboratorio cuenta con un osciloscopios; analizadores de espectro; generadores de señales; cajas limpias, para pruebas que requieren entornos descontaminados; entre otros.
+
+\subsection{Software}
+La mayor parte del software utilizado por el proyecto es de código libre o gratuito. Se desataca la amplia utilización de sistemas Linux para el desarrollo de este trabajo.
+
+\paragraph{Entorno de desarrollo}
+Para el desarrollo de la aplicación para el microcontrolador PIC24F se utiliza el entorno de desarrollo MPLABX de Microchip, que es gratuita y se observa en la figura \ref{mplabx}; se utiliza el compilador MPLAB C30, en versión lite, gratuito; se tiene un sistema de control de versiones mediante SVN.
+
+%···················· FIGURE ····················
+\begin{figure}[!h] 
+\centering \includegraphics[scale=0.6]{img/mplabx.png}
+\caption{Entorno de desarrollo MPLABX} \label{mplabx}
+\end{figure}
+%················································
+
+\paragraph{Sistema operativo}
+Para dotar de funcionalidades avanzadas de multitarea al microcontrolador se ha utilizado el sistema operativo de tiempo real FreeRTOS de código libre y gratuito; adaptado especialmente a microcontroladores de gama media como el utilizado en el proyecto.
+
+\section{Condiciones contractuales}
+El desarrollo de este trabajo se enmarca dentro del proyecto SUCHAI el cual es patrocinado y financiado por la Facultad de Ciencias Físicas y Matemáticas de la Universidad de Chile.
+
+Siendo alumno regular de la carrera Ingeniería Civil Electricista de la Universidad de Chile, parte del trabajo realizado para esta memoria ha sido considerado en el desarrollo de los cursos Seminario de Diseño e Innovación Tecnológica I, II y III (ME4030, EL5030, EL6030).
+
+% ==== Plan de trabajo extenso ====
+
+% \section{Plan de trabajo}
+% 
+% 	\begin{enumerate}
+% 	\item Documentación 
+% 
+% 	\begin{enumerate}
+% 	\item Programación en C
+% 	\item Programación de Microcontroladores PIC24
+% 	\item Sistemas operativos de tiempo real
+% 	\item Sistema Operativo FreeRTOS
+% 	\item Gestión del equipo de trabajo
+% 
+% 	\begin{enumerate}
+% 	\item Carta Gantt área electrónica
+% 	\item Planilla de registro de actividades del equipo
+% 	\end{enumerate}
+% 	\end{enumerate}
+% 	\item Controladores de hardware. Funcionamiento y pruebas independientes
+% 
+% 	\begin{enumerate}
+% 	\item Organización y utilización de repositorio de software SVN
+% 	\item Recepción del Cubesat kit. Pruebas de funcionamiento básicas
+% 	\item Programación de drivers para microcontrolador PIC24F y periféricos
+% 
+% 	\begin{enumerate}
+% 	\item ADC (TOo)
+% 	\item I2C
+% 	\item UART
+% 	\item SPI (TOo)
+% 	\item PWM (TOo)
+% 	\item RTCC (FRa)
+% 	\end{enumerate}
+% 	\item Drivers para el manejo estándar de la MB y el PPM del Cubesat kit
+% 
+% 	\begin{enumerate}
+% 	\item 
+% 	\bigskip
+% 	\item RTC M41T81S
+% 	\item Memoria Flash AT25DF641 (DVa)
+% 	\end{enumerate}
+% 	\item \ Drivers para \ Transceiver
+% 
+% 	\begin{enumerate}
+% 	\item Pruebas con software ALLSPACE
+% 
+% 	\begin{enumerate}
+% 	\item Configuración
+% 	\item Beacon
+% 	\item Telemetría
+% 	\item Telecomandos
+% 	\end{enumerate}
+% 	\item Programación de drivers
+% 
+% 	\begin{enumerate}
+% 	\item Configuración
+% 	\item Beacon
+% 	\item Telemetría
+% 	\item Telecomandos
+% 	\end{enumerate}
+% 	\item Pruebas utilizando drivers
+% 
+% 	\begin{enumerate}
+% 	\item Configuración
+% 	\item Beacon
+% 	\item Telemetría
+% 	\item Telecomandos
+% 	\end{enumerate}
+% 	\end{enumerate}
+% 	\item \ Drivers de EPS (FRs)
+% 
+% 	\begin{enumerate}
+% 	\item Pruebas EPS
+% 	\item Programación de drivers EPS
+% 	\item Pruebas de EPS con drivers
+% 	\end{enumerate}
+% 	\end{enumerate}
+% 	\item Sistema Operativo
+% 
+% 	\begin{enumerate}
+% 	\item Incorporación de un SO de tiempo real preemptive \ que permite la
+% 	ejecución de tareas simultáneamente y sincronización
+% 	\item Pruebas con Salvo (Insatisfactorias)
+% 	\item Pruebas con FreeRTOS (Sistema seleccionado)
+% 	\end{enumerate}
+% 	\item Aplicaciones (Software SUCHAI)
+% 
+% 	\begin{enumerate}
+% 	\item Evaluación y diseño de arquitectura de software
+% 
+% 	\begin{enumerate}
+% 	\item Arquitectura basada en módulos por cada sistema (Desechada)
+% 	\item Reunión con colaboradores del DCC
+% 	\item Arquitectura basada en patrón de diseño ?Command Pattern?
+% 	\end{enumerate}
+% 	\item Implementación de sistema de inicialización del satélite (TOo)
+% 
+% 	\begin{enumerate}
+% 	\item Tarea de inicialización del sistema (TaskDeployment).
+% 	\item Comprobación de inactividad en los 30min posteriores al
+% 	lanzamiento
+% 	\item Rutina para el despliegue de antenas
+% 	\item Inicializaciones del software SUCHAI
+% 	\item Creación de Listeners
+% 	\item Término de la tarea taskDeployment
+% 	\end{enumerate}
+% 	\item Implementación de la arquitectura de software basada en comandos.
+% 
+% 	\begin{enumerate}
+% 	\item Implementar Listeners (Varias tareas simultaneas)
+% 
+% 	\begin{enumerate}
+% 	\item Console, interprete de consola serial
+% 	\item Communications, recepción de TC y envio de TM
+% 	\item FlightPlan, itinerario de activiades
+% 	\item HouseKeeping, control rutinario interno del sistema
+% 	\item Generación de comandos
+% 	\item Inteligencias basada en repositorio de datos o algún dispositivo
+% 	específico (TRX, EPS o Payloads). 
+% 	\end{enumerate}
+% 	\item Implementar Dispatcher
+% 
+% 	\begin{enumerate}
+% 	\item Recibe en una cola los comandos provenientes desde diferentes
+% 	listeners
+% 	\item Decide la ejecución de cada comando
+% 
+% 	Según estado de energía
+% 	\item Envía comando a Executer para su final ejecución
+% 	\item Recibe estatus de ejecución del comando
+% 	\end{enumerate}
+% 	\item Implementar Executer
+% 
+% 	\begin{enumerate}
+% 	\item Solo un executer a la vez
+% 	\item Cada comando posee todo el procesador y recursos
+% 	\item Máximo 2min de ejecución (WDT)
+% 	\end{enumerate}
+% 	\item Implementar Repositorio de datos (TOo)
+% 
+% 	\begin{enumerate}
+% 	\item Actualizado constantemente desde el Listener Housekeeping usando
+% 	los comandos cmdDRP
+% 	\item Contiene variables de estado
+% 
+% 	mPPC\_state variables del PIC, PPM y MB
+% 	mDEP\_state variables del Despliegue de antenas
+% 	mRTC\_state variables con la hora actual
+% 	mEPS\_state variables de la EPS
+% 	mTRX\_state variables del TRX
+% 	\item Contiene el plan de vuelo
+% 	\item Necesidad de sincronización
+% 	\end{enumerate}
+% 	\item Implementar Repositorio de comandos
+% 
+% 	\begin{enumerate}
+% 	\item Generar sintaxis estándar de comandos
+% 
+% 	Estructura de comandos para dispatcher
+% 	Estructura de comandos para executer
+% 	Sintaxis estándar de comandos
+% 	\item Almacena la lista de comandos disponibles
+% 
+% 	Arreglos con comandos para cada área
+% 	\item Documentación y control de comandos disponibles (TOo)
+% 
+% 	Identificador único que incluye área y código
+% 	Planilla online para referencia y control
+% 	\item Implementación de comandos para cada módulo necesario
+% 
+% 	cmdConsole, consola serial.
+% 	cmdPPC, microprocesador.
+% 	cmdDRP, actualizar repositorio de datos.
+% 	cmdTRX, funcionalidades de comunicaciones
+% 	cmdEPS, funcionalidades de energia
+% 	cmdRTC, funcionalidades para RTC
+% 	cmdPAY, funcionalidades específicas a un payload
+% 	\end{enumerate}
+% 	\end{enumerate}
+% 	\end{enumerate}
+% 	\item Integración de Hardware básico
+% 
+% 	\begin{enumerate}
+% 	\item Integración de TRX
+% 
+% 	\begin{enumerate}
+% 	\item Conexión con cable coaxial del TRX con la antena
+% 	\item Recepción de telemetría en estación terrena
+% 	\item Envío de telecomandos desde estación terrena
+% 	\end{enumerate}
+% 	\item Integración de EPS
+% 
+% 	\begin{enumerate}
+% 	\item Medición de consumo energético (si aplica)
+% 	\item Comprobación de que los killswitch (BATT POS) cortan la
+% 	alimentación de la EPS hacia el bus 5V\_sys Vcc\_sys y V\_batt
+% 	\item Comprobación de alimentación de buses de energia
+% 	\item Comprobación de carga de baterías
+% 	\item Comprobar sistema de estimación de carga
+% 	\end{enumerate}
+% 	\end{enumerate}
+% 	\item Pruebas generales
+% 
+% 	\begin{enumerate}
+% 	\item Pruebas de funcionamiento prolongado
+% 	\item Pruebas de funcionamiento intenso
+% 	\item Pruebas de control de fallos (simulados)
+% 	\item Pruebas de telecomandos
+% 	\item Pruebas de telemetría
+% 	\end{enumerate}
+% 	\end{enumerate}

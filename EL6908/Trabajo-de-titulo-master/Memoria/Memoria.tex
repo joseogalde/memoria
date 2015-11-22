@@ -1,0 +1,210 @@
+\documentclass[upright, contnum]{umemoria}
+\depto{INGENIERÍA ELÉCTRICA}
+\author{CARLOS EDUARDO GONZÁLEZ CORTÉS}
+\title{DISEÑO E IMPLEMENTACIÓN DEL SOFTWARE DE VUELO PARA UN NANO-SATÉLITE TIPO CUBESAT}
+
+\auspicio{\ }
+\date{AÑO 2013}
+\guia{MARCOS DÍAZ QUEZADA}
+\carrera{INGENIERO CIVIL ELÉCTRICO}
+\comision{CLAUDIO ESTÉVEZ MONTERO}{ALEX BECERRA SAAVEDRA}{\ }
+
+% \usepackage{lipsum}
+
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{subfig}  %Subfloat
+%\usepackage[printonlyused,withpage]{acronym} %Acronimos
+
+\usepackage{tabularx}
+\usepackage{listings} %Codigo
+\usepackage{xcolor}
+\usepackage{dirtree}
+\usepackage{multirow}
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=tb,
+  %xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\color{gray!80!black}, %\itshape\color{gray!40!black},
+  identifierstyle=\color{black},
+  stringstyle=\color{orange},
+  tabsize=4,
+  numbers=left,
+  numberstyle=\ttfamily\footnotesize
+}
+
+\lstset{style=customc}
+
+\captionsetup{labelfont=bf,font={normal,sl},justification=centerlast}
+\renewcommand{\lstlistingname}{Código}
+
+\addto\captionsspanish{\renewcommand{\listfigurename}{Índice de ilustraciones}}
+\addto\captionsspanish{\renewcommand{\contentsname}{Tabla de contenido}}
+
+\usepackage[xindy={language=spanish,codepage=utf8},nonumberlist,style=super]{glossaries}
+\makeglossaries
+\include{glosario}
+\GlsSetXdyLanguage{spanish} 
+\renewcommand*{\glsgroupskip}{}  
+\renewcommand*{\glsdescwidth}{7in}
+\renewcommand{\glossaryname}{Glosario}
+
+
+% ========== COMANDOS PERSONALIZADOS =======
+
+% >>> figura 
+%[1: Descripcion 2: ruta imagen, 3: medida, 4: caption, 5: label, 6: posicion]
+%Ej: \figura[descripcion larga]{portada.png}{width=10cm}{descripcion}{fig:portada}{H}
+\newcommand{\figura}[6][ ]
+{
+   \begin{figure}[#6]
+     \centering \includegraphics[#3]{#2} 
+     \caption[#4]{#4. #1}\label{#5}
+   \end{figure}
+}
+
+% >>> figura con controrno
+%[1: Descripcion 2: ruta imagen, 3: medida, 4: caption, 5: label, 6: posicion]
+%Ej: \figura[descripcion larga]{portada.png}{width=10cm}{descripcion}{fig:portada}{H}
+\newcommand{\figurabox}[6][ ]
+{
+   \begin{figure}[#6]
+     \centering \fbox{\includegraphics[#3]{#2}}
+     \caption[#4]{#4. #1}\label{#5}
+   \end{figure}
+}
+
+% >>> figura 2
+%[1: ruta imagen 1, 2: medida 1, 3: caption 1
+% 4: ruta imagen 2, 5: medida 2, 6: caption 2
+% 7: caption global 8: lavel]
+%Ej: \figura{portada1.png}{width=10cm}{descripcion 1}
+%           {portada2.png}{width=10cm}{descripcion 2}
+%           {descripcion global}{fig:portada}
+% \newcommand{\figura2}[8]
+% {
+% 	\begin{figure}[ht!] \centering
+% 	\subfloat[#3]{\includegraphics[#2]{#1}}
+% 	\hspace{1cm} %Espacio horizontal
+% 	\subfloat[#6]{\includegraphics[#5]{#4}}
+% 	\caption{#7}\label{#8}
+% 	\end{figure}
+% }
+
+% >>> tabla 
+%[1: ruta imagen, 2: medida, 3: caption, 4: label]
+%Ej: \tabla{portada.png}{width=10cm}{descripcion}{fig:portada}{H}
+\newcommand{\tabla}[5]
+{
+   \begin{table}[#5]
+     \caption{#3}\label{#4}
+     \centering \includegraphics[#2]{#1} 
+   \end{table}
+}
+
+\begin{document}
+
+% ========= PRIMERAS PAGINAS =========
+\frontmatter
+\maketitle
+
+\begin{abstract}
+
+El estándar de nanosatélites Cubesat fue pensado para facilitar el desarrollo de pequeños proyectos espaciales con fines científicos y educacionales, a un bajo costo y en cortos periodos de tiempo. Siguiendo esta línea, la Facultad de Ciencias Físicas y Matemáticas de la Universidad de Chile ha impulsado el proyecto SUCHAI, que consiste en implementar, poner en órbita y operar el primer satélite desarrollado por una universidad del país. El computador a bordo de la aeronave, que consiste un sistema embebido de limitada capacidad de cómputo, escasa memoria y bajo consumo de energía, debe ejecutar el \textit{software} de vuelo que controlará sus operaciones una vez en órbita. El objetivo de este trabajo es el diseño e implementación de este \textit{software} para el satélite SUCHAI, como una solución confiable, flexible y extensible que sea la base para futuras misiones aeroespaciales.
+
+El diseño del \textit{software} consiste en una estructura de tres capas, que consigue dividir el problema convenientemente. La de más bajo nivel considera los controladores de \textit{hardware}, la capa intermedia alberga al sistema operativo, y la de nivel superior, contiene los detalles de la aplicación requerida específicamente para este sistema. Para la arquitectura de la capa de aplicación, se estudia y aplica el concepto de patrón de diseño, en específico, se realiza una adaptación de \textit{command pattern}. De esta manera, el satélite se concibe como un ejecutor de comandos genéricos y se obtiene una solución mantenible, modificable y extensible en el tiempo, mediante la programación de los comandos concretos que sean requeridos. La implementación se realiza sobre un PIC24F y considera controladores para los periféricos I2C, RS232 y SPI, así como para los subsistemas de radiocomunicaciones y energía. Se decide utilizar el sistema operativo FreeRTOS, como capa intermedia, lo que permite contar con el procesamiento concurrente de tareas, herramientas de temporización y sincronización. Se ha puesto especial énfasis en la implementación de la arquitectura planteada para la capa de aplicación, consiguiendo un \textit{software} capaz de ejecutar una serie de comandos, programados para cumplir los requerimientos operacionales del proyecto, lo cual representa el método principal para extender sus funcionalidades y adecuarse a futuras misiones.
+
+Para probar y verificar el sistema desarrollado, se ha utilizado la técnica denominada \textit{hardware on the loop simulation}. Se han obteniendo datos de funcionamiento, bajo condiciones de operación hipotéticas, a través del registro generado por la consola serial. Con esto se verifican los requerimientos operacionales de la misión, con resultados exitosos, obteniendo el sistema base y funcional del satélite. Como trabajo futuro, se utilizará este \textit{software} para integrar el resto de los sistemas del satélite SUCHAI, demostrando su capacidad de adaptación y extensión, en un paso previo a la prueba final: funcionar adecuadamente en el espacio exterior.
+
+\end{abstract}
+
+\begin{dedicatoria}
+A mis padres Carlos González Espeleta y Paula Cortés González por que les debo todo lo que soy, porque gracias a su gran esfuerzo y apoyo incondicional he podido llegar a estas instancias en la vida, los amo. A mis hermanas, siempre estaré con ustedes.
+
+A Marcia, mi amor, por su invaluable apoyo, comprensión y dedicación. Junto a ti han transcurrido estos maravillosos años y has sido parte fundamental para lograr mis metas. Te amo.
+\end{dedicatoria}
+
+\begin{thanks}
+A mi familia, por su incondicional apoyo y compresión a lo largo de todo este proceso. En especial a mis padres por su gran esfuerzo, por su confianza, por haber sembrado en mi, desde muy pequeño, la motivación para ser una gran profesional. Con su ejemplo, me han enseñado la lección más importante: el trabajo dedicado, el esfuerzo y la perseverancia son las claves para lograr las metas en la vida, la felicidad personal y la de quienes te rodean. Por siempre les estaré agradecido.
+
+A los miembros de mi comisión, por la confianza depositada en mí, su apoyo y aporte, que ha sido vital en mi formación como profesional. Al profesor Marcos Díaz, quien nos ha confiado el desarrollo de este proyecto que ha sido fundamental para mi desarrollo profesional y personal, por compartir su visión sobre el desarrollo y misión del ingeniero de la Universidad de Chile, por su constante motivación y disposición. A Alex Becerra, quien ha hecho posible el proyecto SUCHAI, siempre dispuesto a compartir el conocimiento, por la gran confianza depositada en mi y por su invaluable apoyo en el desarrollo de este trabajo.
+
+A todos los miembros del proyecto SUCHAI, porque este trabajo integra, de manera directa o indirecta, el esfuerzo de todo el equipo, se agradece y reconoce la labor de cada uno. En especial a Tomás Opazo, cuya contribución al proyecto ha sido fundamental, por ser un gran compañero y amigo. A Francisco Reyes, quien desarrolló el \textit{software} del sistema de energía y la consola serial. Al equipo de comunicaciones: Felipe Troncoso, Sebastián Derteano y Camilo Rojas, grandes amigos. Al equipo de energía: Juan Carlos Piña, Pablo Bilbao y Francisco Reyes, grandes amigos y compañeros. Participar en este proyecto ha sido la mejor experiencia en mi formación universitaria, tanto por los desafíos que presentó, como por el excelente grupo humano que se formó entorno al laboratorio.
+
+A todos los miembros del laboratorio ALGES, por su compresión y apoyo durante en el desarrollo de la memoria. A Miguel Patiño, por su gran disposición y ayuda, siempre con una solución a la mano.
+
+A todos, muchas gracias.
+\end{thanks}
+
+\cleardoublepage
+\tableofcontents
+
+\cleardoublepage
+\listoftables
+
+\cleardoublepage
+\listoffigures
+
+% ================ CAPITULOS =========
+\mainmatter
+\input{el6908_ch1.tex}
+\input{el6908_ch2.tex}
+\input{el6908_ch3.tex}
+\input{el6908_ch4.tex}
+\input{el6908_ch5.tex}
+\input{el6908_ch6.tex}
+
+% ============= GLOSARIO ==========
+\newpage
+\addcontentsline{toc}{chapter}{Glosario}
+\nocite{*}
+\glsaddall
+\printglossaries
+
+% ============= BIBLIOGRAFIA ==========
+\newpage
+\addcontentsline{toc}{chapter}{Bibliografía}
+\nocite{*}
+\bibliographystyle{ieeetr}
+\bibliography{bibliografia.bib}
+
+% ============= APENDICES ==========
+\newpage
+% \addcontentsline{toc}{chapter}{}
+% \nocite{*}
+\chapter*{Anexos}
+Los anexos de trabajo se presentan en un CD-ROM adjunto en la parte posterior del documento. En este encuentran las siguientes carpetas:
+
+\begin{itemize}
+    \item \textbf{Anexo A - Sistema Base}: contiene los programas desarrollados en la sección \ref{ch4} que conforman la base de la aplicación.
+    
+    \item \textbf{Anexo B - \textit{Software SUCHAI}}: contiene todos los códigos del \textit{software} de vuelo de satélite, en su versión 1.1. Este fue el programa sobre el cual se desarrollaron las pruebas del capítulo \ref{ch5}.
+\end{itemize}
+
+
+\end{document}
+
+
+% %···················· FIGURE ····················
+% \begin{figure}[!h] 
+% \centering \includegraphics[scale=.2]{fcfm}
+% \caption{Logo de la Facultad} \label{logofcfm}
+% \end{figure}
+% %················································
+
+% %···················· FIGURE ····················
+% \begin{figure}[ht!] \centering
+% \subfloat[Esquemático]{\includegraphics[scale=0.44]{img/seguidor.png}}
+% \subfloat[Simulación]{\includegraphics[scale=0.45]{img/seguidor1.png}}
+% \caption{Simulación como seguidor de voltaje}\label{seguidor}
+% \end{figure}
+% %················································
+
+% %------------------- MONITORIZAR - RAE --------------
+%monitorear. A partir del sustantivo monitor (del ingl. monitor ?dispositivo o pantalla de control?), se han creado en español los verbos monitorizar y monitorear, con el sentido de ?vigilar o seguir [algo] mediante un monitor?: ``Durante estos experimentos [...] se monitorizaron los cambios fisiológicos de los animales'' (Mundo [Esp.] 10.4.97); ``Desde la pantalla se puede monitorear la ubicación de las unidades de emergencia'' (Clarín [Arg.] 11.9.97). En España se emplea solo monitorizar, mientras que en América se usa casi exclusivamente monitorear, que ha adquirido incluso el sentido general de ?supervisar o controlar?: ``La misión de la ONU [...] terminará con la salida de los oficiales que actúan monitoreando los acuerdos alcanzados entre las facciones'' (Observador [Ur.] 10.2.97). Derivados de los respectivos verbos son los sustantivos monitoreo y monitorización, con la misma distribución geográfica antes señalada.

@@ -1,0 +1,24 @@
+Nombre	Estado	Beacon	Estado	Beacon	Estado	Beacon	Estado	Beacon
+Hora del registro	17:38:36		18:34:36		19:38:36		20:11:37	
+Modo de operación	1	1	1	1	1	1	1	1
+Horas sin reset	0	0	1	1	2	2	0	0
+Contador de reset	0	0	0	0	0	0	7	7
+Antena desplegada	1	1	1	1	1	1	1	1
+Intentos de despliegue	7	7	7	7	7	7	7	7
+Hora de despliegue	17	H	17	H	17	H	17	H
+Minuto de despliegue	30	30	30	30	30	30	30	30
+Voltaje baterías [V]	7,6313	7,6	7,70642	7,7	7,80971	7,8	7,64069	7,6
+Temperatura baterías [C]	19,058	19	19,873	19	19,873	19	18,406	18
+Nivel de carga [SOC]	4	4	5	5	6	6	4	4
+Baterías cargando	0	0	1	1	1	1	0	0
+Promedio RSSI [dBm]	-52	-78	-51	-78	-54	-78	-52	-78
+Contador de TM	0	0	0	0	0	0	0	0
+Contador de TC	0	0	0	0	0	0	0	0
+Estado memoria SD	1	1	1	1	1	1	1	1
+								
+								
+								
+								
+	230	7,6	222	7,7	211	7,8	229	7,6
+	560	19	555	19	555	19	564	18
+			896					

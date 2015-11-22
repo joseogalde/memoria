@@ -1,0 +1,694 @@
+\renewcommand{\lstlistingname}{Registro}
+
+\chapter{Pruebas y resultados}\label{ch5}
+En este capítulo se detallan y discuten los resultados obtenidos luego de la implementación del sistema. Se analiza el funcionamiento del satélite, con sus tres subsistemas básicos integrados, y se revisa el cumplimiento de las funcionalidades esperadas por el equipo del proyecto SUCHAI. Las pruebas se realizan sobre las versión 1.1 del \textit{software} de vuelo, el cual se encuentra disponible en los anexos.
+Se realizan pruebas de rendimiento y se obtienen estadísticas del uso de los recursos de \textit{hardware}, para así determinar si la solución es adecuada para la plataforma objetivo.
+
+\section{Pruebas de rendimiento}
+\subsection{Estadísticas del programa}
+Mediante las herramientas que provee el \gls{IDE} MPLABX, se obtienen diferentes estadísticas sobre el código que se ha programado, para generar una medida básica de la envergadura del proyecto. Lo anterior se muestra en la tabla \ref{ch5:table:code_stats}.
+
+\begin{table}[h]\caption{Estadísticas del código}
+\centering
+\begin{tabular}{ll}
+\hline
+\textbf{Lineas de código} & 17475 \\
+\textit{\textbf{Commits}} & 986   \\
+\textit{\textbf{Tags}}    & 2     \\
+\textbf{Contribuyentes}   & 4     \\
+\textbf{Comandos}         & 107   \\ \hline
+\end{tabular}\label{ch5:table:code_stats}
+\end{table}
+
+\subsection{Estadísticas de uso de memoria}
+A continuación, se detalla el uso de memoria de programa y datos que utiliza el \textit{software}, luego de ser compilado y programado en el microcontrolador. Los resultados se detallan en la tabla \ref{ch5:table:memoria}.
+
+\begin{table}[h]\caption{Uso de memoria de la aplicación}
+\centering
+\begin{tabular}{llll}
+\hline
+\textbf{Memoria} & \textbf{Usada [bytes]} & \textbf{Total [bytes]} & \textbf{Porcentaje de uso}                   \\ \hline
+RAM              & 9688                   & 16384                  & 59\% \\
+FLASH            & 37566                  & 87548                  & 43\% \\ \hline
+\end{tabular}\label{ch5:table:memoria}
+\end{table}
+
+Lo anterior, demuestra que la solución programada se ajusta a la cantidad de memoria de datos y de programa disponibles. A pesar de la reducida cantidad de memoria de programa disponible, aún queda más del 50\% libre para programar más comandos y nuevas funcionalidades. Lo más crítico es la memoria \gls{RAM}, que se encuentra utilizada en cerca del 60\%, lo cual podría ver reducida la capacidad de agregar nuevos \textit{listeners}. Esto porque cada tarea del sistema operativo requiere reservar una cantidad de memoria para su funcionamiento.
+
+Otro punto importante a considerar, es la cantidad de memoria asignada al sistema operativo, y la configuración de memoria de \textit{stack} que se ha asignado a las diferentes tareas. Si la memoria no es suficiente, se pueden generar condiciones de \textit{stack overflow} que dejarían al sistema inestable o no funcional. La asignación de memoria para las tareas se realiza de manera experimental, según los requerimientos de la aplicación \cite{FREERTOS_PIC24}. Para comprobar que no existen problemas, se realiza la tabla \ref{ch5:table:memoria_freertos} a partir de la salida de depuración que provee el entorno de desarrollo.
+
+\begin{table}[h]\caption{Uso de memoria del sistema operativo}
+\centering
+\begin{tabular}{lllll}
+\hline
+\multirow{2}{*}{\textbf{Tarea}} & \multirow{2}{*}{\textbf{Prioridad}} & \multicolumn{3}{c}{\textbf{Memoria [bytes]}}                                                                                \\ \cline{3-5} 
+                                &                                     & \multicolumn{1}{c}{\textbf{Asignada}} & \multicolumn{1}{c}{\textbf{Usada}} & \multicolumn{1}{c}{\textbf{Porcentaje de uso}} \\ \hline
+idle                            & 0                                   & 115                                   & 79                                 & 69\%                                            \\
+flightplan                      & 2                                   & 230                                   & 145                                & 63\%                                            \\
+communications                  & 2                                   & 230                                   & 125                                & 54\%                                            \\
+console                         & 2                                   & 230                                   & 91                                 & 39\%                                            \\
+housekeeping                    & 2                                   & 230                                   & 97                                 & 42\%                                            \\
+dispatcher                      & 3                                   & 230                                   & 109                                & 47\%                                            \\
+executer                        & 4                                   & 575                                   & 85                                 & 14\%                                            \\ \hline
+\end{tabular}\label{ch5:table:memoria_freertos}
+\end{table}
+
+La tabla muestra que la asignación de memoria de las tareas es la correcta, en cuanto ninguna está utilizando la totalidad del valor asignado. La cantidad de memoria utilizada por una tarea es una variable dinámica, que depende de las acciones concretas que esta ejecutando la aplicación, por lo que siempre se debe dejar un margen de seguridad en la asignación. El caso mas crítico es el \textit{executer}, debido a que ejecuta una variedad de comandos, por lo tanto, el dato mostrado en la tabla \ref{ch5:table:memoria_freertos} no es confiable y se debe asignar la mayor cantidad de memoria de \textit{stack} posible para evitar que algún comando cause \textit{stack overflow}.
+
+\subsection{Estadísticas de uso del procesador}
+Para evaluar si la solución implementada es adecuada, se debe considerar el porcentaje de uso del procesador, bajo condiciones de operación nominales. Este parámetro indica si la \gls{CPU} se ve sobre cargada con la ejecución del \textit{software} o bien, si quedan recursos disponibles para agregar más funcionalidades.
+
+Para obtener estos resultados la técnica habitual es contabilizar el porcentaje de tiempo en que el sistema operativo no tiene tareas por ejecutar y, por lo tanto, se encuentra en estado \textit{idle}. Esto se logra generando una señal cada vez que se entra en este estado, en este caso, se imprime por consola serial el valor de una variable, como se detalla en la figura \ref{ch5:img:test:cpu_usage}
+
+%[1: ruta imagen, 2: medida, 3: caption, 4: label, 5: posicion]
+\figura[El registro cambia de 0 a 1 cada vez que se entra en estado idle. Si no hay tareas que ejecutar esto ocurre cada 100 ms, de otro modo se observan periodos más largos.]{img/plot_uso_cpu.png}{width=0.99\textwidth}{Registro de uso del procesador}{ch5:img:test:cpu_usage}{hb!}
+
+Con estos datos, se procede a determinar la cantidad de veces en que la transición de la variable toma 100 ms. (el periodo de los \textit{ticks} del sistema), lo que indica que el sistema operativo estuvo un ciclo completo sin tareas que ejecutar. Como se detalla en la figura \ref{ch5:img:result:cpu_usage} se obtiene un 91.8\% de disponibilidad. Esto significa que el procesador puede ejecutar sin problemas la solución implementada, dejando espacio para agregar más funcionalidades.
+
+%[0: descripcion, 1: ruta imagen, 2: medida, 3: caption, 4: label, 5: posicion]
+\figura[La solución no sobrecarga la \gls{CPU}, dejando un 91.8\% de capacidad de cómputo para nuevas funcionalidades]{img/pie_uso_cpu.png}{width=0.7\textwidth}{Porcentaje de uso del procesador}{ch5:img:result:cpu_usage}{hb!}
+
+
+%\section{Pruebas de arquitectura}
+%TODO Diagrama con la arquitectura y las salidas
+
+\section{Pruebas de integración}
+Con las pruebas de integración se busca determinar el cumplimiento de los requerimientos operacionales del proyecto, especialmente aquellas capacidades que dependen directamente de la implementación del \textit{software} de vuelo. Para esto, se han integrado los tres sub-sistemas básicos del satélite (computador a bordo, energía y comunicaciones) y el sistema se hace funcionar durante un tiempo prolongado simulando condiciones de operación nominales siguiendo la técnica denominada \textit{hardware in the loop simulation} común en las pruebas de sistemas embebidos complejos.
+
+\subsection{Configuración}
+
+Las herramientas utilizadas para el desarrollo de la prueba consisten en:
+\begin{itemize}
+    \item Entorno de prueba:
+    \begin{itemize}
+        \item Caja limpia para albergar el satélite.
+        \item Computador para registro de datos.
+        \item Programador Microchip ICD3.
+        \item Cable \gls{USB} para comunicación serial.
+        \item Equipo de radio portátil \gls{UHF}.
+        \item Cámara de video para registro de la prueba.
+        \item Multímetro.
+    \end{itemize}
+
+    \item Estación terrena:
+    \begin{itemize}
+        \item Antena monopolo, 50$\Omega$, de baja ganancia.
+        \item Equipo de radio ICOM 910H.
+        \item Computador para capturar y procesar audio.
+    \end{itemize}
+    
+    \item Satélite:
+    \begin{itemize}
+        \item Computador a bordo con placa madre CubesatKit rev. D y módulo de procesador CubesatKit D1 con PIC24F256GA110.
+        \item \gls{EPS} CS-1UEPS2-NB ClydeSpace
+        \item Transceptor AllSpace ASCOM-01 rev. 3
+        \item Paneles solares.
+    \end{itemize}
+\end{itemize}
+
+El montaje de la prueba, como se muestra en la figura \ref{ch4:test:montaje}, consiste en mantener el satélite dentro de la cámara limpia conectado, a través de un cable \gls{USB}, al computador que registrará los resultados de la prueba y que envía comandos al \textit{software} de vuelo. Este cable también provee de alimentación al sistema de energía, para la carga de las baterías. Se utilizará un multímetro para monitorear su voltaje, además de los registros generados por el \textit{software}. La radio portátil se utiliza para una rápida verificación del funcionamiento del sistema de comunicaciones, pues permite detectar si se produce alguna transmisión durante el periodo de inactividad obligatorio. La estación terrena está configurada para escuchar el sistema de comunicaciones del satélite, con un programa para de decodificar su baliza y telemetría. El satélite, a través del \textit{software} de vuelo, funciona de manera autónoma y la interfaz de \textit{debug} sólo se utilizará para registrar información útil para la prueba.
+
+%···················· FIGURE ····················
+\begin{figure}[ht!] \centering
+\subfloat[Montaje del satélite]{\includegraphics[width=0.45\textwidth]{img/test_montaje.jpg}}
+\hspace{0.3cm}
+\subfloat[Estación terrena]{\includegraphics[width=0.45\textwidth]{img/test_groundstation.jpg}}
+\caption[Montaje de la prueba de integración]{El satélite se encuentra en una caja limpia, conectado a un computador que registra la prueba (a). La estación terrena se controla remotamente, a través del \textit{software} GPredict y el proveído por el fabricante del \textit{transcevier}(b)}\label{ch4:test:montaje}
+\end{figure}
+%················································
+
+El desarrollo de la prueba consiste en los siguientes pasos.
+\begin{itemize}
+    \item Configurar el \textit{software} de vuelo y programar el computador a bordo.
+    \item Llevar al \textit{software} de vuelo al estado de 'primer encedido'.
+    \item Comenzar el registro de la consola serial.
+    \item Monitorear el cumplimiento del periodo de inactividad.
+    \item Monitorear el correcto despliegue de antenas.
+    \item Monitorear la correcta inicialización del \textit{software} de vuelo.
+    \item Registrar los comandos ejecutados en el \textit{software} de vuelo.
+    \item Registrar periódicamente el valor de las variables de estado.
+    \item Registrar periódicamente los registros de la \gls{EPS}.
+    \item Recibir el \textit{beacon} emitido en la estación terrena.
+    \item Enviar una señal de radio para activar el envío de telemetría.
+    \item Recibir la telemetría enviada en la estación terrena.
+    \item Ejecutar test de reinicio.
+    \item Ejecutar test de falla de \textit{software}.
+    \item Ejecutar test de energía baja.
+\end{itemize}
+
+Los resultados de la prueba se obtendrán en el siguiente formato:
+\begin{itemize}
+    \item Archivo de texto con el registro de la consola serial.
+    \item Texto y audio del \textit{beacon} recibido en la estación terrena.
+    \item Datos de la telemetría decodificada en la estación terrena.
+    \item Imágenes del proceso de despliegue de antena.
+\end{itemize}
+
+\subsection{Resultados}
+Los resultados obtenidos son utilizados para verificar los requerimientos operacionales de la misión, en específico, aquellos que dependen directamente del \textit{software} de vuelo.
+
+\subsubsection{Área de comunicaciones}
+\paragraph{Configuración inicial del \textit{transcevier}:}
+la configuración inicial del \textit{transcevier} se lleva a cabo durante el proceso de inicio del software de vuelo. Esto se observa en el registro de la consola que indica la ejecución del comando \texttt{trx\_initialize}, el que incluye la configuración del \textit{beacon} por defecto mediante el comando \texttt{trx\_setbeacon}:
+
+\begin{lstlisting}[numbers=none,label=ch5:reg:trx_init,caption=Inicialización del \textit{transcevier}]
+* Setting TRX
+  Setting beacon: SUCHAIATINGDOTUCHILEDOTCL-
+  >> TRX Setting BEACON:
+       Setting Offset...
+       Setting Content...
+       Setting Beacon Length... 26
+\end{lstlisting}
+
+La correcta ejecución de estos comandos, como se muestra en el registro \ref{ch5:reg:trx_init}, implica una comunicación activa con el dispositivo, así como una confirmación de la correcta configuración de las variables escritas. Con esto se comprueba que el dispositivo, en lo referido a su interfaz con el \textit{software}, se encuentra operativo.
+
+% La correcta configuración del transcevier se comprueba leyendo los registros internos de configuración del equipo una vez que el satélite está funcionando en régimen normal. La tabla \ref{ch5:table:result:trx} muestra el valor por defecto de los registros del transcevier, el valor configurado y su valor leído.
+% 
+% %TODO: Tabla con los registros del TRX
+% 
+% El software puede configurar diferentes parámetros del sistema de comunicaciones, un ejemplo de ello es la la cantidad de palabras por minuto del \textit{beacon} CW de transmisión. Diferentes configuraciones para esta variable fueron configurados al inicio del sistema el resultado se observa en la estación terrena a través del software MixW como se muestra en la figura \ref{ch5:result:bcn_pwr}
+% 
+% %TODO: Imagen del beacon a diferentes potencias
+
+El silencio radial se lleva a cabo configurando el \textit{transcevier} en modo silencioso al inicio del sistema. Como medida adicional, se evita la generación de cualquier transmisión, inhibiendo la ejecución de comandos durante el periodo de inactividad. Durante la prueba, se mantiene cerca la radio portátil para detectar cualquier transmisión, así como para generar intentos de comunicación con el satélite que no deben tener respuesta. El resultado se detalla en el registro \ref{ch5:reg:inactivity} que revela que, en efecto, ningún comando de transmisión de datos se efectúa durante el periodo de inactividad radial. También se comprueba el tiempo de inactividad toma 33 minutos, de acuerdo a lo requerido.
+
+\begin{lstlisting}[numbers=none,label=ch5:reg:inactivity,caption=Registro del periodo de inactividad]
+[16:35:23.046699] [dep_silent_time] Mandatory inactivity time...
+[16:35:23.081650]     First time on. Antenna NOT deployed
+[16:35:23.095963]     STARTING 30MIN SILENT TIME
+[16:35:23.120451]     * Turning off TX    
+[16:35:23.131351]     * System halted at >>[29/8/13 - 16:35:31]
+[17:07:04.564344]     * 65[s] remaining ...
+[17:08:10.107138]     * System resumed at >>[29/8/13 - 17:8:17]
+[17:08:10.143954]     FINISHING SILENT TIME
+\end{lstlisting}
+
+\paragraph{Despliegue de antenas:}
+este proceso está a cargo de la secuencia de inicio del \textit{software} de vuelo, que activa y controla el sistema de despliegue. El proceso se muestra en la consola, como se observa en el registro \ref{ch5:reg:deploy}. En este caso luego del séptimo intento de despliegue se detecta que el \textit{switch} indicador del despliegue se ha liberado continuando con el inicio del sistema.
+
+\begin{lstlisting}[numbers=none,label=ch5:reg:deploy,caption=Registro del despliegue de antenas]
+[17:08:10.163688] [dep_deploy_antenna] Deploying TRX Antenna... 
+[17:08:10.201290]     [Deploying] Attempt #1 //Intenta desplegar cada antena
+[17:11:21.425436]     [Deploying] Attempt #2
+[17:14:32.682874]     [Deploying] Attempt #3
+[17:17:43.940662]     [Deploying] Attempt #4
+[17:20:55.198422]     [Deploying] Attempt #5
+[17:24:06.456182]     [Deploying] Attempt #6
+[17:27:17.713377]     [Deploying] Attempt #7
+[17:30:30.970832]     ANTENNA DEPLOYED SUCCESSFULLY [7 TRIES]
+\end{lstlisting}
+
+En la figura \ref{ch5:result:antenna} se observan las antenas antes  y después del proceso de despliegue.
+
+%···················· FIGURE ····················
+\begin{figure}[ht!] \centering
+\subfloat[Previo al despliegue]{\includegraphics[width=0.45\textwidth]{img/test_deploy_pre.jpg}}
+\hspace{0.3cm}
+\subfloat[Antenas desplegadas]{\includegraphics[width=0.45\textwidth]{img/test_deploy_post.jpg}}
+\caption{Despliegue de antenas}\label{ch5:result:antenna}
+\end{figure}
+%················································
+
+\paragraph{Procesamiento de telecomandos:}
+utilizando la aplicación de control de la estación terrena para el \textit{transcevier} del satélite, se generaron secuencias de comandos que el \textit{software} de vuelo debe decodificar y ejecutar. La secuencia de comandos generados es: imprimir la hora del sistema, imprimir las variables de estado y enviar las variables de estado como telemetría. Esto se traduce en el siguiente telecomando:
+
+\begin{verbatim}
+    <cmd1> <para> <cmd2> <para> <stop>
+    0x5008 0x0000 0x8003 0x0000 0xFFFE
+\end{verbatim}
+
+% Se observa en la figura \ref{ch5:result:telecomandos} el software control con la secuencia de comandos en proceso de envío.
+% 
+% %TODO: Imagen con el telecomando
+
+El resultado de esta prueba no es satisfactorio debido a que el satélite no es capaz de recibir los telecomandos enviados, producto de una falla del equipo de comunicaciones a bordo. Esta falla, a lo largo del proceso de desarrollo, ha hecho imposible la comunicación confiable entre la estación terrena y el satélite. Los detalles de su detección y posibles soluciones escapan al desarrollo de este trabajo.
+% Los detalles de esta falla se detallan en la sección \ref{ch5:fallas:telecomandos}
+
+\paragraph{Protocolo de enlace:}
+el \textit{software} de vuelo se encarga de generar \textit{beacons} de manera periódica, los que permiten identificar al satélite cuando está en órbita y contienen información valiosa sobre su funcionamiento. Cada cuatro minutos, y de manera intercalada, se generan dos tipos de \textit{beacon}: uno simple que contiene sólo un identificador; y luego otro más largo, que agrega el valor de algunas variables de estado de interés. Esto se observa en el registros de la consola \ref{ch5:reg:beacon}:
+
+\begin{lstlisting}[numbers=none,label=ch5:reg:beacon,caption=Beacons generados por el \textit{software de vuelo}]
+//El primer beacon solo contiene un identificador
+[17:34:36.705630] >>Beacon:SUCHAIATINGDOTUCHILEDOTCL-0
+[17:34:36.722492] >> TRX Setting BEACON:
+[17:34:36.736283]       Setting Offset...
+[17:34:36.873040]       Setting Content... 
+[17:34:40.890843]       Setting Beacon Length... 27
+
+//Luego de cuatro minutos, se genera un beacon con variables de estado
+[17:38:36.710971] >>Beacon:SUCHAIATINGDOTUCHILEDOTCL-11000017H30761940780001
+[17:38:36.741475] >> TRX Setting BEACON:
+[17:38:36.761285]       Setting Offset...
+[17:38:36.910411]       Setting Content... 
+[17:38:44.190745]       Setting Beacon Length... 49
+\end{lstlisting}
+
+A los cuatro minutos de funcionamiento se genera el primer \textit{beacon}, cuyo contenido es: \texttt{SUCHAIATINGDOTUCHILEDOTCL-0}. Esto es el identificador seguido de un guión y un número que indica que este mensaje no tiene más información. El siguiente \textit{beacon} corresponde al texto: \texttt{SUCHAIATINGDOTUCHILEDOTCL-11000017H30761940780001} e incluye variables de estado en su contenido, según lo especificado en la tabla \ref{ch5:table:result:beacon}.
+
+Para comprobar el correcto funcionamiento de la lógica que genera la información de cada \textit{beacon}, se realiza la tabla \ref{ch5:table:result:beacon}, donde se compara el contenido generado y el valor de las variables de estado en ese momento. Se debe notar que, en el texto del \textit{beacon}, la hora del despliegue se codifica de 1 a N, por lo tanto, cuando se lee una \texttt{H} se interpreta como un \texttt{17}, lo cual es consistente con el valor de la variable en memoria. Con esto, se concluye que la lógica que permite rastrear al satélite y recuperar información esencial de su funcionamiento, actúa según lo esperado.
+
+En la estación terrena se reciben estas señales y son procesadas por el \textit{software} que permite decodificar el código Morse. Un ejemplo de la señal recibida en la estación terrena se muestra en la figura \ref{ch5:result:beacon}. Los textos obtenidos para una secuencia de tres \textit{beacons} transmitidos fueron:
+
+\begin{verbatim}
+O0000V0000000XHX02000000000000000GBW00000000DK000024,
+O0000V0000000XHX02000000000000000GBW00000000DK000025,
+O0000V0000000XHX02000000000026.
+\end{verbatim}
+
+\begin{table}[h]\caption{\textit{Beacons} generados por el \textit{software} de vuelo}
+\begin{tabular}{lllllllll}
+\hline
+\textbf{Parámetro}       & \textbf{Estado} & \textbf{Beacon} & \textbf{Estado} & \textbf{Beacon} & \textbf{Estado} & \textbf{Beacon} \\ \hline
+Hora del registro        & \multicolumn{2}{c}{18:34:36}      & \multicolumn{2}{c}{19:38:36}      & \multicolumn{2}{c}{20:11:37}      \\
+Modo de operación        & 1  & 1  & 1  & 1  & 1  & 1  \\
+Horas sin reset          & 1  & 1  & 2  & 2  & 0  & 0  \\
+Contador de reset        & 0  & 0  & 0  & 0  & 7  & 7  \\
+Antena desplegada        & 1  & 1  & 1  & 1  & 1  & 1  \\
+Intentos de despliegue   & 7  & 7  & 7  & 7  & 7  & 7  \\
+Hora de despliegue       & 17 & H  & 17 & H  & 17 & H  \\
+Minuto de despliegue     & 30 & 30 & 30 & 30 & 30 & 30 \\
+Voltaje baterías [V]     & 7,70642 & 7,7     & 7,80971 & 7,8     & 7,64069 & 7,6     \\
+Temperatura baterías [C] & 19,873  & 19 & 19,873  & 19 & 18,406  & 18 \\
+Nivel de carga [SOC]     & 5  & 5  & 6  & 6  & 4  & 4  \\
+Baterías cargando        & 1  & 1  & 1  & 1  & 0  & 0  \\
+Promedio RSSI [dBm]      & -51     & -78     & -54     & -78     & -52     & -78     \\
+Contador de TM           & 0  & 0  & 0  & 0  & 0  & 0  \\
+Contador de TC           & 0  & 0  & 0  & 0  & 0  & 0  \\
+Estado memoria SD        & 1  & 1  & 1  & 1  & 1  & 1  \\ \hline
+\end{tabular}\label{ch5:table:result:beacon}
+\end{table}
+
+%···················· FIGURE ····················
+\begin{figure}[ht!] \centering
+\subfloat[Beacon 1]{\includegraphics[width=0.45\textwidth]{img/beacon1.png}}
+\hspace{0.3cm}
+\subfloat[Beacon 2]{\includegraphics[width=0.45\textwidth]{img/beacon2.png}}
+\caption[Beacon recibido en la estación terrena]{Beacon recibido en la estación terrena. Se utiliza el \textit{software} MixW para decodificar una transmisión de radio demodulada por la estación terrena.}\label{ch5:result:beacon}
+\end{figure}
+%················································
+
+Lo anterior claramente significa una falla, debido a que no se recibe el texto esperado, y se debe a un error del equipo de comunicaciones al configurar el nuevo texto del \textit{beacon}. Se descartan errores en la estación terrena debido a que la secuencia decodificada tiene sentido: al final de cada linea recibida se observa un contador, que es agregado automáticamente por el \textit{transcevier}, y que aumenta de manera secuencial en cada transmisión. El cero al inicio de la secuencia, también es parte del formato agregado por el dispositivo transmisor, lo cual permite concluir que es este quien no configura de manera correcta el mensaje.
+
+El protocolo de enlace, una vez identificado el satélite, requiere enviarle una señal iniciar la descarga de datos o ejecutar telecomandos. Debido a las fallas del equipo de comunicaciones, que no permiten la recepción de telecomandos, el satélite funciona un modo de respaldo. En este modo, ante la presencia de un nivel fuerte de señal en la banda asignada, durante al menos 10 segundos, se inicia automáticamente la descarga de los datos recolectados.
+
+El sistema reacciona ante la emisión de la señal portadora, en la frecuencia asignada, por parte del equipo de radio portátil, así comienza una cuenta con los segundos que la señal está presente, como se muestra en el registro \ref{ch5:reg:rssi}. Cuando se superan los 10 segundos y se detecta la ausencia de señal, se produce la inmediata descarga de la telemetría almacenada en el satélite. 
+
+\begin{lstlisting}[numbers=none,label=ch5:reg:rssi,caption=Descarga de telemetría en modo de respaldo]
+//Al detectar la señal portadora comienza el conteo
+[19:37:55.076357] RSSI_CNT=2
+[19:37:57.480979] RSSI_CNT=4
+[19:37:59.055074] RSSI_CNT=6
+[19:38:01.055657] RSSI_CNT=8
+[19:38:03.063135] RSSI_CNT=10
+[19:38:05.055308] RSSI_CNT=12
+
+//Al superar los 10 segundos, se genera el comando de descarga
+[19:38:07.107302] com_doOnRSSI..
+[19:38:07.116383] [Dispatcher] Orig: 0x1102 | Cmd: 0x8003 | Param: 2
+
+//Primer frame de telemetría
+[19:38:07.191023] >> Sending START_WRITE_TM command... [OK]
+[19:38:08.990042] >>Sending START_SEND_TM command...
+[19:38:09.769988] >> Telemetry transmited [OK]
+
+//Segundo frame de telemetría
+[19:38:09.790260] >> Sending START_WRITE_TM command...[OK]
+[19:38:12.316259] >>Sending START_SEND_TM command...
+[19:38:13.104915] >> Telemetry transmited [OK]
+\end{lstlisting}
+
+Asimismo, en la estación terrena se recibe la señal proveniente del satélite, y el \textit{software} decodifica los datos, mostrando el resultado en pantalla, como en la figura \ref{ch5:result:telemetria}.
+
+%[1: ruta imagen, 2: medida, 3: caption, 4: label, 5: posicion]
+\figura[El \textit{software} debería mostrar el \textit{frame} descargado en formato hexadecimal, sin embago, lo identifica como inválido debido a serias fallas en el equipo]{img/test_telemetria.png}{width=0.8\textwidth}{Recepción de telemetría en la estación terrena}{ch5:result:telemetria}{hb!}
+
+\paragraph{Envío de telemetría:}
+el envío de telemetría es activado desde la estación terrena, por alguno de los siguientes métodos, dependiendo del modo de funcionamiento del \textit{software} de vuelo:
+
+\begin{itemize}
+    \item \textbf{Modo normal:} la telemetría se descarga bajo demanda, como resultado de la ejecución de un telecomando, lo que permite seleecionar el tipo de datos que se desea obtener.
+    
+    \item \textbf{Modo de respaldo:} si no se reciben telecomandos durante un periodo de tiempo determinado, por ejemplo 24 horas, se asume una falla en el sistema de comunicaciones. En este modo, para ordenar una transmisión de telemetría, basta con enviar la señal de la portadora durante una cantidad de tiempo determinada, por ejemplo, 10 segundos. No se puede seleccionar el tipo de telemetría a descargar, sino que se envían todos los datos recolectados hasta el momento.
+\end{itemize}
+
+Durante la prueba sólo estuvo disponible el modo de respaldo, por lo que se transmite la portadora durante el tiempo especificado en la configuración de la aplicación, en este caso, 10 segundos. El satélite detecta la señal y el \textit{software} determina si estuvo presente el tiempo necesario, como se detalla en el registro \ref{ch5:reg:rssi_2}.
+
+\begin{lstlisting}[float,numbers=none,label=ch5:reg:rssi_2,caption=Descarga de telemetría en modo de respaldo]
+//Se detecta la portadora y se inicia el conteo 
+[19:37:55.076357] RSSI_CNT=2
+[19:37:57.480979] RSSI_CNT=4
+[19:37:59.055074] RSSI_CNT=6
+[19:38:01.055657] RSSI_CNT=8
+[19:38:03.063135] RSSI_CNT=10
+[19:38:05.055308] RSSI_CNT=12
+
+//Luego 12 segundos, se genera un comando para enviar TM
+[19:38:07.107302] com_doOnRSSI..
+[19:38:07.116383] [Dispatcher] Orig: 0x1102 | Cmd: 0x8003 | Param: 2
+
+//Primer frame de telemetría
+[19:38:07.191023] >> Sending START_WRITE_TM command... [OK]
+[19:38:08.990042] >>Sending START_SEND_TM command...
+[19:38:09.769988] >> Telemetry transmited [OK]
+
+//Segundo frame de telemetría
+[19:38:09.790260] >> Sending START_WRITE_TM command...[OK]
+[19:38:12.316259] >>Sending START_SEND_TM command...
+[19:38:13.104915] >> Telemetry transmited [OK]
+\end{lstlisting}
+
+De esta manera se induce el envío de toda la telemetría almacenada, que corresponde al valor de las variables de estado, registradas cada 20 minutos. En la estación terrena se reciben los datos decodificados por el \gls{TNC} y los resultados se detallan en la figura \ref{ch5:result:telemetria}. Se observa que, a pesar de las fallas en el sistema de comunicaciones, el \textit{software} de vuelo puede efectuar la descarga de telemetría operando en modo de respaldo. Al igual que el \textit{beacon}, la señal es recibida, pero los datos no son decodificados correctamente y el programa indica este error.
+
+\subsubsection{Control central}
+\paragraph{Organizar telemetría:}
+durante la misión, se generarán datos que provienen de diferentes subsistemas o \textit{payloads}. Se debe contar con un medio de almacenamiento con la capacidad adecuada para mantenerlos y un sistema de organización de los diferentes datos guardados, con el objetivo de ser requeridos de manera selectiva para ser enviados como telemetría a la estación terrena. En esta etapa del desarrollo el repositorio de datos cuenta con una serie de \textit{buffers} para este propósito.
+
+\paragraph{Plan de vuelo:}
+la ejecución del plan de vuelo está a cargo del \textit{listener} denominado \texttt{taskFlightPlan} el cual, de manera periódica, consulta la lista de comandos manejada por el repositorio de datos y determina el siguiente que se debe ejecutar.
+
+El plan de vuelo, consiste en una lista de comandos a realizar en un periodo de 24 horas, con espacio de 10 minutos entre cada uno (configurable). El módulo \texttt{taskFlightPlan} realiza una correspondencia entre la hora actual del sistema y el índice a leer desde el plan de vuelo. La lista de comandos se configura al inicio del sistema, según sea necesario, y para efectos de esta prueba se genera el itinerario mostrado en la tabla \ref{ch5:table:flightplan}. Este consiste en ejecutar dos comandos de manera intercalada: \texttt{rtc\_print}, que muestra en consola la hora del sistema, para hacer evidente el funcionamiento de este módulo; y el comando \textit{pay\_FSM\_default} cuyo objetivo es recolectar las variables de estado, a modo de telemetría, cada 20 minutos.
+
+\begin{table}[ht!] \caption{Plan de vuelo}
+\centering
+\begin{tabular}{llll}\hline
+\textbf{Hora} & \textbf{Comando} & \textbf{Código} & \textbf{Parámetro}\\\hline
+00:00 & rtc\_print & 0x7007 & 0\\
+00:10 & pay\_FSM\_default & 0x6001 & dat\_pay\_tmEstado\\
+00:20 & rtc\_print & 0x7007 & 0\\
+00:30 & pay\_FSM\_default & 0x6001 & dat\_pay\_tmEstado\\
+... & ... & ... & ...\\\hline
+\end{tabular} \label{ch5:table:flightplan}
+\end{table}
+
+Para la verificación de este requerimiento, se revisan los registros de la consola, que cuentan con una estampa de tiempo, para determinar la frecuencia y momento de ejecución de los comandos producidos por el plan de vuelo. En el registro \ref{ch5:reg:fplan} se observa el resultado de ejecutar el comando \texttt{rtc\_print} desde el plan de vuelo.
+
+\begin{lstlisting}[numbers=none,label=ch5:reg:fplan,caption=Comandos generados por el plan de vuelo]
+//El origen del comando es 0x1103, que indentifica al plan de vuelo
+//Como resultado del comando rtc_print se muestra la hora del sistema
+[17:40:06.811852] [Dispatcher] Orig: 0x1103 | Cmd: 0x7007 | Param: 0
+[17:40:06.837689] >>[29/8/13 - 17:40:14]
+
+//El siguiente comando se genera 10 minutos después: pay_FSM_default,
+//pero se ha omitido su salida de debug. Exactamente a los 20 minutos 
+//se vuelve a ejecutar el comanto rtc_print desde el plan de vuelo.
+[18:00:06.914741] [Dispatcher] Orig: 0x1103 | Cmd: 0x7007 | Param: 0
+[18:00:06.969861] >>[29/8/13 - 18:00:14]
+
+//Luego de cuarenta minutos, se vuelve a ejecutar el plan de vuelo
+[18:20:06.919318] [Dispatcher] Orig: 0x1103 | Cmd: 0x7007 | Param: 0
+[18:20:06.952946] >>[29/8/13 - 18:20:14]
+
+[18:40:07.004340] [Dispatcher] Orig: 0x1103 | Cmd: 0x7007 | Param: 0
+[18:40:07.036649] >>[29/8/13 - 18:40:14]
+\end{lstlisting}
+
+El registro obtenido en la consola muestra cómo, de manera exacta, cada 20 minutos se ejecuta el comando \texttt{0x7007} equivalente a \texttt{rtc\_print}, proveniente del módulo \texttt{0x1103} que identifica a \texttt{taskFlightPlan}, y como resultado se muestra en pantalla la hora leída desde el RTC del satélite. Lo anterior corresponde con el comportamiento esperado.
+
+En la figura \ref{ch5:figure:result:flightplan}, se ha graficado toda la serie de comandos ejecutados durante la prueba y que provienen de este módulo con lo cual se comprueba la ejecución precisa y periódica del plan de vuelo configurado.
+
+%[1: ruta imagen, 2: medida, 3: caption, 4: label, 5: posicion]
+\figura[Se observan los dos comandos programados ejecutándose cada 10 minutos. Cerca de las 19:39 hrs. se produce un reinicio del sistema y como respuesta a la falla, el plan de vuelo ejecuta el comando pendiente.]{img/plot_fplan.png}{scale=0.7}{Gráfico de funcionamiento del plan de vuelo}{ch5:figure:result:flightplan}{ht!}
+
+De este modo se comprueba el correcto funcionamiento de este módulo, el cual ofrece una manera flexible y configurable de programar la ejecución de comandos en momentos específicos de la órbita.
+
+\paragraph{Obtener el estado del sistema:}
+en el módulo \texttt{taskHousekeeping}, las variables de estado son actualizadas cada 20 segundos, a través del comando \texttt{drp\_updateAll\_dat\_CubesatVar}. Asimismo, su valor se despliega a través de la consola serial a cada minuto para obtener un registro de las variables. Esta información es de vital importancia para los desarrolladores y operadores del satélite, debido a que contiene todos los datos relevantes sobre el estado de funcionamiento del sistema. Un ejemplo de esta información se muestra en el registro \ref{ch5:reg:status_var}. Para comprobar la correcta actualización de las variables de estado durante el funcionamiento del satélite, se ha tomado un set de ellas y se ha graficado su valor en el tiempo, lo cual se muestra en la figura \ref{ch5:figure:result:status_var}. 
+
+\begin{lstlisting}[float,numbers=none,label=ch5:reg:status_var,caption=Comandos generados por el plan de vuelo]
+ ===================================
+ Contenido de CubestatVar:
+ ===================================
+ ppc_opMode= 1              //Modo de operación
+ ppc_lastResetSource= 4     //Oringen de último reinicio
+ ppc_hoursAlive= 0          //Total de horas de funcionamiento
+ ppc_hoursWithoutReset= 0   //Horas sin reinicio
+ ppc_resetCounter= 1        //Contador de reinicios
+ ppc_enwdt= 1               //Estado del watchdog
+ ppc_osc= 3                 //Estado del oscilador
+ ppc_MB_nOE_USB_nINT_stat= 0//Estado del selector del USB
+ ppc_MB_nOE_MHX_stat= 1     //Estado del selector del TRX
+ ppc_MB_nON_MHX_stat= 0     //Estado del selector de voltaje del TRX
+ ppc_MB_nON_SD_stat= 0      //Estado del selector de la tarjeta SD
+ -----------------------------------
+ dep_ant_deployed= 1        //Estado de despliegue de las antenas
+ dep_ant_tries= 3           //Intetos de despliegue de las antenas
+ -----------------------------------
+ rtc_year= 13               //Fecha del sistema, año
+ rtc_month= 8               //Fecha del sistema, mes
+ rtc_week_day= 6            //Fecha del sistema, dia
+ rtc_day_number= 23         //Fecha del sistema, dia de la semana
+ rtc_hours= 20              //Hora del sistema, horas
+ rtc_minutes= 35            //Hora del sistema, minutos
+ rtc_seconds= 19            //Hora del sistema, segundos
+ -----------------------------------
+ eps_bat0_voltage= 172      //Voltaje de la batería (ADC)
+ eps_bat0_current= 902      //Corriente de la batería (ADC)
+ eps_bus5V_current= 1023    //Corriente en bus 5V (ADC)
+ eps_bus3V_current= 1023    //Corriente en bus 3V (ADC)
+ eps_bat0_temp= 559         //Temperatura de la batería (ADC)
+ eps_panel_pwr= 0           //Potencia del panel solar (ADC)
+ eps_status= -16384         //Estado de la EPS (ADC)
+ eps_soc= 8                 //Nivel de carga de la batería
+ eps_socss= 8               //Estimador de la carga de la batería
+ eps_state_flag= 2          //Estado del estimador de carga
+ eps_charging= 1            //Estado de carga de la batería
+ -----------------------------------
+ trx_frec_tx= -14510        //Frecuencia de TX (ADC)
+ trx_frec_rx= -16448        //Frecuencia de RX (ADC)
+ trx_opmode= 16             //Modo de operación del TRX (ADC)
+ trx_temp_hpa= 2164         //Temperatura del HPA (ADC)
+ trx_temp_mcu= 1150         //Temperatura MCU del TRX (ADC)
+ trx_rssi= -53 dBm          //Nivel de señal (dBm)
+ trx_beacon_pwr= 1          //Potencia del bacon (ADC)
+ trx_telemetry_pwr= 1       //Potencia de la telemetría (ADC)
+ trx_status_tc= 0           //Estado de recepción de comandos
+ trx_count_tm= 0            //Contador de telemetría
+ trx_count_tc= 0            //Contador de telecomandos
+ trx_lastcmd_day= -1        //Días desde el último telecomando
+ -----------------------------------
+\end{lstlisting}
+
+
+%[1: ruta imagen, 2: medida, 3: caption, 4: label, 5: posicion]
+\figura[Arriba, variables relacionadas con el computador a bordo. Abajo, el valor del \gls{RSSI} del \textit{transcevier}, los máximos coinciden con las transmisiones de \textit{beacon}.]{img/plot_status_var.png}{width=0.99\textwidth}{Gráfico con el valor de las variables de estado en el tiempo}{ch5:figure:result:status_var}{ht!}
+
+El set de variables consideradas en el gráfico \ref{ch5:figure:result:status_var}, tiene por objetivo mostrar el funcionamiento del repositorio de estados, más que un análisis exhaustivo de sus valores instantáneos. Los resultados muestran cómo este repositorio permite mantener actualizado el estado de funcionamiento del satélite, retroalimentando al resto de los módulos de \textit{software} con esta información. Acá se almacenan variables con información instantánea, como el caso de los voltajes y corrientes en el sistema de energía, o el nivel \gls{RSSI} presente el sistema de comunicaciones. Otras son modificadas de manera periódica como la hora actual del sistema o el tiempo total de operación. Algunas variables representan configuraciones del satélite y no varían, a menos que se instruya una modificación manual de ellas, como el caso de las potencias de transmisión de telemetría y \textit{beacon}.
+
+Es muy importante que ciertas variables mantengan su valor entre cada reinicio del sistema, para que el software de vuelo retome su estado de operación anterior a una falla o \textit{reset}. Esto se verifica en las pruebas de reinicio, revisando el valor de las siguientes variables: \texttt{ppc\_lastResetSource}, \texttt{ppc\_hoursAlive}, \texttt{ppc\_hoursWithoutReset}, \texttt{ppc\_resetCounter} y \texttt{dep\_ant\_deployed}. La información se resume en el gráfico de la figura \ref{ch5:figure:result:status_var_reset}. Se observa que ciertas variables se van actualizando con el tiempo, como el caso de las horas de funcionamiento y las horas sin reinicio. Las pruebas de \textit{reset} comienzan a las 19:44 hrs. lo cual se refleja en el valor de las variables \texttt{ppc\_hoursWithoutReset} y \texttt{ppc\_resetCounter}, que indican la cantidad de horas que el sistema ha funcionado sin reiniciarse y el contador de estos eventos, respectivamente. La prueba incluye reinicios generados por diferentes fuentes, como \textit{software}, \textit{hardware} y el \textit{watchdog}, las cuales se observan en la variable \texttt{ppc\_lastResetSource}. La prueba del buen funcionamiento del sistema, ante estos eventos, es que los valores de las variables de estado siguen siendo coherentes cada vez que el sistema se vuelve a iniciar, como se ve en el caso del indicador de antenas desplegadas (\texttt{dep\_ant\_deployed}), el contador de reinicios y la cantidad total de horas de funcionamiento.
+
+%[1: ruta imagen, 2: medida, 3: caption, 4: label, 5: posicion]
+\figura[El repositorio de estados mantiene consistente el valor de las variables ante fallas o reinicios.]{img/plot_status_reset.png}{width=0.99\textwidth}{Variables de estado ante un reinicio}{ch5:figure:result:status_var_reset}{h!}
+
+\paragraph{Inicio del sistema:}
+el inicio del sistema cuenta de dos etapas. En la primera, se inician funciones de bajo nivel como configuraciones de periféricos del procesador, puertos de entrada-salida, instanciar variables del sistema operativo e iniciarlo. Cuanto esta etapa se ejecuta correctamente, se han configurado los puertos seriales y por lo tanto está disponible la salida de depuración a través de la consola. En el registro \ref{ch5:reg:init} se muestra este proceso, que concluye con el inicio de FreeRTOS y la tarea de \textit{deployment} encargada de ejecutar la segunda etapa.
+
+\vspace*{1.5cm}
+\begin{lstlisting}[numbers=none,label=ch5:reg:init,caption=Secuencia de inicio de bajo nivel]
+//La salida serial es la primera en configurarse
+--------- SUCHAI BOOT SEQUENCE ---------
+
+//Configuraciones de perifericos
+Initializing sattelite bus
+    * Microcontroller IO pins
+    * CubesatKit MB
+    * PC104 Bus
+
+//Configuraciones propias del microcontrolador
+Initilizing Microcontroller
+    * Reset status
+    * Setting oscillator
+    * mPWRMGNT_Regulator_ActiveInSleep
+    * Enabling WDT
+
+//Se inicia el scheduler de FreeRTOS. A partir ahora el
+//sistema opeartivo toma el control del procesador
+Starting FreeRTOS [->]
+
+//Se inician las tareas principales
+>>[Executer] Started
+>>[Dispatcher] Started
+>>[Deployment] Started
+\end{lstlisting}
+
+Desde este momento comienza la segunda etapa de inicialización, implementada en el módulo \texttt{taskDeployment}. En este punto ya se cuenta con todas las funcionalidades de bajo nivel y el sistema operativo se encuentra funcionando. Así, se procede al inicio de los servicios de la capa de aplicación, incluyendo: periféricos externos, repositorios, estructuras de datos y el resto de los \textit{listeners}. En este momento se ejecuta, si corresponde, el periodo de inactividad, así como el despliegue de antenas. 
+
+La salida por consola, que se muestra en el registro \ref{ch5:reg:init2}, es incremental a cada función ejecutada y demuestra la correcta operación de cada etapa de la secuencia de inicio. También se demuestra la capacidad del \textit{software} para recordar el estado anterior a su reinicio, siendo capaz de determinar si es la primera vez que se inicia y en tal caso, ejecutar el periodo de inactividad junto al despliegue de antenas.
+
+\begin{lstlisting}[numbers=none,label=ch5:reg:init2,caption=Secuencia de inicio de alto nivel]
+//Cada linea representa la correcta ejecución de la acción,
+//en caso de error se indicaría en la misma consola.
+[Deployment] INITIALIZING SUCHAI FLIGHT SOFTWARE
+
+//Se inicializan perifericos externos
+[dep_init_Peripherals] Initializig external pheripherals...
+    * External RTC
+    * EEPROM Memories
+    * SD Memory  [delay]
+    * SD Memory [init OK]
+    * SD Memory [onReset]  dat_onReset_memSD()..
+    Static structures..
+    DAT_Payload()..
+    DAT_GnrlPurpBuff()..
+
+//Se inicializan todos los repositorios de datos y comandos
+[dep_init_Repos] Initializing data repositories...
+    * FlighPlan
+    * Telecommands buffer
+    * Payloads status rep.
+    * Status rep. //Se aumenta contador de reset
+        - LastResetSouce: SOFTWARE_Reset
+            - NOT the First time on! resetCounter++
+            - resetCounter = 6
+    * Commands rep.
+
+[dep_init_GnrlStruct] Initializing other structures...
+    * init EPS structs
+
+//Comienza el periodo de inactividad
+[dep_silent_time] Mandatory inactivity time...
+    Satellite launched. Antenna deployed
+    //Como no es el primer inicio, no se realiza inactividad.
+    FINISHING SILENT TIME
+
+//Se configura el sistema de comunicaciones
+[dep_deploy_antenna] Deploying TRX Antenna... 
+    * Antenna is already deployed
+    * Setting TRX
+Setting beacon: SUCHAIATINGDOTUCHILEDOTCL-
+>> TRX Setting BEACON:
+      Setting Offset...
+      Setting Content... 
+      Setting Beacon Length... 26
+
+//Antes de terminar se deben iniciar todos los demás listeners
+[dep_launch_tasks] Starting all tasks...
+    * Creating taskConsole
+    * Creating taskHousekeeping
+    * Creating taskCommunications
+    * Creating taskFlightPlan
+[Deployment] ENDS
+[Deployment] Deleting task
+\end{lstlisting}
+
+Al final de esta secuencia, se inician el resto de los \textit{listeners} que comienzan su ejecución en segundo plano. El éxito de la operación se logra al visualizar el \textit{prompt} de la consola serial, indicando que el satélite está preparado recibir comandos y registrar los sucesos del \textit{software} de vuelo, lo cual se muestra en el registro \ref{ch5:reg:prompt}
+
+\begin{lstlisting}[numbers=none,label=ch5:reg:prompt,caption=Pantalla de bienvenida de la consola serial del satélite]
+>>[Console] Started
+
+//La pantalla de bienvenida indica el fin de la secuencia de inicio
+__________________________________________________________________________
+                     ___ _   _  ___ _  _   _   ___ 
+                    / __| | | |/ __| || | /_\ |_ _|
+                    \__ \ |_| | (__| __ |/ _ \ | | 
+                    |___/\___/ \___|_||_/_/ \_\___|
+__________________________________________________________________________
+
+//Comienzan a funcionar los listeners
+>>[Comunications] Started
+>>[FlightPlan] Started
+>>[Houskeeping] Started
+
+>>
+\end{lstlisting}
+
+\subsubsection{Área de energía}
+\paragraph{Estimación de la carga de la batería:}
+este función es parte del controlador de la \gls{EPS}. La estimación se actualiza de manera periódica, como parte de las tareas del \textit{listener} \texttt{taskHousekeeping}, cada 20 segundos. El parámetro denominado \gls{SOC}, es una variable de estado del sistema y se calcula a partir de los datos de consumo de energía, temperatura y voltaje que reporta la \gls{EPS}. Esta variable es utilizada para determinar si un comando se puede ejecutar o debe ser rechazado. Durante la prueba se registraron los valores de corriente, voltaje y temperatura de la \gls{EPS} así como el nivel de \gls{SOC} calculado. La figura \ref{ch5:figure:result:soc} muestra los resultados obtenidos, así como la estimación del \gls{SOC} a \textit{posteriori}, para comprobar la operación realizada en el computador a bordo.
+
+%, como observa en la figura \ref{ch5:figure:result:eps_var}.
+
+%[1: ruta imagen, 2: medida, 3: caption, 4: label, 5: posicion]
+% \figura{img/plot_eps_var.png}{scale=0.7}{Gráfico con variables de EPS}{ch5:figure:result:eps_var}{ht!}
+
+%[1: ruta imagen, 2: medida, 3: caption, 4: label, 5: posicion]
+\figura[El sistema de energía se comporta según lo esperado, según lo indicado por las variables de corriente y voltaje. Se observa una correspondencia entre la variable \textit{eps\_charging} y el voltaje de las baterías. El nivel de \gls{SOC} estimado por el \textit{software} de vuelo corresponde a los calculados a \textit{posteriori}.]{img/plot_soc.png}{width=0.99\textwidth}{Gráfico con variables de \gls{EPS} y estimación de \gls{SOC}}{ch5:figure:result:soc}{ht!}
+
+A partir de los datos del gráfico \ref{ch5:figure:result:soc}, se verifica el correcto funcionamiento del sistema de energía. Los valores de corriente leídos en la \gls{EPS} son normales: al rededor de 30 mA para el bus de 3.3 V, al que se conecta la placa de \textit{payloads}, y 50 mA para el bus de 5.0 V, donde se encuentra el computador a bordo. Las baterías se cargan en cuanto se conecta el puerto \gls{USB}, lo que es indicado por la variable \texttt{eps\_charging} y se refleja en el voltaje leído. También se verifica el requerimiento de estimar la carga presente en las baterías, a través de la variable \textit{eps\_soc} y contrastando estos datos con valores calculados a \textit{posteriori}, según los datos de voltaje y corriente. Cabe destacar que la diferencia en la estimación del \gls{SOC}, observada en los registros de las 20:01 hrs. es normal, producto de una corrección según los datos de temperatura, realizada por el \textit{software} de vuelo.
+
+\paragraph{Presupuesto de energía:}
+el nivel de \gls{SOC}, como variable de estado, indicará la energía que se dispone para ejecutar comandos en el sistema. El encargado de velar por el cumplimiento del presupuesto energético es el módulo \texttt{Dispatcher}, quien realiza una comparación entre la energía requerida por un comando y la disponible en ese momento.
+
+Para verificar el requerimiento de contar con un presupuesto de energía, que guía las operaciones del satélite, se lleva a cabo el test de \gls{SOC}. Para esto, de manera simulada, se cambian los requerimientos energéticos de una serie de comandos, a niveles mayores que la energía disponible, para luego intentar su ejecución. El comando correspondiente es el \texttt{0x8006} o \texttt{tcm\_set\_sysreq}, que cambia los requerimientos energéticos de todas las funciones del grupo \texttt{TCM}, encargadas de generar telemetría y \textit{beacons}. En el registro \ref{ch5:reg:test_soc} se observa la ejecución de este comando, cambiando los requerimientos a nivel 10, cuando se dispone de un \gls{SOC} de 4. Así cuando se intenta ejecutar un comando del grupo \texttt{0x8000} estos son rechazados por el \textit{Dispatcher} evitando su ejecución.
+
+\begin{lstlisting}[numbers=none,label=ch5:reg:test_soc,caption=Registro de la prueba de nivel SOC bajo]
+//Se elevan los requerimientos del grupo TCM a un SOC de 10
+[20:17:59.701281] SOC= 4
+[20:18:10.788012] exe_cmd 0x8006 10
+[20:18:10.823338] [Console] Se genera comando: 0x8006
+[20:18:10.860289] [Dispatcher] Orig: 0x1101 | Cmd: 0x8006 | Param: 10
+[20:18:10.890811] [Dispatcher] CMD Result: 1
+
+//Se intenta ejecutar un comando del grupo TCM
+[20:19:10.667124] exe_cmd 0x8000 0
+[20:19:10.825339] [Console] Se genera comando: 0x8000
+
+//El dispatcher rechaza el comando, por no cumplir los requeimientos de energía
+[20:19:10.864141] [Dispatcher] Command: 0x8000 | From: 0x1101 Refused because of SOC 
+
+//Otros comandos, con requerimientos de SOC bajos, se ejecutan normalmente
+[20:19:11.197873] [Dispatcher] Orig: 0x1102 | Cmd: 0x3007 | Param: 0
+[20:19:11.231369] [Dispatcher] CMD Result: 1
+\end{lstlisting}
+
+Esta situación no solo ocurre bajo condiciones de prueba, puede ocurrir que tras algunas operaciones que demandan grandes cantidades de energía, el nivel de \gls{SOC} disminuya, quedando bajo el umbral que requieren los comandos. Este es el caso de las transmisiones de telemetría y \textit{beacons}, como se observa en el registro \ref{ch5:reg:low_soc}, donde luego de dos envíos de telemetría el nivel de \gls{SOC} baja a 3, causando que una posterior solicitud de descarga de datos sea rechazada.
+
+\begin{lstlisting}[numbers=none,label=ch5:reg:low_soc,caption=Comando rechazado debido a un nivel de SOC bajo]
+//Se producen la transmisión de dos frames de telemetría sucesivos.
+[20:08:56.149539] com_doOnRSSI..
+[20:08:56.171706] [Dispatcher] Orig: 0x1102 | Cmd: 0x8003 | Param: 2
+[20:08:56.221945] >> Sending START_WRITE_TM command... 
+[20:08:58.031927] >> Sending START_SEND_TM command...
+[20:08:58.798705] >> Telemetry transmited [OK]
+
+[20:08:58.854076] >> Sending START_WRITE_TM command... 
+[20:09:01.352976] >> Sending START_SEND_TM command...
+[20:09:02.133597] >> Telemetry transmited [OK]
+
+//Las baterías se descargan y el nivel de SOC baja a 3.
+[20:09:02.414715] [Dispatcher] Orig: 0x1104 | Cmd: 0x5000 | Param: 0
+[20:09:02.429875] drp_updateAll_dat_CubesatVar()..
+[20:09:02.710113] SOC= 3
+
+//Una posterior solicitud de telemetría es rechazada, como es de esperar,
+//debido a que no hay energía suficiente para realizar la transmisión.
+[20:09:06.121742] RSSI_CNT=2
+[20:09:08.138337] RSSI_CNT=4
+[20:09:10.146584] RSSI_CNT=6
+[20:09:12.197035] RSSI_CNT=8
+[20:09:14.152838] RSSI_CNT=10
+[20:09:16.140583] RSSI_CNT=12
+[20:09:18.140335] com_doOnRSSI..
+[20:09:18.158957] [Dispatcher] Command: 0x8003 | From: 0x1102 Refused because of SOC 
+\end{lstlisting}
+
+
+La tabla \ref{ch5:table:test_soc} resume los resultados de la prueba de SOC. Se observa que el control realizado por el módulo \texttt{Dispatcher} aplica efectivamente las indicaciones del presupuesto de energía planificado, el cual se expresa en el parámetro SOC y la cantidad de energía que requiere cada comando. Durante la prueba todos los comandos que requieren al menos el nivel de energía disponible fueron ejecutados mientras que aquellos con requerimientos superiores fueron rechazados, validando el requerimiento.
+
+\begin{table}[ht!] \caption{Resultados para test SOC}
+\centering
+\begin{tabular}{llllll}
+\hline
+\textbf{Hora} & \textbf{Comando} & \textbf{Nombre} & \textbf{SysReq} & \textbf{SOC} & \textbf{Resultado} \\ \hline
+20:18:10 & 0x8006 & tcm\_set\_sysreq & 1 & 4  & Ejecutado \\
+20:18:19 & 0x5000 & drp\_updateAll\_dat\_CubesatVar & 1 & 4  & Ejecutado \\
+20:18:33 & 0x300C & trx\_tm\_trxstatus   & 4 & 4  & Ejecutado \\
+20:19:10 & 0x8000 & tcm\_testframe & 10 & 4  & Rechazado \\
+20:19:13 & 0x8000 & tcm\_testframe & 10 & 4  & Rechazado \\
+20:19:19 & 0x8002 & tcm\_send\_beacon & 10 & 4  & Rechazado \\
+20:19:19 & 0x5000 & drp\_updateAll\_dat\_CubesatVar & 1 & 4  & Ejecutado \\
+20:19:45 & 0x8003 & tcm\_sendTM\_cubesatVar & 10 & 4  & Rechazado \\
+20:20:03 & 0x8003 & tcm\_sendTM\_cubesatVar & 10 & 4  & Rechazado \\ \hline
+\end{tabular} \label{ch5:table:test_soc}
+\end{table}
+
+El \textit{power budget} se aplica a diferentes niveles dentro del sistema que representa el satélite. La parte que corresponde al \textit{software} de vuelo, tiene relación con la estimación de la cantidad de energía disponible en base a los parámetros que entrega la \gls{EPS}, y con evitar la ejecución de comandos que requieren más recursos energéticos que los disponibles. El resto de la planificación energética queda por parte del equipo de operación del sistema, en lo que refiere a determinar la cantidad de energía correcta para cada comando, la frecuencia de ejecución de aquellos de alto consumo, como el envío de \textit{beacon}, o la correcta programación del plan de vuelo.
+
+\subsubsection{Órbita}
+\paragraph{Actualizar parámetros de órbita:}
+en esta versión del \textit{software} de vuelo no se contemplan métodos de estimación de órbita y se relega este requerimiento al operador del satélite. En tierra, se puede realizar la propagación de órbita, para así obtener una relación entre el plan de vuelo del satélite y su posición orbital, programando las operaciones requeridas en determinados momentos.
+
+\subsubsection{\textit{Payloads}}
+\paragraph{Ejecución de comandos de \textit{payloads}}:
+en esta versión del \textit{software} de vuelo, dada las características de los \textit{payloads} que van a bordo, la capacidad de ejecutar determinadas acciones de \textit{payloads} puede ser completamente programada a través del plan de vuelo, si se proveen los comandos pertinentes a cada uno. No obstante, la integración a nivel de \textit{payloads} del satélite y sus resultados, se puede encontrar en la memoria \textit{Proceso de diseño, arquitectura y testeo del nano-satelite SUCHAI} \cite{TOOPAZO}.
+
+

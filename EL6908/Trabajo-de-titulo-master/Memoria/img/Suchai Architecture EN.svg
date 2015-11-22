@@ -1,0 +1,1689 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="739.41223"
+   height="606.07727"
+   version="1.2"
+   id="svg2"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Suchai Architecture EN.svg">
+  <metadata
+     id="metadata414">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Qt Svg Document</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1577"
+     inkscape:window-height="1008"
+     id="namedview412"
+     showgrid="false"
+     fit-margin-top="0.5"
+     fit-margin-left="0.5"
+     fit-margin-right="0.5"
+     fit-margin-bottom="0.5"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="0.20993242"
+     inkscape:cx="1821.5417"
+     inkscape:cy="-692.80034"
+     inkscape:window-x="329"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2"
+     inkscape:connector-spacing="7"
+     units="cm" />
+  <title
+     id="title4">Qt Svg Document</title>
+  <desc
+     id="desc6">Generated with Qt</desc>
+  <defs
+     id="defs8">
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend"
+       style="overflow:visible">
+      <path
+         id="path4831"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend"
+       style="overflow:visible">
+      <path
+         id="path4837"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Send"
+       style="overflow:visible">
+      <path
+         id="path4302"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Tail"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Tail"
+       style="overflow:visible">
+      <g
+         id="g4323"
+         transform="scale(-1.2,-1.2)">
+        <path
+           id="path4325"
+           d="M -3.8048674,-3.9585227 0.54352094,0"
+           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:round;marker-start:none;marker-end:none"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path4327"
+           d="M -1.2866832,-3.9585227 3.0617053,0"
+           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:round;marker-start:none;marker-end:none"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path4329"
+           d="M 1.3053582,-3.9585227 5.6537466,0"
+           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:round;marker-start:none;marker-end:none"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path4331"
+           d="M -3.8048674,4.1775838 0.54352094,0.21974226"
+           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:round;marker-start:none;marker-end:none"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path4333"
+           d="M -1.2866832,4.1775838 3.0617053,0.21974226"
+           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:round;marker-start:none;marker-end:none"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path4335"
+           d="M 1.3053582,4.1775838 5.6537466,0.21974226"
+           style="fill:none;stroke:#000000;stroke-width:0.80000001;stroke-linecap:round;marker-start:none;marker-end:none"
+           inkscape:connector-curvature="0" />
+      </g>
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mstart"
+       style="overflow:visible">
+      <path
+         id="path4293"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend"
+       style="overflow:visible">
+      <path
+         id="path4296"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#9f9f9f;fill-opacity:0.03137464;stroke:#a0a0a0;stroke-width:0.71956301;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g192-7"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(2.4909519,0,0,15.398827,1261.8189,-5261.1959)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <path
+       inkscape:connector-curvature="0"
+       id="path194-1"
+       d="m 250,390 350,0 0,110 -350,0 0,-110"
+       vector-effect="non-scaling-stroke"
+       style="fill:#9f9f9f;fill-opacity:0.03137464;stroke-width:0.71956301;stroke-miterlimit:4;stroke-dasharray:none" />
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#9f9f9f;fill-opacity:0.03137464;stroke:#a0a0a0;stroke-width:1.03718257;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g192"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(3.9807196,0,0,4.6378703,-759.70341,-516.46978)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <path
+       inkscape:connector-curvature="0"
+       id="path194"
+       d="m 250,390 350,0 0,110 -350,0 0,-110"
+       vector-effect="non-scaling-stroke"
+       style="fill:#9f9f9f;fill-opacity:0.03137464;stroke-width:1.03718257;stroke-miterlimit:4;stroke-dasharray:none" />
+  </g>
+  <g
+     id="g7532"
+     transform="matrix(4.4565142,0,0,4.4565142,-212.20032,-348.53049)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <polyline
+       transform="matrix(-1,0,0,1,701.9262,-17.138691)"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;font-family:DejaVu Sans"
+       id="polyline42-5"
+       points="410,450 440,450 "
+       vector-effect="non-scaling-stroke" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path5520-05-7"
+       d="m 273.48154,440.0522 -12.01171,-7.20967 11.77975,-7.50787"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  </g>
+  <g
+     transform="matrix(4.4565142,0,0,4.4565142,-474.58108,801.95874)"
+     id="g4360-08"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       id="g4530-8">
+      <path
+         vector-effect="non-scaling-stroke"
+         d="m 540.43161,245.24294 50,0 0,10 -50,0 0,-10"
+         id="path280-1"
+         inkscape:connector-curvature="0"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans" />
+      <path
+         vector-effect="non-scaling-stroke"
+         d="m 540.43161,253.7054 173.91999,0 0,100 -173.91999,0 0,-100"
+         id="path282-0"
+         inkscape:connector-curvature="0"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.93038929;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans" />
+    </g>
+  </g>
+  <g
+     transform="matrix(4.4565142,0,0,4.4565142,-474.58108,256.74881)"
+     id="g4360-0"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       id="g4530-5">
+      <path
+         vector-effect="non-scaling-stroke"
+         d="m 540.43161,245.24294 50,0 0,10 -50,0 0,-10"
+         id="path280-4"
+         inkscape:connector-curvature="0"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans" />
+      <path
+         vector-effect="non-scaling-stroke"
+         d="m 540.43161,253.7054 173.91999,0 0,100 -173.91999,0 0,-100"
+         id="path282-7"
+         inkscape:connector-curvature="0"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.93038929;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans" />
+    </g>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;stroke-dasharray:4, 2;stroke-dashoffset:0;font-family:DejaVu Sans"
+     id="g12"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,-878.65209,-453.82454)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       id="g4606"
+       transform="matrix(0.65555914,0,0,1.1929811,91.675537,-63.683772)">
+      <a
+         id="a4603">
+        <polyline
+           style="fill:none"
+           id="polyline14"
+           points="260,410 220,410 "
+           vector-effect="non-scaling-stroke" />
+      </a>
+      <polyline
+         vector-effect="non-scaling-stroke"
+         points="220,410 220,330 "
+         id="polyline16"
+         style="fill:none" />
+      <polyline
+         vector-effect="non-scaling-stroke"
+         points="220,330 260,330 "
+         id="polyline18"
+         style="fill:none;stroke-width:1.17719948;stroke-miterlimit:4;stroke-dasharray:4.70879791, 2.35439895;stroke-dashoffset:0;marker-end:none"
+         transform="matrix(0.92268708,0,0,1,17.008841,0)" />
+    </g>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#9f9f9f;fill-opacity:0.03137255;stroke:#a0a0a0;stroke-width:0.9051767;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g54"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(4.6460096,0,0,5.2172755,-347.28516,-1052.1918)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <path
+       inkscape:connector-curvature="0"
+       id="path56"
+       d="m 170.07274,220.00464 520.95286,0 0,89.58437 -520.95286,0 0,-89.58437"
+       vector-effect="non-scaling-stroke"
+       style="fill:#9f9f9f;fill-opacity:0.03137255;stroke:#a0a0a0;stroke-width:0.76699412;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#323232;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g80"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,-133.48004,-316.51044)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text82"
+       font-style="normal"
+       font-weight="400"
+       font-size="9"
+       y="223"
+       x="244.5"
+       xml:space="preserve">New commands</text>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#323232;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g6880"
+     transform="translate(-373.1876,-13.516449)" />
+  <text
+     xml:space="preserve"
+     x="722.29932"
+     y="1155.2046"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text86"
+     style="font-size:40.1086235px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">Next cmd. to be executed</text>
+  <text
+     xml:space="preserve"
+     x="984.20728"
+     y="1438.9996"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text86-2"
+     style="font-size:40.1086235px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">Call</text>
+  <text
+     xml:space="preserve"
+     x="948.89685"
+     y="1667.7095"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text86-2-7"
+     style="font-size:40.1086235px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">Return</text>
+  <text
+     xml:space="preserve"
+     style="font-size:8.01903343px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
+     x="-25.062504"
+     y="6.9698014"
+     id="text6527-8-3"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan6529-3-2"
+       x="-25.062504"
+       y="6.9698014" /></text>
+  <g
+     id="g6734"
+     transform="matrix(4.4565142,0,0,4.4565142,167.13193,-349.52429)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       style="stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+       transform="matrix(0.8207015,0,0,1,12.47101,0)"
+       id="g6619">
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g88"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <path
+           style="fill-rule:evenodd;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           inkscape:connector-curvature="0"
+           id="path90"
+           d="m 120,110 150,0 0,80 -150,0 0,-80"
+           vector-effect="non-scaling-stroke" />
+      </g>
+      <polyline
+         vector-effect="non-scaling-stroke"
+         points="120,120 269,120 "
+         id="polyline96"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:none;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         transform="translate(-50.445544,3.53673)" />
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g102"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <polyline
+           style="fill:none;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           id="polyline104"
+           points="120,130 269,130 "
+           vector-effect="non-scaling-stroke" />
+      </g>
+    </g>
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text94"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="121.53673"
+       x="92.922989"
+       xml:space="preserve">Debug Console</text>
+    <g
+       transform="translate(-40.8296,3.53673)"
+       font-size="9"
+       font-weight="400"
+       font-style="normal"
+       id="g98"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans">
+      <text
+         xml:space="preserve"
+         style="font-size:9px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="121.39736"
+         y="128.13177"
+         id="text3232"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           x="121.39736"
+           y="128.13177"
+           style="font-size:9px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+           id="tspan3236">Cmds. from serial port</tspan></text>
+    </g>
+  </g>
+  <g
+     id="g6767"
+     transform="matrix(4.4565142,0,0,4.4565142,-218.01855,-347.20244)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       style="stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+       transform="matrix(0.8207015,0,0,1,502.79251,-0.52086)"
+       id="g6619-3-7">
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g88-6-1"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <path
+           style="fill-rule:evenodd;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           inkscape:connector-curvature="0"
+           id="path90-0-92"
+           d="m 120,110 150,0 0,80 -150,0 0,-80"
+           vector-effect="non-scaling-stroke" />
+      </g>
+      <polyline
+         vector-effect="non-scaling-stroke"
+         points="120,120 269,120 "
+         id="polyline96-3-0"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:none;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         transform="translate(-50.445544,3.53673)" />
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g102-5-2"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <polyline
+           style="fill:none;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           id="polyline104-7-0"
+           points="120,130 269,130 "
+           vector-effect="non-scaling-stroke" />
+      </g>
+    </g>
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text112"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="121.53673"
+       x="585.41541"
+       xml:space="preserve">Housekeeping</text>
+    <g
+       transform="translate(-50.445544,3.53673)"
+       font-size="9"
+       font-weight="400"
+       font-style="normal"
+       id="g116"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans">
+      <text
+         xml:space="preserve"
+         x="627.63873"
+         y="128"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text118"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans">Periodic commands</text>
+    </g>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.90839219;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g124"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,5.4006811,-878.65209,-831.49186)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <path
+       style="fill-rule:evenodd;stroke-width:0.90839219;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:connector-curvature="0"
+       id="path126"
+       d="m 260,400 150,0 0,80 -150,0 0,-80"
+       vector-effect="non-scaling-stroke" />
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g128"
+     font-style="normal"
+     font-weight="700"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,-878.65209,-453.82454)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text130"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="408"
+       x="312.61426"
+       xml:space="preserve">Receiver</text>
+    <polyline
+       style="fill:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+       id="polyline132"
+       points="260,410 409,410 "
+       vector-effect="non-scaling-stroke" />
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g134"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,-878.65209,-453.82454)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <polyline
+       style="fill:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+       id="polyline136"
+       points="260,415 409,415 "
+       vector-effect="non-scaling-stroke" />
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#323232;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g138"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,24.462296,-331.44652)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text140"
+       font-style="normal"
+       font-weight="400"
+       font-size="9"
+       y="93"
+       x="94.5"
+       xml:space="preserve"><tspan
+         id="tspan3496"
+         style="font-style:oblique;-inkscape-font-specification:DejaVu Sans Oblique">Command pattern - </tspan><tspan
+         id="tspan3494"
+         style="font-style:oblique;font-weight:normal;-inkscape-font-specification:DejaVu Sans Oblique">Clients</tspan></text>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#323232;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g142"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,-756.49021,-439.67513)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text144"
+       font-style="normal"
+       font-weight="400"
+       font-size="9"
+       y="263"
+       x="234"
+       xml:space="preserve"><tspan
+         id="tspan3498"
+         style="font-style:oblique;-inkscape-font-specification:DejaVu Sans Oblique">Command pattern - Invoker</tspan></text>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#323232;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g146"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,-986.19412,-486.52198)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text148"
+       font-style="normal"
+       font-weight="400"
+       font-size="9"
+       y="525"
+       x="273.5"
+       xml:space="preserve"><tspan
+         id="tspan3500"
+         style="font-style:oblique;-inkscape-font-specification:DejaVu Sans Oblique">Command pattern - Reciver</tspan></text>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.15336907;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g150"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(3.3501072,0,0,4.4565142,-383.12778,-460.89704)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <path
+       style="fill-rule:evenodd;stroke-width:1.15336907;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:connector-curvature="0"
+       id="path152"
+       d="m 440,430 150,0 0,40 -150,0 0,-40"
+       vector-effect="non-scaling-stroke" />
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g154"
+     font-style="normal"
+     font-weight="700"
+     font-size="9"
+     transform="translate(-15.01339,379.20455)" />
+  <g
+     style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g158"
+     font-style="normal"
+     font-weight="700"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,-952.92736,-443.07098)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text160"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="448"
+       x="467.25781"
+       xml:space="preserve">Command function</text>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#323232;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g174"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(0,-4.4565142,4.4565142,0,-1512.5175,2054.1586)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text176"
+       font-style="normal"
+       font-weight="400"
+       font-size="9"
+       y="373"
+       x="157.63812"
+       xml:space="preserve">Return code</text>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.38422394;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g178"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(2.3258549,0,0,4.4565142,-323.14894,-450.28609)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <path
+       style="fill-rule:evenodd;stroke-width:1.38422394;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:connector-curvature="0"
+       id="path180"
+       d="m 260,270 360,0 0,80 -360,0 0,-80"
+       vector-effect="non-scaling-stroke" />
+  </g>
+  <text
+     xml:space="preserve"
+     x="612.34509"
+     y="788.6272"
+     font-size="9"
+     font-weight="700"
+     font-style="normal"
+     id="text184"
+     style="font-size:40.1086235px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">Invoker</text>
+  <polyline
+     vector-effect="non-scaling-stroke"
+     points="260,280 619,280 "
+     id="polyline186"
+     style="font-size:9px;font-style:normal;font-weight:700;fill:none;stroke:#000000;stroke-width:1.38422394;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     transform="matrix(2.3258549,0,0,4.4565142,-323.14894,-450.28609)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.38422394;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+     id="g188"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(2.3258549,0,0,4.4565142,-323.14894,-450.28609)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <polyline
+       style="fill:none;stroke-width:1.38422394;stroke-miterlimit:4;stroke-dasharray:none"
+       id="polyline190"
+       points="260,285 619,285 "
+       vector-effect="non-scaling-stroke" />
+  </g>
+  <g
+     id="g6756"
+     transform="matrix(4.4565142,0,0,4.4565142,-102.97359,-347.20244)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       style="stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+       transform="matrix(0.8207015,0,0,1,343.2687,-0.52086)"
+       id="g6619-3-1">
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g88-6-8"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <path
+           style="fill-rule:evenodd;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           inkscape:connector-curvature="0"
+           id="path90-0-9"
+           d="m 120,110 150,0 0,80 -150,0 0,-80"
+           vector-effect="non-scaling-stroke" />
+      </g>
+      <polyline
+         vector-effect="non-scaling-stroke"
+         points="120,120 269,120 "
+         id="polyline96-3-3"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:none;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         transform="translate(-50.445544,3.53673)" />
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g102-5-0"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <polyline
+           style="fill:none;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           id="polyline104-7-8"
+           points="120,130 269,130 "
+           vector-effect="non-scaling-stroke" />
+      </g>
+    </g>
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text236"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="121.53673"
+       x="434.43454"
+       xml:space="preserve">Flight Plan</text>
+    <g
+       transform="translate(-48.580593,3.53673)"
+       font-size="9"
+       font-weight="400"
+       font-style="normal"
+       id="g240"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans">
+      <text
+         xml:space="preserve"
+         x="455"
+         y="128"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text242"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans">Programmed commands</text>
+    </g>
+  </g>
+  <g
+     id="g6745"
+     transform="matrix(4.4565142,0,0,4.4565142,12.071364,-347.20244)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       style="stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+       transform="matrix(0.8207015,0,0,1,182.95124,-0.52086)"
+       id="g6619-3">
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g88-6"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <path
+           style="fill-rule:evenodd;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           inkscape:connector-curvature="0"
+           id="path90-0"
+           d="m 120,110 150,0 0,80 -150,0 0,-80"
+           vector-effect="non-scaling-stroke" />
+      </g>
+      <polyline
+         vector-effect="non-scaling-stroke"
+         points="120,120 269,120 "
+         id="polyline96-3"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:none;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         transform="translate(-50.445544,3.53673)" />
+      <g
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10384321;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans"
+         id="g102-5"
+         font-style="normal"
+         font-weight="400"
+         font-size="9"
+         transform="translate(-50.445544,3.53673)">
+        <polyline
+           style="fill:none;stroke-width:1.10384321;stroke-miterlimit:4;stroke-dasharray:none"
+           id="polyline104-7"
+           points="120,130 269,130 "
+           vector-effect="non-scaling-stroke" />
+      </g>
+    </g>
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text254"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="121.53673"
+       x="259.43497"
+       xml:space="preserve">Communications</text>
+    <g
+       transform="translate(-48.667279,3.53673)"
+       font-size="9"
+       font-weight="400"
+       font-style="normal"
+       id="g258"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans">
+      <text
+         xml:space="preserve"
+         x="292.19403"
+         y="127.7194"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text260"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans">Telecomands from ground</text>
+    </g>
+  </g>
+  <g
+     id="g4360"
+     transform="matrix(4.4565142,0,0,4.4565142,-474.58108,-292.18233)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       id="g4530">
+      <path
+         vector-effect="non-scaling-stroke"
+         d="m 540.43161,245.24294 50,0 0,10 -50,0 0,-10"
+         id="path280"
+         inkscape:connector-curvature="0"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans" />
+      <path
+         vector-effect="non-scaling-stroke"
+         d="m 540.43161,253.7054 173.91999,0 0,100 -173.91999,0 0,-100"
+         id="path282"
+         inkscape:connector-curvature="0"
+         style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.93038929;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans" />
+    </g>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g284"
+     font-style="normal"
+     font-weight="700"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,-1966.4685,-281.21485)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text286"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="263"
+       x="878"
+       xml:space="preserve">Status repository</text>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g294"
+     font-style="normal"
+     font-weight="700"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,-1918.3247,232.03298)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text296"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="393"
+       x="869"
+       xml:space="preserve">Command repository</text>
+  </g>
+  <g
+     style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace"
+     id="g366"
+     font-style="normal"
+     font-weight="400"
+     font-size="8"
+     transform="translate(-15.01339,379.20455)" />
+  <g
+     style="font-size:9px;font-style:normal;font-weight:700;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g226"
+     font-style="normal"
+     font-weight="700"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,-1958.6865,846.1941)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <text
+       style="font-size:9px;font-style:normal;font-weight:700;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+       id="text228"
+       font-style="normal"
+       font-weight="700"
+       font-size="9"
+       y="133"
+       x="877"
+       xml:space="preserve">Data repository</text>
+  </g>
+  <text
+     xml:space="preserve"
+     x="2791.4141"
+     y="1019.687"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8"
+     style="font-size:40.1086235px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">Read</text>
+  <text
+     xml:space="preserve"
+     x="2791.4141"
+     y="1572.0336"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8-8"
+     style="font-size:40.1086235px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">Read</text>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:4.45651436;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 224.81918,1049.2908 53.53032,-32.127 -52.49659,-33.4595"
+     id="path5520-05-8"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <g
+     id="g7522"
+     transform="matrix(4.4565142,0,0,4.4565142,-218.01855,-347.20244)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       style="stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       id="g7495">
+      <g
+         id="g7490"
+         style="stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none">
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path7468"
+           d="m 353.57143,192.872 0,26.09625 -131.54762,0 -5.12161,0 0,-26.00667"
+           style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           sodipodi:nodetypes="ccc"
+           inkscape:connector-curvature="0"
+           id="path7472"
+           d="m 353.55339,218.91689 134.12581,0 0,-25.67471"
+           style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           sodipodi:nodetypes="ccc"
+           inkscape:connector-curvature="0"
+           id="path7474"
+           d="m 486.83741,218.91689 134.5467,0 0,-25.81501"
+           style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      </g>
+    </g>
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path7502"
+       d="m 353.55916,218.91689 0,51.63002 -51.41743,0"
+       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path5520-05-8-0"
+       d="m 313.77072,277.67323 -12.0117,-7.20967 11.77974,-7.50787"
+       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path5520-05-8-0-6"
+       d="m 194.11443,353.4386 -7.20967,12.0117 -7.50787,-11.77974"
+       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  </g>
+  <g
+     transform="matrix(-4.4565142,0,0,4.4565142,2254.0169,-424.28679)"
+     id="g7532-6"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <polyline
+       transform="matrix(-1,0,0,1,701.9262,-17.138691)"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;font-family:DejaVu Sans"
+       id="polyline42-5-3"
+       points="410,450 440,450 "
+       vector-effect="non-scaling-stroke" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path5520-05-7-4"
+       d="m 273.48154,440.0522 -12.01171,-7.20967 11.77975,-7.50787"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  </g>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:6.68477106;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 699.81114,1109.6543 0,84.8832 -84.88601,0 0,91.9602"
+     id="path7584"
+     inkscape:connector-curvature="0"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <g
+     id="g7681"
+     transform="matrix(4.4565142,0,0,4.4565142,-218.01855,-347.20244)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <path
+       inkscape:connector-curvature="0"
+       id="path7647"
+       d="m 657.14286,557.46032 59.52381,0 0,-411.90476 -25.19842,0"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6, 1;stroke-dashoffset:0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path7649"
+       d="m 656.59915,436.03175 60.06752,0"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6, 1;stroke-dashoffset:0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path7651"
+       d="m 657.16035,312.22222 59.50632,0"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6, 1;stroke-dashoffset:0" />
+  </g>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:4.45651436;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 2915.9273,269.33845 -53.5303,32.13147 52.4967,33.45505"
+     id="path5520-05-8-5"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <text
+     xml:space="preserve"
+     x="2791.4141"
+     y="2109.6355"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8-8-0"
+     style="font-size:40.1086235px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">Read</text>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:4.45651436;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:26.73908504, 4.45651417;stroke-dashoffset:0"
+     d="m 1305.0766,1806.9874 0,330.758 625.2443,-3.7524"
+     id="path7743"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <text
+     xml:space="preserve"
+     x="1729.7219"
+     y="2118.9314"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8-8-0-1"
+     style="font-size:40.1086235px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">Read</text>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:4.45651436;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 1337.2458,1858.1392 -32.13,-53.5316 -33.4589,52.4977"
+     id="path5520-05-8-3"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:4.45651436;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:26.73908504, 4.45651417;stroke-dashoffset:0"
+     d="m 1632.1103,1542.9255 296.337,0"
+     id="path7781"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:4.45651436;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 1875.5974,1575.2798 53.5303,-32.1314 -52.4965,-33.4595"
+     id="path5520-05-8-7"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:4.45651436;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 1684.3036,1510.8119 -53.5303,32.127 52.4966,33.4595"
+     id="path5520-05-8-7-6"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <text
+     xml:space="preserve"
+     x="1729.7219"
+     y="1587.6313"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8-8-0-1-6"
+     style="font-size:40.1086235px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">Read</text>
+  <text
+     xml:space="preserve"
+     x="1727.7244"
+     y="1521.0449"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8-8-0-1-4"
+     style="font-size:40.1086235px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">Write</text>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:4.45651436;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:26.73908504, 4.45651417;stroke-dashoffset:0"
+     d="m 1128.02,931.42049 801.0793,0"
+     id="path7781-8"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:4.45651436;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 1178.7352,899.07065 -53.5303,32.13145 52.4966,33.45953"
+     id="path5520-05-8-7-6-8"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <text
+     xml:space="preserve"
+     x="1729.7219"
+     y="975.20886"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8-8-0-1-6-5"
+     style="font-size:40.1086235px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">Read</text>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:4.45651436;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:26.73908504, 4.45651417;stroke-dashoffset:0"
+     d="m 1305.0187,1282.6919 0,-150.813 620.3003,0"
+     id="path7743-3"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:4.45651436;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 1337.2642,1231.9143 -32.13,53.5317 -33.4589,-52.4978"
+     id="path5520-05-8-3-2"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:4.45651436;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="m 1874.806,1164.202 53.5303,-32.127 -52.4966,-33.4595"
+     id="path5520-05-8-7-67"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <text
+     xml:space="preserve"
+     x="1729.7219"
+     y="1176.5527"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8-8-0-1-6-4"
+     style="font-size:40.1086235px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">Read</text>
+  <text
+     xml:space="preserve"
+     x="433.40247"
+     y="289.81354"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8-8-0-1-4-4"
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans" />
+  <g
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+     transform="matrix(4.4565142,0,0,4.4565142,16.370403,-176.70413)"
+     id="g3502"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace"
+       id="g334"
+       font-style="normal"
+       font-weight="400"
+       font-size="8"
+       transform="matrix(0.9070624,0,0,0.5623132,-24.135113,143.3554)">
+      <path
+         style="fill-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path336"
+         d="m 40,440 0,59 199,0 0,-49 -10,-10 -189,0"
+         vector-effect="non-scaling-stroke" />
+      <polyline
+         style="fill:none"
+         id="polyline338"
+         points="229,440 229,450 "
+         vector-effect="non-scaling-stroke" />
+      <polyline
+         style="fill:none"
+         id="polyline340"
+         points="229,450 239,450 "
+         vector-effect="non-scaling-stroke" />
+    </g>
+    <g
+       style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace"
+       id="g342"
+       font-style="normal"
+       font-weight="400"
+       font-size="8"
+       transform="translate(-30,-50)">
+      <text
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace"
+         id="text344"
+         font-style="normal"
+         font-weight="400"
+         font-size="8"
+         y="451"
+         x="44.921875"
+         xml:space="preserve">Receives the requirement and executesWWrite</text>
+      <text
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace"
+         id="text346"
+         font-style="normal"
+         font-weight="400"
+         font-size="8"
+         y="460"
+         x="45"
+         xml:space="preserve">the corresponding actions. Gets</text>
+      <text
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace"
+         id="text348"
+         font-style="normal"
+         font-weight="400"
+         font-size="8"
+         y="469"
+         x="45.136719"
+         xml:space="preserve">and notifies back execution result.</text>
+    </g>
+  </g>
+  <g
+     id="g4592"
+     transform="matrix(4.4565142,0,0,4.4565142,-546.42095,-319.55721)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       transform="translate(-233.95426,-23.13101)"
+       font-size="9"
+       font-weight="400"
+       font-style="normal"
+       id="g382"
+       style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans">
+      <g
+         id="g3399"
+         transform="matrix(0.93903503,0,0,0.59532132,421.51196,151.03062)">
+        <path
+           style="fill-rule:evenodd"
+           inkscape:connector-curvature="0"
+           id="path384"
+           d="m 30.647793,269.47367 0,49 218.999997,0 0,-39 -10,-10 -208.999997,0"
+           vector-effect="non-scaling-stroke" />
+        <g
+           id="g3395">
+          <polyline
+             vector-effect="non-scaling-stroke"
+             points="239,270 239,280 "
+             id="polyline386"
+             style="fill:none" />
+          <polyline
+             vector-effect="non-scaling-stroke"
+             points="239,280 249,280 "
+             id="polyline388"
+             style="fill:none" />
+        </g>
+      </g>
+    </g>
+    <g
+       transform="translate(185.81541,18.97552)"
+       font-size="8"
+       font-weight="400"
+       font-style="normal"
+       id="g390"
+       style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace">
+      <text
+         xml:space="preserve"
+         x="33"
+         y="283"
+         font-size="8"
+         font-weight="400"
+         font-style="normal"
+         id="text392"
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace">Queue commands, determines if executable</text>
+      <text
+         xml:space="preserve"
+         x="33.25"
+         y="292"
+         font-size="8"
+         font-weight="400"
+         font-style="normal"
+         id="text394"
+         style="font-size:8px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace">and monitors execution</text>
+    </g>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g310-5"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,-1579.3279,1207.5755)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       id="g4503-6"
+       transform="translate(-85.862966,-67.904699)">
+      <g
+         id="g3466-8-0"
+         transform="translate(-67.7846,16.474194)"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <g
+           style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace"
+           id="g368-4-8"
+           font-style="normal"
+           font-weight="400"
+           font-size="8"
+           transform="matrix(0.87693456,0,0,0.64977379,182.63462,170.38456)">
+          <path
+             style="fill-rule:evenodd"
+             inkscape:connector-curvature="0"
+             id="path370-5-5"
+             d="m 890,160 0,49 199,0 0,-39 -10,-10 -189,0"
+             vector-effect="non-scaling-stroke" />
+          <polyline
+             style="fill:none"
+             id="polyline372-8-5"
+             points="1079,160 1079,170 "
+             vector-effect="non-scaling-stroke" />
+          <polyline
+             style="fill:none"
+             id="polyline374-7-9"
+             points="1079,170 1089,170 "
+             vector-effect="non-scaling-stroke" />
+        </g>
+        <g
+           style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+           id="g376-4-6"
+           font-style="normal"
+           font-weight="400"
+           font-size="9"
+           transform="translate(73.228954,114.47094)" />
+      </g>
+      <text
+         xml:space="preserve"
+         x="897"
+         y="305"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text312-2"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"><tspan
+           style="font-size:8px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace"
+           id="tspan4109">Stores and gives access to</tspan></text>
+      <text
+         xml:space="preserve"
+         x="896.62207"
+         y="315"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text314-9"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"><tspan
+           style="font-size:8px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace"
+           id="tspan4111">available commands</tspan></text>
+    </g>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g310-5-6"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,-1579.3279,660.90972)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       id="g4503-6-6"
+       transform="translate(-85.862966,-67.904699)">
+      <g
+         id="g3466-8-0-4"
+         transform="translate(-67.7846,16.474194)"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <g
+           style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace"
+           id="g368-4-8-0"
+           font-style="normal"
+           font-weight="400"
+           font-size="8"
+           transform="matrix(0.87693456,0,0,0.64977379,182.63462,170.38456)">
+          <path
+             style="fill-rule:evenodd"
+             inkscape:connector-curvature="0"
+             id="path370-5-5-9"
+             d="m 890,160 0,49 199,0 0,-39 -10,-10 -189,0"
+             vector-effect="non-scaling-stroke" />
+          <polyline
+             style="fill:none"
+             id="polyline372-8-5-5"
+             points="1079,160 1079,170 "
+             vector-effect="non-scaling-stroke" />
+          <polyline
+             style="fill:none"
+             id="polyline374-7-9-7"
+             points="1079,170 1089,170 "
+             vector-effect="non-scaling-stroke" />
+        </g>
+        <g
+           style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+           id="g376-4-6-2"
+           font-style="normal"
+           font-weight="400"
+           font-size="9"
+           transform="translate(73.228954,114.47094)" />
+      </g>
+      <text
+         xml:space="preserve"
+         x="897"
+         y="305"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text312-2-7"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"><tspan
+           style="font-size:8px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace"
+           id="tspan4109-6">Stores and gives access to</tspan></text>
+      <text
+         xml:space="preserve"
+         x="896.62207"
+         y="315"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text314-9-0"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"><tspan
+           style="font-size:8px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace"
+           id="tspan4111-9">general data from commands</tspan></text>
+    </g>
+  </g>
+  <g
+     style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+     id="g310-5-3"
+     font-style="normal"
+     font-weight="400"
+     font-size="9"
+     transform="matrix(4.4565142,0,0,4.4565142,-1579.3279,110.84856)"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       id="g4503-6-0"
+       transform="translate(-85.862966,-67.904699)">
+      <g
+         id="g3466-8-0-3"
+         transform="translate(-67.7846,16.474194)"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel">
+        <g
+           style="font-size:8px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:Monospace"
+           id="g368-4-8-5"
+           font-style="normal"
+           font-weight="400"
+           font-size="8"
+           transform="matrix(0.87693456,0,0,0.64977379,182.63462,170.38456)">
+          <path
+             style="fill-rule:evenodd"
+             inkscape:connector-curvature="0"
+             id="path370-5-5-8"
+             d="m 890,160 0,49 199,0 0,-39 -10,-10 -189,0"
+             vector-effect="non-scaling-stroke" />
+          <polyline
+             style="fill:none"
+             id="polyline372-8-5-1"
+             points="1079,160 1079,170 "
+             vector-effect="non-scaling-stroke" />
+          <polyline
+             style="fill:none"
+             id="polyline374-7-9-0"
+             points="1079,170 1089,170 "
+             vector-effect="non-scaling-stroke" />
+        </g>
+        <g
+           style="font-size:9px;font-style:normal;font-weight:400;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1;font-family:DejaVu Sans"
+           id="g376-4-6-8"
+           font-style="normal"
+           font-weight="400"
+           font-size="9"
+           transform="translate(73.228954,114.47094)" />
+      </g>
+      <text
+         xml:space="preserve"
+         x="897"
+         y="305"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text312-2-6"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"><tspan
+           style="font-size:8px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace"
+           id="tspan4109-5">Stores and gives access to</tspan></text>
+      <text
+         xml:space="preserve"
+         x="896.62207"
+         y="315"
+         font-size="9"
+         font-weight="400"
+         font-style="normal"
+         id="text314-9-7"
+         style="font-size:9px;font-style:normal;font-weight:400;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans"><tspan
+           style="font-size:8px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace"
+           id="tspan4111-6">all system status variables</tspan></text>
+    </g>
+  </g>
+  <text
+     xml:space="preserve"
+     x="1727.7244"
+     y="1105.4386"
+     font-size="9"
+     font-weight="400"
+     font-style="normal"
+     id="text176-8-8-0-1-4-42"
+     style="font-size:40.1086235px;font-style:normal;font-weight:400;fill:#323232;fill-opacity:1;stroke:none;font-family:DejaVu Sans"
+     inkscape:export-filename="/home/cgonzalez/Proyectos/Trabajo-de-titulo/Memoria/img/suchai_arch_en.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">Write</text>
+</svg>
