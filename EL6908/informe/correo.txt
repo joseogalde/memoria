@@ -1,0 +1,27 @@
+Profesor Marcos,
+
+Tal como hablamos el otro día, necesito definir los objetivos de la memoria para el informe de la Introducción al Trabajo de Título (E).
+Los objetivos generales y específicos que se me ocurrieron en base al título de memoria son:
+
+Título de Memoria: "Diseño e Implementación de una plataforma para experimentos en microgravedad y de electrónica en ambiente hostil con Nano-Satélites"
+
+Objetivos Generales
+Diseñar e implementar una plataforma de tipo payload que permita ejecutar experimentos físicos a bordo de un nano satélite.
+Diseñar y construir una PCB que sea capaz de almacenar actuadores, sensores y controladores necesarios para el experimento considerando las restricciones del bus.
+Diseñar e implementar una interfaz de software que permita manipular de forma sencilla el experimento.
+Objetivos Específicos
+Diseño y construcción de una PCB que contenga los sensores, actuadores, controladores y sistema físico observado dentro de la misma PCB.
+Integrar la PCB al bus del nano-satélite objetivo.
+Implementar controladores de hardware (driver) para manipular los elementos individualmente dentro de la PCB.
+Implementar una API intermedia (comandos) que permita al usuario ejecutar el experimento sin tener programar individualmente los elementos de hardware.
+Implementar una API que permita realizar un tratamiendo estadísticos de los datos (ej: obtener promedio, media, varianza, histograma, etc).
+Integrar los elementos de software diseñados a la arquitectura de software del satélite.
+Realizar pruebas sobre los componentes de hardware utilizando los controladores individuales.
+Realizar pruebas sobre todo el harware utilizando la API intermedia.
+Realizar pruebas sobre la coherencia de los datos medidos y/o procesados.
+
+Cualquier opinión o comentario son bienvenidos, la idea es iterar sobre los objetivos para enfocar bien los esfuerzos y agregar/eliminar objetivos si es necesario.
+Copio este mensaje a Claudio Falcón para que opine pueda dar su opinión al respecto.
+
+Espero su respuesta.
+
