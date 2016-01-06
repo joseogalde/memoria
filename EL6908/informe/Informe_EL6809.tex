@@ -161,8 +161,7 @@ Actualmente el proyecto se encuentra en la etapa final previa a su lanzamiento a
 
 Los requerimentos y tipos de experimentos a bordo del nano-sat\'elite están en constante evolución, pero este trabajo de memoria pretende formalizar; formar una estructura base; y documentar el m\'etodo de diseño e implementación de un \textit{setup} experimental a bordo de un vehículo espacial con recursos limitados.
 
-\subsection{Hipótesis de trabajo y metodología}
-La hipot\'esis de trabajo está centrada en las restricciones impuestas por el ambiente donde se desempeña el proyecto SUCHAI, como por ejemplo:
+La hipot\'esis de operación de la plataforma a diseñar está centrada en las restricciones impuestas por el ambiente donde se desempeña (SUCHAI):
 \begin{enumerate}
 \item Altos gradientes de temperatura
 \item Baja o nula presión
@@ -180,20 +179,36 @@ Se considera dedicar un total de 450-525 horas de trabajo durante el semestre de
 \item 15 semanas en el semestre
 \end{enumerate}
 
+Se considera trabajar en el período de Diciembre - Enero para aprovechar mejor los tiempos antes de inciar el semestre otoño 2016 (La figura \ref{gantt} se adjunta junto con este archivo para mejor visualización).
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=\textwidth]{img/gantt2.png}
+\caption{Carta Gantt para semestre de otoño 2016}
+\label{gantt}
+\end{figure}
+
+
 \section{Apoyo para la realización de la memoria}
 \subsection{Infraestructura disponible}
 
 \subsubsection{Instalaciones}
 El proyecto se desarrolla en las dependencias de la facultad, específicamente el laboratorio SPEL (\textit{Spacial and Planetary Exploration Laboratory}), tercer piso del edificio de Electrotecnologías. Este laboratorio alberga proyectos relacionados a la exploración espacial e instrumentación para la geociencia.
-\subsubsection{Software}
-La mayor parte del software utilizado durante el trabajo de título corresponde al lenguaje C orientado al microcontrolador PIC24F en conjunto al software de vuelo de SUCHAI. Los detalles sobre la configuración y operación del microcontralodor se encuentran en el datasheet del mismo.
 
 \paragraph{IDE o Entorno de desarrollo:}
 Para el desarrollo de la aplicación para el microcontrolador PIC24F se utiliza el entorno de desarrollo MPLABX de Microchip, que es gratuita y se observa en la figura \ref{mplabx}; se utiliza el compilador XC16 para traducir el código del lenguaje C hacia código de máquina programable al microcontrolador.
 
+\subsection{Metodología}
+\subsubsection{Software}
+La mayor parte del software utilizado durante el trabajo de título corresponde al lenguaje C orientado al microcontrolador PIC24F en conjunto al software de vuelo de SUCHAI. Los detalles sobre la configuración y operación del microcontralodor se encuentran en el datasheet del mismo.
+
+Idealmente se desea testear el desarrollo mediante \textit{unit testing}, sin embargo su factibilidad se analizará durante el desarrollo del trabajo.
+
+La forma de mostrar los resultados se realizará con diagramas de tiempos de las señales y análisis de frecuencia de las señales de entrada/salida del sistema, así como medidas estadísticas  de los datos obtenidos.
+
+
+
 \subsection{Condiciones Contractuales} 
 El desarrollo de este trabajo se enmarca dentro del proyecto SUCHAI el cual es patrocinado y financiado por la Facultad de Ciencias Físicas y Matemáticas de la Universidad de Chile. Siendo alumno regular de la carrera Ingeniería Civil Electricista de la Universidad de Chile, parte del trabajo realizado para esta memoria ha sido considerado en el desarrollo de la Práctica Profesional II y como parte de trabajos independientes como ayudante de laboratorio de SPEL.
 
-\subsection{Plan B}
-ADSF
 \end{document}

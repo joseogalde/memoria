@@ -87,10 +87,10 @@ En el presente informe se entrega un avance del Capitulo 2 del trabajo de títul
 Los computadores personales son utilizados por gran parte de la población dado que se caracterizan por tener capacidad para atender una cantidad importante de procesos dispuestos por un sistema operativo en orden para atender diferentes aplicaciones  del usuario final. Un microcontrolador tambi\'en es un tipo de computador salvo que sus recursos normalmente son más limitados que los de un computador personal. Además, un microcontrolador normalmente tiene más flexibilidad para el uso directo de perif\'ericos y poder comunicarse a nivel de máquina con otro dispositivo electrónico.
 
 Un sistema embebido está compuesto por uno más microcontroladores en conjunto con dispositivos electrónicos con los cuales comunicarse para realizar alguna tarea. 
-El hardware que compone a un microcontrolador está fija por lo que el desarrollador de sistemas embebidos solamente tiene acceso a la programación de \'este en conjunto con la correcta interconexión con otros dispositivos electrónicos. Debe considerarse que a diferencia de un computador personal, el programa que provee la funcionalidad del microcontrolador se denomina \textit{firmware}, ya que en general es específico para la plataforma de hardware utilizada.
+El hardware que compone a un microcontrolador está fijo, por lo que el desarrollador de sistemas embebidos solamente tiene acceso a la programación de \'este en conjunto con la correcta interconexión con otros dispositivos electrónicos. Debe considerarse que a diferencia de un computador personal, el programa que provee la funcionalidad del microcontrolador se denomina \textit{firmware}, ya que en general es específico para la plataforma de hardware utilizada.
 
 \subsubsection{Microcontroladores PIC}
-Este trabajo se concentra en el uso de los microcontroladores PIC desarrollados por la compañía Microchip como cerebro de la plataforma. La familia de microcontroladores  PIC es bastante amplia adaptándose a un amplio rango de necesidades, la tabla \ref{pic_list} resume las principales características de los diferentes modelos y puede ser utilizada como una guía para determinar el dispositivo adecuado según la aplicación:
+Este trabajo se concentra en el uso de los microcontroladores PIC desarrollados por la compañía Microchip. La familia de microcontroladores  PIC es bastante amplia adaptándose a un amplio rango de necesidades, la tabla \ref{pic_list} resume las principales características de los diferentes modelos y puede ser utilizada como una guía para determinar el dispositivo adecuado según la aplicación:
 
 % ················ TALBA ·················
 \begin{table}[ht!]
@@ -107,7 +107,7 @@ Los microcontroladores son utilizados en dispositivos y productos automáticamen
 Corresponden a los sat\'elites artificiales con una masa entre 1 y 10 kg. Con los continuos avances en la minaturización y capacidad de la electrónica en conjunto al uso de constelaciones de sat\'elites, los nano-sat\'elites están crecientemente capaces de desempeñarse bien en misiones comerciales. Un caso destacable son los nano-sat\'elites que siguen el protocolo CubeSat, cuyo primer lanzamiento fue el 2003 y en el año 2012 se lanzaron 75 sat\'elites al espacio.
 
 \subsubsection{CubeSat}
-Es un tipo de nano-sat\'elite hecho de multiples unidades cúbicas de 10x10x10 cm, no tiene más de 1.3 kg de masa por unidad y a menudo utiliza componentes \textit{commercial off-the-shelf} (COTS) para su electrónica y estructura.
+Es un tipo de nano-sat\'elite hecho de multiples unidades cúbicas de 10x10x10 cm, no tiene más de 1.3 kg de masa por unidad y a menudo utiliza componentes \textit{commercial off-the-shelf} (COTS) para su diseño electrónico y estructura.
 
 Los usos típicos involucran experimentos que pueden ser miniaturizados o experimentos para servir a propósitos como la observación del planeta o comunicación de radio amateur.
 
@@ -126,15 +126,44 @@ La misión de SUCHAI se considera en los siguientes \textit{payloads}
 \end{itemize}
 
 \subsubsection{Payload}
+Un \textit{payload} es la combinación de hardware y software de una nave espacial que interactúa con un \textit{sujeto} (porción del mundo exterior fuera de la nave espacial), de forma de completar los objetivos de la Misión. Los payloads tipicamente son únicos y específicos para cada misión, dado que son la razón fundamental por la que la nave espacial es lanzada. El propósito del resto de la nave espacial es mantener al payload sano, feliz y apuntando en la dirección correcta.
 \subsection{Bus}
+Es un dispositivo que actúa como sistema de comunicación entre los componentes de un sistema. En este caso, un bus interconecta todos los módulos de nano-sat\'elite integrando las partes individuales en un sistema completo.
 \subsubsection{PC-104}
-\subsection{Actuadores y Sensores}
+Es una familia de estándares de sistemas embebidos que define los factores y forma de un bus. El PC-104 está pensado para ambientes especializados donde se necesita un computador pequeño y robusto. El estádar permite diseño modulares y además, posibilita poner placas una de encima de otra en forma de pila.
+\subsection{Sensores transductores}
+Es un dispositivo que convierte un tipo de energía hacia otra. Usualmente un transducto convierte una señal de un tipo hacia una señal el\'etrica. 
+Los transductores son fundamentales en los sistemas de automatización, de medidas y de control, dónde se generan señales el\'etrcias a partir de otras variables físicas (e.g. energía, fuerza, torque, movimiento, posición, etc). Según su uso de potencia, existen transductores activos y pasivos.
+
+\subsection{Actuador}
+Es un dispositivo que es responsable de accionar algún tipo de mecanismo sobre un sistema. El tipo de energía utilizado por el actuador es variable (e.g. el\'ectrico, mecánico, químico, etc).
 \subsubsection{Conversor ADC}
+Un conversor Análogo-a-Digital es un dispositivo que convierte una señal analógica hacia un número digital representado por una señal digital.
 \subsubsection{Conversor DAC}
+Un conversor Digital-a-Análogo es un dispositivo que convierte un número digital hacia una señal analógica.
 \subsection{Controlador de hardware}
+Corresponde a un programa/software que manipula o controla un dispositivo de hardware específico. Un driver provee una interfaz de software de manera que el sistema operativo u otro programa pueda acceder a las capacidades del dispositivo de hardware sin necesidad de conocer detalles muy precisos sobre \'este.
 \subsection{Microgravedad}
+Corresponde a la situación física donde la \textit{ fuerza-g} dada por la ley de gravitación son muy pequeñas, practicamente nulas. Tambi\'en se le conoce como \textit{zero-G} o $\mu g$.
+Esta condición se produce por ubicarse a gran distancia de la Tierra o bien encontrarse orbitando la Tierra en caída libre.
 \subsection{Sistema fuera de equilibrio}
+La termodinámica fuera del equilibrio es una rama de la física que tratacon sistemas y procesos que en general no están en estado de equilibrio termodinámico, pero pueden ser adecuadamente descrito en t\'erminos de variables que son relacionadas con variables de estados termodinámicas.
+Un sistema fuera de equilibrio es un sistema que cumple con estos requisitos. Sin embargo, es de particular inter\'es para este trabajo de título, los sistemas que se encuentran en estado estacionario fuera del equilibrio o NESS (NonEquilibrium Steady State).
+
 \subsection{Circuito pasivo}
+Corresponde a un circuito el\'ectrico compuesto por elementos discretos que en conjunto consumen energía en vez generarla.
 \subsubsection{Circuito RC}
+Corresponde a un circuito compuesto por un resistor (R) junto a un capacitor (C). En el desarrollo de este trabajo se refiere a un circuito RC con el resistor y capacitor conectados en serie de forma que forman un filtro pasa bajos.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=180pt]{img/rc.png}
+\caption{Circuito RC pasa-bajos}
+\label{fig:rc}
+\end{figure}
+
+\subsubsection{Filtro pasa bajos}
+Corresponde a un dispositivo cuya caracterísitica es bloquear el paso de señales de \textit{alta} frecuencia a la salida del dispositivo, por lo que solamente permite el paso de señales de \textit{baja} frecuencia. Si la señal es una combinación de múltiples señales de diferentes componentes de frecuencias, solamente las componentes de baja frecuencia logran pasar a trav\'es del dispositivo. 
+
 \subsubsection{Potencia inyectada}
+Corresponde a la potencia instantánea consumida por un circuito el\'ectrico.
 \end{document}

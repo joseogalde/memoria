@@ -1,0 +1,131 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[spanish]{babel}
+%\usepackage[ansinew]{inputenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[letterpaper,includeheadfoot, top=0.5cm, bottom=3.0cm, right=2.0cm, left=2.0cm]{geometry}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{subfig}
+\usepackage{acronym} %Acronimos
+
+\usepackage{listings} %Codigo
+\lstset{language=C, tabsize=4,framexleftmargin=5mm,breaklines=true}
+
+% -------------------------ACRONIMOS --------------------------------------------
+\acrodef{RAM}{\textit{Random Access Memory}}
+\acrodef{RISC}{\textit{Reduced Instruction Set Computing}}
+\acrodef{ALU}{\textit{Arithmetic Logic Unit}}
+\acrodef{EULA}{\textit{End-User License Agreement}}
+\acrodef{GPL}{\textit{General Public License}}
+\acrodef{RTOS}{\textit{Real Time Operating System}}
+
+\begin{document}
+% --------------- ---------PORTADA --------------------------------------------
+\newpage
+\pagestyle{fancy}
+\fancyhf{}
+%-------------------- CABECERA ---------------------
+\fancyhead[L]{ \includegraphics[scale=0.9]{img/logo_die.pdf} }
+%------------------ TÍTULO -----------------------
+\vspace*{6cm}
+\begin{center}
+\Huge  {Estrucura de la Memoria} \\
+\vspace{1cm}
+\LARGE {EL6908 - Introducción al Trabajo de Título}\\
+\vspace{0.5cm}
+\LARGE {\textit{Diseño e Implementación de una plataforma para experimentos en microgravedad y de electrónica en ambiente hostil con Nano-Sat\'elites}}\\
+\end{center}
+%----------------- NOMBRES ------------------------
+\vfill
+\begin{flushright}
+\begin{tabular}{ll}
+\textbf{Autor} &: Jos\'e Ogalde O.\\
+\textbf{Profesor Guía} &: Marcos Díaz Q.\\
+\textbf{Profesor EL6908} &: Jorge Lopez H.\\
+& \today\\
+& Santiago, Chile.
+\end{tabular}
+\end{flushright}
+
+% ·············· ENCABEZADO ············
+\newpage
+\pagestyle{fancy}
+\fancyhf{}
+%\fancyhead[L]{\rightmark}
+\fancyhead[L]{\small \rm \textit{Sección \rightmark}}
+\fancyhead[R]{\small \rm \textbf{\thepage}}
+\fancyfoot[L]{\small \rm \textit{Avance Capítulo 2}}
+\fancyfoot[R]{\small \rm \textit{EL6908 - Introducción al Trabajo de Título}}
+%\fancyfoot[C]{\thepage}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% =============== INDICE ===============
+
+\tableofcontents
+
+% =============== CUERPO ===============
+\newpage
+
+Este documento describe la estructura que tendrá el trabajo de título.
+
+\section{Introducción}
+Este capítulo incluirá los siguientes aspectos:
+\begin{itemize}
+\item Breve párrafo de la estrucura del informe mencionando la cantidad de capítulos y el contenido de cada uno, pensando en ubicar al lector.
+\item Fundamentación y objetivo general: descripción breve acerca del contexto en el cual se desarrolla el Trabajo de Título, su importancia y aporte. Definición del objetivo general perseguido con la realización del trabajo.
+\item Objetivos específicos: punteo descriptivo acerca de los objetivos específicos del trabajo, aquellas tareas que individualmente ayudarán a alcanzar el cumplimiento del objetivo general descrito anteriormente.
+\end{itemize}
+
+\section{Antecedentes teóricos o Contextualización}
+En este capítulo se describen los conceptos generales básicos que dan marco al proyecto, es decir, que lo colocan en un contexto. Al final de este capítulo se termina explicando cuál es el aporte del proyecto al conocimiento en el campo en que este se ha desarrollado.
+
+Conceptos a revisar:
+\begin{itemize}
+\item Descripción general acerca de los CubeSat con enfoque al proyecto SUCHAI en cual se enmarca el trabajo de título.
+\item Descripción general de los sitemas embebidos y su relación con proyectos satelitales
+\item Descripción de el \textit{setup} para un experimento físico a bordo de una plataforma. Se describnen los conceptos como sensores digitales, conversores DAC/ADC, actuadores lineales, etc.
+\item Descripción del bus SUCHAI y su arquitectura de software.
+\item Decripción de los conceptos relacionados al desarrollo de controladores de hardware y su encapsulación como comandos.
+\end{itemize}
+
+\section{Implementación}
+En este capítulo se describir an las actividades del plan de trabajo que permitirán desarrollar el proyecto. Cabe aquí mencionar:
+\begin{itemize}
+\item Revisar bibliografía: buscar información para la redacción del estado del arte y contextualización del proyecto.
+\item Realizar el diseño e implementación de la plataforma:
+\begin{itemize}
+\item Definir qu\'e es lo que hace el experimento y extraer requerimentos 
+\item Mapear los requerimentos hacia soluciones de hardware y software
+\item Definir cómo integrar físicamente la plataforma al bus del sat\'elite.
+\item Definir los paráemtros de programación de los controladores que se manipulan
+\item Implementar los controladores de hardware y comandos intermedios.
+\item Definir m\'etricas para medir el desempeño de la plataforma.
+\end{itemize}
+\end{itemize}
+
+
+\section{Análisis de Resultados}
+En este capítulo se expondrán y discutirán los resultados obtenidos en la realización de las actividades. Se efectuará su análisis usando medios tales como:
+
+\begin{itemize}
+\item Formas de onda sobre los estímulos generados por los actuadores sobre el sistema bajo observación.
+\item Formas de onda sobre las medidas realizadas en el sistema bajo observación
+\item Gráficos sobre datos estadísticos como por ejemplo, potencia inyectada promedio, histogramas, etc.
+\item Tabla sobre los tiempos de ejecución de los comandos para diferentes valoresde los parametros del experimento.
+\end{itemize}
+
+La forma de visualización de los resultados, sin embargo, ha de llevarse a cabo con el objetivo de explicar de mejor manera la conclusión a la que llevan, por lo que esta premisa se tendrá siempre en mente a la hora de presentar los resultados.
+\section{Conclusiones y resultados}
+En este capítulo se presentarán las conclusiones del trabajo a la luz de los resultados obtenidos. Se realizarán recomendaciones en el sentido de abordar aspectos o actividades en proyectos futuros.
+
+\end{document}
