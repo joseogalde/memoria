@@ -1,51 +1,49 @@
+prefix = '2016_14_01_';
 %% Input
 reglInput = 'rand() = ';
 regrInput = ' ';
-inputFile = 'input_voltages.log';
+logFileName = strcat(prefix, 'input_voltages.txt');
 
 vin = [];
 
-fid = fopen(inputFile);
+fid = fopen(logFileName);
 tline = fgets(fid);
 
 while ischar(tline) 
-    if  ~isempty(  strfind(tline, reglInput ) )
+    if  ~isempty(  strfind( tline, reglInput ) )
         indexl = strfind( tline, reglInput );
         indexl = indexl + length( reglInput );
-        indexr = strfind(tline, regrInput );
-        nextVin = str2double( tline(indexl : indexr - 1) );
-        vin = [vin; nextVin];
-        
+        tmp = tline ( indexl : end );
+        indexr = strfind( tmp, regrInput );
+        nextVin = str2double( tmp( 1 : indexr - 1 ) );
+        vin = [vin; nextVin]; 
     end
     tline = fgets(fid);
 end
 
 fclose(fid);
 
-Input.file = inputFile;
+Input.file = logFileName;
 Input.len = length(vin);
-Input.vin = vin;
-
-ExpFisParse.input = Input;
+Input.voltage = vin;
 
 %% Output
-numberOfFiles = 14;
+numberOfFiles = 10;
 reglVOUT = 'dat_set_Payload_Buff(';
 regrVOUT = ')';
 regADC =  'adc period = ';
-sampleFreq = 2;
+samplingRate = 4;
 
-for i=0:numberOfFiles
-    inputFile = strcat( 'freq', num2str(i), '.log' );
+for i = 0 : numberOfFiles - 1
+    logFileName = strcat( prefix, 'freq', num2str(i), '.txt' );
     
     vout = [];
     adcPeriod = 0;
 
-    fid = fopen(inputFile);
+    fid = fopen(logFileName);
     tline = fgets(fid);
     
     while ischar(tline)
-        
         if ~isempty( strfind(tline, regADC) )
             indexl = strfind( tline, regADC);
             indexl = indexl + length(regADC);
@@ -56,21 +54,25 @@ for i=0:numberOfFiles
             indexl = indexl + length(reglVOUT);
             indexr = strfind(tline, regrVOUT);
             nextVoutSample = str2double( tline(indexl : indexr - 1) );
-            vout = [vout; nextVoutSample];
-            
+            vout = [vout; nextVoutSample]; 
         end
         tline = fgets(fid);
     end
     fclose(fid);
     
-    Measure.file = inputFile;
-    Measure.fs = sampleFreq;
+    Output.file = logFileName;
+    Output.len = length(vout);
+    Output.voltage = vout;
+    
+    Measure.input = Input;
+    Measure.output = Output;
+    Measure.samplingRate = samplingRate;
     Measure.adcPeriod = adcPeriod;
-    Measure.len = length(vout);
-    Measure.vout = vout;
+    Measure.date = prefix;
     
     logName = strcat('freq', num2str(i));
     ExpFisParse.(logName) = Measure;
 end
+
 
 save('ExpFisParse.mat', 'ExpFisParse');
