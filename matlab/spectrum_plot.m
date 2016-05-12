@@ -1,20 +1,29 @@
+clear all;
+close all;
+
 if exist('ExpFisTimeSeries.mat','file')
     load('ExpFisTimeSeries.mat');
 else
     run('time_series_builder.m');
 end
 
-%tauMilliSeconds = 1.21/1.47;
-%fcircuit = 1 / ( 2 * pi * tauMilliSeconds );
-fcircuit = 98 / 1000;
+fcircuitHz = 92;
 names = fieldnames ( ExpFisTimeSeries );
-close all
-for i = 1 : 1%length( fieldnames ( ExpFisTimeSeries ) ) -1    
-    TimeSeries = ExpFisTimeSeries.( names{i} );
-    L = length( TimeSeries.vout );
+for i = 1 : length( fieldnames ( ExpFisTimeSeries ) ) -1    
     
-    Yin = fft( TimeSeries.vin );
-    Yout = fft( TimeSeries.vout );
+    PayloadTSeries = ExpFisTimeSeries.(names{i});
+    
+    tsc = PayloadTSeries.tscollection;
+    vin = tsc.vin; 
+    vout = tsc.vout;
+    power = tsc.power;
+    fsignal = PayloadTSeries.freqSignalHz;
+    fsHz = PayloadTSeries.fsHz;
+
+    L = tsc.Length;
+    
+    Yin = fft( vin.Data );
+    Yout = fft( vout.Data );
     
     spectrumDoubleIn = abs( Yin / L );
     spectrumDoubleOut = abs( Yin / L );
@@ -22,29 +31,31 @@ for i = 1 : 1%length( fieldnames ( ExpFisTimeSeries ) ) -1
     spectrumSingleIn( 2 : end - 1 ) = 2 * spectrumSingleIn( 2 : end - 1 );
     spectrumSingleOut = spectrumDoubleOut( 1 : L / 2 + 1);
     spectrumSingleOut( 2 : end - 1 ) = 2 * spectrumSingleOut( 2 : end - 1 );
-    fs = TimeSeries.fsKHz;
-    fsignal = 1 / TimeSeries.dtMilliReal;
-    f = fs * ( 0 : ( L / 2 ) ) / L;
+    
+    f = fsHz * ( 0 : ( L / 2 ) ) / L;
     ylimit = get(gca,'ylim');
     
     figure;
     hold on;
     subplot( 2, 1, 1);
-    stem(f, spectrumSingleIn );
+    %stem(f, spectrumSingleIn );
+    plot(f, spectrumSingleIn );
     hold on;
-    plot( [fcircuit fcircuit] , ylim );
+    plot( [fcircuitHz fcircuitHz] , ylim );
     title(strcat('ExpFis Vin Spectrum , Fsignal = ', num2str(fsignal),...
-        ' [kHz] Fcircuit = ', num2str( fcircuit ), ' [kHz]'));
-    xlabel('f (kHz)');
+        ' [Hz] Fcircuit = ', num2str( fcircuitHz ), ' [Hz]'));
+    xlabel('f (Hz)');
     ylabel('|A(f)|');
-    xlim([0 0.2]);
+    %xlim([0 150]);
     subplot( 2, 1, 2);
     hold on;
-    stem(f, spectrumSingleOut);
-    plot( [fcircuit fcircuit] , ylim );
-    title(strcat('ExpFis Vout Spectrum , Fsampling = ', num2str(fs), ...
-        ' [KHz]  Fcircuit = ', num2str( fcircuit ), ' [kHz]'));
+    %stem(f, spectrumSingleOut);
+    plot(f, spectrumSingleOut);
+    plot( [fcircuitHz fcircuitHz] , ylim );
+    title(strcat('ExpFis Vout Spectrum , Fsampling = ', num2str(fsHz), ...
+        ' [Hz]  Fcircuit = ', num2str( fcircuitHz ), ' [Hz]'));
     xlabel('f (kHz)');
     ylabel('|A(f)|');
-    xlim([0 0.2]);
+    %xlim([0 150]);
+    pause; 
 end

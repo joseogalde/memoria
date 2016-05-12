@@ -1,0 +1,30 @@
+\ifglsentryexists{SUCHAI}{}%
+{%
+\gls@defglossaryentry{SUCHAI}%
+{%
+name={SUCHAI},%
+sort={SUCHAI},%
+type={main},%
+first={\protect \textit {Satellite of University of Chile for Aerospace Investigation} (SUCHAI)},%
+firstplural={\protect \textit  {Satellite of University of Chile for Aerospace Investigation}s(SUCHAIs)},%
+text={SUCHAI},%
+plural={SUCHAIs},%
+description={\textit {Satellite of University of Chile for Aerospace Investigation}},%
+descriptionplural={\textit {Satellite of University of Chile for Aerospace Investigation}\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={\protect \textit {Satellite of University of Chile for Aerospace Investigation}},%
+longplural={\protect \textit {Satellite of University of Chile for Aerospace Investigation}s},%
+short={SUCHAI},%
+shortplural={SUCHAIs},%
+counter={page},%
+parent={},%
+%
+}%
+}%

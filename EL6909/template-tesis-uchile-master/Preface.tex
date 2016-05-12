@@ -1,0 +1,63 @@
+\begin{preface}
+% Resumen
+%\section{Resumen Ejecutivo}
+\begin{myAbstract}
+%El estándar CubeSat fue desarrollado para facilitar el desarrollo de pequeños proyectos espaciales con fines investigativos y/o académicos. Esto es una ayuda para la evolución tecnológiuca espacial, ya que es posible testear nuevas tecnologías a bordo de un CubeSat sin los mayores costos que involucran la industria espacial tradicional.
+%
+%Es bajo esta perspectiva que nace el proyecto SUCHAI dentro de la UNiversidad de Chile. Este proyecto comienza con el lanzamiento de su primer Cubesat de 1U en el año 2016  y con el desarrollo de SUCHAI2 un nano-satélite de 3U. La misión de SUCHAI como SUCHAI2 están orientada al trabajo colaborativo de la industria y academia en orden de acercar el espacio al país.
+
+%El estándar de nanosatélites Cubesat fue pensado para facilitar el desarrollo de pequeños
+%proyectos espaciales con fines científicos y educacionales, a un bajo costo y en cortos periodos
+%de tiempo. Siguiendo esta línea, la Facultad de Ciencias Físicas y Matemáticas de la Uni-
+%versidad de Chile ha impulsado el proyecto SUCHAI, que consiste en implementar, poner en
+%órbita y operar el primer satélite desarrollado por una universidad del país. 
+
+Típicamente un satélite es diseñado de manera completa entorno a sus payloads a bordo. Este diseño \textit{payload-céntrico} tiene algunas desventajas, como lo son grandes \textit{budget} y un ciclo de desarrollo más largo. Una forma de resolver este problema es establecer una interfaz estandarizada entre el satélite y los payloads. 
+
+Una interface como tal permite separar las etapas de diseño y operación entre el bus del satélite con el de los payloads. Esto puede facilitar la integración de un mismo payload en múltiples satélites, así como reducir el ciclo de desarrollo total de la misión.
+
+Para evitar estos problemas se plantea una plataforma estandarizada entre payloads y el bus de un satélite, la cual está diseñada para operar en los nano-satélites tipo CubeSat que son los más utilizados en la comunidad académica.
+
+%Typically,  a  complete  satellite  will  be  designed  around  each  payload.  This  has  several 
+%drawbacks, such 
+%as larger budgets and a longer development cycle. However, it does not need to 
+%be  this  way.  A  standardized  payload  interface  can  help  alleviate  these  issues  and  allow  for  a 
+%lighter budget and a tighter development schedule.
+%To  avoid  these  problems  a  modu
+%lar  payload  interface  was  designed  to  support  multiple 
+%CubeSat  payloads. A  large  part  of  this  work  involved  designing  the Application  Programming 
+%Interface for the payload to interact with the satellites main microprocessor. The motivation for a 
+%modular i
+%nterface is to reduce the budget and development schedule.
+
+%El paradigma tradicional para el desarrollo de satélites es payload-céntrico, el cual es mucho más optimizado para proyectos tradicionales y grandes. Sin embargo, este paradigma obliga a rediseñar el satélite desde cero cada vez. Para evadir este problema se propone el desarrollo de una arquitectura de payload “SUCHPAY” capaz de soportar múltiples buses tipo CubeSat. 
+
+%SUCHPAY es una arquitectura que contiene tanto componentes de software(PAYSW) como de hardware (SUCHPAYHW). Esta configuración pretende facilitar el desarrollo arbitrario de payloads sobre CubeSats. De esta forma, el diseño de payload está completamente desacoplado del bus y de forma análoga, el bus puede ser diseño sin tener conocimiento de la operación o funcionamiento del payload.
+
+SUCHPAY es una plataforma que implementa tal interfaz entre el bus y un payload abordo. La plataforma provee herramientas de software para el desarrollador de payload con el fin de facilitar la integración del payload hacia el bus del satélite. También se provee una API de comandos para el bus, con la cual se estandariza el tipo de  comunicación entre un payload y el bus del satélite.
+
+A modo de validación de la plataforma, se integran dos payload experimentales que consiten en el estudio de la potencia inyectada en un circuito RC y el estudio del coeficiente de disipasión de energía en microgravedad y ambientes hostiles. Ambos payload se integran en el bus de SUCHAI, un CubeSat de 1U desarrollado por la Universidad de Chile.
+
+\end{myAbstract}
+% Pagina Optativa - Dedicatoria
+\dedicatoria{Gracias al pulento por su incondicional sabiduría en todo momento}
+
+% Pagina Optativa - Agradecimientos
+\section{Agradecimientos}
+Muchas gracias al spaghetti volador por su infinita sabiduría.
+\begin{flushright}
+\makeatletter
+	\@author
+\makeatother
+\end{flushright}
+
+% Indice - General
+\tableofcontents
+
+% Indice - Tablas
+\listoftables
+
+% Indice - Figuras
+\listoffigures
+
+\end{preface}

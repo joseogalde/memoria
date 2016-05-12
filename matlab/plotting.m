@@ -8,32 +8,28 @@ end
 
 names = fieldnames ( ExpFisTimeSeries );
 for i = 1 : length( fieldnames ( ExpFisTimeSeries ) )
-    TimeSeries = ExpFisTimeSeries.(names{i});
+    PayloadTSeries = ExpFisTimeSeries.(names{i});
+    
+    tsc = PayloadTSeries.tscollection;
+    vin = tsc.vin;
+    vout = tsc.vout;
+    power = tsc.power;
+    fsignalHz = PayloadTSeries.freqSignalHz;
+    
     figure;
-    hold on;
-    subplot( 3, 1, 1);
-    len = length(TimeSeries.trelative);
-    %len = 240
-    %stem(TimeSeries.trelative(1 : len ), TimeSeries.vin (1 : len) );
-    plot(TimeSeries.trelative(1 : len ), TimeSeries.vin (1 : len) );
-    title('ExpFis Vin');
-    xlabel('time');
-    ylabel('Vin');
-    subplot( 3, 1, 2);
-    %stem(TimeSeries.trelative(1 : len), TimeSeries.vout(1 : len) );
-    plot(TimeSeries.trelative(1 : len), TimeSeries.vout(1 : len) );
-    title('ExpFis Vout');
-    xlabel('time');
-    ylabel('Vout');
-    subplot( 3, 1, 3);
+    subplot( 2, 1, 1);
+    hold on;    
+    plot(vin ,'b');
+    plot(vout ,'r');
+    title(strcat( 'Payload RC measured Vin, Vout, Fnoise = ',num2str(fsignalHz),' Hz'));
+    xlabel('Time [sec]');
+    ylabel('Voltage [V]');
     
-    power = TimeSeries.power;
-    meanPower = mean(power);
-    power = power - meanPower;
-    plot(TimeSeries.trelative(1 : len), power(1 : len) );
-    title('ExpFis Instant Power');
-    xlabel('time');
-    ylabel('Power');
-    
-    %pause;
+    subplot( 2, 1, 2);
+    plot(power, 'g');
+    title(strcat( 'Payload RC injected power, Fnoise = ',num2str(fsignalHz),' Hz'));
+    xlabel('Time [sec]');
+    ylabel('Power [mW]');
+    pause;
+
 end

@@ -1,3 +1,4 @@
+close all;
 if exist('ExpFisTimeSeries.mat','file')
     load('ExpFisTimeSeries.mat');
 else
@@ -5,31 +6,82 @@ else
 end
 
 names = fieldnames ( ExpFisTimeSeries );
-bines = 100;
-binMin = -6e6;
-binMax = 12.5e6;
-for i = length( fieldnames ( ExpFisTimeSeries ) ) : -1 : 3%length( fieldnames ( ExpFisTimeSeries ) )
-    TimeSeries = ExpFisTimeSeries.(names{i});
-    power = TimeSeries.powerCentered;
-    tmp = mean(TimeSeries.vin);
+bins = 150;
+%len = min(simout.Length, simin.Length);
+
+
+%simin = ExpFisTimeSeries.freq4.tscollection.vin;
+
+freqNumber = 0 + 1 ;
+
+figure;
+hold on;
+for i = freqNumber %: length( fieldnames ( ExpFisTimeSeries ) )
+    PayloadTSeries = ExpFisTimeSeries.(names{i});
+    tsc = PayloadTSeries.tscollection;
     
-    h = histogram(power);
-    %figure;
-%    h = histogram(TimeSeries.vin - tmp);
-%     if h.NumBins > bines
-%         bines = h.NumBins;
-%     end
-%     if h.BinLimits(1) < binMin
-%         binMin = h.BinLimits(1);
-%     end
-%     if h.BinLimits(2) > binMax
-%         binMax = h.BinLimits(2);
-%     end
-% 
-%     h.BinLimits = [binMin, binMax];
-%     h.NumBins = bines;
-     h.Normalization = 'probability';
+    vin = tsc.vin;
+    meanVin = vin.mean;
+    centeredVin = vin.Data - meanVin;
+    hVin = histogram(centeredVin);
+    hVin.Normalization = 'probability';
+    hVin.NumBins = bins;
     
-    hold on;
+    meanVinTheo = simin.mean;
+    centeredVinTheo = simin.Data - meanVinTheo;
+    hVinTheo = histogram(centeredVinTheo);
+    hVinTheo.Normalization = 'probability';
+    hVinTheo.NumBins = bins;
+
+    legend('data', 'simulation');
     
+end
+
+figure;
+hold on;
+for i = freqNumber %: length( fieldnames ( ExpFisTimeSeries ) )
+    PayloadTSeries = ExpFisTimeSeries.(names{i});
+    tsc = PayloadTSeries.tscollection;
+    
+    vout = tsc.vout;
+    meanVout = vout.mean;
+    centeredVout = vout.Data - meanVout;
+    hVout = histogram(centeredVout);
+    hVout.Normalization = 'probability';
+    hVout.NumBins = bins;
+    
+    meanVoutTheo = simout.mean;
+    centeredVoutTheo = simout.Data - meanVoutTheo;
+    hVoutTheo = histogram(centeredVoutTheo);
+    hVoutTheo.Normalization = 'probability';
+    hVoutTheo.NumBins = bins;
+    
+    legend('data', 'simulation');
+    
+end
+
+figure;
+hold on;
+for i = freqNumber %: length( fieldnames ( ExpFisTimeSeries ) )
+    PayloadTSeries = ExpFisTimeSeries.(names{i});
+    tsc = PayloadTSeries.tscollection;
+    
+    power = tsc.power;
+    meanPower = power.mean;
+    centeredPower = power.Data - meanPower;
+    hPow = histogram(centeredPower);
+    hPow.Normalization = 'probability';
+    hPow.NumBins = bins;
+    
+    powerTheo = timeseries( 0.8264 .* (simin.Data(1:len).*simout.Data(1:len)), simout.Time, 'name', 'theorical power');
+    powerTheo.DataInfo.Units = 'mW';
+    powerTheo.TimeInfo.Units = 'seconds';
+    meanPowerTheo = powerTheo.mean;
+    centeredPowerTheo = powerTheo.Data - meanPowerTheo;
+    hPowTheo = histogram(centeredPowerTheo);
+    hPowTheo.Normalization = 'probability';
+    hPowTheo.NumBins = bins;
+    
+    legend('data', 'simulation');
+
 end
