@@ -1,11 +1,13 @@
 clear all;
 close all;
+prefix = '2016_14_01_';
+matFileName = strcat(prefix, 'ExpFisTimeSeries.mat');
 
-if exist('ExpFisTimeSeries.mat','file')
-    load('ExpFisTimeSeries.mat');
-else
-    run('time_series_builder.m');
+if ~exist(matFileName,'file')
+    matFileName = payloadTimeSeriesBuilder(prefix);
 end
+
+load(matFileName);
 
 fcircuitHz = 92;
 names = fieldnames ( ExpFisTimeSeries );
@@ -13,7 +15,7 @@ for i = 1 : length( fieldnames ( ExpFisTimeSeries ) ) -1
     
     PayloadTSeries = ExpFisTimeSeries.(names{i});
     
-    tsc = PayloadTSeries.tscollection;
+    tsc = PayloadTSeries.tscData;
     vin = tsc.vin; 
     vout = tsc.vout;
     power = tsc.power;
@@ -33,12 +35,12 @@ for i = 1 : length( fieldnames ( ExpFisTimeSeries ) ) -1
     spectrumSingleOut( 2 : end - 1 ) = 2 * spectrumSingleOut( 2 : end - 1 );
     
     f = fsHz * ( 0 : ( L / 2 ) ) / L;
-    ylimit = get(gca,'ylim');
     
     figure;
+    ylimit = get(gca,'ylim');
     hold on;
+    
     subplot( 2, 1, 1);
-    %stem(f, spectrumSingleIn );
     plot(f, spectrumSingleIn );
     hold on;
     plot( [fcircuitHz fcircuitHz] , ylim );
@@ -46,16 +48,16 @@ for i = 1 : length( fieldnames ( ExpFisTimeSeries ) ) -1
         ' [Hz] Fcircuit = ', num2str( fcircuitHz ), ' [Hz]'));
     xlabel('f (Hz)');
     ylabel('|A(f)|');
-    %xlim([0 150]);
+    xlim([0 150]);
+    
     subplot( 2, 1, 2);
     hold on;
-    %stem(f, spectrumSingleOut);
     plot(f, spectrumSingleOut);
     plot( [fcircuitHz fcircuitHz] , ylim );
     title(strcat('ExpFis Vout Spectrum , Fsampling = ', num2str(fsHz), ...
         ' [Hz]  Fcircuit = ', num2str( fcircuitHz ), ' [Hz]'));
     xlabel('f (kHz)');
     ylabel('|A(f)|');
-    %xlim([0 150]);
-    pause; 
+    xlim([0 150]);
+
 end
