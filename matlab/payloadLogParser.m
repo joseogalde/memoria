@@ -1,4 +1,6 @@
-function parseMATFileName = payloadLogParser(prefix)
+function parseMATFileName = payloadLogParser(prefix, numberOfFiles)
+disp('payloadLogParser...');
+
 logsFolderPath = './cutecom/';
 %% Input
 reglInput = 'rand() = ';
@@ -9,7 +11,7 @@ values = [];
 
 fid = fopen(logFileName);
 tline = fgets(fid);
-
+disp(logFileName);
 while ischar(tline)
     if  ~isempty(  strfind( tline, reglInput ) )
         indexl = strfind( tline, reglInput );
@@ -30,7 +32,6 @@ Input.counts = values;
 Input.nbits = 16;
 
 %% Output
-numberOfFiles = 10; %freqs executed
 reglOutput = 'dat_set_Payload_Buff(';
 regrOutput = ')';
 regADC =  'adc period = ';
@@ -38,7 +39,7 @@ oversamplingCoeff = 4;
 
 for i = 0 : numberOfFiles - 1
     logFileName = strcat( logsFolderPath, prefix, 'freq', num2str(i), '.txt' );
-    
+    disp(logFileName);
     values = [];
     adcPeriod = 0;
     

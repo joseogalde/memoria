@@ -2,7 +2,8 @@ function timeseriesMATFileName = payloadTimeSeriesBuilder(prefix)
 parseMATFile = strcat(prefix, 'ExpFisParse.mat');
 
 if ~exist(parseMATFile,'file')
-    parseMATFile = payloadLogParser(prefix);
+    nfiles = 15;
+    parseMATFile = payloadLogParser(prefix,nfiles);
 end
 
 load(parseMATFile);
@@ -10,8 +11,8 @@ names = fieldnames(ExpFisParse);
 
 [m, n, ~, ~] = payloadLinearFit;
 powerFactor = 0.8264;
-
-for i = 1 : 5%length( fieldnames ( ExpFisParse ) )
+disp('payloadTimeSeriesBuilder...');
+for i = 1 : length( fieldnames ( ExpFisParse ) )
     %% load from MAT-file & prepare 
     MeasureStruct = ExpFisParse.(names{i});
     
@@ -20,7 +21,7 @@ for i = 1 : 5%length( fieldnames ( ExpFisParse ) )
     oversamplingCoeff = MeasureStruct.oversamplingCoeff;
     freqSignalHz = 1 / deltaTSignal;
     
-    disp(strcat(num2str(i-1),' Iniciando freq ', num2str(freqSignalHz), ' Hz'));
+    disp(strcat(num2str(i-1),' Building freq ', num2str(freqSignalHz), ' Hz'));
     fsHz = freqSignalHz * oversamplingCoeff;
     deltaTSampling = 1 / fsHz;
     
@@ -95,5 +96,7 @@ for i = 1 : 5%length( fieldnames ( ExpFisParse ) )
 end
 
 timeseriesMATFileName = strcat(prefix, 'ExpFisTimeSeries.mat');
+disp(strcat('Saving into "',timeseriesMATFileName,'" MAT-file'));
+
 save(timeseriesMATFileName,'ExpFisTimeSeries','-v7.3');
 end
