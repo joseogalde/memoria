@@ -3,16 +3,7 @@ close all;
 date = '2016_18_05';
 prefix = strcat(date,'_');
 saveFolder = strcat('./img/',date,'/');
-bins = 50;
-bineff = 1/bins;
-maxvin = bineff*1.5;
-maxvout = bineff*1.5;
-maxpower = bineff*1;
 histogramFileName = strcat(prefix, 'ExpFisHistogram.mat');
-
-if ~exist(histogramFileName,'file')
-    histogramFileName = payloadHistogram(prefix, bins);
-end
 load( histogramFileName );
 
 names = fieldnames ( ExpFisHistogram );
@@ -88,5 +79,4 @@ for i = 1 : length(names)
     legend('data', 'simulation');    
     saveas(gcf,strcat(saveFolder,'power_freq',num2str(i-1),'.png'));
     
-
 end
