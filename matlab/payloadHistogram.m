@@ -20,88 +20,39 @@ for i = 1 : length( fieldnames ( ExpFisTimeSeries ) )
     vin = tscData.vin;
     vout = tscData.vout;
     power = tscData.power;
+    
     tscSimulation =  PayloadTSeries.tscSimulation;
     simVin = tscSimulation.simVin;
     simVout = tscSimulation.simVout;
     simPower = tscSimulation.simPower;
         
     %% Vin
-%     figure;
-%     hold on;
     meanVin = vin.mean;
-    centeredVin = vin.Data - meanVin;
-    [hVin, eVin] = histcounts(centeredVin, bins);
-%     hVin = histogram(centeredVin);
-%     hVin.Normalization = 'probability';
-%     hVin.NumBins = bins;
-%     hWidth = hVin.BinWidth;
-%     hEdges = hVin.BinEdges;
-%     
     meanSimVin = simVin.mean;
+    centeredVin = vin.Data - meanVin;
     centeredSimVin = simVin.Data - meanSimVin;
-    [hSimVin, eSimVin] = histcounts(centeredSimVin, bins);
-%     hSimVin = histogram(centeredSimVin);
-%     hSimVin.Normalization = 'probability';
-%     hSimVin.NumBins = bins;
-%     hSimVin.BinWidth = hWidth;
-%     hSimVin.BinEdges = hEdges;
-    
-%     titleName = strcat('Vin Histogram fsignal = ',num2str(freqSignalHz), 'Hz');
-%     title(titleName);
-%     legend('data', 'simulation');
+    [hVin, eVin] = histcounts(centeredVin, bins);
+    [hSimVin, eSimVin] = histcounts(centeredSimVin, eVin);
     
     %% Vout
-%     figure;
-%     hold on;
-    
     meanVout = vout.mean;
-    centeredVout = vout.Data - meanVout;
-    [hVout, eVout] = histcounts(centeredVout, bins);
-%     hVout = histogram(centeredVout);
-%     hVout.Normalization = 'probability';
-%     hVout.NumBins = bins;
-%     hWidth = hVout.BinWidth;
-%     hEdges = hVout.BinEdges;
-%     
     meanSimVout = simVout.mean;
+    centeredVout = vout.Data - meanVout;
     centeredSimVout = simVout.Data - meanSimVout;
-    [hSimVout, eSimVout] = histcounts(centeredSimVout, bins);
-%     hSimVout = histogram(centeredSimVout);
-%     hSimVout.Normalization = 'probability';
-%     hSimVout.NumBins = bins;
-%     hSimVout.BinWidth = hWidth;
-%     hSimVout.BinEdges = hEdges;
-%     
-%     titleName = strcat('Vout Histogram fsignal = ',num2str(freqSignalHz), 'Hz');
-%     title(titleName);
-%     legend('data', 'simulation');
-    
-    %% Powerall
-%     figure;
-%     hold on;
-   
-    meanPower = power.mean;
-    centeredPower = power.Data - meanPower;
-    [hPower, ePower] = histcounts(centeredPower, bins);
-%     hPower = histogram(centeredPower);
-%     hPower.Normalization = 'probability';
-%     hPower.NumBins = bins;
-%     hWidth = hPower.BinWidth;
-%     hEdges = hPower.BinEdges;
-    
-    meanSimPower = simPower.mean;
-    centeredSimPower = simPower.Data - meanSimPower;
-    [hSimPower, eSimPower] = histcounts(centeredSimPower, bins);
-%     hSimPower = histogram(centeredSimPower);
-%     hSimPower.Normalization = 'probability';
-%     hSimPower.NumBins = bins;
-%     hSimPower.BinWidth = hWidth;
-%     hSimPower.BinEdges = hEdges;
-% 
-%     titleName = strcat('Injected Power Histogram fsignal = ',num2str(freqSignalHz), 'Hz');
-%     title(titleName);
-%     legend('data', 'simulation');
+    [hVout, eVout] = histcounts(centeredVout, bins);
+    [hSimVout, eSimVout] = histcounts(centeredSimVout, eVout);
 
+    %% Power
+    meanPower = power.mean;
+    meanSimPower = simPower.mean;
+    centeredPower = power.Data - meanPower;
+    centeredSimPower = simPower.Data - meanSimPower;
+    [hPower, ePower] = histcounts(centeredPower, bins);
+    [hSimPower, eSimPower] = histcounts(centeredSimPower, ePower);
+    
+    %% Save to Struct
+    ExpFisHistogram.(names{i}).freqSignalHz = freqSignalHz;
+    ExpFisHistogram.(names{i}).fsHz = ExpFisTimeSeries.(names{i}).fsHz;
     ExpFisHistogram.(names{i}).data.hVin = hVin;
     ExpFisHistogram.(names{i}).data.eVin = eVin;
     ExpFisHistogram.(names{i}).data.hVout = hVout;
@@ -112,9 +63,8 @@ for i = 1 : length( fieldnames ( ExpFisTimeSeries ) )
     ExpFisHistogram.(names{i}).simulation.eVin = eSimVin;
     ExpFisHistogram.(names{i}).simulation.hVout = hSimVout;
     ExpFisHistogram.(names{i}).simulation.eVout = eSimVout;
-    ExpFisHistogram.(names{i}).simulation.hSimPower = hSimPower;
-    ExpFisHistogram.(names{i}).simulation.eSimPower = eSimPower;
-
+    ExpFisHistogram.(names{i}).simulation.hPower = hSimPower;
+    ExpFisHistogram.(names{i}).simulation.ePower = eSimPower;
 
 end
 

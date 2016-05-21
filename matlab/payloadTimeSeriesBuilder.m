@@ -3,16 +3,16 @@ parseMATFile = strcat(prefix, 'ExpFisParse.mat');
 
 if ~exist(parseMATFile,'file')
     nfiles = 15;
-    parseMATFile = payloadLogParser(prefix,nfiles);
+    parseMATFile = payloadLogParser(prefix, nfiles);
 end
 
 load(parseMATFile);
 names = fieldnames(ExpFisParse);
 
 [m, n, ~, ~] = payloadLinearFit;
-powerFactor = 0.8264;
+powerFactor = 1; %0.8264;
 disp('payloadTimeSeriesBuilder...');
-for i = 1 : length( fieldnames ( ExpFisParse ) )
+for i = 1 : length( names )
     %% load from MAT-file & prepare 
     MeasureStruct = ExpFisParse.(names{i});
     
