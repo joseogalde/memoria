@@ -21,18 +21,17 @@ i = 1;
     simulationCounts =  HistCounts.simulation;
     
     %% Vin
-    hVin = dataCounts.hVin;
-    eVin = dataCounts.eVin;
-    hSimVin = simulationCounts.hVin;
-    eSimVin = simulationCounts.eVin;
-    vinData = interpolateDataFromCounts(hVin, eVin);
-    simVinData = interpolateDataFromCounts(hSimVin, eSimVin);
-    
-    distVin = pdist2(hVin', hSimVin','euclidean');
-    figure;
-    hold on;
+%     hVin = dataCounts.hVin;
+%     eVin = dataCounts.eVin;
+%     hSimVin = simulationCounts.hVin;
+%     eSimVin = simulationCounts.eVin;
+%     vinData = interpolateDataFromCounts(hVin, eVin);
+%     simVinData = interpolateDataFromCounts(hSimVin, eSimVin);
+%     
+%     distVin = pdist2(hVin', hSimVin','euclidean');
+%     figure;
+%     hold on;
 %     plot(diag(distVin));
-    image(distVin);
     
     %% Vout
     hVout = dataCounts.hVout;
@@ -43,11 +42,15 @@ i = 1;
     simVoutData = interpolateDataFromCounts(hSimVout, eSimVout);
     
     distVout = pdist2(hVout', hSimVout','euclidean');
+    distVout = diag(distVout)';
+    mseVout = immse(hVout, hSimVout);
     figure;
     hold on;
-%     plot(diag(distVout));
-    image(distVout);
- 
+    barwitherr(eVout(2:end),hVout,distVout);
+    titleName = strcat('Error Vout fsignal = ',num2str(freqSignalHz), 'Hz,'...
+        , ' MSE = ', num2str(mseVout));
+    title(titleName);
+
     %% Power
     hPower = dataCounts.hPower;
     ePower = dataCounts.ePower;
@@ -57,10 +60,13 @@ i = 1;
     simPowerData = interpolateDataFromCounts(hSimPower, eSimPower);
     
     distPower = pdist2(hPower', hSimPower','euclidean');
+    distPower = diag(distPower)';
+    msePower = immse(hPower, hSimPower);
     figure;
     hold on;
-%     plot(diag(distPower));
-%     image(distPower);
-    imshow(distPower);
+    barwitherr(ePower(2:end),hPower,distPower);
+    titleName = strcat('Error Power fsignal = ',num2str(freqSignalHz), 'Hz,'...
+        , ' MSE = ', num2str(msePower));
+    title(titleName);
 
 % end
