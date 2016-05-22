@@ -24,9 +24,9 @@ for i = 1 : length(names)
     
     figure;
     hold on;
-    h = histogram(generateDataFromCounts(hVin, eVin), eVin);
+    h = histogram(interpolateDataFromCounts(hVin, eVin), eVin);
     h.Normalization = 'probability';
-    h = histogram(generateDataFromCounts(hSimVin, eSimVin), eSimVin);
+    h = histogram(interpolateDataFromCounts(hSimVin, eSimVin), eSimVin);
     h.Normalization = 'probability';
 %     ylim([0 0.02]);
 %     ylim([0 maxvin]);
@@ -44,9 +44,9 @@ for i = 1 : length(names)
     
     figure 
     hold on;
-    h = histogram(generateDataFromCounts(hVout, eVout), eVout);
+    h = histogram(interpolateDataFromCounts(hVout, eVout), eVout);
     h.Normalization = 'probability';
-    h = histogram(generateDataFromCounts(hSimVout, eSimVout), eSimVout);
+    h = histogram(interpolateDataFromCounts(hSimVout, eSimVout), eSimVout);
     h.Normalization = 'probability';
 %     ylim([0 0.18]);
 %     ylim([0 maxvout]);
@@ -66,9 +66,9 @@ for i = 1 : length(names)
 
     figure;
     hold on;
-    h = histogram(generateDataFromCounts(hPower, ePower), ePower);
+    h = histogram(interpolateDataFromCounts(hPower, ePower), ePower);
     h.Normalization = 'probability';
-    h = histogram(generateDataFromCounts(hSimPower, eSimPower), eSimPower);
+    h = histogram(interpolateDataFromCounts(hSimPower, eSimPower), eSimPower);
     h.Normalization = 'probability';
 %     ylim([0 0.115]);
 %     ylim([0 maxpower]);

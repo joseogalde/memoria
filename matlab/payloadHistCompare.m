@@ -25,27 +25,27 @@ i = 1;
     eVin = dataCounts.eVin;
     hSimVin = simulationCounts.hVin;
     eSimVin = simulationCounts.eVin;
-    vinData = generateDataFromCounts(hVin, eVin);
-    simVinData = generateDataFromCounts(hSimVin, eSimVin);
+    vinData = interpolateDataFromCounts(hVin, eVin);
+    simVinData = interpolateDataFromCounts(hSimVin, eSimVin);
     
     distVin = pdist2(hVin', hSimVin','euclidean');
     figure;
     hold on;
-    plot(diag(distVin));
-%     image(distVin);
+%     plot(diag(distVin));
+    image(distVin);
     
     %% Vout
     hVout = dataCounts.hVout;
     eVout = dataCounts.eVout;
     hSimVout = simulationCounts.hVout;
     eSimVout = simulationCounts.eVout;
-    voutData = generateDataFromCounts(hVout, eVout);
-    simVoutData = generateDataFromCounts(hSimVout, eSimVout);
+    voutData = interpolateDataFromCounts(hVout, eVout);
+    simVoutData = interpolateDataFromCounts(hSimVout, eSimVout);
     
     distVout = pdist2(hVout', hSimVout','euclidean');
     figure;
     hold on;
-    plot(diag(distVout));
+%     plot(diag(distVout));
     image(distVout);
  
     %% Power
@@ -53,13 +53,14 @@ i = 1;
     ePower = dataCounts.ePower;
     hSimPower = simulationCounts.hPower;
     eSimPower = simulationCounts.ePower;
-    powerData = generateDataFromCounts(hPower, ePower);
-    simPowerData = generateDataFromCounts(hSimPower, eSimPower);
+    powerData = interpolateDataFromCounts(hPower, ePower);
+    simPowerData = interpolateDataFromCounts(hSimPower, eSimPower);
     
     distPower = pdist2(hPower', hSimPower','euclidean');
     figure;
     hold on;
-    plot(diag(distPower));
+%     plot(diag(distPower));
 %     image(distPower);
+    imshow(distPower);
 
 % end
