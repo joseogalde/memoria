@@ -1,6 +1,6 @@
 close all;
 
-date = '2016_18_05';
+date = '2016_17_05';
 prefix = strcat(date,'_');
 saveFolder = strcat('./img/',date,'/');
 histogramFileName = strcat(prefix, 'ExpFisHistogram.mat');
@@ -34,7 +34,7 @@ for i = 1 : length(names)
     titleName = strcat('Vin Histogram fsignal = ',num2str(freqSignalHz), 'Hz');
     title(titleName);
     legend('data', 'simulation');
-    saveas(gcf,strcat(saveFolder,'vin_freq',num2str(i-1),'.png'));
+    saveas(gcf,strcat(saveFolder,'vin_freq',num2str(i-1),'.eps'),'epsc');
     
     %% Vout
     hVout = dataCounts.hVout;
@@ -56,7 +56,7 @@ for i = 1 : length(names)
     title(titleName);
     legend('data', 'simulation');
     
-    saveas(gcf,strcat(saveFolder,'vout_freq',num2str(i-1),'.png'));
+    saveas(gcf,strcat(saveFolder,'vout_freq',num2str(i-1),'.eps'),'epsc');
  
     %% Power
     hPower = dataCounts.hPower;
@@ -77,6 +77,6 @@ for i = 1 : length(names)
     titleName = strcat('Injected Power Histogram fsignal = ',num2str(freqSignalHz), 'Hz');
     title(titleName);
     legend('data', 'simulation');    
-    saveas(gcf,strcat(saveFolder,'power_freq',num2str(i-1),'.png'));
+    saveas(gcf,strcat(saveFolder,'power_freq',num2str(i-1),'.eps'),'epsc');
     
 end
