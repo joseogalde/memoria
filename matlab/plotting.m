@@ -51,7 +51,7 @@ for i = 1 : length(names)
     ymin = -1;
     ymax = 1;
     ylim([ymin ymax]);
-    legend('vout - data','vout - simulation', 'mean vin');
+    legend('vout - data','vout - simulation', 'mean(vin)');
     title(strcat('Output Voltage freq =',' ',num2str(f(i)),' Hz'));
     saveas(gcf,strcat(saveFolder,'voltage_freq',num2str(i-1),'.png'));
     
@@ -66,7 +66,7 @@ for i = 1 : length(names)
     ylim([ymin ymax]);
     ylabel(power.DataInfo.Units);
     xlabel(power.TimeInfo.Units);
-    legend('power - data','power - simulation','mean power');
+    legend('power - data','power - simulation','mean(power)');
     title(strcat('Injected Power freq =',' ',num2str(f(i)),' Hz'));
     saveas(gcf,strcat(saveFolder,'power_freq',num2str(i-1),'.png'));
     
