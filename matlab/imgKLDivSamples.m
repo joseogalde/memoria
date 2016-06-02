@@ -9,22 +9,27 @@ Power = KLDiv.Power;
 fcircuitHz = 92;
 
 figure('units','normalized','outerposition',[0 0 1 1]);
-subplot(2,1,1);
-ylim([0 20]);
-semilogx(f, Vout.DatavsModel, f, Vout.DatavsData,[fcircuitHz fcircuitHz] , ylim);
+h(1) = subplot(2,1,1);
+loglog(f, Vout.DatavsModel,'--x', f, Vout.DatavsData,'-o');
+ylim = get(gca,'Ylim');
+line([fcircuitHz fcircuitHz] , ylim, 'Color', 'y');
 xlabel('Noise Frequency [Hz]');
 ylabel('bits');
-title('KL Divergence for Vout distributions using different sample size');
-legend({'Divergence between Data and Simulation','Data Divergence by lower sample size '...
+title('KL Divergence for Vout distributions');
+legend({'KL Div between Data and Simulation','KL Div between N=1.000 and N=10.000'...
     ,'RC Cut-off frequency'},'Location','NorthWest');
+grid on;
 
-subplot(2,1,2);
-ylim([0 2]);
-semilogx(f, Power.DatavsModel, f, Power.DatavsData,[fcircuitHz fcircuitHz] , ylim);
+h(2) = subplot(2,1,2);
+loglog(f, Power.DatavsModel,'--x', f, Power.DatavsData,'-o');
+linkaxes(h)
+ylim = get(gca,'Ylim');
+line([fcircuitHz fcircuitHz] , ylim, 'Color', 'y');
 xlabel('Noise Frequency [Hz]');
 ylabel('bits');
-title('KL Divergence for Power distributions using different sample size');
-legend({'Divergence between Data and Simulation','Data Divergence by lower sample size '...
+title('KL Divergence for Power distributions');
+legend({'KL Div between Data and Simulation','KL Div between N=1.000 and N=10.000'...
     ,'RC Cut-off frequency'},'Location','NorthWest');
+grid on;
 
 saveas(gcf,strcat(plotFolder,'KLDiv_Final','.png'));

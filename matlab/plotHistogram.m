@@ -34,7 +34,8 @@ for i = 1 : length(names)
     titleName = strcat('Vin Histogram fsignal = ',num2str(freqSignalHz), 'Hz');
     title(titleName);
     legend('data', 'simulation');
-    saveas(gcf,strcat(saveFolder,'vin_freq',num2str(i-1),'.eps'),'epsc');
+%     saveas(gcf,strcat(saveFolder,'vin_freq',num2str(i-1),'.eps'),'epsc');
+    saveas(gcf,strcat(saveFolder,'vin_freq',num2str(i-1),'.png'));
     
     %% Vout
     hVout = dataCounts.hVout;
@@ -56,7 +57,8 @@ for i = 1 : length(names)
     title(titleName);
     legend('data', 'simulation');
     
-    saveas(gcf,strcat(saveFolder,'vout_freq',num2str(i-1),'.eps'),'epsc');
+%     saveas(gcf,strcat(saveFolder,'vout_freq',num2str(i-1),'.eps'),'epsc');
+    saveas(gcf,strcat(saveFolder,'vout_freq',num2str(i-1),'.png');
  
     %% Power
     hPower = dataCounts.hPower;
@@ -77,6 +79,8 @@ for i = 1 : length(names)
     titleName = strcat('Injected Power Histogram fsignal = ',num2str(freqSignalHz), 'Hz');
     title(titleName);
     legend('data', 'simulation');    
-    saveas(gcf,strcat(saveFolder,'power_freq',num2str(i-1),'.eps'),'epsc');
+%     saveas(gcf,strcat(saveFolder,'power_freq',num2str(i-1),'.eps'),'epsc');
+    saveas(gcf,strcat(saveFolder,'power_freq',num2str(i-1),'.png'));
+
     
 end

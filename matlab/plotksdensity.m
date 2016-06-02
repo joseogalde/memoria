@@ -50,6 +50,101 @@ timeseriesFileNameMore = strcat(prefix, 'ExpFisTimeSeries.mat');
         
         f(i) = HistCountsLess.freqSignalHz;
         
+        
+        %% Vin
+        hVinLess = dataCountsLess.hVin;
+        eVinLess = dataCountsLess.eVin;
+        vinDataLess = dataTSCLess.vin.Data;
+        vinDataLess = vinDataLess - mean(vinDataLess);
+        dxLess = (eVinLess(2) - eVinLess(1));
+        areaVinL = sum(hVinLess) * dxLess ;
+        
+        hSimVinLess = simCountsLess.hVin;
+        eSimVinLess = simCountsLess.eVin;
+        vinSimLess = simTSCLess.simVin.Data;
+        vinSimLess = vinSimLess - mean(vinSimLess);
+        dxSimLess = (eSimVinLess(2) - eSimVinLess(1));
+        areaSimVinL = sum(hSimVinLess) * dxSimLess ;
+        
+        hVinMore = dataCountsMore.hVin;
+        eVinMore = dataCountsMore.eVin;
+        vinDataMore = dataTSCMore.vin.Data;
+        vinDataMore = vinDataMore - mean(vinDataMore);
+        dxMore = (eVinMore(2)-eVinMore(1));
+        areaVinM = sum(hVinMore) * dxMore;
+        
+        hSimVinMore = simCountsMore.hVin;
+        eSimVinMore = simCountsMore.eVin;
+        vinSimMore = simTSCMore.simVin.Data;
+        vinSimMore = vinSimMore - mean(vinSimMore);
+        dxSimMore = (eSimVinMore(2) - eSimVinMore(1));
+        areaSimVinM = sum(hSimVinMore) * dxSimMore ;
+        
+        xmin = min([min(eVinLess),min(eSimVinLess),min(eVinMore),...
+            min(eSimVinMore)]);
+        xmax = max([max(eVinLess),max(eSimVinLess),max(eVinMore), ...
+            max(eSimVinMore)]);
+        xx = linspace(xmin,xmax, kernelResolution);
+        [fVinL, xiVinL, bwVinL] = ksdensity(vinDataLess,xx);
+        [fSimVinL, xiSimVinL, bwSimVinL] = ksdensity(vinSimLess,xx);
+        [fVinM, xiVinM, bwVinM] = ksdensity(vinDataMore,xx);
+        [fSimVinM, xiSimVinM, bwSimVinM] = ksdensity(vinSimMore,xx);
+        areafVinL = trapz(xx,fVinL);
+        areafSimVinL = trapz(xx,fSimVinL);
+        areafVinM = trapz(xx,fVinM);
+        areafSimVinM = trapz(xx,fSimVinM);
+        fCountsVinL = (areaVinL/areafVinL).*fVinL;
+        fCountsSimVinL = (areaSimVinL/areafSimVinL).*fSimVinL;
+        fCountsVinM = (areaVinM/areafVinM).*fVinM;
+        fCountsSimVinM = (areaSimVinM/areafSimVinM).*fSimVinM;
+        pdfVinL = normalize(fCountsVinL);
+        pdfVinM = normalize(fCountsVinM);
+        pdfSimVinL = normalize(fCountsSimVinL);
+        pdfSimVinM = normalize(fCountsSimVinM);
+%         KLVin(i) = kldiv(xiVinL, pdfVinL, pdfVinM, 'sym');
+
+%                 figure('units','normalized','outerposition',[0 0 1 1]);
+% %         subplot(2,1,1);
+%         hold on;
+%         barX = eVinLess(2:end);
+%         barY = hVinLess';%, hSimVinLess'];
+%         bar(barX,barY,'hist');
+%         plot(xx,fCountsVinL,'k--');
+% %         plot(xx,fCountsSimVinL,'k-');
+%         xlim([-1.1 1.1]);
+%         xlabel('Vin [V]');
+%         ylabel('Counts');
+%         legend('Hist','Fitted Hist');
+%         title(strcat('Input voltage distribution'));
+        
+        figure('units','normalized','outerposition',[0 0 1 1]);
+        subplot(2,1,1);
+        hold on;
+        barX = eVinLess(2:end);
+        barY = [hVinLess', hSimVinLess'];
+        bar(barX,barY,'hist');
+        plot(xx,fCountsVinL,'b-');
+        plot(xx,fCountsSimVinL,'k-');
+        xlim([-1.1 1.1]);
+        xlabel('Vin [V]');
+        ylabel('Counts');
+        legend('Data Hist','Simulation Hist','Fitted Data Hist','Fitted Simulation Hist');
+        title(strcat('Input Voltage distribution for freq = ',' ',num2str(f(i)), ' ','Hz and (N,S) = (1.000, 4.000)'));
+
+        subplot(2,1,2);
+        hold on;
+        barX = eVinMore(2:end);
+        barY = [hVinMore', hSimVinMore'];
+        bar(barX,barY,'hist');
+        plot(xx, fCountsVinM,'b-');
+        plot(xx, fCountsSimVinM,'k-');  
+        xlim([-1.1 1.1]);
+        xlabel('Vin [V]');
+        ylabel('Counts');
+        legend('Data Hist','Simulation Hist','Fitted Data Hist','Fitted Simulation Hist');
+        title(strcat('Input Voltage distribution for freq = ',num2str(f(i)), ' Hz and (N,S) = (10.000, 40.000)'));
+        saveas(gcf,strcat(saveFolder,'vin_ksdensity_freq',num2str((i-1)),'.png'));
+        
         %% Vout
         hVoutLess = dataCountsLess.hVout;
         eVoutLess = dataCountsLess.eVout;
@@ -114,7 +209,7 @@ timeseriesFileNameMore = strcat(prefix, 'ExpFisTimeSeries.mat');
         xlabel('Vout [V]');
         ylabel('Counts');
         legend('Hist Data','Hist Simulation','Fitted Hist Data','Fitted Hist Simulation');
-        title(strcat('Smoothing 4000 samples for input signal of',' ',num2str(f(i)), ' ','Hz'));
+        title(strcat('Output Voltage distribution for freq = ',num2str(f(i)), ' Hz and (N,S) = (1.000, 4.000)'));
         
         subplot(2,1,2);
         hold on;
@@ -127,8 +222,9 @@ timeseriesFileNameMore = strcat(prefix, 'ExpFisTimeSeries.mat');
         xlabel('Vout [V]');
         ylabel('Counts');
         legend('Data Hist','Simulation Hist','Fitted Data Hist','Fitted Simulation Hist');
-        title(strcat('Smoothing 4000 samples for input signal of ',num2str(f(i)), ' Hz'));
-        saveas(gcf,strcat(saveFolder,'ksdensityLess_freq',num2str((i-1)),'.png'));
+        title(strcat('Output Voltage distribution for freq = ',num2str(f(i)), ' Hz and (N,S) = (10.000, 40.000)'));
+        
+        saveas(gcf,strcat(saveFolder,'vout_ksdensity_freq',num2str((i-1)),'.png'));
         
         %% Power
         hPowerLess = dataCountsLess.hPower;
@@ -194,7 +290,7 @@ timeseriesFileNameMore = strcat(prefix, 'ExpFisTimeSeries.mat');
         xlabel('Power [V^2]');
         ylabel('Counts');
         legend('Data Hist','Simulation Hist','Fitted Data Hist','Fitted Simulation Hist');
-        title(strcat('Smoothing 40000 samples for input signal of',' ',num2str(f(i)), ' ','Hz'));
+        title(strcat('Injected power distribution for freq = ',num2str(f(i)), ' Hz and (N,S) = (1.000, 4.000)'));
         
         subplot(2,1,2);
         hold on;
@@ -207,7 +303,7 @@ timeseriesFileNameMore = strcat(prefix, 'ExpFisTimeSeries.mat');
         xlabel('Power [V^2]');
         ylabel('Counts');
         legend('Data Hist','Simulation Hist','Fitted Data Hist','Fitted Simulation Hist');
-        title(strcat('Smoothing 40000 samples for input signal of ',num2str(f(i)), ' Hz'));
+        title(strcat('Injected power distribution for freq = ',num2str(f(i)), ' Hz and (N,S) = (10.000, 40.000)'));
         
-        saveas(gcf,strcat(saveFolder,'ksdensityMore_freq',num2str((i-1)),'.png'));
+        saveas(gcf,strcat(saveFolder,'power_ksdensity_freq',num2str((i-1)),'.png'));
     end

@@ -3,7 +3,7 @@ close all;
 
 date = {'2016_17_05', '2016_18_05'};
 k = 2;
-
+kernelResolution = 1000;
 prefix = strcat(date{k},'_');
 errorsFileName = strcat(prefix,'Errors_DataModel.mat');
 histogramFileName = strcat(prefix, 'ExpFisHistogram.mat');
