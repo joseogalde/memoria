@@ -21,24 +21,12 @@ for i = 1 : 1%length(names)
     %% Vin Histogram
     vin = dataTSC.vin;
     simVin = simTSC.simVin;
-    vin.Data = vin.Data - mean(vin.Data);
-    simVin.Data = simVin.Data - mean(simVin.Data);
-    meanVin = mean(vin.Data);
-   
-    
-    %% Vout
+    meanVin = 0;
     vout = dataTSC.vout;
     simVout = simTSC.simVout;
-    vout.Data = vout.Data - mean(vout.Data);
-    simVout.Data = simVout.Data - mean(simVout.Data);
-    
-    
-    %% Power
     power = dataTSC.power;
     simPower = simTSC.simPower;
-    power.Data = power.Data - mean(power.Data);
-    simPower.Data = simPower.Data - mean(simPower.Data);
-    meanPower = mean(power.Data);
+    meanPower = 0;
    
     figure('units','normalized','outerposition',[0 0 1 1]);
     axVout = axes;
@@ -68,19 +56,19 @@ for i = 1 : 1%length(names)
     title(strcat('Average evolution freq =',' ',num2str(f(i)),' Hz'));
 %     saveas(gcf,strcat(saveFolder,'voltage_freq',num2str(i-1),'.png'));
     
-%     figure('units','normalized','outerposition',[0 0 1 1]);
-%     axePower = axes;
-%     plot(power);
-%     hold on;
-%     plot(simPower);
-%     plot(get(gca,'xlim'), [meanPower meanPower], 'k');
-%     ymin = -1;
-%     ymax = 2.5;
-%     ylim([ymin ymax]);
-%     ylabel(power.DataInfo.Units);
-%     xlabel(power.TimeInfo.Units);
-%     legend('power - data','power - simulation','mean(power)');
-%     title(strcat('Injected Power freq =',' ',num2str(f(i)),' Hz'));
+    figure('units','normalized','outerposition',[0 0 1 1]);
+    axePower = axes;
+    plot(power);
+    hold on;
+    plot(simPower);
+    plot(get(gca,'xlim'), [meanPower meanPower], 'k');
+    ymin = -0.8;
+    ymax = 0.8;
+    ylim([ymin ymax]);
+    ylabel(power.DataInfo.Units);
+    xlabel(power.TimeInfo.Units);
+    legend('power - data','power - simulation','mean(power)');
+    title(strcat('Injected Power freq =',' ',num2str(f(i)),' Hz'));
 %     saveas(gcf,strcat(saveFolder,'power_freq',num2str(i-1),'.png'));
     
 end
