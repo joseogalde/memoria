@@ -11,9 +11,6 @@ names = fieldnames ( ExpFisTimeSeries );
 f = zeros(1,length(names));
 for i = 1 : 1%length(names)
     %% Load counts and edges
-    %     avgSimVout = instantAverage(simVout.Data);
-%     avgVin = instantAverage(vin.Data);
-%     
 
     TSeries = ExpFisTimeSeries.(names{i});
     f(i) = TSeries.freqSignalHz;

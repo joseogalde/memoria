@@ -10,7 +10,8 @@ load(parseMATFile);
 names = fieldnames(ExpFisParse);
 
 [m, n, ~, ~] = payloadLinearFit;
-powerFactor = 1; %0.8264;
+RKOhm = 1.21;
+powerFactor = 1 / RKOhm; 
 disp('payloadTimeSeriesBuilder...');
 for i = 1 : length( names )
     %% load from MAT-file & prepare 
@@ -49,12 +50,14 @@ for i = 1 : length( names )
     % translate counts to voltages
     vin = timeseries(countsDAC.Data, countsDAC.Time, 'name', 'vin');
     vin.Data = count2voltage(vin.Data, 3.3, 0, bitsDAC);
+    vin.Data = vin.Data - mean(vin.Data);
     vin.DataInfo.Units = 'V';
     vin.DataInfo.Interpolation = tsdata.interpolation('zoh');
     vin.TimeInfo.Units = 'seconds';
     
     vout = timeseries(countsADC.Data, countsADC.Time, 'name', 'vout');
     vout.Data = count2voltage(vout.Data, 3.3, 0, bitsADC);
+    vout.Data = vout.Data - mean(vout.Data);
     vout.DataInfo.Units = 'V';
     vout.DataInfo.Interpolation = tsdata.interpolation('zoh');
     vout.TimeInfo.Units = 'seconds';
