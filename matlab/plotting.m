@@ -1,4 +1,4 @@
-clear all;
+% clear all;
 close all;
 
 date = '2016_18_05';
@@ -9,9 +9,12 @@ load( matFileName );
 
 names = fieldnames ( ExpFisTimeSeries );
 f = zeros(1,length(names));
-for i = 1 : length(names)
+for i = 1 : 1%length(names)
     %% Load counts and edges
-    
+    %     avgSimVout = instantAverage(simVout.Data);
+%     avgVin = instantAverage(vin.Data);
+%     
+
     TSeries = ExpFisTimeSeries.(names{i});
     f(i) = TSeries.freqSignalHz;
     
@@ -53,21 +56,34 @@ for i = 1 : length(names)
     ylim([ymin ymax]);
     legend('vout - data','vout - simulation', 'mean(vin)');
     title(strcat('Output Voltage freq =',' ',num2str(f(i)),' Hz'));
-    saveas(gcf,strcat(saveFolder,'voltage_freq',num2str(i-1),'.png'));
     
     figure('units','normalized','outerposition',[0 0 1 1]);
-    axePower = axes;
-    plot(power);
+
+    avgSimVout = cummean(simVout.Data, 1);
+    avgVin = cummean(vin.Data, 1);
     hold on;
-    plot(simPower);
-    plot(get(gca,'xlim'), [meanPower meanPower], 'k');
-    ymin = -1;
-    ymax = 2.5;
-    ylim([ymin ymax]);
-    ylabel(power.DataInfo.Units);
-    xlabel(power.TimeInfo.Units);
-    legend('power - data','power - simulation','mean(power)');
-    title(strcat('Injected Power freq =',' ',num2str(f(i)),' Hz'));
-    saveas(gcf,strcat(saveFolder,'power_freq',num2str(i-1),'.png'));
+    plot(vin.Time, avgVin);
+    plot(vin.Time, avgSimVout);
+    plot(get(gca,'xlim'), [meanVin meanVin], 'k');
+    ylabel(vin.DataInfo.Units);
+    xlabel(vin.TimeInfo.Units);
+    legend('avgVin','avgSimVout', 'mean');
+    title(strcat('Average evolution freq =',' ',num2str(f(i)),' Hz'));
+%     saveas(gcf,strcat(saveFolder,'voltage_freq',num2str(i-1),'.png'));
+    
+%     figure('units','normalized','outerposition',[0 0 1 1]);
+%     axePower = axes;
+%     plot(power);
+%     hold on;
+%     plot(simPower);
+%     plot(get(gca,'xlim'), [meanPower meanPower], 'k');
+%     ymin = -1;
+%     ymax = 2.5;
+%     ylim([ymin ymax]);
+%     ylabel(power.DataInfo.Units);
+%     xlabel(power.TimeInfo.Units);
+%     legend('power - data','power - simulation','mean(power)');
+%     title(strcat('Injected Power freq =',' ',num2str(f(i)),' Hz'));
+%     saveas(gcf,strcat(saveFolder,'power_freq',num2str(i-1),'.png'));
     
 end
