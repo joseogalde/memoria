@@ -3,7 +3,7 @@ parseMATFile = strcat(prefix, 'ExpFisParse.mat');
 
 if ~exist(parseMATFile,'file')
     nfiles = 15;
-    parseMATFile = payloadLogParser(prefix, nfiles);
+    parseMATFile = payloadParser(prefix, nfiles);
 end
 
 load(parseMATFile);

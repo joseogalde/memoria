@@ -1,9 +1,10 @@
-function [ index, time ] = findStationaryStateIndex( ref, x, y, tolerance )
+function index = findStationaryStateIndex( ref, x, minimunIndex, tolerance )
 % A good value for tolerance in vin is 5e-5
-instAvg = cummean(y,1)';
-indexes = abs(instAvg-ref) < tolerance;
-index = find(indexes, 1 ,'first');
-time = x(index);
+instAvg = cummean(x,1)';
+instAvg = instAvg(minimunIndex : end);
+candidates = abs(instAvg - ref) < tolerance;
+indexes = find(candidates == 1);
+index = (minimunIndex - 1) +  indexes(1);
 
 end
 
