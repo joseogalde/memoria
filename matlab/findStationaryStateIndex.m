@@ -1,11 +1,11 @@
-function index = findStationaryStateIndex( ref, x, minimunIndex, tolerance, span )
-% A good value for tolerance in vin is 5e-5
-instAvg = cummean(x,1)';
-smoothAvg = smooth(instAvg, span);
-smoothAvg = smoothAvg(minimunIndex : end);
-candidates = abs(smoothAvg - ref) < tolerance;
-zeroCross = find(candidates, 10, 'first');
-[~, findIndex] = min(abs(zeroCross - mean(zeroCross)));
-index = zeroCross(findIndex+1);
+function [index, stateSignal] = findStationaryStateIndex( refLevel, signal, minimunIndex, tolerance, span )
+
+stateSignal = cummean(signal, 1)';
+smoothedSignal = smooth(stateSignal, span);
+smoothedSignal = smoothedSignal(minimunIndex : end);
+indexCandidates = abs(smoothedSignal - refLevel) < tolerance;
+zeroCrosses = find(indexCandidates, 10, 'first');
+[~, findIndex] = min(abs(zeroCrosses - mean(zeroCrosses)));
+index = zeroCrosses(findIndex+1);
 end
 
