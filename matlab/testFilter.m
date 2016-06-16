@@ -4,7 +4,7 @@ close all;
 load('2016_17_05_ExpFisTimeSeries.mat')
 
 names = fieldnames(ExpFisTimeSeries);
-TSeries = ExpFisTimeSeries.(names{12});
+TSeries = ExpFisTimeSeries.(names{10});
 dataTSC = TSeries.tscData;
 simTSC = TSeries.tscSimulation;
 
@@ -60,46 +60,81 @@ for i = 1 : length(spanVout)
     plot(haxes, avgVoutSmoothed);
     iter = iter + 1;
     Legend{iter}=strcat('vout span = ',num2str(spanVout(i)));
-    winVout = 2*winVout;
+    winVout = 2 * winVout;
 end
-
 legend(Legend);
 
+%% No buffering
 tolerance = 1e-3;
 span = 2e-3;
-avgVout = cummean(simVout.Data,1)';
-avgVoutSmoothed = smooth(avgVout, span);
-simVoutIndex = findStationaryStateIndex(ref,simVout.Data, 1, tolerance, span);
-simVoutFiltered = filterPayloadTimeSeries(simVout, simVoutIndex);
+originalData = simVout.Data;
+[simVoutIndex, cummeanSimVout, points] = findSState('simple', originalData, tolerance, span);
+[~, simVoutFiltered] = reconstructBufferedSignal(originalData, simVoutIndex, length(originalData));
 
-figure;
-localAvgVout = smooth(simVout.Data,span);
-localAvgVoutIndex = findStationaryStateIndex(ref,localAvgVout, 1, tolerance, span);
-localVoutFiltered = filterPayloadTimeSeries(simVout, localAvgVoutIndex);
+figure('units','normalized','outerposition',[0 0 1 1]);
 subplot(2,1,1);
 hold on;
-plot(avgVoutSmoothed,'b');
+plot(cummeanSimVout, 'b');
 LegendFilterPlots = [];
-LegendFilterPlots = [LegendFilterPlots; 'smotthed cummean for vout           '];
-plot(simVoutFiltered.Data, 'g');
-LegendFilterPlots = [LegendFilterPlots; 'filtered vout using smoothed cummean'];
-title(strcat('stationary state detection in index = ',num2str(simVoutIndex)));
+LegendFilterPlots = [LegendFilterPlots; 'cummean'];
+title('Reference signal used to detect steady state (no buffering)');
 theLegend = cellstr(LegendFilterPlots);
 legend(theLegend);
-
+ylim([-1 1]);
 
 subplot(2,1,2);
 hold on;
-plot(localAvgVout,'r');
+plot(simVoutFiltered, 'g');
 LegendFilterPlots = [];
-LegendFilterPlots = [LegendFilterPlots; 'smoothed vout                    '];
-plot(localVoutFiltered, 'm');
-LegendFilterPlots = [LegendFilterPlots; 'filtered vout using smoothed vout'];
-
-title(strcat('stationary state detection in index = ',num2str(simVoutIndex)));
+LegendFilterPlots = [LegendFilterPlots; 'vout'];
+title(strcat('Output voltage in steady state (no buffering, useful = ',...
+    num2str((1-points/length(originalData))*100),' %)'));
 theLegend = cellstr(LegendFilterPlots);
 legend(theLegend);
+ylim([-1 1]);
 
+%% With buffering
+tolerance = 1e-3;
+buffLen = 200;
+[simVoutBufferedIndexes, bufferedCummeanSignal, points] = findSState('buffered', simVout.Data, tolerance, span , buffLen);
+[joinedSlices, filteredSignal] = reconstructBufferedSignal(simVout.Data, simVoutBufferedIndexes, buffLen);
+
+figure('units','normalized','outerposition',[0 0 1 1]);
+subplot(2,1,1);
+hold on;
+plot(bufferedCummeanSignal, 'm');
+LegendFilterPlots = [];
+LegendFilterPlots = [LegendFilterPlots; 'buffered cummean'];
+title('Reference signal used to detect steady state (with buffering)');
+theLegend = cellstr(LegendFilterPlots);
+legend(theLegend);
+ylim([-1 1]);
+
+subplot(2,1,2);
+hold on;
+plot(filteredSignal,'b');
+LegendFilterPlots = [];
+LegendFilterPlots = [LegendFilterPlots; 'buffered vout '];
+title(strcat('Output voltage in steady state (with buffering, useful = ',...
+    num2str((1-points/length(originalData))*100),' %)'));
+theLegend = cellstr(LegendFilterPlots);
+legend(theLegend);
+ylim([-1 1]);
+
+% Buffering + join the slices
+figure('units','normalized','outerposition',[0 0 1 1]);
+hold on;
+plot(joinedSlices);
+LegendFilterPlots = [];
+LegendFilterPlots = [LegendFilterPlots; 'useful simVout'];
+theLegend = cellstr(LegendFilterPlots);
+legend(theLegend);
+title(strcat('Output voltage in steady state (with buffering, useful = ',...
+    num2str((1-points/length(originalData))*100),' %)'));
+ylim([-1 1]);
+
+% no es lo mismo hacer smooth(algo) que computar la cummean entre
+% ventanas pequeñas (resetear cada ciertos N puntos)
 
 % La idea es tener un modelo lineal que indique desde que punto en la 
 % serie de tiempo se pueden eliminar los datos. (Caso simulacion).

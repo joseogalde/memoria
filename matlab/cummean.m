@@ -12,7 +12,7 @@ function y = cummean(x,dim)
 %
 %   then cummean(X,1) is   [  0   1   2
 %                           1.5 2.5 3.5]
-%   and cummean(X,2)  is   [  0 0.5   1
+%   and cummean(X,2)  isGiven that electronics are the main resource for automation, control and data acquisition for complex systems, its of paramount importance to characterize their behaviour in hostiles environments such as space, in particular when considering environmental strains and attacks on normal behaviour of electronic components by the interaction of its parts with its surroundings.   [  0 0.5   1
 %                             3 3.5   4]
 %
 %   Another example:

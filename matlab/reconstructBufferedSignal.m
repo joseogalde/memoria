@@ -1,9 +1,24 @@
-function reconstructedSignal = reconstructBufferedSignal(originalSignal, indexArray, buffLen )
+function [joinedSlices, filtered]= reconstructBufferedSignal(originalSignal, indexArray, buffLen )
 
-reconstructedSignal = [];
+joinedSlices = [];
+filtered = zeros(size(originalSignal));
+refLevel = mean(originalSignal);
 for k = 1 : length(indexArray)
-    usefulSliceOfSignal = originalSignal(indexArray(k) + (k-1)*buffLen : k * buffLen);
-    reconstructedSignal=[reconstructedSignal; usefulSliceOfSignal];
+    firstNonUsefulDataIndex = (k-1) * buffLen + 1;
+    firstUsefulDataIndex = indexArray(k) + firstNonUsefulDataIndex - 1;
+    lastNonUsefulDataIndex = firstUsefulDataIndex - 1;
+    lastUsefulDataIndex = k * buffLen;
+    
+    if indexArray(k) > buffLen
+        lastNonUsefulDataIndex = lastUsefulDataIndex;
+        filtered(firstNonUsefulDataIndex : lastNonUsefulDataIndex) = refLevel;
+        continue
+    end
+    
+    usefulSliceOfSignal = originalSignal( firstUsefulDataIndex : lastUsefulDataIndex);
+    joinedSlices = [joinedSlices; usefulSliceOfSignal];
+    filtered(firstNonUsefulDataIndex : lastNonUsefulDataIndex,1) = refLevel;
+    filtered(firstUsefulDataIndex : lastUsefulDataIndex,1) = usefulSliceOfSignal;
 end
 end
 
