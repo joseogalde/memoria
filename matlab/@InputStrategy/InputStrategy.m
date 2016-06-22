@@ -1,4 +1,8 @@
 classdef InputStrategy < StrategyType
+    % INPUTSTRATEGY A parser strategy to identy output values from
+    % payloads and puts in a struct. Generates a single file, for multiples
+    % frequencies you should iterate over a collection of files and call
+    % RunStrategy.
     properties  
         reglInput = 'rand() = ';
         regrInput = ' ';
