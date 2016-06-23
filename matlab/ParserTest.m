@@ -1,6 +1,7 @@
 clear all;
 close all;
-parser = PayloadFilesParser();
-filePath = './cutecom/2015_22_12_input_voltages.txt';
-% filePath = './cutecom/parserTestFixture.txt';
-result = parser.parse(filePath);
+folderName = strcat(pwd, '/testFolder');
+p = PayloadRCParser(folderName);
+filePath = strcat(pwd, '/cutecom/parserTestFixture.txt');
+p.createFiles(filePath);
+
