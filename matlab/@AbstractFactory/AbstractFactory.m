@@ -2,6 +2,9 @@ classdef AbstractFactory < handle
     
     properties
         Parser
+        CalibrationData
+        SimulationData
+        MissionData
     end
     
     methods 

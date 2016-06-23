@@ -8,20 +8,43 @@ classdef OutputStrategy < StrategyType
         regrOutput = ')';
         regADC =  'adc period = ';
         nbits = 10;
+        regEOF = 'pay_exec finished'
+        sampCoeff
     end
     
     methods
         function result = RunStrategy(this, sourceFile)
+            fid = fopen(sourceFile);
+            hasExec = true;
+            result = 0;
+            index = 1;
+            [buffer, hasExec] = this.runSingle(fid);
+            while hasExec                
+                rprint = this.printBufferToFile(buffer, index);
+                this.makeMatFile(buffer(2:end), buffer(1), index);
+                result = result + rprint;
+                index = index + 1;
+                [buffer, hasExec] = this.runSingle(fid);
+            end
+            rclose = fclose(fid);
+            
+            result = result + rclose;
+            if  result ~= 0
+                result = -1;
+            end
+        end
+        
+        function [buffer, hasExec] = runSingle(this, FID)
             values = [];
             adcPeriod = 0;
-            fid = fopen(sourceFlogFileNameile);
-            tline = fgets(fid);
+            tline = fgets(FID);
             while ischar(tline)
-                if ~isempty( strfind(tline, this.regADC) )
+                if  ~isempty( strfind( tline, this.regEOF ) )
+                    break
+                elseif ~isempty( strfind(tline, this.regADC) )
                     indexl = strfind( tline, this.regADC);
                     indexl = indexl + length(this.regADC);
                     adcPeriod = str2double( tline(indexl: end) );
-                    
                 elseif  ~isempty(  strfind(tline, this.reglOutput) )
                     indexl = strfind(tline, this.reglOutput);
                     indexl = indexl + length(this.reglOutput);
@@ -29,14 +52,41 @@ classdef OutputStrategy < StrategyType
                     nextValue = str2double( tline(indexl : indexr - 1) );
                     values = [values; nextValue];
                 end
-                tline = fgets(fid);
+                tline = fgets(FID);
             end
-            fclose(fid);
-            Output.file = sourceFile;
+            
+            if adcPeriod == 0 || isempty(values)
+                hasExec = false;
+            else
+                hasExec = true;
+            end
+            buffer = [adcPeriod; values];
+        end
+        
+        function success = printBufferToFile(this, buffer, index)
+            folder = this.Folder;
+            filePath = strcat(folder, '/payloadRC_output',num2str(index),'.txt');
+            fid = fopen(filePath, 'wt');
+            fprintf(fid, 'adcPeriod = %f\n', buffer(1));
+            for i = 2 : length(buffer)
+                fprintf(fid, '%f\n', buffer(i));
+            end
+            success = fclose(fid);
+        end
+        
+        function makeMatFile(this, values, adcPeriod, index)
+            Output.folder = this.Folder;
             Output.len = length(values);
             Output.counts = values;
             Output.nbits = this.nbits;
-            result = Output;
+            Output.adcPeriod = adcPeriod;
+            Output.oversamplingCoeff = this.sampCoeff;
+            name = strcat(this.Folder,'/payloadRC_output',num2str(index),'.mat');
+            save(name, 'Output');
+        end
+        
+        function setSamplingCoeff(this, value)
+           this.sampCoeff = value; 
         end
     end
 end

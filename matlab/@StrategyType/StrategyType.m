@@ -1,5 +1,6 @@
-classdef StrategyType  
+classdef StrategyType < handle 
    properties
+       Folder
    end
 
    methods (Abstract)
@@ -20,6 +21,12 @@ classdef StrategyType
                 error('Type must be either Input or Output');
             end
        end
+   end
+   
+   methods
+       function setFolderDestination(this, folder)
+           this.Folder = folder;
+        end
    end
 end 
 
