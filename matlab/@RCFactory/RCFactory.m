@@ -1,4 +1,4 @@
-classdef CalibrationFactory < AbstractFactory
+classdef RCFactory < AbstractFactory
     
     properties
         Name
