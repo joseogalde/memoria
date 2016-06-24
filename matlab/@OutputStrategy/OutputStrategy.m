@@ -29,11 +29,7 @@ classdef OutputStrategy < StrategyType
                 index = index + 1;
                 [buffer, hasExec] = this.runSingle(fid);
             end
-            rclose = fclose(fid);        
-%             result = result + rclose;
-%             if  result ~= 0
-%                 result = -1;
-%             end
+            fclose(fid);        
         end
         
         function [buffer, hasExec] = runSingle(this, FID)

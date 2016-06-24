@@ -28,14 +28,9 @@ classdef InputStrategy < StrategyType
                 end
                 tline = fgets(fid);
             end
-            rclose = fclose(fid);
-            rprint = this.printBufferToFile(values);
+            fclose(fid);
+            this.printBufferToFile(values);
             matFileDir = this.makeMatFile(values);
-%             if rclose ~= 0 || rprint ~= 0
-%                 result = -1;
-%             else
-%                 result = 0;
-%             end
             
         end
         

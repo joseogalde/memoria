@@ -1,5 +1,6 @@
-classdef AbstractFactory < handle
-    
+classdef (Abstract) AbstractFactory < handle
+    % ABSTRACTFACTORTY Object of ths class creates a DataBase from
+    % payloads results in a way that can be used to posterior analysis.
     properties
         Parser
         CalibrationData
@@ -7,19 +8,15 @@ classdef AbstractFactory < handle
         MissionData
     end
     
-    methods 
+    methods (Access = private)
         function setParser(obj, parser)
             obj.Parser = parser;
-        end
-        
-        function  dataBase = createData(this, source)
-            parser = this.Parser;
-            parsedSource = parser.parse(source);
-            dataBase = createSeries(this, parsedSource);
         end
     end
     
     methods (Abstract, Access = protected)
-        series = createSeries(this, input)
+        data = createCalibrationData(this)
+        data = createSimulationData(this)
+        data = createMissionData(this)
     end
 end
