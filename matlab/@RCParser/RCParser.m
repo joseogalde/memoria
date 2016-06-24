@@ -1,20 +1,14 @@
-classdef PayloadRCParser < Parser
+classdef RCParser < Parser
     properties 
         Folder
     end
     
     methods
-        function obj = PayloadRCParser(folderName)
-            obj = obj@Parser;
+        function obj = RCParser(folderName)
             obj.Folder = folderName;
         end
         
-        function parsedFile = parse(this, logFile)
-            %some code
-            parsedFile = logFile;
-        end
-        
-        function createFiles(this, logFile)
+        function parse(this, logFile)
             mkdir(this.Folder);
             this.createInputFile(logFile);
             this.createOutputFiles(logFile);

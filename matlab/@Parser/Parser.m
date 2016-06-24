@@ -4,8 +4,7 @@ classdef Parser < handle
     end
     
     methods (Abstract)
-        parsedFile = parse(this, logFile);
-        folder = createFiles(this, logFile);
+        parse(this, logFile);
     end
 end
 
