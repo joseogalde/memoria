@@ -10,28 +10,30 @@ classdef OutputStrategy < StrategyType
         nbits = 10;
         regEOF = 'pay_exec finished'
         sampCoeff
+        matFilePath
     end
     
     methods
-        function result = RunStrategy(this, sourceFile)
+        function matFileDir = RunStrategy(this, sourceFile)
             fid = fopen(sourceFile);
             hasExec = true;
             result = 0;
             index = 1;
+            matFileDir = {};
             [buffer, hasExec] = this.runSingle(fid);
             while hasExec                
                 rprint = this.printBufferToFile(buffer, index);
-                this.makeMatFile(buffer(2:end), buffer(1), index);
+                ptr = this.makeMatFile(buffer(2:end), buffer(1), index);
+                matFileDir = {matFileDir; ptr};
                 result = result + rprint;
                 index = index + 1;
                 [buffer, hasExec] = this.runSingle(fid);
             end
-            rclose = fclose(fid);
-            
-            result = result + rclose;
-            if  result ~= 0
-                result = -1;
-            end
+            rclose = fclose(fid);        
+%             result = result + rclose;
+%             if  result ~= 0
+%                 result = -1;
+%             end
         end
         
         function [buffer, hasExec] = runSingle(this, FID)
@@ -74,7 +76,7 @@ classdef OutputStrategy < StrategyType
             success = fclose(fid);
         end
         
-        function makeMatFile(this, values, adcPeriod, index)
+        function matFileDir = makeMatFile(this, values, adcPeriod, index)
             Output.folder = this.Folder;
             Output.len = length(values);
             Output.counts = values;
@@ -83,6 +85,7 @@ classdef OutputStrategy < StrategyType
             Output.oversamplingCoeff = this.sampCoeff;
             name = strcat(this.Folder,'/payloadRC_output',num2str(index),'.mat');
             save(name, 'Output');
+            matFileDir = name;
         end
         
         function setSamplingCoeff(this, value)

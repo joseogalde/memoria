@@ -11,7 +11,7 @@ classdef InputStrategy < StrategyType
     end
    
     methods
-        function result = RunStrategy(this, sourceFile)
+        function matFileDir = RunStrategy(this, sourceFile)
             values = [];
             fid = fopen(sourceFile);
             tline = fgets(fid);
@@ -30,12 +30,12 @@ classdef InputStrategy < StrategyType
             end
             rclose = fclose(fid);
             rprint = this.printBufferToFile(values);
-            this.makeMatFile(values);
-            if rclose ~= 0 || rprint ~= 0
-                result = -1;
-            else
-                result = 0;
-            end
+            matFileDir = this.makeMatFile(values);
+%             if rclose ~= 0 || rprint ~= 0
+%                 result = -1;
+%             else
+%                 result = 0;
+%             end
             
         end
         
@@ -49,13 +49,14 @@ classdef InputStrategy < StrategyType
             success = fclose(fid);
         end
        
-        function makeMatFile(this, values)
+        function matFileDir = makeMatFile(this, values)
             Input.folder = this.Folder;
             Input.len = length(values);
             Input.counts = values;
             Input.nbits = this.nbits;
             name = strcat(this.Folder, '/payloadRC_input.mat');
             save(name, 'Input');
+            matFileDir = name;
         end
     end
 end
