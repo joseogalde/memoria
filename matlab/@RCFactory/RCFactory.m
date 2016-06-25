@@ -1,19 +1,26 @@
 classdef RCFactory < AbstractFactory
     
     properties
-        Name
+        Folder
     end
     
     methods
-        function obj = CalibrationFactory(name)
-            obj.Name = name;
+        function obj = RCFactory(parser)
+            obj.Parser = parser;
+            obj.Folder = parser.Folder;
         end
     end
     
     methods (Access = protected)
-        function  series = createSeries(this, input)
-            series = strcat(this.Name, '_', input);
+        function data = createCalibrationData(this)
+            matfiles = this.Parser.Files;
+            this.createTimeSeries(matfiles);
         end
+        function data = createSimulationData(this)
+        end
+        function data = createMissionData(this)
+        end
+        
     end
     
 end

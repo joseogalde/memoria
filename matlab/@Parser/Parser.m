@@ -1,6 +1,8 @@
-classdef Parser < handle
+classdef (Abstract) Parser < handle
 
     properties
+        Folder
+        Files
     end
     
     methods (Abstract)
