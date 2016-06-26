@@ -1,34 +1,30 @@
 classdef RCParser < Parser
     properties
-        outputMatFiles
-        inputMatFiles
     end
     
     methods
         function obj = RCParser(folderName)
-            obj.Folder = folderName;
+            obj.folder = folderName;
         end
         
         function parse(this, logFile)
-            mkdir(this.Folder);
+            mkdir(this.folder);
             this.createInputFile(logFile);
             this.createOutputFiles(logFile);
         end
         
         function createInputFile(this, logFile)
             s = InputStrategy();
-            folder = this.Folder;
+            folder = this.folder;
             s.setFolderDestination(folder);
-            this.inputMatFiles = s.RunStrategy(logFile);
-            this.Files = {this.Files; this.inputMatFiles};
+            this.filesInput = s.RunStrategy(logFile);
         end
         
         function createOutputFiles(this, logFile)
             s = OutputStrategy();
-            s.setFolderDestination(this.Folder);
+            s.setFolderDestination(this.folder);
             s.setSamplingCoeff(4);
-            this.outputMatFiles =  s.RunStrategy(logFile);
-            this.Files = {this.Files; this.outputMatFiles};
+            this.filesOutput =  s.RunStrategy(logFile);
         end
     end
 end

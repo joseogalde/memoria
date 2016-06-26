@@ -1,13 +1,14 @@
 classdef RCFactory < AbstractFactory
     
     properties
-        Folder
+        folder
+        matfiles
     end
     
     methods
         function obj = RCFactory(parser)
             obj.Parser = parser;
-            obj.Folder = parser.Folder;
+            obj.folder = parser.folder;
         end
     end
     
