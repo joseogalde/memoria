@@ -2,31 +2,37 @@ classdef CalibrationRC < CalibrationData
     %CALIBRATIONRC Summary of this class goes here
     %   Detailed explanation goes here
     properties
-       csvpath
+       csvDeltaTMeasures
+       commandFrequencyRegressionValues
     end
     
     methods
+        % Constructor
         function obj = CalibrationRC
-            csvpath = '/home/jose/Documents/UNIVERSIDAD/EL69xx/matlab/payloadCSV.csv';
-            obj.setCSVPath(csvpath);
+            csvDeltaTMeasures = '/home/jose/Documents/UNIVERSIDAD/EL69xx/matlab/payloadCSV.csv';
+            obj.setDeltaTMeasures(csvDeltaTMeasures);
+            obj.commandFrequencyRegressionValues = obj.commandFrequencyLinearFit;
         end
         
-        function setCSVPath(this, path)
-           this.csvpath = path; 
+        % Set the 'csvDeltaTMeasures' property value
+        function setDeltaTMeasures(this, path)
+           this.csvDeltaTMeasures = path; 
         end
-
-        function fittedValue = payloadCommandValue(this, freqHz)
-            [m, n] = this.payloadLinearFit;           
+        
+        % 
+        function commandValue = computeCommandValue(this, freqHz)
+            m = this.commandFrequencyRegressionValues(1);
+            n = this.commandFrequencyRegressionValues(2);
             period = 1/freqHz;
             if period > n
-                fittedValue = (period - n)./ m;
-                fittedValue = uint16(fittedValue);
+                commandValue = (period - n)./ m;
+                commandValue = uint16(commandValue);
             else
-                fittedValue = 1;
+                commandValue = 1;
             end
         end
-        function [m, n] = payloadLinearFit(this)
-            dataCSV = payloadImportCSV (this.csvpath);
+        function [m, n] = commandFrequencyLinearFit(this)
+            dataCSV = importCSVDeltaTMeasures(this.csvDeltaTMeasures);
             x = dataCSV.AdcTimerPeriod;
             y = dataCSV.SignalDeltaTMilliSeg ./ 1000;
             p = polyfit(x,y,1);
