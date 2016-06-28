@@ -17,15 +17,13 @@ classdef OutputStrategy < StrategyType
         function matFileDir = RunStrategy(this, sourceFile)
             fid = fopen(sourceFile);
             hasExec = true;
-            result = 0;
             index = 1;
             matFileDir = {};
             [buffer, hasExec] = this.runSingle(fid);
             while hasExec                
-                rprint = this.printBufferToFile(buffer, index);
+                this.printBufferToFile(buffer, index);
                 ptr = this.makeMatFile(buffer(2:end), buffer(1), index);
-                matFileDir = {matFileDir; ptr};
-                result = result + rprint;
+                matFileDir{index} = ptr;
                 index = index + 1;
                 [buffer, hasExec] = this.runSingle(fid);
             end

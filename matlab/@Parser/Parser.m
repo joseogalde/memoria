@@ -1,7 +1,7 @@
 classdef (Abstract) Parser < handle
 
     properties
-        folder
+        folderParseOut
         filesInput
         filesOutput
     end

@@ -30,7 +30,7 @@ classdef InputStrategy < StrategyType
             end
             fclose(fid);
             this.printBufferToFile(values);
-            matFileDir = this.makeMatFile(values);
+            matFileDir{1} = this.makeMatFile(values);
             
         end
         
