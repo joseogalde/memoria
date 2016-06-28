@@ -1,8 +1,9 @@
-classdef (Abstract) SimulationData
+classdef (Abstract) SimulationData < handle
     %SIMULATIONDATA Summary of this class goes here
     %   Detailed explanation goes here
     
     properties
+        
     end
     
     methods

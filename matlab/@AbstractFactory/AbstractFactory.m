@@ -6,6 +6,8 @@ classdef (Abstract) AbstractFactory < handle
         CalibrationData
         SimulationData
         MissionData
+        folderDataUsed
+        folderDataCreated
     end
     
     methods (Access = private)
@@ -15,8 +17,8 @@ classdef (Abstract) AbstractFactory < handle
     end
     
     methods (Abstract, Access = protected)
-        data = createCalibrationData(this)
-        data = createSimulationData(this)
-        data = createMissionData(this)
+        data = createCalibrationData(this, matfi1leFolder)
+        data = createSimulationData(this, matfileFolder)
+        data = createMissionData(this, matfileFolder)
     end
 end
