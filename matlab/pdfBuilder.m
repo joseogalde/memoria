@@ -2,27 +2,23 @@ close all;
 
 kernelResolution = 1000;
 
-date = {'2016_18_05'};
-prefix = strcat(date{1},'_');
-filteredFilename = strcat(prefix, 'FilteredSeries.mat');
-% histogramFilename = strcat(prefix, 'ExpFisHistogram.mat');
-seriesFilename = strcat(prefix, 'ExpFisTimeSeries.mat');
-
-load( filteredFilename );
-% load( histogramFilename );
-load( seriesFilename );
-
-names = fieldnames ( FilteredSeries );
-f = zeros(1,length(names));
-fs = zeros(1,length(names));
-KLVout = zeros(1,length(names));
-KLPower = zeros(1,length(names));
-simulationFileName = cell(1,length(names));
-
+simulationFileName = cell(1, length(names));
 for i = 1: length(names)    
     simulationFileName{i} = strcat('2016_25_06_SimulationFiltered_freq',num2str(i-1),'.mat');
 end
 
+k = 1;
+date = {'2016_17_05', '2016_18_05'};
+prefix = strcat(date{k},'_');
+filteredFilename = strcat(prefix, 'FilteredSeries.mat');
+seriesFilename = strcat(prefix, 'ExpFisTimeSeries.mat');
+
+load( filteredFilename );
+load( seriesFilename );
+
+names = fieldnames ( FilteredSeries );
+f = zeros(1, length(names));
+fs = zeros(1, length(names));
 for i = 1 : length(names)    
     disp(strcat('loading ',' ', simulationFileName{i}));
     load(simulationFileName{i});
