@@ -1,42 +1,32 @@
 clear all;
 close all;
 %% Load variables
-load('2016_18_05_ExpFisTimeSeries.mat')
-folder = './img/';
+k = 1;
+alldates = {'2016_17_05', '2016_18_05'};
+date = alldates{k};
+prefix = strcat(date, '_');
+filteredFilename = strcat(prefix, 'FilteredSeries.mat');
+load(filteredFilename);
+folder = './img/dataEfficiency/';
 
-names = fieldnames(ExpFisTimeSeries);
+points = {1000, 10000};
+pointsStr = num2str(points{k});
+samplesStr = num2str(4*points{k});
+
+names = fieldnames(FilteredSeries);
 points = zeros(1,length(names));
 dataEfficiency = zeros(1,length(names));
+simEfficiency = zeros(1,length(names));
 freq = zeros(1,length(names));
-
+% s
 for i = 1 : length(names)
-   
-TSeries = ExpFisTimeSeries.(names{i});
-dataTSC = TSeries.tscData;
-simTSC = TSeries.tscSimulation;
-
-freq(i) = TSeries.freqSignalHz;
-vin = dataTSC.vin;
-vout = dataTSC.vout;
-power = dataTSC.power;
-
-simVin = simTSC.simVin;
-simVout = simTSC.simVout;
-simPower = simTSC.simPower;
-
-%% Missed points
-tolerance = 5e-3;
-span = 2e-3;
-buffLen = 200;
-
-[indexes, ~, points(i)] = findSState('buffered', vout.Data, tolerance, span , buffLen);
-
-filteredTimeSeries = filterPayloadTimeSeries( vout , indexes, buffLen);
-
-dataEfficiency(i) = 1 - points(i)/length(vout.Data);
-
+    FiSeries = FilteredSeries.(names{i});
+    dataEfficiency(i) = FiSeries.efficiencyData;
+    simEfficiency(i) = FiSeries.efficiencyData;
+    freq(i) = FiSeries.freqSignalHz;
 end
 
+%% data efficiency
 x = freq;
 y = 100.* dataEfficiency;
 
@@ -53,10 +43,7 @@ refMax = refline([0 maxY]);
 refMax.Color = 'k';
 refMax.LineStyle = '--';
 
-% [fobjLinear, godLinear, outputLinear] = fit(x',y', 'poly1');
-% plot(fobjLinear,'g');
-
-[fobjQuad, godQuad, outputQuad] = fit(x',y', 'poly2');
+[fobjQuad, godQuad, ~] = fit(x',y', 'poly3');
 plot(fobjQuad,'r');
 
 xlabel('freq [Hz]');
@@ -65,12 +52,46 @@ ylim([0 100]);
 xMin = min(x);
 xMax = max(x);
 xlim([xMin xMax]); 
-title(strcat('Useful samples due to Buffering'));
+title(strcat('Useful samples due to Buffering (N,S) = (',pointsStr,',',...
+    samplesStr,')'));
 leg1 = strcat('useful sample ratio');
 leg2 = strcat('min = ',num2str(minY),' %');
 leg3 = strcat('max = ',num2str(maxY),' %');
-% leg4 = strcat('linear fit; R² = ', ' ', num2str(godLinear.rsquare));
-leg5 = strcat('quadratic fit; R² = ', ' ', num2str(godQuad.rsquare));
+leg5 = strcat('cubic fit; R² =', ' ', num2str(godQuad.rsquare));
 legend(leg1, leg2, leg3, leg5,'Location','northeast');
+saveas(gcf,strcat(folder,prefix,'dataEfficiency','.png'));
 
-saveas(gcf,strcat(folder,'dataEfficiency','.png'));
+%% simulink efficiency
+x = freq;
+y = 100.* simEfficiency;
+
+figure('units','normalized','outerposition',[0 0 1 1]);
+semilogx(freq, y,'o');
+hold on;
+grid on;
+maxY = max(y);
+minY = min(y);
+refMin = refline([0 minY]);
+refMin.Color = 'b';
+refMin.LineStyle = '--';
+refMax = refline([0 maxY]);
+refMax.Color = 'k';
+refMax.LineStyle = '--';
+
+[fobjQuad, godQuad, ~] = fit(x',y', 'poly3');
+plot(fobjQuad,'r');
+
+xlabel('freq [Hz]');
+ylabel('%');
+ylim([0 100]);
+xMin = min(x);
+xMax = max(x);
+xlim([xMin xMax]); 
+title(strcat('(Simulation) Useful samples due to Buffering (N,S) = (',pointsStr,',',...
+    samplesStr,')'));
+leg1 = strcat('useful sample ratio');
+leg2 = strcat('min = ',num2str(minY),' %');
+leg3 = strcat('max = ',num2str(maxY),' %');
+leg5 = strcat('cubic fit; R² =', ' ', num2str(godQuad.rsquare));
+legend(leg1, leg2, leg3, leg5,'Location','northeast');
+saveas(gcf,strcat(folder,prefix,'simEfficiency','.png'));
