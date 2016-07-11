@@ -31,4 +31,5 @@
 *.backup
 *.mat
 Ref/
+matlab/img/
 matlab/img/*
