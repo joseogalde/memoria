@@ -29,5 +29,6 @@
 *.mtc
 *.mtc0
 *.backup
+*.mat
 Ref/
 matlab/img/
