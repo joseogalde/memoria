@@ -1,4 +1,3 @@
-function normalizedData = normalize( data )
-
-normalizedData = data./sum(data);
+function normalizedData = normalize( supportVector, data)
+normalizedData = data./trapz(supportVector, data);
 end

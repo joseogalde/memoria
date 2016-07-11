@@ -10,7 +10,7 @@ names = fieldnames(ExpFisTimeSeries);
 disp('payloadFilterTimeSeries...');
 
 for i = 1 : 1%length( names )
-    %% load from MAT-file & prepare 
+    %% load from MAT-file & prepare
     TSeries = ExpFisTimeSeries.(names{i});
     dataTSC = TSeries.tscData;
     simTSC = TSeries.tscSimulation;
@@ -42,6 +42,4 @@ auxIndex = strfind( timeseriesMatFile, '.mat' );
 aux = timeseriesMatFile ( 1 : auxIndex-1 );
 timeseriesMATFileName = strcat(aux,'_filtered.mat');
 disp(strcat('Saving into "',timeseriesMATFileName,'" MAT-file'));
-
-% save(timeseriesMATFileName,'','-v7.3');
 end

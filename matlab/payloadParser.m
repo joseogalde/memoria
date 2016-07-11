@@ -81,4 +81,7 @@ end
 parseMATFileName = strcat(prefix,'ExpFisParse.mat');
 save(parseMATFileName, 'ExpFisParse');
 
+% parseMATFileName = strcat(prefix,'InputParse.mat');
+% save(parseMATFileName, 'Input');
+
 end
