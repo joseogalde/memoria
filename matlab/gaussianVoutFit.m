@@ -25,10 +25,6 @@ for k = 1 : length(date)
         y = Vout.teo;
         
         fitTheo = fit(x.', y.', 'gauss1');
-%         figure;
-%         hold on;
-%         plot(fitTheo, x,y);
-        
         theoreticalVar(i) = ((fitTheo.c1).^2) / 2;
         theoreticalMean(i) = fitTheo.b1;
     
@@ -36,7 +32,6 @@ for k = 1 : length(date)
         fitReal = fit(x.', y.', 'gauss1');
         realVar(i) = ((fitReal.c1).^2) / 2;
         realMean(i) = fitReal.b1;
-%         plot(fitReal, x, y);
     end
     Parameters.theoVar = theoreticalVar;
     Parameters.theoMean = theoreticalMean;
