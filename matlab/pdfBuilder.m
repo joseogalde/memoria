@@ -1,24 +1,23 @@
+clear all;
 close all;
 
-kernelResolution = 1000;
-
-simulationFileName = cell(1, length(names));
-for i = 1: length(names)    
-    simulationFileName{i} = strcat('2016_25_06_SimulationFiltered_freq',num2str(i-1),'.mat');
-end
-
-k = 1;
+k = 2;
 date = {'2016_17_05', '2016_18_05'};
 prefix = strcat(date{k},'_');
 filteredFilename = strcat(prefix, 'FilteredSeries.mat');
 seriesFilename = strcat(prefix, 'ExpFisTimeSeries.mat');
-
 load( filteredFilename );
 load( seriesFilename );
 
 names = fieldnames ( FilteredSeries );
 f = zeros(1, length(names));
 fs = zeros(1, length(names));
+numBins = 1000;
+simulationFileName = cell(1, length(names));
+for i = 1: length(names)    
+    simulationFileName{i} = strcat('2016_25_06_SimulationFiltered_freq',num2str(i-1),'.mat');
+end
+
 for i = 1 : length(names)    
     disp(strcat('loading ',' ', simulationFileName{i}));
     load(simulationFileName{i});
@@ -44,10 +43,9 @@ for i = 1 : length(names)
     %% Vin
     vinData = dataTSC.vin.Data;
     simVinData = simTSC.simVin.Data;
-    
-    xmin = min([min(vinData), min(simVinData), min(filteredVin), min(teoVin)]);
-    xmax = max([max(vinData), max(simVinData), max(filteredVin), max(teoVin)]);
-    xx = linspace(xmin,xmax, kernelResolution);
+    xmin = -0.8;
+    xmax = 0.8;
+    xx = linspace(xmin,xmax, numBins);
     
     [fVin, ~, ~] = ksdensity(vinData,xx);
     pdfVin = normalize(xx, fVin);
@@ -68,10 +66,9 @@ for i = 1 : length(names)
     %% Vout
     voutData = dataTSC.vout.Data;
     simVoutData = simTSC.simVout.Data;
-    
-    xmin = min([min(voutData), min(simVoutData), min(filteredVout), min(teoVout)]);
-    xmax = max([max(voutData), max(simVoutData), max(filteredVout), max(teoVout)]);
-    xx = linspace(xmin,xmax, kernelResolution);
+    xmin = -0.9;
+    xmax = 0.9;
+    xx = linspace(xmin,xmax, numBins);
     
     [fVout, ~, ~] = ksdensity(voutData,xx);
     pdfVout = normalize(xx, fVout);
@@ -92,10 +89,9 @@ for i = 1 : length(names)
     %% Power
     powerData = dataTSC.power.Data;
     simPowerData = simTSC.simPower.Data;
-    
-    xmin = min([min(powerData), min(simPowerData), min(filteredPower), min(teoPower)]);
-    xmax = max([max(powerData), max(simPowerData), max(filteredPower) ,max(teoPower)]);
-    xx = linspace(xmin, xmax, kernelResolution);
+    xmin = -0.6;
+    xmax = 0.6;
+    xx = linspace(xmin, xmax, numBins);
     [fPower, ~, ~] = ksdensity(powerData,xx);
     pdfPower = normalize(xx, fPower);
     [fSimPower, ~, ~] = ksdensity(simPowerData,xx);

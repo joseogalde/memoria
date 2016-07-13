@@ -87,7 +87,6 @@ errorVar = abs((yerror - Parameters.realVar) ./ yerror);
 fitErr = fit(xerror.',errorVar.','poly1');
 errorCoeffs = coeffvalues(fitErr);
 errorXFit = logspace(1, log10(max(f)), 1000);
-% errorXFit = logspace(1, 5, 1000);
 errorYfit = polyval(errorCoeffs,errorXFit);
 figure('units','normalized','outerposition',[0 0 1 1]);
 semilogx(f, errorVar.*100, errorXFit, errorYfit.*100);
