@@ -168,6 +168,8 @@ for i = 1 : length(names)
     disp('power 2 ');
     
     for k = 1 : length(date)
+        ExpFisDistributions.(names{i}).vin = Input{k};
+        ExpFisDistributions.(names{i}).vout = Output{k};
         ExpFisDistributions.(names{i}).power = Power{k};
         ExpFisDistributions.(names{i}).freqSignalHz = f(i);
         ExpFisDistributions.(names{i}).fsHz = fs(i);
