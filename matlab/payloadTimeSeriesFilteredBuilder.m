@@ -62,7 +62,7 @@ filteredSimPower.Name = 'simPower';
 tscName = strcat( 'tscSimulation', num2str(i-1) );
 tscSimulation = tscollection({filteredSimVin, filteredSimVout, filteredSimPower}, 'Name', tscName);
 
-simEff = 1 - pointsData(i)/length(vout.Data);
+simEff = 1 - pointsSim(i)/length(vout.Data);
 
 SaveTSData.fsHz = fsHz;
 SaveTSData.freqSignalHz = freqSignalHz;

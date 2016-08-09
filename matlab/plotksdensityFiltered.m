@@ -12,7 +12,7 @@ for k = 1 : length(date)
     plotFolder = strcat('./img/distributionsFinal/');
     
     for i = 1 : length(names)
-        %% Load counts and edges
+        % Load counts and edges
         CurrentFreq = ExpFisDistributions.(names{i});
         f = CurrentFreq.freqSignalHz;
         Vin = CurrentFreq.vin;
@@ -26,6 +26,7 @@ for k = 1 : length(date)
         plot(Vin.supportVector, Vin.data);
         plot(Vin.supportVector, Vin.filtered);
         plot(Vin.supportVector, Vin.sim);
+        xlabel('Vin [V]');
         legend('theoretical', 'raw data', 'filtered data', 'simulation');
         title(strcat('Input voltage distribution for signal = ',num2str(f), ...
             ' Hz, (N,S) = (',pointsStr,',',samplesStr,')'))
@@ -38,6 +39,7 @@ for k = 1 : length(date)
         plot(Vout.supportVector, Vout.data);
         plot(Vout.supportVector, Vout.filtered);
         plot(Vout.supportVector, Vout.sim);
+        xlabel('Vout [V]');
         legend('theoretical', 'raw data', 'filtered data', 'simulation');
         title(strcat('Output voltage distribution for signal = ',num2str(f), ...
             ' Hz, (N,S) = (',pointsStr,',',samplesStr,')'))
@@ -49,7 +51,10 @@ for k = 1 : length(date)
         plot(Power.supportVector, Power.data);
         plot(Power.supportVector, Power.filtered);
         plot(Power.supportVector, Power.sim);
+        semilogy(Power.supportVector, Power.teo, Power.supportVector, Power.data...
+            ,Power.supportVector, Power.filtered,Power.supportVector, Power.sim);
         xlim([-0.6 0.6]);
+        xlabel('Power [mW]');
         legend('theoretical', 'raw data', 'filtered data', 'simulation');
         title(strcat('Power distribution for signal = ',num2str(f), ...
             ' Hz, (N,S) = (',pointsStr,',',samplesStr,')'));

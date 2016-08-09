@@ -1,5 +1,5 @@
-clear all;
-close all;
+% clear all;
+% close all;
 plotFolder = strcat('./img/kldivFinal/');
 
 prefixMenos = '2016_17_05_';
