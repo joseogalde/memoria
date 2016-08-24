@@ -67,17 +67,20 @@ switch varargin{1}
         Input = S.InputCounts;
         
         oversamplingCoeff = varargin{3};
-        waitingTime_ms = varargin{4};
+        waitingTimeMilliSec = varargin{4};
+        beforePoints = 2;
+        buffLen = 400;
         tsInput = createVin(Input, freqSignalHz, oversamplingCoeff);
-        tsInput = simulateSDtransfer(tsInput, waitingTime_ms);
+        dt = tsInput.Time(2) - tsInput.Time(1);
+        workingTimeMilliSec = dt*(buffLen+beforePoints);
+        meanValue = mean(tsInput.Data);
+        tsInput = simulateSDtransfer(tsInput, workingTimeMilliSec, waitingTimeMilliSec, meanValue);
         tsOutput = simulateVout(tsInput);
         tsInjPower = timeseries((dampingRate.* (tsInput.Data .* tsOutput.Data)), tsOutput.Time);
         tsInjPower.Name = 'injectedPower';
         tsInjPower.DataInfo.Units = 'V^2 Hz';
         rawCollection = tscollection({tsInput, tsOutput, tsInjPower});
         
-        beforePoints = 2;
-        buffLen = 400;
         [indexes, ~, ~] = findSState('opcion3', rawCollection.Vout.Data, buffLen, beforePoints);
         tsCollection = filterCollection(rawCollection, indexes, buffLen);
         tsCollection.Name = strcat( 'tscTheoretical_', num2str(freqSignalHz),'Hz');
