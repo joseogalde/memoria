@@ -1,6 +1,6 @@
 function fittedValue = payloadCommandValue( freqHz )
 
-[m, n, ~, ~] = payloadLinearFit;
+[m, n, ~, ~] = payloadLinearFit(pwd);
 
 old = digits;
 digits(64)

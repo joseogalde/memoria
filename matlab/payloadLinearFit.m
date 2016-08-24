@@ -1,6 +1,6 @@
-function [m, n, yreal, xreal] = payloadLinearFit
+function [m, n, yreal, xreal] = payloadLinearFit(workspace)
 
-filenameCSV = '/home/jose/Documents/UNIVERSIDAD/EL69xx/matlab/payloadCSV.csv';
+filenameCSV = strcat(workspace, '/payloadCSV.csv');
 
 dataCSV = payloadImportCSV (filenameCSV);
 samplesPerPoint = 4;    %coeff value used when measures where taken.

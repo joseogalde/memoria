@@ -9,7 +9,7 @@ for i=1:length(cmdModel)
     cmdModel(i) =  payloadCommandValue( fModel(i) ) ;
 end
 
-[m, n, dtSeconds, cmdValueReal] = payloadLinearFit;
+[m, n, dtSeconds, cmdValueReal] = payloadLinearFit(pwd);
 frealHz = 1./ dtSeconds;
 fittedValue = zeros(size(frealHz));
 for i=1:length(frealHz)
