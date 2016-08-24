@@ -17,8 +17,8 @@ switch varargin{1}
         Output = S.OutputCounts;
         
         oversamplingCoeff = varargin{4};
-        freqSampling = freqSignalHz * oversamplingCoeff;
-        tsCollection = makeExperimentalSeries(Input, Output, freqSignalHz, freqSampling, dampingRate);
+        tsCollection = makeExperimentalSeries(Input, Output, freqSignalHz, ...
+            oversamplingCoeff, dampingRate);
         tsCollection.Name = strcat( 'tscRaw_', num2str(freqSignalHz),'Hz');
         save(strcat(tsCollection.Name,'.mat'),'tsCollection','-v7.3');
         
@@ -29,8 +29,8 @@ switch varargin{1}
         Output = S.OutputCounts;
         
         oversamplingCoeff = varargin{4};
-        freqSampling = freqSignalHz * oversamplingCoeff;
-        rawCollection = makeExperimentalSeries(Input, Output, freqSignalHz, freqSampling, dampingRate);
+        rawCollection = makeExperimentalSeries(Input, Output, freqSignalHz, ...
+            oversamplingCoeff, dampingRate);
         buffLen = 200;
         [indexes, ~, ~] = findSState('buffered', rawCollection.Vout.Data, buffLen);
         tsCollection = filterCollection(rawCollection, indexes, buffLen);
@@ -67,10 +67,10 @@ switch varargin{1}
         Input = S.InputCounts;
         
         oversamplingCoeff = varargin{3};
-        waitingTime = varargin{6};
-        tsInput = makeSimulationInput(Input, freqSignalHz, oversamplingCoeff, dampingRate);
-        tsInput = emulateSDtransfer(tsInput, waitingTime);
-        tsOutput = makeSimulationOutput(tsInput);
+        waitingTime_ms = varargin{4};
+        tsInput = createVin(Input, freqSignalHz, oversamplingCoeff);
+        tsInput = simulateSDtransfer(tsInput, waitingTime_ms);
+        tsOutput = simulateVout(tsInput);
         tsInjPower = timeseries((dampingRate.* (tsInput.Data .* tsOutput.Data)), tsOutput.Time);
         tsInjPower.Name = 'injectedPower';
         tsInjPower.DataInfo.Units = 'V^2 Hz';
