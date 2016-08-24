@@ -1,14 +1,20 @@
-function [sstateIndexArray, comparationSignalCollection, missedPoints] = findSState(mode, signal, tolerance, span, buffLen)
+function [sstateIndexArray, comparationSignalCollection, missedPoints] = findSState(mode, signal, varargin)
 
 refLevel = mean(signal);
 sstateIndexArray = [];
 comparationSignalCollection = [];
 missedPoints = 0;
+tolerance = 5e-3;
+span = 2e-3;
 switch mode
     case 'simple'
         [sstateIndexArray, comparationSignalCollection] = findSStateSimple(signal, refLevel, tolerance, span);
         missedPoints = sstateIndexArray;
     case 'buffered'
+        if nargin < 3
+            error('not enough arguments');
+        end
+        buffLen = varargin{1};
         rounds = ceil(length(signal)/buffLen);
         for i = 1 : rounds
             slicedSignal = signal(1+(i-1)*buffLen: i*buffLen);

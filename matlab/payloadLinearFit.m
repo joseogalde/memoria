@@ -3,9 +3,9 @@ function [m, n, yreal, xreal] = payloadLinearFit
 filenameCSV = '/home/jose/Documents/UNIVERSIDAD/EL69xx/matlab/payloadCSV.csv';
 
 dataCSV = payloadImportCSV (filenameCSV);
-
+samplesPerPoint = 4;    %coeff value used when measures where taken.
 x = dataCSV.AdcTimerPeriod;
-y = dataCSV.SignalDeltaTMilliSeg ./ 1000;
+y = dataCSV.SamplingTimeMilliSeg ./ 1000;
 p = polyfit(x,y,1);
 
 m = p(1);
