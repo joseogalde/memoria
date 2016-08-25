@@ -20,7 +20,6 @@ switch varargin{1}
         tsCollection = makeExperimentalSeries(Input, Output, freqSignalHz, ...
             oversamplingCoeff, dampingRate);
         tsCollection.Name = strcat( 'tscRaw_', num2str(freqSignalHz),'Hz');
-        save(strcat(tsCollection.Name,'.mat'),'tsCollection','-v7.3');
         
     case 'filtered'
         S = load(varargin{2});
@@ -36,8 +35,6 @@ switch varargin{1}
         tsCollection = filterCollection(rawCollection, indexes, buffLen);
         tsCollection.Name = strcat('tscFiltered_', num2str(freqSignalHz),'Hz');
         
-        save(strcat(tsCollection.Name,'.mat'),'tsCollection','-v7.3');
-        
     case 'simulink'
         S = load(varargin{2});
         Input = S.InputCounts;
@@ -48,7 +45,6 @@ switch varargin{1}
         [indexes, ~, ~] = findSState('simple', rawCollection.Vout.Data);
         tsCollection = filterCollection(rawCollection, indexes, buffLen);
         tsCollection.Name = strcat( 'tscSimulink_', num2str(freqSignalHz),'Hz');
-        save(strcat(tsCollection.Name,'.mat'),'tsCollection','-v7.3');
         
     case 'theoretical'
         S = load(varargin{2});
@@ -60,7 +56,6 @@ switch varargin{1}
         [indexes, ~, ~] = findSState('simple', rawCollection.Vout.Data, buffLen);
         tsCollection = filterCollection(rawCollection, indexes, buffLen);
         tsCollection.Name = strcat( 'tscTheoretical_', num2str(freqSignalHz),'Hz');
-        save(strcat(tsCollection.Name,'.mat'),'tsCollection','-v7.3');
         
     case 'opcion3'
         S = load(varargin{2});
@@ -84,7 +79,6 @@ switch varargin{1}
         [indexes, ~, ~] = findSState('opcion3', rawCollection.Vout.Data, buffLen, beforePoints);
         tsCollection = filterCollection(rawCollection, indexes, buffLen);
         tsCollection.Name = strcat( 'tscTheoretical_', num2str(freqSignalHz),'Hz');
-        save(strcat(tsCollection.Name,'.mat'),'tsCollection','-v7.3');
         
     otherwise
         error(['The argument' ' "' varargin{1} '" ' 'is not recognized.'])
