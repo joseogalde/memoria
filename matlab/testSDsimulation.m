@@ -26,33 +26,34 @@ Parameters.adcMinVoltage = 0;
 Parameters.adcBits = 9;
 Parameters.buffLen = 80;   %try with 200
 Parameters.adcPeriod = adcPeriod;
-
-Parameters.signalValues = 100;
 Parameters.sampledValuesPerRound = floor(Parameters.buffLen / Parameters.oversamplingCoeff);
-Parameters.nonSampledValuesPerRound = 200;  %try different values
-Parameters.rounds = floor((Parameters.signalValues * Parameters.oversamplingCoeff) / Parameters.buffLen);
+Parameters.rounds = 5;
 Parameters.nWaitingUnits = 100; %check if is good enough
+Parameters.nonSampledValuesPerRound = 200;  %try different values
 
-nPlots = 5;
 tsc1 = simulationFactory(fsignal, 'option1', Parameters);
+tsc2 = simulationFactory(fsignal, 'option2', Parameters);
+tsc3 = simulationFactory(fsignal, 'option3', Parameters);
+Parameters.nonSampledValuesPerRound = nonSampledValues;
+[nonSampled, sampled] = simulationFactory(fsignal, 'option1+3', Parameters);
+
+%% Plots
+nPlots = 5;
 subplot(nPlots,1,1)
 plot(tsc1.Vin.Data);
 hold on;
 plot(tsc1.Vout.Data);
 
-tsc2 = simulationFactory(fsignal, 'option2', Parameters);
 subplot(nPlots,1,2);
 plot(tsc2.Vin.Data);
 hold on;
 plot(tsc2.Vout.Data);
 
-tsc3 = simulationFactory(fsignal, 'option3', Parameters);
 subplot(nPlots,1,3);
 plot(tsc3.Vin.Data);
 hold on;
 plot(tsc3.Vout.Data);
 
-[nonSampled, sampled] = simulationFactory(fsignal, 'option1+3', Parameters);
 subplot(nPlots,1,4);
 plot(nonSampled.Vin.Data);
 hold on;
