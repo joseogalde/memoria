@@ -1,13 +1,12 @@
-function modifiedTimeSeries = simulateSDtransfer(vinTimeSeries, valuesPerRound, waitingInterval, varargin)
+function modifiedTimeSeries = simulateSDtransfer(vinTimeSeries, nValuesPerRound, nWaitingUnits, varargin)
 
 time = vinTimeSeries.Time;
 vinValues = vinTimeSeries.Data;
 dtVin = vinTimeSeries.TimeInfo.Increment;
-rounds = floor(length(time) / valuesPerRound);
-waitingUnits = floor(waitingInterval / dtVin);
+rounds = floor(length(time) / nValuesPerRound);
 
-newLength = rounds*(waitingUnits + valuesPerRound);
-simulationValues = zeros(1, newLength);
+newLength = rounds*(nWaitingUnits + nValuesPerRound);
+simulationValues = zeros(newLength, 1);
 simulationGlobalIndex = 1;
 dataGlobalIndex = 1;
 maxValue = max(vinValues);
@@ -15,23 +14,24 @@ minValue = min(vinValues);
 limitValues = [minValue, maxValue];
 
 for i = 1 : rounds
-    for j = 1 : valuesPerRound
+    for j = 1 : nValuesPerRound
         simulationValues(simulationGlobalIndex) = vinValues(dataGlobalIndex);
         simulationGlobalIndex = simulationGlobalIndex + 1;
         dataGlobalIndex = dataGlobalIndex + 1;
     end
-    switch varargin{1}
-        case 'opcion1'
-            temp = randi([1, 2]);
-            standbyValue = limitValues(temp);
-        case 'opcion2'
-            standbyValue = vinValues(dataGlobalIndex-1);
-        case 'opcion3'
-            standbyValue = mean(vinValues);
-        otherwise
-            error([varargin{1}, 'not recognized']);
+    option = varargin{1};
+    if strcmp(option, 'option1')
+        temp = randi([1, 2]);
+        standbyValue = limitValues(temp);
+    elseif strcmp(option, 'option2')
+        standbyValue = vinValues(dataGlobalIndex-1);
+    elseif strcmp(option, 'option3')
+        standbyValue = mean(vinValues);
+    else
+        error(['varargin{1} ', option, ' not recognized']);
     end
-    for j = 1 : waitingUnits
+    
+    for j = 1 : nWaitingUnits
         simulationValues(simulationGlobalIndex) = standbyValue;
         simulationGlobalIndex = simulationGlobalIndex + 1;
     end
@@ -39,15 +39,12 @@ end
 
 timeMin = min(time);
 timeMax = dtVin*(newLength-1);
-% newtime = linspace(timeMin, timeMax, newLength);
 newtime = timeMin : dtVin : timeMax;
 
 modifiedTimeSeries = timeseries(simulationValues, newtime);
 modifiedTimeSeries.Name = vinTimeSeries.Name;
 modifiedTimeSeries = setuniformtime(modifiedTimeSeries,'StartTime',timeMin,'EndTime',timeMax);
 modifiedTimeSeries.DataInfo.Units = vinTimeSeries.DataInfo.Units;
-% modifiedTimeSeries.TimeInfo.Units = vinTimeSeries.TimeInfo.Units;
-% modifiedTimeSeries.TimeInfo.Increment = dtVin;
 modifiedTimeSeries.DataInfo.Interpolation = vinTimeSeries.DataInfo.Interpolation;
 
 end
