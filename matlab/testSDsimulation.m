@@ -31,35 +31,34 @@ Parameters.rounds = 5;
 Parameters.nWaitingUnits = 100; %check if is good enough
 Parameters.nonSampledValuesPerRound = 200;  %try different values
 
-tsc1 = simulationFactory(fsignal, 'option1', Parameters);
-tsc2 = simulationFactory(fsignal, 'option2', Parameters);
-tsc3 = simulationFactory(fsignal, 'option3', Parameters);
-Parameters.nonSampledValuesPerRound = nonSampledValues;
+op1 = simulationFactory(fsignal, 'option1', Parameters);
+op2 = simulationFactory(fsignal, 'option2', Parameters);
+op3 = simulationFactory(fsignal, 'option3', Parameters);
 [nonSampled, sampled] = simulationFactory(fsignal, 'option1+3', Parameters);
 
 %% Plots
 nPlots = 5;
 subplot(nPlots,1,1)
-plot(tsc1.Vin.Data);
+plot(op1.tsc.Vin.Data);
 hold on;
-plot(tsc1.Vout.Data);
+plot(op1.tsc.Vout.Data);
 
 subplot(nPlots,1,2);
-plot(tsc2.Vin.Data);
+plot(op2.tsc.Vin.Data);
 hold on;
-plot(tsc2.Vout.Data);
+plot(op2.tsc.Vout.Data);
 
 subplot(nPlots,1,3);
-plot(tsc3.Vin.Data);
+plot(op3.tsc.Vin.Data);
 hold on;
-plot(tsc3.Vout.Data);
+plot(op3.tsc.Vout.Data);
 
 subplot(nPlots,1,4);
-plot(nonSampled.Vin.Data);
+plot(nonSampled.tsc.Vin.Data);
 hold on;
-plot(nonSampled.Vout.Data);
+plot(nonSampled.tsc.Vout.Data); 
 
 subplot(nPlots,1,5);
-plot(sampled.Vin.Data);
+plot(sampled.tsc.Vin.Data);
 hold on;
-plot(sampled.Vout.Data);
+plot(sampled.tsc.Vout.Data);

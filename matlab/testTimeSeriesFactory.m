@@ -31,21 +31,21 @@ save(strcat(saveFolder, '/', simulation.Name,'.mat'),'simulation','-v7.3');
 
 %visual check
 subplot(4,1,1);
-plot(raw.Vin);
+plot(raw.tsc.Vin);
 hold on;
-plot(raw.Vout);
+plot(raw.tsc.Vout);
 
 subplot(4,1,2);
-plot(filtered.Vin);
+plot(filtered.tsc.Vin);
 hold on;
-plot(filtered.Vout);
+plot(filtered.tsc.Vout);
 
 subplot(4,1,3);
-plot(simulation.Vin);
+plot(simulation.tsc.Vin);
 hold on;
-plot(simulation.Vout);
+plot(simulation.tsc.Vout);
 
 subplot(4,1,4);
-plot(theoretical.Vin);
+plot(theoretical.tsc.Vin);
 hold on;
-plot(theoretical.Vout);
+plot(theoretical.tsc.Vout);

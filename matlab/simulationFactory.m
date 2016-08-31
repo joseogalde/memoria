@@ -24,7 +24,6 @@ switch option
         
         tsCollection = makeSimulationSeries(Input, freqSignalHz, oversamplingCoeff, dampingRate);
         tsCollection.Name = strcat( 'tscSimulink_', num2str(freqSignalHz),'Hz');
-        varargout{1} = tsCollection;
         
     case 'option1'
         Parameters = varargin{2};
@@ -50,7 +49,7 @@ switch option
         tsInjPower.DataInfo.Units = 'V^2 Hz';
         tsCollection = tscollection({tsInput, tsOutput, tsInjPower});
         tsCollection.Name = strcat( 'tscTheoretical_', num2str(freqSignalHz),'Hz');
-        varargout{1} = tsCollection;
+
     case'option2'
         Parameters = varargin{2};
         sampledValuesPerRound = Parameters.sampledValuesPerRound;
@@ -74,7 +73,6 @@ switch option
         tsInjPower.DataInfo.Units = 'V^2 Hz';
         tsCollection = tscollection({tsInput, tsOutput, tsInjPower});
         tsCollection.Name = strcat( 'tscTheoretical_', num2str(freqSignalHz),'Hz');
-        varargout{1} = tsCollection;
         
     case'option3'
         Parameters = varargin{2};
@@ -99,8 +97,7 @@ switch option
         tsInjPower.DataInfo.Units = 'V^2 Hz';
         tsCollection = tscollection({tsInput, tsOutput, tsInjPower});
         tsCollection.Name = strcat( 'tscTheoretical_', num2str(freqSignalHz),'Hz');
-        varargout{1} = tsCollection;
-        
+
     case'option1+3'
         Parameters = varargin{2};
         nonSampledValuesPerRound = Parameters.nonSampledValuesPerRound;
@@ -140,10 +137,12 @@ switch option
         if nargout < 2
             error('Function invocation returns two outputs');
         end
-        varargout{1} = tsCollection;
-        varargout{2} = tsSampledCollection;
+        varargout{2}.fsignal = freqSignalHz;
+        varargout{2}.tsc = tsSampledCollection;
     otherwise
         error(['The argument' ' "' option '" ' 'is not recognized.']);
 end
 
+varargout{1}.fsignal = freqSignalHz;
+varargout{1}.tsc = tsCollection;
 end

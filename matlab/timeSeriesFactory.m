@@ -19,7 +19,7 @@ switch varargin{1}
         oversamplingCoeff = varargin{4};
         tsCollection = makeExperimentalSeries(Input, Output, freqSignalHz, ...
             oversamplingCoeff, dampingRate);
-        tsCollection.Name = strcat( 'tscRaw_', num2str(freqSignalHz),'Hz');
+        tsCollection.Name = strcat( 'raw_', num2str(freqSignalHz),'Hz');
         
     case 'filtered'
         S = load(varargin{2});
@@ -33,7 +33,7 @@ switch varargin{1}
         buffLen = 200;
         [indexes, ~, ~] = findSState('buffered', rawCollection.Vout.Data, buffLen);
         tsCollection = filterCollection(rawCollection, indexes, buffLen);
-        tsCollection.Name = strcat('tscFiltered_', num2str(freqSignalHz),'Hz');
+        tsCollection.Name = strcat('filtered_', num2str(freqSignalHz),'Hz');
         
     case 'simulink'
         S = load(varargin{2});
@@ -44,7 +44,7 @@ switch varargin{1}
         buffLen = length(rawCollection.Vin.Data);
         [indexes, ~, ~] = findSState('simple', rawCollection.Vout.Data);
         tsCollection = filterCollection(rawCollection, indexes, buffLen);
-        tsCollection.Name = strcat( 'tscSimulink_', num2str(freqSignalHz),'Hz');
+        tsCollection.Name = strcat( 'simulink_', num2str(freqSignalHz),'Hz');
         
     case 'theoretical'
         S = load(varargin{2});
@@ -55,33 +55,12 @@ switch varargin{1}
         buffLen = length(rawCollection.Vin.Data);
         [indexes, ~, ~] = findSState('simple', rawCollection.Vout.Data, buffLen);
         tsCollection = filterCollection(rawCollection, indexes, buffLen);
-        tsCollection.Name = strcat( 'tscTheoretical_', num2str(freqSignalHz),'Hz');
-        
-    case 'opcion3'
-        S = load(varargin{2});
-        Input = S.InputCounts;
-        
-        oversamplingCoeff = varargin{3};
-        waitingTimeMilliSec = varargin{4};
-        beforePoints = 2;
-        buffLen = 400;
-        tsInput = createVin(Input, freqSignalHz, oversamplingCoeff);
-        dt = tsInput.Time(2) - tsInput.Time(1);
-        workingTimeMilliSec = dt*(buffLen+beforePoints);
-        meanValue = mean(tsInput.Data);
-        tsInput = simulateSDtransfer(tsInput, workingTimeMilliSec, waitingTimeMilliSec, meanValue);
-        tsOutput = simulateVout(tsInput);
-        tsInjPower = timeseries((dampingRate.* (tsInput.Data .* tsOutput.Data)), tsOutput.Time);
-        tsInjPower.Name = 'injectedPower';
-        tsInjPower.DataInfo.Units = 'V^2 Hz';
-        rawCollection = tscollection({tsInput, tsOutput, tsInjPower});
-        
-        [indexes, ~, ~] = findSState('opcion3', rawCollection.Vout.Data, buffLen, beforePoints);
-        tsCollection = filterCollection(rawCollection, indexes, buffLen);
-        tsCollection.Name = strcat( 'tscTheoretical_', num2str(freqSignalHz),'Hz');
+        tsCollection.Name = strcat( 'theoretical_', num2str(freqSignalHz),'Hz');
         
     otherwise
         error(['The argument' ' "' varargin{1} '" ' 'is not recognized.'])
 end
-createdTimeSeries = tsCollection;
+createdTimeSeries.fsignal = freqSignalHz;
+createdTimeSeries.tsc = tsCollection;
+createdTimeSeries.Name = tsCollection.Name;
 end
