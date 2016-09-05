@@ -19,6 +19,11 @@ switch varargin{1}
         oversamplingCoeff = varargin{4};
         tsCollection = makeExperimentalSeries(Input, Output, freqSignalHz, ...
             oversamplingCoeff, dampingRate);
+        dacBits = Input.nbits;
+        adcBits = Output.nbits;
+        maxVin = Input.maxVoltage;
+        maxVout = Output.maxVoltage;
+        
         tsCollection.Name = strcat( 'raw_', num2str(freqSignalHz),'Hz');
         
     case 'filtered'
@@ -26,6 +31,10 @@ switch varargin{1}
         Input = S.InputCounts;
         S = load(varargin{3});
         Output = S.OutputCounts;
+        dacBits = Input.nbits;
+        adcBits = Output.nbits;
+        maxVin = Input.maxVoltage;
+        maxVout = Output.maxVoltage;
         
         oversamplingCoeff = varargin{4};
         rawCollection = makeExperimentalSeries(Input, Output, freqSignalHz, ...
@@ -38,6 +47,10 @@ switch varargin{1}
     case 'simulink'
         S = load(varargin{2});
         Input = S.InputCounts;
+        dacBits = Input.nbits;
+        adcBits = 9;
+        maxVin = Input.maxVoltage;
+        maxVout = Input.maxVoltage;
         
         oversamplingCoeff = varargin{3};
         rawCollection = makeSimulationSeries(Input, freqSignalHz, oversamplingCoeff, dampingRate);
@@ -49,6 +62,10 @@ switch varargin{1}
     case 'theoretical'
         S = load(varargin{2});
         Input = S.InputCounts;
+        dacBits = Input.nbits;
+        adcBits = 9;
+        maxVin = Input.maxVoltage;
+        maxVout = Input.maxVoltage;
         
         oversamplingCoeff = varargin{3};
         rawCollection = makeSimulationSeries(Input, freqSignalHz, oversamplingCoeff, dampingRate);
@@ -63,4 +80,13 @@ end
 createdTimeSeries.fsignal = freqSignalHz;
 createdTimeSeries.tsc = tsCollection;
 createdTimeSeries.Name = tsCollection.Name;
+createdTimeSeries.maxVin = maxVin/2;
+createdTimeSeries.minVin = -maxVin/2;
+createdTimeSeries.maxVout = maxVout;
+createdTimeSeries.minVout = -maxVout/2;
+createdTimeSeries.minPower = min(tsCollection.injectedPower.Data);
+createdTimeSeries.maxPower = max(tsCollection.injectedPower.Data);
+createdTimeSeries.dacBits = dacBits;
+createdTimeSeries.adcBits = adcBits;
+createdTimeSeries.dampingRate = dampingRate;
 end
