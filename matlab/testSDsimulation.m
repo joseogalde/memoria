@@ -24,41 +24,68 @@ Parameters.oversamplingCoeff = 4;
 Parameters.adcMaxVoltage = 1.6;
 Parameters.adcMinVoltage = 0;
 Parameters.adcBits = 9;
-Parameters.buffLen = 80;   %try with 200
+Parameters.buffLen = 400;   %try with 200
 Parameters.adcPeriod = adcPeriod;
 Parameters.sampledValuesPerRound = floor(Parameters.buffLen / Parameters.oversamplingCoeff);
-Parameters.rounds = 5;
-Parameters.nWaitingUnits = 100; %check if is good enough
-Parameters.nonSampledValuesPerRound = 200;  %try different values
+Parameters.rounds = 3;
+Parameters.nWaitingUnits = 250; %check if is good enough
+Parameters.nonSampledValuesPerRound = 500;  %try different values
 
 op1 = simulationFactory(fsignal, 'option1', Parameters);
 op2 = simulationFactory(fsignal, 'option2', Parameters);
 op3 = simulationFactory(fsignal, 'option3', Parameters);
-[nonSampled, sampled] = simulationFactory(fsignal, 'option1+3', Parameters);
+[completeSignal, sampled] = simulationFactory(fsignal, 'option1+3', Parameters);
+Parameters.numberOfRandomValues = Parameters.rounds*Parameters.sampledValuesPerRound;
+theoretical = simulationFactory(fsignal, 'theoretical', Parameters);
 
 %% Plots
-nPlots = 5;
+nPlots = 3;
+figure('units','normalized','outerposition',[0 0 1 1]);
 subplot(nPlots,1,1)
-plot(op1.tsc.Vin.Data);
+plot(op1.tsc.Vin);
 hold on;
-plot(op1.tsc.Vout.Data);
+plot(op1.tsc.Vout);
+title(['Option 1 at ', num2str(op1.fsignal), ' Hz']);
+xlabel(op1.tsc.Vin.TimeInfo.Units);
+ylabel(op1.tsc.Vin.DataInfo.Units);
 
 subplot(nPlots,1,2);
-plot(op2.tsc.Vin.Data);
+plot(op2.tsc.Vin);
 hold on;
-plot(op2.tsc.Vout.Data);
+plot(op2.tsc.Vout);
+title(['Option 2 at ', num2str(op1.fsignal), ' Hz']);
+xlabel(op1.tsc.Vin.TimeInfo.Units);
+ylabel(op1.tsc.Vin.DataInfo.Units);
 
 subplot(nPlots,1,3);
-plot(op3.tsc.Vin.Data);
+plot(op3.tsc.Vin);
 hold on;
-plot(op3.tsc.Vout.Data);
+plot(op3.tsc.Vout);
+title(['Option 3 at ', num2str(op1.fsignal), ' Hz']);
+xlabel(op1.tsc.Vin.TimeInfo.Units);
+ylabel(op1.tsc.Vin.DataInfo.Units);
 
-subplot(nPlots,1,4);
-plot(nonSampled.tsc.Vin.Data);
+figure('units','normalized','outerposition',[0 0 1 1]);
+subplot(nPlots,1,1);
+plot(completeSignal.tsc.Vin);
 hold on;
-plot(nonSampled.tsc.Vout.Data); 
+plot(completeSignal.tsc.Vout);
+title(['Option 1+3 at ', num2str(completeSignal.fsignal), ' Hz']);
+xlabel(completeSignal.tsc.Vin.TimeInfo.Units);
+ylabel(completeSignal.tsc.Vin.DataInfo.Units);
 
-subplot(nPlots,1,5);
-plot(sampled.tsc.Vin.Data);
+subplot(nPlots,1,2);
+plot(sampled.tsc.Vin);
 hold on;
-plot(sampled.tsc.Vout.Data);
+plot(sampled.tsc.Vout);
+title(['Option 1+3 at ', num2str(sampled.fsignal), ' Hz (samples only)']);
+xlabel(sampled.tsc.Vin.TimeInfo.Units);
+ylabel(sampled.tsc.Vin.DataInfo.Units);
+
+subplot(nPlots,1,3);
+plot(theoretical.tsc.Vin);
+hold on;
+plot(theoretical.tsc.Vout);
+title(['Theoretical response at ', num2str(theoretical.fsignal), ' Hz']);
+xlabel(theoretical.tsc.Vin.TimeInfo.Units);
+ylabel(theoretical.tsc.Vin.DataInfo.Units);

@@ -60,19 +60,14 @@ switch varargin{1}
         tsCollection.Name = strcat( 'simulink_', num2str(freqSignalHz),'Hz');
         
     case 'theoretical'
-        S = load(varargin{2});
-        Input = S.InputCounts;
-        dacBits = Input.nbits;
-        adcBits = 9;
-        maxVin = Input.maxVoltage;
-        maxVout = Input.maxVoltage;
-        
-        oversamplingCoeff = varargin{3};
-        rawCollection = makeSimulationSeries(Input, freqSignalHz, oversamplingCoeff, dampingRate);
-        buffLen = length(rawCollection.Vin.Data);
-        [indexes, ~, ~] = findSState('simple', rawCollection.Vout.Data, buffLen);
-        tsCollection = filterCollection(rawCollection, indexes, buffLen);
+        Parameters = varargin{2};
+        simResult = simulationFactory(freqSignalHz, 'theoretical', Parameters);
+        tsCollection = simResult.tsc;
         tsCollection.Name = strcat( 'theoretical_', num2str(freqSignalHz),'Hz');
+        maxVin = simResult.maxVin;
+        maxVout = simResult.maxVout;
+        dacBits = Parameters.dacBits;
+        adcBits = Parameters.adcBits;
         
     otherwise
         error(['The argument' ' "' varargin{1} '" ' 'is not recognized.'])
