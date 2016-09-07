@@ -11,6 +11,11 @@ while ischar(tline)
     breakCondition = ~isempty(strfind(tline,regEOF)) || ...
         (~isempty(strfind(tline, regADC)) && (adcPeriod > 0));
     if  breakCondition
+        if (fgets(FID) == -1)
+            hasExec = false;
+        else
+            hasExec = true;
+        end
         break
     elseif ~isempty( strfind(tline, regADC))
         indexl = strfind( tline, regADC);
@@ -28,8 +33,8 @@ end
 
 if adcPeriod == 0 || isempty(values)
     hasExec = false;
-else
-    hasExec = true;
+% else
+%     hasExec = true;
 end
 buffer = [adcPeriod; values];
 end

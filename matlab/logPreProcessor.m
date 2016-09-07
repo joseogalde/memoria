@@ -29,16 +29,17 @@ switch varargin{1}
         fid = fopen(rawLogFile);
         disp(['preprocessing file ',rawLogFile, 'as output']);
         hasExec = true;
-        index = 1;
+        index = varargin{2};
         fileDir = {};
         
         [buffer, hasExec] = processOneOutput(fid);
         disp(strcat(num2str(index), ' files ready'));
+        fileDir{index} = printBufferToFile(buffer, saveFolder ,'output', index);
         while hasExec
-            fileDir{index} = printBufferToFile(buffer, saveFolder ,'output', index);
             index = index + 1;
             disp(strcat(num2str(index), ' files ready'));
             [buffer, hasExec] = processOneOutput(fid);
+            fileDir{index} = printBufferToFile(buffer, saveFolder ,'output', index);
         end
         fclose(fid);
         

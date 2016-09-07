@@ -13,4 +13,4 @@ if ~isdir(saveFolder)
 end
 
 inFile = logPreProcessor(logPath, saveFolder, 'input');
-outFiles = logPreProcessor(logPath, saveFolder, 'output');
+outFiles = logPreProcessor(logPath, saveFolder, 'output', 1);
