@@ -1,3 +1,7 @@
+% This script takes preprocessor files with vin and vout values in separted
+% files and modifies and saves them in MAT-files for further time series
+% creation.
+
 prefix = '2016_18_05';  %date and foldername of cutecom logs
 parserFolder = './parser';
 preprocessorFolder = './preprocessor';
